@@ -18,17 +18,14 @@ p {
     padding: 0;
 }
 h4{
-    font-family: "SolaimanLipi";
     font-size: 22px;
     font-weight: 400;
 }
 h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
-    font-family: SolaimanLipi;
     color: #111111;
-    font-weight: 400;
+    font-weight: 500;
 }
 p{
-    font-family: "SolaimanLipi";
     font-size: 13px;
     font-weight: 400;
     color: #777;
@@ -96,6 +93,9 @@ body {
     line-height: 30px;
     padding: 6px 10px 3px;
 }
+.national-card {
+    padding-right: 10px;
+}
 .national-card .card-img {
     margin-bottom: 5px;
 }
@@ -103,15 +103,60 @@ body {
     width: 100%;
 }
 .national-card .card-news-heading h3 a{
-    text-decoration: none;
     font-size: 18px;
 }
 .national-card p{
     margin-top: 9px;
 }
-.card:hover h3 a{
+.card-news:hover h3 a{
     color: red;
 }
+.national-right-side-text h3 {
+    line-height: 21px;
+}
+.national-right-side-text h3 a{
+    font-size: 15px;
+}
+.national-right-side-news-headlines{
+    padding-left: 10px;
+    margin-bottom: 25px;
+}
+.national-right-side-news-headlines:hover h3 a{
+    color: red;
+}
+.national-section-add-one{
+    min-height: 90px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.card-news h3{
+    line-height: 21px;
+}
+.card-news h3 a{
+    font-size: 18px;
+    font-weight: 500;
+}
+.law-court{
+    position: relative;
+    padding-right: 8px;
+}
+.law-court .law-court-overlay{
+    position: absolute;
+    background: linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .8));
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 98%;
+}
+.law-court .law-court-overlay span{
+    position: absolute;
+    bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
 /*Main Section end*/
 .breaking-news-title {
     background: green;
