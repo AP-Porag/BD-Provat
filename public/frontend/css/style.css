@@ -12,31 +12,30 @@ a {
     text-decoration: none;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* common css end */
+
 .date {
-    float: left;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    color: red;
+    color: white;
     font-size: 24px;
 }
 
-.social-icon {
-    float: right;
-    top: 50%;
-    position: relative;
-    transform: translateY(-50%);
-}
-
 .social-icon a i {
-    color: red;
+
     font-size: 25px;
     margin-left: 10px;
+    color: #fff;
 
 }
 
-.social-icon-container {
-    background: lightgray;
+.social-icon-content {
+    background: red;
+    font-size: 16px;
+    color: white;
 }
 
 #navbarSupportedContent {
