@@ -147,7 +147,40 @@
     <section id="main-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-8"></div>
+                <div class="col-md-8">
+{{--                    national--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h4 class="text-white">
+                                    <span>জাতীয়</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="national-card">
+                                        <div class="card border-0">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/national-main-news.jpg')}}" alt="" class="img-fluid">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="ভাসানচরে রোহিঙ্গাদের স্থানান্তরে প্রশংসা ওমানের" rel="bookmark">ভাসানচরে রোহিঙ্গাদের স্থানান্তরে প্রশংসা ওমানের</a>
+                                                    </h3>
+                                                    <p>অনলাইন ডেস্ক: ঢাকাস্থ ওমান দূতাবাসের মিশন প্রধান তায়েব সেলিম আবদুল্লাহ আল আলাবি কক্সবাজার থেকে রোহিঙ্গাদেরকে ভাসান চরে স্থানান্তরের জন্য বাংলাদেশ সরকারের পদক্ষেপের প্রশংসা করে..</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">news heading</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-4">
                     <img src="{{ asset('frontend/img/newspaper-rec300c.jpg') }}" class="img-fluid w-100" alt="">
                     <nav class="mt-3">
@@ -314,6 +347,7 @@
 
                     </div>
                 </div>
+
             </div>
 
         </div>
