@@ -8,7 +8,8 @@ ol {
     list-style: none;
 }
 
-a {
+a,
+a:hover {
     text-decoration: none;
 }
 
@@ -34,8 +35,11 @@ p{
     line-height: 21px;
 }
 
-/* common css end */
+body {
+    font-family: 'SolaimanLipi', Arial, sans-serif !important;
+}
 
+/* common css end */
 .date {
     color: white;
     font-size: 24px;
@@ -57,10 +61,27 @@ p{
 
 #navbarSupportedContent {
     background: red;
+    padding-left: 40px;
 }
 
 .navbar-nav .nav-item a {
     color: #fff !important;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-item:hover .nav-link {
+    background: green;
+    transition: 0.4s;
+}
+
+.dropdown-menu {
+    background: red;
+    margin-left: -15px;
+}
+
+.dropdown-item:hover {
+    background-color: green;
+    transition: 0.4s;
 }
 
 /*Main Section start*/
@@ -92,3 +113,75 @@ p{
     color: red;
 }
 /*Main Section end*/
+.breaking-news-title {
+    background: green;
+    color: #fff;
+    padding: 5px;
+    text-align: center
+}
+
+marquee ul li {
+    margin-right: 40px;
+    padding-top: 5px;
+}
+
+marquee ul li a {
+    color: black;
+}
+
+/* Breaking News End */
+nav>.nav.nav-tabs {
+
+    border: none;
+    color: #fff;
+    background: #272e38;
+    border-radius: 0;
+
+}
+
+nav>div a.nav-item.nav-link,
+nav>div a.nav-item.nav-link.active {
+    border: none;
+    padding: 18px 25px;
+    color: #fff;
+    background: #272e38;
+    border-radius: 0;
+}
+
+nav>div a.nav-item.nav-link.active:after {
+    content: "";
+    position: relative;
+    bottom: -59px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: #e74c3c;
+}
+
+.tab-content {
+    background: #fdfdfd;
+    line-height: 25px;
+    border: 1px solid #ddd;
+    border-top: 5px solid #e74c3c;
+    border-bottom: 5px solid #e74c3c;
+    padding: 30px 25px;
+}
+
+nav>div a.nav-item.nav-link:hover,
+nav>div a.nav-item.nav-link:focus {
+    border: none;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 0;
+    transition: background 0.20s linear;
+}
+
+.tab-content {
+    height: 500px;
+    overflow: auto;
+}
+
+.tab-content ul li a {
+    color: black;
+}
+
+/* Tab Css End */
