@@ -161,7 +161,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="national-card">
-                                        <div class="card border-0">
+                                        <div class="card card-news border-0">
                                             <div class="card-img">
                                                 <img src="{{asset('frontend/images/national-main-news.jpg')}}" alt="" class="img-fluid">
                                             </div>
@@ -176,10 +176,858 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">news heading</div>
+                                <div class="col-md-6">
+                                    <div class="national-right-side-news-headlines">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="national-right-side-img">
+                                                    <div class="card-img">
+                                                        <img src="{{asset('frontend/images/health-minister.jpg')}}" alt="" class="img-fluid w-100">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 pl-0 pt-0">
+                                                <div class="national-right-side-text">
+                                                    <div class="card-text">
+                                                        <h3>
+                                                            <a href="#" title="করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী" rel="bookmark">করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="national-right-side-news-headlines">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="national-right-side-img">
+                                                    <div class="card-img">
+                                                        <img src="{{asset('frontend/images/health-minister.jpg')}}" alt="" class="img-fluid w-100">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 pl-0 pt-0">
+                                                <div class="national-right-side-text">
+                                                    <div class="card-text">
+                                                        <h3>
+                                                            <a href="#" title="করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী" rel="bookmark">করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="national-right-side-news-headlines">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="national-right-side-img">
+                                                    <div class="card-img">
+                                                        <img src="{{asset('frontend/images/health-minister.jpg')}}" alt="" class="img-fluid w-100">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 pl-0 pt-0">
+                                                <div class="national-right-side-text">
+                                                    <div class="card-text">
+                                                        <h3>
+                                                            <a href="#" title="করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী" rel="bookmark">করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="national-right-side-news-headlines">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="national-right-side-img">
+                                                    <div class="card-img">
+                                                        <img src="{{asset('frontend/images/health-minister.jpg')}}" alt="" class="img-fluid w-100">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 pl-0 pt-0">
+                                                <div class="national-right-side-text">
+                                                    <div class="card-text">
+                                                        <h3>
+                                                            <a href="#" title="করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী" rel="bookmark">করোনা ভ্যাকসিন ৪২৫ টাকায় পাওয়া যাবে: স্বাস্থ্যমন্ত্রী</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+{{--                    national news--}}
+                    <div class="row">
+                        <div class="col-md-12 p-0">
+                            <div class="card-body">
+                                <div class="national-section-add-one border">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{{--                    ad end--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h4 class="text-white">
+                                    <span>রাজনীতি</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row mb-4">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/13-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন" rel="bookmark">টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/13-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন" rel="bookmark">টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/13-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন" rel="bookmark">টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/13-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন" rel="bookmark">টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/13-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন" rel="bookmark">টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/13-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন" rel="bookmark">টুঙ্গিপাড়ায় আ.লীগ প্রার্থী বিনা প্রতিদ্বন্দ্বিতায় মেয়র নির্বাচিত হলেন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-start">
+                                                <li class="page-item disabled mr-2">
+                                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-right"></i></a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{{--                    politice news end--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h4 class="text-white">
+                                    <span>অর্থনীতি</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row mb-4">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/340-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও" rel="bookmark">পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/340-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও" rel="bookmark">পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/340-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও" rel="bookmark">পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/340-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও" rel="bookmark">পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/340-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও" rel="bookmark">পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/340-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও" rel="bookmark">পাওয়ারের শেয়ার কেনার ঘোষণায় বেক্সিমকোর বিক্রেতা উধাও</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-start">
+                                                <li class="page-item disabled mr-2">
+                                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-right"></i></a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                    Finance news end--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h4 class="text-white">
+                                    <span>রাজধানী</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row mb-4">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-408-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু" rel="bookmark">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-408-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু" rel="bookmark">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-408-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু" rel="bookmark">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-408-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু" rel="bookmark">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-408-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু" rel="bookmark">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-408-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু" rel="bookmark">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-start">
+                                                <li class="page-item disabled mr-2">
+                                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-right"></i></a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                    Capital City news end--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h4 class="text-white">
+                                    <span>সারাদেশ</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row mb-4">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-43-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন" rel="bookmark">কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-43-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন" rel="bookmark">কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-43-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন" rel="bookmark">কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-43-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন" rel="bookmark">কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-43-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন" rel="bookmark">কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-43-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন" rel="bookmark">কুড়িগ্রামে প্রতারকদের গ্রেফতার করে কঠোর শাস্তির দাবিতে মানববন্ধন</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-start">
+                                                <li class="page-item disabled mr-2">
+                                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-right"></i></a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                    full country City news end--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h4 class="text-white">
+                                    <span>আন্তর্জাতিক</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row mb-4">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-36-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু" rel="bookmark">সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-36-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু" rel="bookmark">সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-36-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু" rel="bookmark">সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-36-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু" rel="bookmark">সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-36-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু" rel="bookmark">সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card-news">
+                                        <div class="card-img">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/Bdprovat-Final-Share-Logo-copy-36-218x150.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" title="সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু" rel="bookmark">সৌদি আরবে আন্তর্জাতিক ফ্লাইট চলাচল শুরু</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-start">
+                                                <li class="page-item disabled mr-2">
+                                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-right"></i></a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                    International news end--}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h4 class="text-white">
+                                    <span>আইন/আদালত</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row mb-4 pl-3 pr-3">
+                                <div class="col-md-6 p-0 m-0">
+                                    <div class="card-news">
+                                        <div class="card-img law-court">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/320-356x220.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" class="law-court-overlay" title="নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা" rel="bookmark"><span>নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা</span></a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-0 m-0">
+                                    <div class="card-news">
+                                        <div class="card-img law-court">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/320-356x220.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" class="law-court-overlay" title="নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা" rel="bookmark"><span>নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা</span></a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-0 m-0">
+                                    <div class="card-news">
+                                        <div class="card-img law-court">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/320-356x220.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" class="law-court-overlay" title="নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা" rel="bookmark"><span>নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা</span></a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-0 m-0">
+                                    <div class="card-news">
+                                        <div class="card-img law-court">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/320-356x220.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" class="law-court-overlay" title="নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা" rel="bookmark"><span>নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা</span></a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-0 m-0">
+                                    <div class="card-news">
+                                        <div class="card-img law-court">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/320-356x220.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" class="law-court-overlay" title="নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা" rel="bookmark"><span>নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা</span></a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-0 m-0">
+                                    <div class="card-news">
+                                        <div class="card-img law-court">
+                                            <div class="card-img">
+                                                <img src="{{asset('frontend/images/320-356x220.jpg')}}" alt="" class="img-fluid w-100">
+                                            </div>
+                                            <div class="card-text">
+                                                <div class="card-news-heading">
+                                                    <h3>
+                                                        <a href="#" class="law-court-overlay" title="নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা" rel="bookmark"><span>নারী আইনজীবীদের বর্ষবিদায় ও বরণে মিলনমেলা</span></a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-start">
+                                                <li class="page-item disabled mr-2">
+                                                    <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-right"></i></a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#"><i class="fa fa-chevron-left"></i></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{--                    Law and court news end--}}
                 </div>
                 <div class="col-md-4">
                     <img src="{{ asset('frontend/img/newspaper-rec300c.jpg') }}" class="img-fluid w-100" alt="">
@@ -347,11 +1195,7 @@
 
                     </div>
                 </div>
-
             </div>
-
-        </div>
-        </div>
         </div>
     </section>
     {{-- Main Section End --}}
