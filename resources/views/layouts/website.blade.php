@@ -16,10 +16,14 @@
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{{ asset('frontend/images/fevicon.ico.png') }}" type="image/x-icon" />
     <!-- Bootstrap CSS -->
+    <!-- Fonts -->
+    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css">
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{{ asset('frontend/css/marquee.css') }}">
     <!-- Site CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <!-- Responsive CSS -->

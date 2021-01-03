@@ -15,8 +15,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="social-icon-content d-flex justify-content-between">
-                    <p class="date">Sunday, January 3, 2021</p>
-                    <ul class="d-flex social-icon">
+                    <p class="date ml-3 mt-2">Sunday, January 3, 2021</p>
+                    <ul class="d-flex social-icon mr-3 mt-3">
                         <li><a href=""><i class="fa fa-facebook"></i></a></li>
                         <li><a href=""><i class="fa fa-instagram"></i></a></li>
                         <li><a href=""><i class="fa fa-twitter"></i></a></li>
@@ -47,8 +47,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">প্রচ্ছদ</a>
                     </li>
 
@@ -58,10 +58,11 @@
                             বাংলাদেশ
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">জাতীয়</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">রাজনীতি</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">অর্থনীতি</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -96,31 +97,227 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">ধর্ম</a>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             সকল বিভাগ
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">লাইফস্টাইল</a>
+                            <a class="dropdown-item" href="#">ঘটনা/দূর্ঘটনা</a>
+                            <a class="dropdown-item" href="#">অপরাধ/দূর্নীতি</a>
+                            <a class="dropdown-item" href="#">চাকুরী</a>
+                            <a class="dropdown-item" href="#">স্বাস্থ্য সেবা</a>
+                            <a class="dropdown-item" href="#">অনুসন্ধানী</a>
+                            <a class="dropdown-item" href="#">ফটো গ্যালারী</a>
+                            <a class="dropdown-item" href="#">ভিডিও গ্যালারী</a>
+                            <a class="dropdown-item" href="#">বিশেষ প্রতিবেদন</a>
+                            <a class="dropdown-item" href="#">বিডি প্রভাত পরিবার</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
     {{-- Navbar End --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <p class="breaking-news-title">ব্রেকিং নিউজ</p>
+            </div>
+            <div class="col-md-10">
+                <marquee onmouseover="this.stop();" onmouseout="this.start();">
+                    <ul class="d-flex">
+                        <li><a href="#">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</a></li>
+                        <li><a href="#">রেনু হত্যা মামলার আসামি মহিনের সম্পত্তি ক্রোকের নির্দেশ</a></li>
+                        <li><a href="#">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a></li>
+                        <li><a href="#">মাকে নিয়ে দেশে ফিরলেন সাকিব</a></li>
+                        <li><a href="#">ইতালিতে প্রথম ভ্যাকসিন নিলেন বাংলাদেশি নারী</a></li>
+                        <li><a href="#">ভারত থেকে পেঁয়াজ আমদানি শুরু</a></li>
+                        <li><a href="https://www.facebook.com">সৈয়দ আশরাফের আজ দ্বিতীয় মৃত্যুবার্ষিকী</a></li>
+                    </ul>
+                </marquee>
+            </div>
+        </div>
+    </div>
     {{-- Braking News End --}}
     <section id="main-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-8"></div>
-                <div class="col-md-4">Razaul Karim</div>
+                <div class="col-md-4">
+                    <img src="{{ asset('frontend/img/newspaper-rec300c.jpg') }}" class="img-fluid w-100" alt="">
+                    <nav class="mt-3">
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                                role="tab" aria-controls="nav-home" aria-selected="true">সর্বশেষ</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                                role="tab" aria-controls="nav-profile" aria-selected="false">জনপ্রিয়</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <ul>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <ul>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" class="d-flex">
+                                        <div>
+                                            <img class="ml-2 img-fluid" src="{{ asset('frontend/img/339-100x70.jpg') }}"
+                                                alt="">
+                                        </div>
+                                        <p class="ml-3 mr-2">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
             </div>
+
+        </div>
+        </div>
         </div>
     </section>
     {{-- Main Section End --}}
