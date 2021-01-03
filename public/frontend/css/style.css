@@ -16,6 +16,23 @@ p {
     margin: 0;
     padding: 0;
 }
+h4{
+    font-family: "SolaimanLipi";
+    font-size: 22px;
+    font-weight: 400;
+}
+h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+    font-family: SolaimanLipi;
+    color: #111111;
+    font-weight: 400;
+}
+p{
+    font-family: "SolaimanLipi";
+    font-size: 13px;
+    font-weight: 400;
+    color: #777;
+    line-height: 21px;
+}
 
 /* common css end */
 
@@ -45,3 +62,33 @@ p {
 .navbar-nav .nav-item a {
     color: #fff !important;
 }
+
+/*Main Section start*/
+.heading{
+    margin-bottom: 26px;
+}
+.heading h4 {
+    border-bottom: 2px solid red;
+}
+.heading h4 span{
+    background: red;
+    line-height: 30px;
+    padding: 6px 10px 3px;
+}
+.national-card .card-img {
+    margin-bottom: 5px;
+}
+.national-card img{
+    width: 100%;
+}
+.national-card .card-news-heading h3 a{
+    text-decoration: none;
+    font-size: 18px;
+}
+.national-card p{
+    margin-top: 9px;
+}
+.card:hover h3 a{
+    color: red;
+}
+/*Main Section end*/
