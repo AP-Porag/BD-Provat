@@ -1,0 +1,31 @@
+/** coping data to terms table from wpnb_terms  **/
+
+INSERT INTO bdprovat.terms (id, name, slug)
+SELECT term_id, name, slug FROM bdprovat2.wpnb_terms;
+
+
+/** coping data to term_metas table from wpnb_termmeta  **/
+
+INSERT INTO bdprovat.term_metas (id,term_id, title, description)
+SELECT meta_id, term_id, meta_value,meta_key FROM bdprovat2.wpnb_termmeta;
+
+/** coping data to post_metas table from wpnb_postmeta  **/
+
+INSERT INTO bdprovat.post_metas (id,post_id, title, description)
+SELECT meta_id, post_id, meta_value,meta_key FROM bdprovat2.wpnb_postmeta;
+
+
+/** coping data to posts table from wpnb_posts  **/
+
+INSERT INTO bdprovat.posts (id, post_author, title, content,thumbnail, status,created_at)
+SELECT id, post_author, post_title, post_content,guid, post_status, post_date FROM bdprovat2.wpnb_posts;
+
+/** coping data to post_tags table from wpnb_term_relationships  **/
+
+INSERT INTO bdprovat.post_terms (post_id, term_id)
+SELECT object_id, term_taxonomy_id FROM bdprovat2.wpnb_term_relationships;
+
+/** coping data to wpnb_term_taxonomies table from wpnb_term_taxonomy  **/
+
+INSERT INTO bdprovat.wpnb_term_taxonomies (term_taxonomy_id, term_id, taxonomy)
+SELECT term_taxonomy_id, term_id, taxonomy FROM bdprovat2.wpnb_term_taxonomy;
