@@ -517,6 +517,7 @@ class ComposerStaticInita237f843c9870ca6b0f013427f4bc717
         'App\\Models\\TermMeta' => __DIR__ . '/../..' . '/app/Models/TermMeta.php',
         'App\\Models\\TermTypes' => __DIR__ . '/../..' . '/app/Models/TermTypes.php',
         'App\\Models\\Type' => __DIR__ . '/../..' . '/app/Models/Type.php',
+        'App\\Models\\wpnb_post' => __DIR__ . '/../..' . '/app/Models/wpnb_post.php',
         'App\\Models\\wpnb_term_taxonomy' => __DIR__ . '/../..' . '/app/Models/wpnb_term_taxonomy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
