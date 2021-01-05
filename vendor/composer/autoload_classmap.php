@@ -33,6 +33,7 @@ return array(
     'App\\Models\\TermMeta' => $baseDir . '/app/Models/TermMeta.php',
     'App\\Models\\TermTypes' => $baseDir . '/app/Models/TermTypes.php',
     'App\\Models\\Type' => $baseDir . '/app/Models/Type.php',
+    'App\\Models\\wpnb_post' => $baseDir . '/app/Models/wpnb_post.php',
     'App\\Models\\wpnb_term_taxonomy' => $baseDir . '/app/Models/wpnb_term_taxonomy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
