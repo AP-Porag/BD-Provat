@@ -1,4 +1,3 @@
-@extends('layouts.website')
 
 @section('title')
     BD-Provat
