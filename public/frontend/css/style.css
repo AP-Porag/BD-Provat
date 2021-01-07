@@ -1,1 +1,291 @@
 
+
+ul,
+ol {
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    line-height: 21px;
+}
+
+h4 {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+h3 {
+    border-bottom: 2px solid red;
+}
+
+h3 span {
+    font-size: 20px;
+    background: red;
+    padding: 10px 30px;
+    color: #fff;
+    position: relative;
+    display: inline-block
+}
+
+h1>a,
+h2>a,
+h3>a,
+h4>a,
+h5>a,
+h6>a {
+    color: #111111;
+    font-weight: 500;
+}
+
+body {
+    font-family: 'SolaimanLipi', Arial, sans-serif !important;
+}
+
+/* common css end */
+.date {
+    color: white;
+    font-size: 24px;
+}
+
+.social-icon a i {
+
+    font-size: 25px;
+    margin-left: 10px;
+    color: #fff;
+
+}
+
+.social-icon-content {
+    background: red;
+    font-size: 16px;
+    color: white;
+}
+
+#navbarSupportedContent {
+    background: red;
+    padding-left: 40px;
+}
+
+.navbar-nav .nav-item a {
+    color: #fff !important;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-item:hover .nav-link {
+    background: green;
+    transition: 0.4s;
+}
+
+.dropdown-menu {
+    background: red;
+    margin-left: -15px;
+}
+
+.dropdown-item:hover {
+    background-color: green;
+    transition: 0.4s;
+}
+
+/* Breaking News Start */
+.breaking-news-title {
+    background: green;
+    color: #fff;
+    padding: 5px;
+    text-align: center
+}
+
+marquee ul li {
+    padding-top: 5px;
+}
+
+marquee ul li a {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+marquee ul li a {
+    color: black;
+}
+
+/* Breaking News End */
+/* Main news Sectin Starts */
+
+/* Main news Sectin Ends */
+/* Tab start */
+.tab_for_content {
+    height: 400px;
+    overflow: auto;
+}
+
+.tab_for_content p {
+    font-size: 16px;
+}
+
+nav>.nav.nav-tabs {
+
+    border: none;
+    color: #fff;
+    background: #272e38;
+    border-radius: 0;
+
+}
+
+nav>div a.nav-item.nav-link,
+nav>div a.nav-item.nav-link.active {
+    border: none;
+    padding: 18px 25px;
+    color: #fff;
+    background: #272e38;
+    border-radius: 0;
+}
+
+nav>div a.nav-item.nav-link.active:after {
+    content: "";
+    position: relative;
+    bottom: -57px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: #e74c3c;
+}
+
+.tab-content {
+    background: #fdfdfd;
+    line-height: 25px;
+    border: 1px solid #ddd;
+    border-top: 5px solid #e74c3c;
+    border-bottom: 5px solid #e74c3c;
+    padding: 30px 25px;
+}
+
+.tab-content ul li,
+.middle_content ul li {
+    padding-bottom: 20px;
+}
+
+nav>div a.nav-item.nav-link:hover,
+nav>div a.nav-item.nav-link:focus {
+    border: none;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 0;
+    transition: background 0.20s linear;
+}
+
+/* Tab end */
+/* National International Part Start */
+#national_international_news ul li {
+    padding-bottom: 20px;
+}
+
+
+/* National International Part End */
+/* Politics Technology and Law Start */
+
+
+#politics_technology_law ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #999;
+    border-bottom: 1px dashed #999;
+}
+
+#politics_technology_law ul li:first-child {
+    margin-top: 20px;
+}
+
+/* Politics Technology and Law Ends */
+/* Slick Slider Start */
+.slick-next:before,
+.slick-prev:before {
+    font-family: slick;
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: red;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li button:before {
+    font-family: slick;
+    font-size: 16px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: 1;
+    color: red;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+    border: 2px solid red;
+    color: white;
+    border-radius: 50%;
+}
+
+/* Slick Slider End */
+/* Full Country Section Start */
+#full_country ul li {
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid #ddd;
+    padding: 12px 12px;
+    font-size: 20px;
+}
+
+#full_country ul li.active {
+    background: red;
+    color: #fff;
+}
+
+.grid img {
+    width: 100%;
+}
+
+/* Full Country Section End */
+/* Sport Section Start */
+#sport h5 {
+    font-size: 16px;
+}
+
+/* Sport Section End */
+/* Photo Feature and Religion Start */
+#photo_galery_religion_feature ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #999;
+    border-bottom: 1px dashed #999;
+}
+
+/* Photo Feature and Religion End */
+/* Travel Health Foreign Start */
+#travel_health_foreign ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #999;
+    border-bottom: 1px dashed #999;
+}
+
+#travel_health_foreign ul li:first-child {
+    margin-top: 20px;
+}
+
+/* Travel Health Foreign End */
+
