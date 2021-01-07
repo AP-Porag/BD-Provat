@@ -23,7 +23,8 @@
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css">
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/marquee.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <!-- Responsive CSS -->
@@ -53,8 +54,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    {{-- Plugin Js --}}
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://www.jsdelivr.com/projects/jquery.slick"></script>
     <!-- custom / main Js -->
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    @yield('script')
 
 </body>
 

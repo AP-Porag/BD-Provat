@@ -16,11 +16,28 @@ a:hover {
 p {
     margin: 0;
     padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    line-height: 21px;
 }
 
 h4 {
     font-size: 22px;
     font-weight: 400;
+}
+
+h3 {
+    border-bottom: 2px solid red;
+}
+
+h3 span {
+    font-size: 20px;
+    background: red;
+    padding: 10px 30px;
+    color: #fff;
+    position: relative;
+    display: inline-block
 }
 
 h1>a,
@@ -31,13 +48,6 @@ h5>a,
 h6>a {
     color: #111111;
     font-weight: 500;
-}
-
-p {
-    font-size: 14px;
-    font-weight: 400;
-    color: black;
-    line-height: 21px;
 }
 
 body {
@@ -89,101 +99,7 @@ body {
     transition: 0.4s;
 }
 
-/*Main Section start*/
-.heading {
-    margin-bottom: 26px;
-}
-
-.heading h4 {
-    border-bottom: 2px solid red;
-}
-
-.heading h4 span {
-    background: red;
-    line-height: 30px;
-    padding: 6px 10px 3px;
-}
-
-.national-card {
-    padding-right: 10px;
-}
-
-.national-card .card-img {
-    margin-bottom: 5px;
-}
-
-.national-card img {
-    width: 100%;
-}
-
-.national-card .card-news-heading h3 a {
-    font-size: 18px;
-}
-
-.national-card p {
-    margin-top: 9px;
-}
-
-.card-news:hover h3 a {
-    color: red;
-}
-
-.national-right-side-text h3 {
-    line-height: 21px;
-}
-
-.national-right-side-text h3 a {
-    font-size: 15px;
-}
-
-.national-right-side-news-headlines {
-    padding-left: 10px;
-    margin-bottom: 25px;
-}
-
-.national-right-side-news-headlines:hover h3 a {
-    color: red;
-}
-
-.national-section-add-one {
-    min-height: 90px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-
-.card-news h3 {
-    line-height: 21px;
-}
-
-.card-news h3 a {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.law-court {
-    position: relative;
-    padding-right: 8px;
-}
-
-.law-court .law-court-overlay {
-    position: absolute;
-    background: linear-gradient(rgba(255, 255, 255, .1), rgba(0, 0, 0, .8));
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 98%;
-}
-
-.law-court .law-court-overlay span {
-    position: absolute;
-    bottom: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    color: white;
-}
-
-/*Main Section end*/
+/* Breaking News Start */
 .breaking-news-title {
     background: green;
     color: #fff;
@@ -205,6 +121,19 @@ marquee ul li a {
 }
 
 /* Breaking News End */
+/* Main news Sectin Starts */
+
+/* Main news Sectin Ends */
+/* Tab start */
+.tab_for_content {
+    height: 400px;
+    overflow: auto;
+}
+
+.tab_for_content p {
+    font-size: 16px;
+}
+
 nav>.nav.nav-tabs {
 
     border: none;
@@ -226,7 +155,7 @@ nav>div a.nav-item.nav-link.active {
 nav>div a.nav-item.nav-link.active:after {
     content: "";
     position: relative;
-    bottom: -59px;
+    bottom: -57px;
     left: -10%;
     border: 15px solid transparent;
     border-top-color: #e74c3c;
@@ -241,6 +170,11 @@ nav>div a.nav-item.nav-link.active:after {
     padding: 30px 25px;
 }
 
+.tab-content ul li,
+.middle_content ul li {
+    padding-bottom: 20px;
+}
+
 nav>div a.nav-item.nav-link:hover,
 nav>div a.nav-item.nav-link:focus {
     border: none;
@@ -250,13 +184,110 @@ nav>div a.nav-item.nav-link:focus {
     transition: background 0.20s linear;
 }
 
-.tab-content {
-    height: 500px;
-    overflow: auto;
+/* Tab end */
+/* National International Part Start */
+#national_international_news ul li {
+    padding-bottom: 20px;
 }
 
-.tab-content ul li a {
-    color: black;
+
+/* National International Part End */
+/* Politics Technology and Law Start */
+
+
+#politics_technology_law ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #999;
+    border-bottom: 1px dashed #999;
 }
 
-/* Tab Css End */
+#politics_technology_law ul li:first-child {
+    margin-top: 20px;
+}
+
+/* Politics Technology and Law Ends */
+/* Slick Slider Start */
+.slick-next:before,
+.slick-prev:before {
+    font-family: slick;
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: red;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li button:before {
+    font-family: slick;
+    font-size: 16px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: 1;
+    color: red;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+    border: 2px solid red;
+    color: white;
+    border-radius: 50%;
+}
+
+/* Slick Slider End */
+/* Full Country Section Start */
+#full_country ul li {
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid #ddd;
+    padding: 12px 12px;
+    font-size: 20px;
+}
+
+#full_country ul li.active {
+    background: red;
+    color: #fff;
+}
+
+.grid img {
+    width: 100%;
+}
+
+/* Full Country Section End */
+/* Sport Section Start */
+#sport h5 {
+    font-size: 16px;
+}
+
+/* Sport Section End */
+/* Photo Feature and Religion Start */
+#photo_galery_religion_feature ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #999;
+    border-bottom: 1px dashed #999;
+}
+
+/* Photo Feature and Religion End */
+/* Travel Health Foreign Start */
+#travel_health_foreign ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #999;
+    border-bottom: 1px dashed #999;
+}
+
+#travel_health_foreign ul li:first-child {
+    margin-top: 20px;
+}
+
+/* Travel Health Foreign End */
