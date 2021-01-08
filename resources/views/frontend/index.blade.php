@@ -20,6 +20,7 @@
                         <li><a href=""><i class="fa fa-instagram"></i></a></li>
                         <li><a href=""><i class="fa fa-twitter"></i></a></li>
                         <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                        <li class="mx-5"><a href="{{ route('login') }}" class="text-white login">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -207,9 +208,9 @@
                         <nav>
                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-                                    role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                                    role="tab" aria-controls="nav-home" aria-selected="true">সর্বশেষ</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                                    role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                                    role="tab" aria-controls="nav-profile" aria-selected="false">জনপ্রিয়</a>
                             </div>
                         </nav>
                         <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -1095,6 +1096,32 @@
         </div>
     </section>
     {{-- Travel Health Foreign Section End --}}
+    {{-- Footer Section Start --}}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo_play_store d-flex justify-content-between">
+                        <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" height=" 90" width="272">
+                        <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
+                    </div>
+                    <div class="editor d-flex justify-content-between">
+                        <p>
+                            ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
+                            <br>এম, কে, আর এন্টারপ্রাইজের একটি প্রতিষ্ঠান<br>
+                            প্রধান কার্যালয়: আলফা টাওয়ার, আবদুল্লাহপুর, উত্তরা, ঢাকা-১২৩০।<br>
+                            আমাদের মেইল: bdprovat.news@gmail.com মোবাইল: ০১৭১৪-০৩৬৬১২
+                        </p>
+
+                        <ul>
+                            <li><a href="#">আমাদের কথা</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {{-- Footer Section End --}}
 @endsection
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>

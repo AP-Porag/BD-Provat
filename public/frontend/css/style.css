@@ -1,8 +1,7 @@
-
-
 ul,
 ol {
     list-style: none;
+    padding: 0 !important;
 }
 
 a,
@@ -51,6 +50,11 @@ body {
     font-family: 'SolaimanLipi', Arial, sans-serif !important;
 }
 
+.login:hover {
+    background: #fff;
+    color: #000 !important;
+}
+
 /* common css end */
 .date {
     color: white;
@@ -79,6 +83,24 @@ body {
 .navbar-nav .nav-item a {
     color: #fff !important;
     font-size: 18px;
+}
+
+.social-icon-content a:hover i {
+    color: green;
+    transition: 0.4s;
+}
+
+.social-icon-content li:last-child {
+    padding-top: 2px;
+
+}
+
+.login {
+    border: 1px solid #fff;
+    padding: 5px 20px;
+    margin-top: 2px;
+    transition: 0.4s;
+
 }
 
 .navbar-nav .nav-item:hover .nav-link {
@@ -178,7 +200,7 @@ nav>div a.nav-item.nav-link:focus {
     background: #e74c3c;
     color: #fff;
     border-radius: 0;
-    transition: background 0.20s linear;
+    transition: 0.4s;
 }
 
 /* Tab end */
@@ -288,4 +310,3 @@ nav>div a.nav-item.nav-link:focus {
 }
 
 /* Travel Health Foreign End */
-
