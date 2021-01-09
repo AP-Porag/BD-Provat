@@ -312,8 +312,6 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
     </section>
     {{-- Main news section end --}}
     {{-- National International Section Start --}}
@@ -553,64 +551,62 @@
                             বিনোদন
                         </span>
                     </h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5 class="text-danger">শাড়িতে নিউইয়র্ক মাতালেন মোনালিসা</h5>
-                            <p class="text-justify">আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক ফ্যাশন উইকের
-                                রানওয়েতে হেঁটেছেন
-                                বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
-                                অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
-                                ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ
-                                ইভেন্ট নিউইয়র্ক ফ্যাশন উইকের রানওয়েতে হেঁটেছেন
-                                বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
-                                অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
-                                ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল
-                                বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
-                                অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
-                                ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল
-                                .....</p>
-                        </div>
-                        <div class="col-md-6">
-                            <img src="{{ asset('frontend/images/monalisa-large-20190214174815-600x337.jpg') }}" alt=""
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-danger">শাড়িতে নিউইয়র্ক মাতালেন মোনালিসা</h5>
+                    <p class="text-justify">আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক ফ্যাশন উইকের
+                        রানওয়েতে হেঁটেছেন
+                        বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
+                        অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
+                        ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ
+                        ইভেন্ট নিউইয়র্ক ফ্যাশন উইকের রানওয়েতে হেঁটেছেন
+                        বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
+                        অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
+                        ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল
+                        বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
+                        অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
+                        ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল
+                        .....</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('frontend/images/monalisa-large-20190214174815-600x337.jpg') }}" alt=""
+                        class="img-fluid">
+                </div>
+                <div class="col-md-12">
+                    <div class="row slider">
+                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
                                 class="img-fluid">
+                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
                         </div>
-                        <div class="col-md-12">
-                            <div class="row slider">
-                                <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                        class="img-fluid">
-                                    <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                                </div>
-                                <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                        class="img-fluid">
-                                    <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                                </div>
-                                <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                        class="img-fluid">
-                                    <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                                </div>
-                                <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                        class="img-fluid">
-                                    <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                                </div>
-                                <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                        class="img-fluid">
-                                    <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                                </div>
+                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
+                                class="img-fluid">
+                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
+                        </div>
+                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
+                                class="img-fluid">
+                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
+                        </div>
+                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
+                                class="img-fluid">
+                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
+                        </div>
+                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
+                                class="img-fluid">
+                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
+                        </div>
 
-                                <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                        class="img-fluid">
-                                    <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                                </div>
-                                <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                        class="img-fluid">
-                                    <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                                </div>
-                            </div>
+                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
+                                class="img-fluid">
+                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
+                        </div>
+                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
+                                class="img-fluid">
+                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
         </div>
     </section>
     {{-- Entertainment Section End--}}
@@ -790,6 +786,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     {{-- Full Contry Section End --}}
     {{-- Sports Section Start --}}
@@ -1101,10 +1098,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="logo_play_store d-flex justify-content-between">
-                        <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" height=" 90" width="272">
-                        <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
-                    </div>
+                    <!--
+                                    <div class="logo_play_store d-flex justify-content-between">
+                                        <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" height=" 90" width="272">
+                                        <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
+                                    </div>
+                -->
                     <div class="editor d-flex justify-content-between">
                         <p>
                             ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
@@ -1173,8 +1172,8 @@
                 responsive: [{
                         breakpoint: 1024,
                         settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
                             infinite: true,
                             dots: true
                         }
@@ -1182,8 +1181,8 @@
                     {
                         breakpoint: 600,
                         settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
+                            slidesToShow: 1,
+                            slidesToScroll: 1
                         }
                     },
                     {
