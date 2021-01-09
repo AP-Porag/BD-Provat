@@ -33,26 +33,29 @@ h3 span {
     padding: 10px 30px;
     color: #fff;
     position: relative;
-    display: inline-block
+    display: inline-block;
 }
 
-h1>a,
-h2>a,
-h3>a,
-h4>a,
-h5>a,
-h6>a {
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a {
     color: #111111;
     font-weight: 500;
 }
 
 body {
-    font-family: 'SolaimanLipi', Arial, sans-serif !important;
+    font-family: "SolaimanLipi", Arial, sans-serif !important;
 }
 
 .login:hover {
     background: #fff;
     color: #000 !important;
+}
+section {
+    margin-bottom: 60px;
 }
 
 /* common css end */
@@ -62,11 +65,9 @@ body {
 }
 
 .social-icon a i {
-
     font-size: 25px;
     margin-left: 10px;
     color: #fff;
-
 }
 
 .social-icon-content {
@@ -92,7 +93,6 @@ body {
 
 .social-icon-content li:last-child {
     padding-top: 2px;
-
 }
 
 .login {
@@ -100,7 +100,6 @@ body {
     padding: 5px 20px;
     margin-top: 2px;
     transition: 0.4s;
-
 }
 
 .navbar-nav .nav-item:hover .nav-link {
@@ -123,7 +122,7 @@ body {
     background: green;
     color: #fff;
     padding: 5px;
-    text-align: center
+    text-align: center;
 }
 
 marquee ul li {
@@ -153,17 +152,15 @@ marquee ul li a {
     font-size: 16px;
 }
 
-nav>.nav.nav-tabs {
-
+nav > .nav.nav-tabs {
     border: none;
     color: #fff;
     background: #272e38;
     border-radius: 0;
-
 }
 
-nav>div a.nav-item.nav-link,
-nav>div a.nav-item.nav-link.active {
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active {
     border: none;
     padding: 18px 25px;
     color: #fff;
@@ -171,7 +168,7 @@ nav>div a.nav-item.nav-link.active {
     border-radius: 0;
 }
 
-nav>div a.nav-item.nav-link.active:after {
+nav > div a.nav-item.nav-link.active:after {
     content: "";
     position: relative;
     bottom: -57px;
@@ -194,8 +191,8 @@ nav>div a.nav-item.nav-link.active:after {
     padding-bottom: 20px;
 }
 
-nav>div a.nav-item.nav-link:hover,
-nav>div a.nav-item.nav-link:focus {
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus {
     border: none;
     background: #e74c3c;
     color: #fff;
@@ -209,10 +206,8 @@ nav>div a.nav-item.nav-link:focus {
     padding-bottom: 20px;
 }
 
-
 /* National International Part End */
 /* Politics Technology and Law Start */
-
 
 #politics_technology_law ul li {
     padding-top: 10px;
@@ -232,8 +227,8 @@ nav>div a.nav-item.nav-link:focus {
     font-family: slick;
     font-size: 20px;
     line-height: 1;
-    opacity: .75;
-    color: red;
+    opacity: 0.75;
+    color: rgba(255, 0, 0, 0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -247,7 +242,7 @@ nav>div a.nav-item.nav-link:focus {
     left: 0;
     width: 20px;
     height: 20px;
-    content: '•';
+    content: "•";
     text-align: center;
     opacity: 1;
     color: red;
@@ -310,3 +305,21 @@ nav>div a.nav-item.nav-link:focus {
 }
 
 /* Travel Health Foreign End */
+/* Footer Start */
+footer {
+    background: #444;
+    padding-top: 30px;
+}
+footer p {
+    color: #fff;
+    margin-top: 20px;
+}
+footer ul li a {
+    color: #fff;
+    font-size: 20px;
+    background: black;
+    padding: 15px 20px;
+    margin-top: 10px;
+    display: block;
+}
+/* Footer End */
