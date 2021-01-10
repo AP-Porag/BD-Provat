@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin\Tag;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -35,7 +38,17 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'tag'=>'required|min:3|unique:tags,name'
+        ]);
+        $tag = Tag::create([
+            'name'=>$request->tag,
+            'slug'=>str::slug($request->tag,'-'),
+        ]);
+        if ($tag){
+            Session::flash('success','Tag Created Successfully');
+        }
+        return back();
     }
 
     /**
