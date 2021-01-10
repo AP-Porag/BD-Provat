@@ -56,5 +56,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/post/force-delete/{id}', 'Admin\Post\PostController@postForceDelete')->name('post_forceDelete');
     Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
 
+    //Post Route Start
+    Route::resource('tag', 'Admin\Tag\TagController');
+    Route::get('/post/soft-delete/{id}', 'Admin\Post\PostController@postSoftDelete')->name('post_soft_delete');
+    Route::get('/post/inactive/user', 'Admin\Post\PostController@postInactive')->name('post_inactive');
+    Route::get('/post/restore/{id}', 'Admin\Post\PostController@postRestore')->name('post_restore');
+    Route::get('/post/force-delete/{id}', 'Admin\Post\PostController@postForceDelete')->name('post_forceDelete');
+    Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
+    Route::get('/post/get/subcategory', 'Admin\Post\PostController@findSubcategory')->name('findSubcategory');
+    Route::get('/post/get/tags', 'Admin\Post\PostController@getTags')->name('getTags');
+
 
 });
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web','auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+

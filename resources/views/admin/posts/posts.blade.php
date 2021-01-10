@@ -68,52 +68,6 @@
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
                         <div class="col-sm-12">
-                            {{--                            <table class="table table-bordered dataTable table-striped table-hover" id="datatable" width="100%" cellspacing="0"--}}
-                            {{--                                   role="grid" aria-describedby="dataTable_info">--}}
-                            {{--                                <thead>--}}
-                            {{--                                <tr role="row">--}}
-                            {{--                                    <th class="sorting_asc text-center" tabindex="0" aria-controls="dataTable" rowspan="1"--}}
-                            {{--                                        colspan="1" aria-sort="ascending"--}}
-                            {{--                                        aria-label="Name: activate to sort column descending">Sl--}}
-                            {{--                                    </th>--}}
-                            {{--                                    <th class="sorting_asc text-center" tabindex="0" aria-controls="dataTable" rowspan="1"--}}
-                            {{--                                        colspan="1" aria-sort="ascending"--}}
-                            {{--                                        aria-label="Name: activate to sort column descending">Post ID--}}
-                            {{--                                    </th>--}}
-                            {{--                                    <th class="sorting text-center" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"--}}
-                            {{--                                        aria-label="Position: activate to sort column ascending">--}}
-                            {{--                                        Name--}}
-                            {{--                                    </th>--}}
-                            {{--                                    <th class="sorting text-center" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"--}}
-                            {{--                                        aria-label="Office: activate to sort column ascending">--}}
-                            {{--                                        Phone--}}
-                            {{--                                    </th>--}}
-                            {{--                                    <th class="sorting text-center" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"--}}
-                            {{--                                        aria-label="Age: activate to sort column ascending">Dew Balance--}}
-                            {{--                                    </th>--}}
-                            {{--                                    <th rowspan="1" colspan="1" class="text-center">Action--}}
-                            {{--                                    </th>--}}
-                            {{--                                </tr>--}}
-                            {{--                                </thead>--}}
-                            {{--                                <tbody>--}}
-
-                            {{--                                @foreach($posts as $key=>$post)--}}
-                            {{--                                <tr role="row" class="odd">--}}
-                            {{--                                    <td class="sorting_1 text-center">{{$posts->firstItem() + $key}}</td>--}}
-                            {{--                                    <td class="sorting_1 text-center">{{$post->id}}</td>--}}
-                            {{--                                    <td class="sorting_1 text-center">{{$post->name}}</td>--}}
-                            {{--                                    <td class="sorting_1 text-center">{{$post->phone}}</td>--}}
-                            {{--                                    <td>--}}
-                            {{--                                        <div class="btn-group d-flex justify-content-center">--}}
-                            {{--                                            <a href="{{route('post.show',$post->id)}}" class="btn btn-sm btn-outline-info mr-3"><i class="fa fa-eye"></i></a>--}}
-                            {{--                                            <a href="{{route('post.edit',$post->id)}}" class="btn btn-sm btn-outline-warning mr-3"><i class="fa fa-edit"></i></a>--}}
-                            {{--                                            <a href="{{route('post_soft_delete',$post->id)}}" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </td>--}}
-                            {{--                                </tr>--}}
-                            {{--                                @endforeach--}}
-                            {{--                                </tbody>--}}
-                            {{--                            </table>--}}
                             <table class="table table-bordered dataTable table-striped table-hover" width="100%"
                                    id="datatable">
                                 <thead>
