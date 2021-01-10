@@ -30,7 +30,7 @@
     <div class="container my-4">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" class="img-fluid" width="200">
             </div>
             <div class="col-md-8">
                 <img src="https://demo.tagdiv.com/newspaper_pro/wp-content/uploads/2019/08/newspaper-rec728.jpg" alt=""
@@ -888,13 +888,16 @@
                     </h3>
                     <div class="img-slider">
                         <div class="card-img">
-                            <img src="{{ asset('frontend/images/chittagong.jpg') }}" class="w-100" alt="">
+                            <img src="{{ asset('frontend/images/chittagong.jpg') }}" class="w-100" alt="" width="544"
+                                height="367">
                         </div>
                         <div class="card-img">
-                            <img src="{{ asset('frontend/images/chittagong.jpg') }}" class="w-100" alt="">
+                            <img src="{{ asset('frontend/images/chittagong.jpg') }}" class="w-100" alt="" width="544"
+                                height="367">
                         </div>
                         <div class="card-img">
-                            <img src="{{ asset('frontend/images/chittagong.jpg') }}" class="w-100" alt="">
+                            <img src="{{ asset('frontend/images/chittagong.jpg') }}" class="w-100" alt="" width="544"
+                                height="367">
                         </div>
                     </div>
                 </div>
@@ -1098,12 +1101,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <!--
-                                    <div class="logo_play_store d-flex justify-content-between">
-                                        <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" height=" 90" width="272">
-                                        <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
-                                    </div>
-                -->
+
+                    <div class="logo_play_store d-flex justify-content-between">
+                        <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" width="200">
+                        <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
+                    </div>
+
                     <div class="editor d-flex justify-content-between">
                         <p>
                             ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
@@ -1163,7 +1166,7 @@
                 ]
             });
             $('.img-slider').slick({
-                dots: false,
+                dots: true,
                 infinite: true,
                 speed: 300,
                 slidesToShow: 1,
