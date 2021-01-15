@@ -327,40 +327,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a href="#">
-                                <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt="" width="100%">
-                                <h5 class="pt-2">সংরক্ষিত নারী আসনে মনোনয়ন জমা দিলেন যারা</h5>
-                                <p>একাদশ জাতীয় সংসদের সংরক্ষিত নারী আসনে মনোনয়নপত্র জমা দেয়ার শেষ দিন আজ সোমবার।
-                                    এদিন বিকেল ৫টা পর্যন্ত নির্বাচন কমিশনে রিটার্নিং কর্মকর্তার কার্যালয়ে মনোনয়নপত্র জমা
-                                    দেয়া....
+                                <img src={{ $last_national_post->thumbnail }}" alt="" width="100%">
+                                <h5 class="pt-2">{{ $last_national_post->title }}</h5>
+                                <p>{{ Illuminate\Support\Str::of($last_national_post->content)->words(20) }}
                                 </p>
                             </a>
                         </div>
                         <div class="col-md-6">
                             <ul>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
+                                @foreach ($national_posts as $national_post)
+                                    <li class="ml-3">
+                                        <a href="#" class="d-flex"><img height="70" width="100" alt=""
+                                                src="{{ $national_post->thumbnail }}">
+                                            <p class="ml-3">{{ $national_post->title }}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -374,40 +356,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a href="#">
-                                <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt="" width="100%">
-                                <h5 class="pt-2">সংরক্ষিত নারী আসনে মনোনয়ন জমা দিলেন যারা</h5>
-                                <p>একাদশ জাতীয় সংসদের সংরক্ষিত নারী আসনে মনোনয়নপত্র জমা দেয়ার শেষ দিন আজ সোমবার।
-                                    এদিন বিকেল ৫টা পর্যন্ত নির্বাচন কমিশনে রিটার্নিং কর্মকর্তার কার্যালয়ে মনোনয়নপত্র জমা
-                                    দেয়া....
+                                <img src={{ $last_international_post->thumbnail }}" alt="" width="100%">
+                                <h5 class="pt-2">{{ $last_international_post->title }}</h5>
+                                <p>{{ Illuminate\Support\Str::of($last_international_post->content)->words(20) }}
                                 </p>
                             </a>
                         </div>
                         <div class="col-md-6">
                             <ul>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
+                                @foreach ($international_posts as $international_post)
+                                    <li class="ml-3">
+                                        <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                                src="{{ $international_post->thumbnail }}">
+                                            <p class="ml-3">{{ $international_post->title }}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -427,36 +391,23 @@
                         </span>
                     </h3>
                     <a href="#">
-                        <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt="" width="100%">
-                        <h5 class="pt-2">সংরক্ষিত নারী আসনে মনোনয়ন জমা দিলেন যারা</h5>
-                        <p>একাদশ জাতীয় সংসদের সংরক্ষিত নারী আসনে মনোনয়নপত্র জমা দেয়ার শেষ দিন আজ সোমবার....
+                        <img src="{{ $last_political_post->thumbnail }}" alt="" width="100%">
+                        <h5 class="pt-2">{{ $last_political_post->title }}</h5>
+                        <p style="text-align:justify">
+                            {{ Illuminate\Support\Str::of($last_international_post->content)->words(15) }}
                         </p>
                     </a>
                     <ul>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
+                        @foreach ($political_posts as $key => $political_post)
+                            <li>
+                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                        src="{{ $political_post->thumbnail }}">
+                                    <p class="ml-3" style="text-align: justify">
+                                        {{ $political_post->title }}
+                                    </p>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -466,36 +417,23 @@
                         </span>
                     </h3>
                     <a href="#">
-                        <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt="" width="100%">
-                        <h5 class="pt-2">সংরক্ষিত নারী আসনে মনোনয়ন জমা দিলেন যারা</h5>
-                        <p>একাদশ জাতীয় সংসদের সংরক্ষিত নারী আসনে মনোনয়নপত্র জমা দেয়ার শেষ দিন আজ সোমবার....
+                        <img src="{{ $last_info_tech_post->thumbnail }}" alt="" width="100%">
+                        <h5 class="pt-2">{{ $last_info_tech_post->title }}</h5>
+                        <p style="text-align: justify">
+                            {{ Illuminate\Support\Str::of($last_political_post->content)->words(15) }}
                         </p>
                     </a>
                     <ul>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
+                        @foreach ($info_tech_posts as $key => $info_tech_post)
+                            <li>
+                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                        src="{{ $info_tech_post->thumbnail }}">
+                                    <p class="ml-3" style="text-align: justify">
+                                        {{ $info_tech_post->title }}
+                                    </p>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -505,36 +443,19 @@
                         </span>
                     </h3>
                     <a href="#">
-                        <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt="" width="100%">
-                        <h5 class="pt-2">সংরক্ষিত নারী আসনে মনোনয়ন জমা দিলেন যারা</h5>
-                        <p>একাদশ জাতীয় সংসদের সংরক্ষিত নারী আসনে মনোনয়নপত্র জমা দেয়ার শেষ দিন আজ সোমবার....
-                        </p>
+                        <img src="{{ $last_law_post->thumbnail }}" alt="" class="w-100">
+                        <h5 class="pt-2">{{ $last_law_post->title }}</h5>
+                        {!! Illuminate\Support\Str::of($last_law_post->content)->words(15) !!}
                     </a>
                     <ul>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
+                        @foreach ($law_posts as $key => $law_post)
+                            <li>
+                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                        src="{{ $law_post->thumbnail }}">
+                                    <p class="ml-3">{{ $law_post->title }}</p>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -552,57 +473,27 @@
                         </span>
                     </h3>
                 </div>
-                <div class="col-md-6">
-                    <h5 class="text-danger">শাড়িতে নিউইয়র্ক মাতালেন মোনালিসা</h5>
-                    <p class="text-justify">আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক ফ্যাশন উইকের
-                        রানওয়েতে হেঁটেছেন
-                        বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
-                        অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
-                        ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ
-                        ইভেন্ট নিউইয়র্ক ফ্যাশন উইকের রানওয়েতে হেঁটেছেন
-                        বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
-                        অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
-                        ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল
-                        বাংলাদেশের জনপ্রিয় মডেল মোজেজা আশরাফ মোনালিসা। গত ১০ ফেব্রুয়ারি নিউইয়র্কের ম্যানহাটানে
-                        অনুষ্ঠিত ফ্যাশন শো’তে অংশ নেন তিনি। আন্তর্জাতিক ফ্যাশন জগতের মর্যাদাপূর্ণ ইভেন্ট নিউইয়র্ক
-                        ফ্যাশন উইকের রানওয়েতে হেঁটেছেন বাংলাদেশের জনপ্রিয় মডেল
-                        .....</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="{{ asset('frontend/images/monalisa-large-20190214174815-600x337.jpg') }}" alt=""
-                        class="img-fluid">
-                </div>
+                <a href="#" class="d-flex">
+                    <div class="col-md-6">
+                        <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
+                        <p class="text-justify">
+                            {{ Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ $last_entertainment_post->thumbnail }}" alt="" class="img-fluid">
+                    </div>
+                </a>
                 <div class="col-md-12">
                     <div class="row slider">
-                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                class="img-fluid">
-                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                        </div>
-                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                class="img-fluid">
-                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                        </div>
-                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                class="img-fluid">
-                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                        </div>
-                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                class="img-fluid">
-                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                        </div>
-                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                class="img-fluid">
-                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                        </div>
-
-                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                class="img-fluid">
-                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                        </div>
-                        <div class="col-md-3 pt-3"> <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt=""
-                                class="img-fluid">
-                            <p class="pt-2">একাদশ জাতীয় সংসদের সংরক্ষিত নারী...</p>
-                        </div>
+                        @foreach ($entertainment_posts as $key => $entertainment_post)
+                            <div class="col-md-3 pt-3"> <img src="{{ $entertainment_post->thumbnail }}" alt=""
+                                    class="img-fluid">
+                                <p class="pt-2">
+                                    {{ $entertainment_post->title }}
+                                </p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -623,40 +514,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a href="#">
-                                <img src="{{ asset('frontend/images/jatiyo-one.jpg') }}" alt="" width="100%">
-                                <h5 class="pt-2">সংরক্ষিত নারী আসনে মনোনয়ন জমা দিলেন যারা</h5>
-                                <p>একাদশ জাতীয় সংসদের সংরক্ষিত নারী আসনে মনোনয়নপত্র জমা দেয়ার শেষ দিন আজ সোমবার।
-                                    এদিন বিকেল ৫টা পর্যন্ত নির্বাচন কমিশনে রিটার্নিং কর্মকর্তার কার্যালয়ে মনোনয়নপত্র জমা
-                                    দেয়া....
+                                <img src="{{ $last_lifestyle_post->thumbnail }}" alt="" width="100%">
+                                <h5 class="pt-2">{{ $last_lifestyle_post->title }}</h5>
+                                <p class="text-justify">
+                                    {{ Illuminate\Support\Str::of($last_lifestyle_post->content)->words(15) }}
                                 </p>
                             </a>
                         </div>
                         <div class="col-md-6">
                             <ul>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
-                                <li class="ml-3">
-                                    <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                        <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                                    </a>
-                                </li>
+                                @foreach ($lifestyle_posts as $key => $lifestyle_post)
+                                    <li class="ml-3">
+                                        <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                                src="{{ $lifestyle_post->thumbnail }}">
+                                            <p class="ml-3" style="text-align:justify">
+                                                {{ $lifestyle_post->title }}
+                                            </p>
+                                        </a>
+                                    </li>
+                                @endforeach
+
                             </ul>
                         </div>
                     </div>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="{{ asset('frontend/images/fevicon.ico.png') }}" type="image/x-icon" />
-    <title>Doctor-Care - Register</title>
+    <title>BD Provat - Register</title>
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -32,7 +32,7 @@
                         <h1 class="h4 text-gray-900 ml-4">BD Provat</h1>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="{{ route('website') }}" class="btn btn-outline-info mr-4"><i class="fa fa-home"></i>
+                        <a href="{{ route('dataShow') }}" class="btn btn-outline-info mr-4"><i class="fa fa-home"></i>
                             Home</a>
                     </div>
                 </div>

@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-//front end rute start
-Route::get('/', function () {
-    return view('frontend.index');
-})->name('website');
+// front end route start
+// Route::get('/', function () {
+//     return view('frontend.index');
+// })->name('website');
 
 Auth::routes();
 
@@ -15,7 +15,9 @@ Auth::routes();
 //Route::get('/admin/fetchThumbnail','Admin\DataController@fetchThumbnail')->name('fetchThumbnail');
 
 //backend route start
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeDataShowController@HomeDataShow')->name('dataShow');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     //User maneging start
@@ -65,11 +67,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
     Route::get('/post/get/subcategory', 'Admin\Post\PostController@findSubcategory')->name('findSubcategory');
     Route::get('/post/get/tags', 'Admin\Post\PostController@getTags')->name('getTags');
-
-
 });
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web','auth']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-

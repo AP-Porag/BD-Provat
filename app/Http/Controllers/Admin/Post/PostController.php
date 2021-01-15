@@ -37,9 +37,8 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $subCategories = SubCategory::all();
-        $tags = Tag::orderBy('created_at','DESC')->get();
+        $tags = Tag::orderBy('created_at', 'DESC')->get();
         return response(view('admin.posts.posts-create', compact('categories', 'subCategories', 'tags')));
-
     }
 
     /**
@@ -63,59 +62,57 @@ class PostController extends Controller
         //========
         $tags = $request->post_tag;
 
-        $this->validate($request,[
-            'category'=>'required',
-            'title'=>'required',
-            'post_content'=>'required',
-            'thumbnail'=>'required',
+        $this->validate($request, [
+            'category' => 'required',
+            'title' => 'required',
+            'post_content' => 'required',
+            'thumbnail' => 'required',
         ]);
-        if ($category == 4 || $category == 11){
-            $this->validate($request,[
-                'subcategory'=>'required'
+        if ($category == 4 || $category == 11) {
+            $this->validate($request, [
+                'subcategory' => 'required'
             ]);
         }
 
         $post = Post::create([
 
-        'category_id'=>$category,
-        'post_author'=>Auth::user()->id,
-        'title'=>$title,
-        'slug'=>str::slug($title),
-        'content'=>$content,
-        'thumbnail'=>'thumbnail',
-        'status'=>'status'
+            'category_id' => $category,
+            'post_author' => Auth::user()->id,
+            'title' => $title,
+            'slug' => str::slug($title),
+            'content' => $content,
+            'thumbnail' => 'thumbnail',
+            'status' => 'status'
 
         ]);
 
-        if ($post && $subcategory){
+        if ($post && $subcategory) {
             $post->sub_category_id = $subcategory;
             $post->save();
         }
-        if ($post && $status){
+        if ($post && $status) {
             $post->status = 'published';
             $post->save();
-        }else{
+        } else {
             $post->status = 'unpublished';
             $post->save();
         }
-        if ($post && $thumbnail){
+        if ($post && $thumbnail) {
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-                ->resize(300, 200)
-                ->save(base_path('public/storage/post/' . $image_new_name));
-            $post->thumbnail = '/storage/post/' . $image_new_name;
+                ->resize(400, 350)
+                ->save(base_path('/public/storage/post/' . $image_new_name));
+            $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
             $post->save();
-
         }
-        if ($post){
-            foreach ($tags as $key=>$tag){
+        if ($post) {
+            foreach ($tags as $key => $tag) {
                 PostTag::create([
-                    'post_id'=>$post->id,
-                    'tag_id'=>$tag,
+                    'post_id' => $post->id,
+                    'tag_id' => $tag,
                 ]);
             }
-
         }
         if ($post && $meta_keywords || $meta_description) {
             $meta = PostMeta::create([
@@ -128,7 +125,6 @@ class PostController extends Controller
             Session::flash('success', 'Post Created Successfully');
         }
         return back();
-
     }
 
     /**
