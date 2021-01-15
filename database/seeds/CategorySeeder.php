@@ -13,53 +13,56 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'name'=>'প্রচ্ছদ',
-            'slug'=>'প্রচ্ছদ',
+            'name' => 'প্রচ্ছদ',
+            'slug' => 'প্রচ্ছদ',
         ]);
         Category::create([
-            'name'=>'জাতীয়',
-            'slug'=>'জাতীয়',
+            'name' => 'জাতীয়',
+            'slug' => 'জাতীয়',
         ]);
         Category::create([
-            'name'=>'রাজনীতি',
-            'slug'=>'রাজনীতি',
+            'name' => 'রাজনীতি',
+            'slug' => 'রাজনীতি',
         ]);
         Category::create([
-            'name'=>'সারাদেশ',
-            'slug'=>'সারাদেশ',
+            'name' => 'সারাদেশ',
+            'slug' => 'সারাদেশ',
         ]);
         Category::create([
-            'name'=>'আন্তর্জাতিক',
-            'slug'=>'আন্তর্জাতিক',
+            'name' => 'আন্তর্জাতিক',
+            'slug' => 'আন্তর্জাতিক',
         ]);
         Category::create([
-            'name'=>'বিনোদন',
-            'slug'=>'বিনোদন',
+            'name' => 'আইন/আদালত',
+            'slug' => 'আইন/আদালত',
         ]);
         Category::create([
-            'name'=>'খেলাধুলা',
-            'slug'=>'খেলাধুলা',
+            'name' => 'বিনোদন',
+            'slug' => 'বিনোদন',
         ]);
         Category::create([
-            'name'=>'তথ্যপ্রযুক্তি',
-            'slug'=>'তথ্যপ্রযুক্তি',
+            'name' => 'খেলাধুলা',
+            'slug' => 'খেলাধুলা',
         ]);
         Category::create([
-            'name'=>'লাইফস্টাইল',
-            'slug'=>'লাইফস্টাইল',
+            'name' => 'তথ্যপ্রযুক্তি',
+            'slug' => 'তথ্যপ্রযুক্তি',
         ]);
         Category::create([
-            'name'=>'ধর্ম',
-            'slug'=>'ধর্ম',
+            'name' => 'লাইফস্টাইল',
+            'slug' => 'লাইফস্টাইল',
         ]);
         Category::create([
-            'name'=>'আরো',
-            'slug'=>'আরো',
+            'name' => 'ধর্ম',
+            'slug' => 'ধর্ম',
         ]);
         Category::create([
-            'name'=>'আমাদের পরিবার',
-            'slug'=>'আমাদের-পরিবার',
+            'name' => 'আরো',
+            'slug' => 'আরো',
         ]);
-
+        Category::create([
+            'name' => 'আমাদের পরিবার',
+            'slug' => 'আমাদের-পরিবার',
+        ]);
     }
 }
