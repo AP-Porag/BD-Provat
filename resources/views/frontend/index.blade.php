@@ -47,78 +47,35 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">প্রচ্ছদ</a>
-                    </li>
+                <div class="d-flex justify-content-between">
+                    <ul class="navbar-nav">
+                        @foreach($categories as $category)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">
+                                    {{$category->name}}
+                                </a>
+                                @if(($category->subcategories)->count() > 0)
+                                    <div class="dropdown-menu" style="display: block">
+                                        <ul class="list-group">
+                                            @foreach($category->subcategories as $subcategory)
+                                                <li class="dropdown-item">
+                                                    <a class="" href="#">{{$subcategory->name}}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            </li>
+                        @endforeach
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            বাংলাদেশ
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">জাতীয়</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">রাজনীতি</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">অর্থনীতি</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">রাজধানী</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">সারাদেশ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">আন্তর্জাতিক</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">আইন/আদালত</a>
-                    </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
+                        </li>
+                    </ul>
+                </div>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">শিক্ষাঙ্গন</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">তথ্যপ্রযুক্তি</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">প্রবাস</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">খেলাধুলা</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">বিনোদন</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ধর্ম</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            সকল বিভাগ
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">লাইফস্টাইল</a>
-                            <a class="dropdown-item" href="#">ঘটনা/দূর্ঘটনা</a>
-                            <a class="dropdown-item" href="#">অপরাধ/দূর্নীতি</a>
-                            <a class="dropdown-item" href="#">চাকুরী</a>
-                            <a class="dropdown-item" href="#">স্বাস্থ্য সেবা</a>
-                            <a class="dropdown-item" href="#">অনুসন্ধানী</a>
-                            <a class="dropdown-item" href="#">ফটো গ্যালারী</a>
-                            <a class="dropdown-item" href="#">ভিডিও গ্যালারী</a>
-                            <a class="dropdown-item" href="#">বিশেষ প্রতিবেদন</a>
-                            <a class="dropdown-item" href="#">বিডি প্রভাত পরিবার</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
-                    </li>
-                </ul>
             </div>
         </nav>
     </div>
