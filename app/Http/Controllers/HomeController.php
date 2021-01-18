@@ -31,7 +31,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         if ($user->hasRole('subscriber')) {
-            return view('admin.index');
+            return view('frontend.index');
             //return view('frontend.index');
         } else {
             return view('admin.index');

@@ -13,42 +13,42 @@ class SubCategorySeeder extends Seeder
     public function run()
     {
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'ঢাকা',
             'slug'=>'ঢাকা',
         ]);
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'রাজশাহী',
             'slug'=>'রাজশাহী',
         ]);
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'খুলনা',
             'slug'=>'খুলনা',
         ]);
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'চট্টগ্রাম',
             'slug'=>'চট্টগ্রাম',
         ]);
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'রংপুর',
             'slug'=>'রংপুর',
         ]);
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'বরিশাল',
             'slug'=>'বরিশাল',
         ]);
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'সিলেট',
             'slug'=>'সিলেট',
         ]);
         SubCategory::create([
-            'category_id'=>'4',
+            'category_id'=>'3',
             'name'=>'ময়মনসিংহ',
             'slug'=>'ময়মনসিংহ',
         ]);
@@ -56,16 +56,6 @@ class SubCategorySeeder extends Seeder
             'category_id'=>'11',
             'name'=>'অর্থনীতি',
             'slug'=>'অর্থনীতি',
-        ]);
-        SubCategory::create([
-            'category_id'=>'11',
-            'name'=>'আইন আদালত',
-            'slug'=>'আইন-আদালত',
-        ]);
-        SubCategory::create([
-            'category_id'=>'11',
-            'name'=>'আইন আদালত',
-            'slug'=>'আইন-আদালত',
         ]);
         SubCategory::create([
             'category_id'=>'11',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 use App\Models\Category;
 use App\Models\Post;
@@ -32,6 +32,8 @@ class HomeDataShowController extends Controller
 
         $last_lifestyle_post = Post::where('category_id', 10)->orderBy('id', 'DESC')->first();
         $lifestyle_posts = Post::where('category_id', 10)->orderBy('id', 'DESC')->where('id', '!=', $last_entertainment_post->id)->paginate(4);
-        return view('frontend.index', compact('categories','last_national_post', 'national_posts', 'last_international_post', 'international_posts', 'last_political_post', 'political_posts', 'last_info_tech_post', 'info_tech_posts', 'last_law_post', 'law_posts', 'last_entertainment_post', 'entertainment_posts', 'last_lifestyle_post', 'lifestyle_posts'));
+
+        $last_category = Category::where('id',12)->first();
+        return view('frontend.index', compact('categories','last_national_post', 'national_posts', 'last_international_post', 'international_posts', 'last_political_post', 'political_posts', 'last_info_tech_post', 'info_tech_posts', 'last_law_post', 'law_posts', 'last_entertainment_post', 'entertainment_posts', 'last_lifestyle_post', 'lifestyle_posts','last_category'));
     }
 }

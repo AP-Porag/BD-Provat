@@ -13,6 +13,15 @@ class Post extends Model
     {
         return $this->belongsTo(User::class,'post_author');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class);
+    }
     public function comments()
     {
         return $this->hasMany(Comment::class);

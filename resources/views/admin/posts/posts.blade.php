@@ -124,7 +124,7 @@
                                 '</button>'+
             '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+
                 '<div class="text-center">' +
-                                '<a href="' + postUrl + '/' + row.id +'/edit" class="text-decoration-none text-info">' +
+                                '<a href="' + postUrl + '/' + row.id +'" class="text-decoration-none text-info">' +
                                 '<ul class="list-group">'+
                                 '<li class="d-flex align-items-center pl-3 pt-2 pb-2">'+
                                 '<i class="fa fa-eye mr-3"></i><p>View Post</p>'+
@@ -142,10 +142,10 @@
                                 '</a>'+
                                 '</div>'+
                 '<div class="text-center">' +
-                                '<a href="' + postUrl + '/' + row.id +'/edit" class="text-decoration-none text-warning">' +
+                                '<a href="' + postUrl + '/soft-delete/' + row.id +'" class="text-decoration-none text-warning">' +
                                 '<ul class="list-group">'+
                                 '<li class="d-flex align-items-center pl-3 pt-2 pb-2">'+
-                                '<i class="fa fa-trash mr-3"></i><p>Edit Post</p>'+
+                                '<i class="fa fa-trash mr-3"></i><p>Trash Post</p>'+
                                 '</li>'+
                                 '</ul>'+
                                 '</a>'+
