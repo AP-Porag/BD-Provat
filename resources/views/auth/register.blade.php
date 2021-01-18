@@ -32,7 +32,7 @@
                         <h1 class="h4 text-gray-900 ml-4">BD Provat</h1>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="{{ route('dataShow') }}" class="btn btn-outline-info mr-4"><i class="fa fa-home"></i>
+                        <a href="{{ route('website') }}" class="btn btn-outline-info mr-4"><i class="fa fa-home"></i>
                             Home</a>
                     </div>
                 </div>

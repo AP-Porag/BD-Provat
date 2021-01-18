@@ -14,10 +14,20 @@ Auth::routes();
 //Route::get('/admin/createType','Admin\DataController@createType')->name('createType');
 //Route::get('/admin/fetchThumbnail','Admin\DataController@fetchThumbnail')->name('fetchThumbnail');
 
-//backend route start
 
+
+//frontend rout start
+Route::get('/', 'Frontend\HomeDataShowController@HomeDataShow')->name('website');
+Route::get('/category/{slug}','Frontend\CategoryPageController@index')->name('category-page');
+Route::get('/subcategory/{slug}','Frontend\SubCategoryPageController@index')->name('subcategory-page');
+Route::get('/post/{slug}','Frontend\SinglePostPageController@index')->name('single-post-page');
+Route::get('/tag/{slug}','Frontend\TagPageController@index')->name('tag-page');
+Route::get('/আমাদের-কথা','Frontend\AboutPageController@index')->name('about-page');
+Route::get('/contact-us','Frontend\ContactUsPageController@index')->name('contact-us-page');
+
+
+//backend route start
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeDataShowController@HomeDataShow')->name('dataShow');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     //User maneging start
@@ -58,7 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/post/force-delete/{id}', 'Admin\Post\PostController@postForceDelete')->name('post_forceDelete');
     Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
 
-    //Post Route Start
+    //tag Route Start
     Route::resource('tag', 'Admin\Tag\TagController');
     Route::get('/post/soft-delete/{id}', 'Admin\Post\PostController@postSoftDelete')->name('post_soft_delete');
     Route::get('/post/inactive/user', 'Admin\Post\PostController@postInactive')->name('post_inactive');

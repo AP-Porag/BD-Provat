@@ -10,102 +10,6 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="social-icon-content d-flex justify-content-between">
-                    <p class="date ml-3 mt-3">Sunday, January 3, 2021</p>
-                    <ul class="d-flex social-icon mr-3 mt-3">
-                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                        <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fa fa-youtube"></i></a></li>
-                        <li class="mx-5"><a href="{{ route('login') }}" class="text-white login">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Date Social Icon End --}}
-    <div class="container my-4">
-        <div class="row">
-            <div class="col-md-4">
-                <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" class="img-fluid" width="200">
-            </div>
-            <div class="col-md-8">
-                <img src="https://demo.tagdiv.com/newspaper_pro/wp-content/uploads/2019/08/newspaper-rec728.jpg" alt=""
-                    width="728" height="90" class="img-fluid mt-4">
-            </div>
-        </div>
-    </div>
-    {{-- Logo and Add Place Ends --}}
-    <div class="container">
-        <nav class="navbar px-0 navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="d-flex justify-content-between">
-                    <ul class="navbar-nav">
-                        @foreach($categories as $category)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#">
-                                    {{$category->name}}
-                                </a>
-                                @if(($category->subcategories)->count() > 0)
-                                    <div class="dropdown-menu" style="display: block">
-                                        <ul class="list-group">
-                                            @foreach($category->subcategories as $subcategory)
-                                                <li class="dropdown-item">
-                                                    <a class="" href="#">{{$subcategory->name}}</a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                            </li>
-                        @endforeach
-
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </nav>
-    </div>
-    {{-- Navbar End --}}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <p class="breaking-news-title">ব্রেকিং নিউজ</p>
-            </div>
-            <div class="col-md-10">
-                <marquee onmouseover="this.stop();" onmouseout="this.start();">
-                    <ul class="d-flex">
-                        <li><a href="#">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">রেনু হত্যা মামলার আসামি মহিনের সম্পত্তি ক্রোকের নির্দেশ</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">মাকে নিয়ে দেশে ফিরলেন সাকিব</a><span style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">ইতালিতে প্রথম ভ্যাকসিন নিলেন বাংলাদেশি নারী</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">ভারত থেকে পেঁয়াজ আমদানি শুরু</a><span style="font-size: 12px">বিডি</span></li>
-                        <li><a href="https://www.facebook.com">সৈয়দ আশরাফের আজ দ্বিতীয় মৃত্যুবার্ষিকী</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                    </ul>
-                </marquee>
-            </div>
-        </div>
-    </div>
-    {{-- Braking News End --}}
     {{-- Main news section start --}}
     <section id="main_news_section">
         <div class="container">
@@ -284,7 +188,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a href="#">
-                                <img src={{ $last_national_post->thumbnail }}" alt="" width="100%">
+                                <img src={{ $last_national_post->thumbnail }}" alt="{{ $last_national_post->slug }}" width="100%">
                                 <h5 class="pt-2">{{ $last_national_post->title }}</h5>
                                 <p>{{ Illuminate\Support\Str::of($last_national_post->content)->words(20) }}
                                 </p>
@@ -313,7 +217,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a href="#">
-                                <img src={{ $last_international_post->thumbnail }}" alt="" width="100%">
+                                <img src={{ $last_international_post->thumbnail }}" alt="{{ $last_national_post->slug }}" width="100%">
                                 <h5 class="pt-2">{{ $last_international_post->title }}</h5>
                                 <p>{{ Illuminate\Support\Str::of($last_international_post->content)->words(20) }}
                                 </p>
@@ -930,34 +834,7 @@
         </div>
     </section>
     {{-- Travel Health Foreign Section End --}}
-    {{-- Footer Section Start --}}
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
 
-                    <div class="logo_play_store d-flex justify-content-between">
-                        <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" width="200">
-                        <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
-                    </div>
-
-                    <div class="editor d-flex justify-content-between">
-                        <p>
-                            ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
-                            <br>এম, কে, আর এন্টারপ্রাইজের একটি প্রতিষ্ঠান<br>
-                            প্রধান কার্যালয়: আলফা টাওয়ার, আবদুল্লাহপুর, উত্তরা, ঢাকা-১২৩০।<br>
-                            আমাদের মেইল: bdprovat.news@gmail.com মোবাইল: ০১৭১৪-০৩৬৬১২
-                        </p>
-
-                        <ul>
-                            <li><a href="#">আমাদের কথা</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    {{-- Footer Section End --}}
 @endsection
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
@@ -994,9 +871,6 @@
                             slidesToScroll: 1
                         }
                     }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
                 ]
             });
             $('.img-slider').slick({
@@ -1029,9 +903,6 @@
                             slidesToScroll: 1
                         }
                     }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
                 ]
             });
             // init Isotope

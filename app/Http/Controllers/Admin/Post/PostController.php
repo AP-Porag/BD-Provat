@@ -135,7 +135,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'post show';
     }
 
     /**
@@ -146,7 +146,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'POst Edit';
     }
 
     /**
@@ -175,6 +175,7 @@ class PostController extends Controller
     //Extra Methods
     public static function postSoftDelete(int $id)
     {
+        return 'post-trashed';
         $post = Post::findOrFail($id)->delete();
 
         if ($post) {
