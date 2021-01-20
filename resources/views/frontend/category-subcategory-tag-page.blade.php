@@ -70,6 +70,7 @@
                         </a>
                     @endforeach
                 </div>
+                {{ $posts->links() }}
             </div>
         </div>
         <div class="col-md-4"></div>
