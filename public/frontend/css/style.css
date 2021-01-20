@@ -28,20 +28,20 @@ h3 {
 }
 
 h3 span {
-    font-size: 20px;
+    font-size: 18px;
     background: red;
-    padding: 10px 30px;
+    padding: 8px 20px;
     color: #fff;
     position: relative;
     display: inline-block;
 }
 
-h1>a,
-h2>a,
-h3>a,
-h4>a,
-h5>a,
-h6>a {
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a {
     color: #111111;
     font-weight: 500;
 }
@@ -51,8 +51,8 @@ body {
 }
 
 .login:hover {
-    background: #fff;
-    color: #000 !important;
+    background: #8c0707;
+    color: #fff !important;
 }
 
 section {
@@ -70,7 +70,8 @@ section {
     margin-left: 10px;
     color: #fff;
 }
-.top-box{
+
+.top-box {
     background: red;
 }
 
@@ -79,31 +80,37 @@ section {
     color: white;
 }
 
-.navigation-bar{
+.navigation-bar {
     background: red;
 }
-.navigation-bar .left-side{
+
+.navigation-bar .left-side {
     background: #8c0707;
-    height: 43px;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-.navigation-bar .left-side:hover{
-    background: green;
+
+.navigation-bar .left-side:hover {
+    background: #8c0707;
     transition: 0.4s;
 }
+
 .navbar-nav .nav-item a {
     color: #fff !important;
-    font-size: 18px;
+    font-size: 16px;
 }
-.navbar-expand-lg .navbar-nav .nav-link{
+
+.navbar-expand-lg .navbar-nav .nav-link {
     padding-left: 10px;
     padding-right: 10px;
 }
-.navbar-expand-lg .navbar-nav .nav-link.active{
+
+.navbar-expand-lg .navbar-nav .nav-link.active {
     background: #8c0707;
 }
+
 .social-icon-content a:hover i {
-    color: green;
+    color: #8c0707;
     transition: 0.4s;
 }
 
@@ -119,23 +126,38 @@ section {
 }
 
 .navbar-nav .nav-item:hover .nav-link {
-    background: green;
+    background: #8c0707;
     transition: 0.4s;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .dropdown-menu {
-    background: red;
-    margin-left: -15px;
+    margin-top: 0;
+    background: #8c0707;
+    border-radius: 0;
+    padding: 0;
+}
+
+.dropdown-item {
+    padding: 0.50rem 0.5rem;
+    border-bottom: 1px solid #6d0808;
 }
 
 .dropdown-item:hover {
-    background-color: green;
+    background-color: darkgreen;
     transition: 0.4s;
+}
+
+.dropdown-item.active {
+    background: darkgreen;
 }
 
 /* Breaking News Start */
 .breaking-news-title {
-    background: green;
+    background: darkgreen;
     color: #fff;
     padding: 5px;
     text-align: center;
@@ -145,15 +167,24 @@ marquee ul li {
     padding-top: 5px;
 }
 
+marquee ul li span {
+    font-size: 12px;
+    color: #fff;
+    background: #8c0707;
+    padding: 5px;
+    border-radius: 2px;
+}
+
 marquee ul li a {
     margin-right: 20px;
     margin-left: 20px;
-}
-
-marquee ul li a {
     color: black;
+    font-size: 16px;
+    font-weight: 400;
 }
-
+marquee ul li a:hover{
+    color: #8c0707;
+}
 /* Breaking News End */
 /* Main news Sectin Starts */
 
@@ -168,15 +199,15 @@ marquee ul li a {
     font-size: 16px;
 }
 
-nav>.nav.nav-tabs {
+nav > .nav.nav-tabs {
     border: none;
     color: #fff;
     background: #272e38;
     border-radius: 0;
 }
 
-nav>div a.nav-item.nav-link,
-nav>div a.nav-item.nav-link.active {
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active {
     border: none;
     padding: 18px 25px;
     color: #fff;
@@ -184,7 +215,7 @@ nav>div a.nav-item.nav-link.active {
     border-radius: 0;
 }
 
-nav>div a.nav-item.nav-link.active:after {
+nav > div a.nav-item.nav-link.active:after {
     content: "";
     position: relative;
     bottom: -57px;
@@ -207,8 +238,8 @@ nav>div a.nav-item.nav-link.active:after {
     padding-bottom: 20px;
 }
 
-nav>div a.nav-item.nav-link:hover,
-nav>div a.nav-item.nav-link:focus {
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus {
     border: none;
     background: #e74c3c;
     color: #fff;
@@ -303,6 +334,13 @@ nav>div a.nav-item.nav-link:focus {
 }
 
 /* Sport Section End */
+/* Photo Feature and Religion Start */
+#entertainment_and_feedback ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed #999;
+    border-bottom: 1px dashed #999;
+}
 /* Photo Feature and Religion Start */
 #photo_galery_religion_feature ul li {
     padding-top: 10px;

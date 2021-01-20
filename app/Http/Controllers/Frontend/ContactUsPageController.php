@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class ContactUsPageController extends Controller
@@ -12,9 +13,10 @@ class ContactUsPageController extends Controller
     {
         //for nav bar
         $categories = Category::all();
-
+//for breaking news
+        $breaking_news = Post::where('status','published')->orderBy('created_at','DESC')->paginate(5);
         //for dynamic title
         $slug = 'contact-us';
-        return response(view('frontend.contact-us-page',compact('slug','categories')));
+        return response(view('frontend.contact-us-page',compact('slug','categories','breaking_news')));
     }
 }

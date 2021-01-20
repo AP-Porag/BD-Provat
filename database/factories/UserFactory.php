@@ -36,7 +36,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'category_id'=>rand(1,12),
-        'sub_category_id'=>rand(1,22),
+        'sub_category_id'=>rand(1,20),
         'post_author'=>rand(3,12),
         'title'=>$faker->unique()->sentence,
         'slug'=>$faker->unique()->slug,
@@ -49,7 +49,7 @@ $factory->define(Post::class, function (Faker $faker) {
 //seeding Post Tag
 $factory->define(PostTag::class, function (Faker $faker) {
     return [
-        'post_id'=>rand(1,75),
+        'post_id'=>rand(1,120),
         'tag_id'=>rand(1,20),
     ];
 });
@@ -58,7 +58,7 @@ $factory->define(PostTag::class, function (Faker $faker) {
 $factory->define(Comment::class, function (Faker $faker) {
     return [
         'user_id'=>rand(3,12),
-        'post_id'=>rand(1,75),
+        'post_id'=>rand(1,120),
         'message'=>$faker->unique()->sentence,
     ];
 });
@@ -67,7 +67,7 @@ $factory->define(Comment::class, function (Faker $faker) {
 $factory->define(Reply::class, function (Faker $faker) {
     return [
         'user_id'=>rand(3,12),
-        'post_id'=>rand(1,75),
+        'post_id'=>rand(1,120),
         'comment_id'=>rand(1,200),
         'message'=>$faker->unique()->sentence,
     ];

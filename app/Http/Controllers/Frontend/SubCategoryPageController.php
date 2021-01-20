@@ -14,10 +14,11 @@ class SubCategoryPageController extends Controller
     {
         //for nav bar
         $categories = Category::all();
-
+//for breaking news
+        $breaking_news = Post::where('status','published')->orderBy('created_at','DESC')->paginate(5);
         //for search post belongs to this subcategory
         $subcategory = SubCategory::where('slug',$slug)->first();
         $posts = Post::where('sub_category_id',$subcategory->id)->where('status','published')->orderBy('created_at','DESC')->paginate(12);
-        return response(view('frontend.category-subcategory-tag-page',compact('slug','categories','posts')));
+        return response(view('frontend.category-subcategory-tag-page',compact('slug','categories','breaking_news','posts')));
     }
 }

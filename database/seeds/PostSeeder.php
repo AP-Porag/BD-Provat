@@ -14,7 +14,7 @@ class PostSeeder extends Seeder
     {
         Post::create([
             'category_id'=>rand(1,12),
-            'sub_category_id'=>rand(1,22),
+            'sub_category_id'=>rand(1,20),
             'post_author'=>rand(3,12),
             'title'=>'দেশের ৩ বিভাগে বৃষ্টির আভাস',
             'slug'=>'দেশের-৩-বিভাগে-বৃষ্টির-আভাস',
@@ -24,7 +24,7 @@ class PostSeeder extends Seeder
         ]);
         Post::create([
             'category_id'=>rand(1,12),
-            'sub_category_id'=>rand(1,22),
+            'sub_category_id'=>rand(1,20),
             'post_author'=>rand(3,12),
             'title'=>'জুলিয়ান অ্যাসাঞ্জের হস্তান্তর আটকে দিল ব্রিটেন',
             'slug'=>'জুলিয়ান-অ্যাসাঞ্জের-হস্তান্তর-আটকে-দিল-ব্রিটেন',
@@ -36,7 +36,7 @@ class PostSeeder extends Seeder
         ]);
         Post::create([
             'category_id'=>rand(1,12),
-            'sub_category_id'=>rand(1,22),
+            'sub_category_id'=>rand(1,20),
             'post_author'=>rand(3,12),
             'title'=>'হাম-রুবেলার টিকা নেয়ার পর এক শিশুর মৃত্যু',
             'slug'=>'হাম-রুবেলার-টিকা-নেয়ার-পর-এক-শিশুর-মৃত্যু',
@@ -48,7 +48,7 @@ class PostSeeder extends Seeder
         ]);
         Post::create([
             'category_id'=>rand(1,12),
-            'sub_category_id'=>rand(1,22),
+            'sub_category_id'=>rand(1,20),
             'post_author'=>rand(3,12),
             'title'=>'মান্দায় ছাত্রলীগের ৭৩ তম প্রতিষ্ঠা বার্ষিকী পালিত',
             'slug'=>'মান্দায়-ছাত্রলীগের-৭৩-তম-প্রতিষ্ঠা-বার্ষিকী-পালিত',
@@ -60,7 +60,7 @@ class PostSeeder extends Seeder
         ]);
         Post::create([
             'category_id'=>rand(1,12),
-            'sub_category_id'=>rand(1,22),
+            'sub_category_id'=>rand(1,20),
             'post_author'=>rand(3,12),
             'title'=>'শ্রীনগর উপজেলা চেয়ারম্যানের উদ্যোগে ছাত্রলীগে প্রতিষ্ঠা বার্ষিকী উদযাপন',
             'slug'=>'শ্রীনগর-উপজেলা-চেয়ারম্যানের-উদ্যোগে-ছাত্রলীগে-প্রতিষ্ঠা-বার্ষিকী-উদযাপন',

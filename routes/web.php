@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/', 'Frontend\HomeDataShowController@HomeDataShow')->name('website');
 Route::get('/category/{slug}','Frontend\CategoryPageController@index')->name('category-page');
 Route::get('/subcategory/{slug}','Frontend\SubCategoryPageController@index')->name('subcategory-page');
-Route::get('/post/{slug}','Frontend\SinglePostPageController@index')->name('single-post-page');
+Route::get('/single-post/{slug}','Frontend\SinglePostPageController@index')->name('single-post-page');
 Route::get('/tag/{slug}','Frontend\TagPageController@index')->name('tag-page');
 Route::get('/আমাদের-কথা','Frontend\AboutPageController@index')->name('about-page');
 Route::get('/contact-us','Frontend\ContactUsPageController@index')->name('contact-us-page');

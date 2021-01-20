@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
         //seeding using factory
         factory(User::class,10)->create();
-        factory(Post::class,70)->create();
+        factory(Post::class,120)->create();
         factory(PostTag::class,130)->create();
         factory(Comment::class,200)->create();
         factory(Reply::class,230)->create();
