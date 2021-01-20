@@ -13,11 +13,9 @@
     {{-- Main news section start --}}
 <div class="container">
     <div class="row">
-        @foreach($posts as $post)
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <h3>{{$post->title}}</h3>
             </div>
-        @endforeach
     </div>
 </div>
     {{-- Main news section end --}}

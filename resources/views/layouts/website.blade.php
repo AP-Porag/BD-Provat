@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{{ asset('frontend/images/fevicon.ico.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('frontend/images/fevicon.ico.png') }}" type="image/x-icon"/>
     <!-- Bootstrap CSS -->
     <!-- Fonts -->
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
@@ -37,18 +37,27 @@
             <div class="col-md-12">
                 <div class="top-box">
                     <div class="social-icon-content d-flex justify-content-between">
-                        <p class="date ml-3 mt-3">Sunday, January 3, 2021</p>
+                        <p class="date ml-3 mt-3">
+                            @php
+                                echo date('D - d , M-Y');
+                            @endphp
+                        </p>
                         <ul class="d-flex social-icon mr-3 mt-3">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-instagram"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa fa-youtube"></i></a></li>
                             @guest
-                                <li class="ml-3"><a  href="{{ route('login') }}" class="text-white login btn btn-sm">Login</a></li>
-                                <li class="ml-3"><a href="{{ route('register') }}" class="text-white login btn btn-sm">Subscribe Us</a></li>
+                                <li class="ml-3"><a href="{{ route('login') }}" class="text-white login btn btn-sm">Login</a>
+                                </li>
+                                <li class="ml-3"><a href="{{ route('register') }}" class="text-white login btn btn-sm">Subscribe
+                                        Us</a></li>
                             @endguest
                             @auth
-                                <li class="ml-3"><a href="{{ route('home') }}" class="text-white login btn btn-sm">My Account</a></li>
+                                @cannot('subscriber')
+                                    <li class="ml-3"><a href="{{ route('home') }}" class="text-white login btn btn-sm">My
+                                            Account</a></li>
+                                @endcannot
                             @endauth
                         </ul>
                     </div>
@@ -76,23 +85,30 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse d-flex justify-content-between navigation-bar" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse d-flex justify-content-between navigation-bar"
+                 id="navbarSupportedContent">
                 <div class="right-side">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {{(\Illuminate\Support\Facades\Route::current()->getName() == 'website') ? 'active' : '' }}" href="{{route('website')}}">প্রচ্ছদ</a>
+                            <a class="nav-link {{(\Illuminate\Support\Facades\Route::current()->getName() == 'website') ? 'active' : '' }}"
+                               href="{{route('website')}}">প্রচ্ছদ</a>
                         </li>
                         @foreach($categories as $category)
                             <li class="nav-item dropdown">
-                                <a class="nav-link {{(request()->segment(2) == $category->slug ) ? 'active' : '' }}" href="{{route('category-page',$category->slug)}}">
-                                    {{$category->name}}
+                                <a class="nav-link {{((request()->segment(2) == $category->slug ) ? 'active' : '')}}"
+                                   href="{{route('category-page',$category->slug)}}">
+                                    <span>{{$category->name}}</span>
+                                    @if(($category->subcategories)->count() > 0)
+                                        <span class="fa fa-caret-down"></span>
+                                    @endif
                                 </a>
                                 @if(($category->subcategories)->count() > 0)
-                                    <div class="dropdown-menu" style="display: block">
+                                    <div class="dropdown-menu">
                                         <ul class="list-group">
                                             @foreach($category->subcategories as $subcategory)
-                                                <li class="dropdown-item">
-                                                    <a class="{{(request()->segment(2) == $subcategory->slug ) ? 'active' : '' }}" href="{{route('subcategory-page',$subcategory->slug)}}">{{$subcategory->name}}</a>
+                                                <li class="dropdown-item {{(request()->segment(2) == $subcategory->slug ) ? 'active' : '' }}">
+                                                    <a class="{{(request()->segment(2) == $subcategory->slug ) ? 'active' : '' }}"
+                                                       href="{{route('subcategory-page',$subcategory->slug)}}">{{$subcategory->name}}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -101,7 +117,8 @@
                             </li>
                         @endforeach
                         <li class="nav-item">
-                            <a class="nav-link {{(\Illuminate\Support\Facades\Route::current()->getName() == 'about-page') ? 'active' : ''}}" href="{{route('about-page')}}">আমাদের কথা</a>
+                            <a class="nav-link {{(\Illuminate\Support\Facades\Route::current()->getName() == 'about-page') ? 'active' : ''}}"
+                               href="{{route('about-page')}}">আমাদের কথা</a>
                         </li>
 
                     </ul>
@@ -125,20 +142,14 @@
                 <p class="breaking-news-title">ব্রেকিং নিউজ</p>
             </div>
             <div class="col-md-10">
-                <marquee onmouseover="this.stop();" onmouseout="this.start();">
+                <marquee scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();">
                     <ul class="d-flex">
-                        <li><a href="#">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">রেনু হত্যা মামলার আসামি মহিনের সম্পত্তি ক্রোকের নির্দেশ</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">রাজধানীতে ট্রাকচাপায় অজ্ঞাত ব্যক্তির মৃত্যু</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">মাকে নিয়ে দেশে ফিরলেন সাকিব</a><span style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">ইতালিতে প্রথম ভ্যাকসিন নিলেন বাংলাদেশি নারী</a><span
-                                style="font-size: 12px">বিডি</span></li>
-                        <li><a href="#">ভারত থেকে পেঁয়াজ আমদানি শুরু</a><span style="font-size: 12px">বিডি</span></li>
-                        <li><a href="https://www.facebook.com">সৈয়দ আশরাফের আজ দ্বিতীয় মৃত্যুবার্ষিকী</a><span
-                                style="font-size: 12px">বিডি</span></li>
+                        @foreach($breaking_news as $news)
+                            <li>
+                                <span>বিডি</span>
+                                <a href="{{route('single-post-page',$news->slug)}}">{{$news->title}}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </marquee>
             </div>
@@ -172,7 +183,8 @@
                         ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
                         <br>এম, কে, আর এন্টারপ্রাইজের একটি প্রতিষ্ঠান<br>
                         প্রধান কার্যালয়: আলফা টাওয়ার, আবদুল্লাহপুর, উত্তরা, ঢাকা-১২৩০।<br>
-                        আমাদের মেইল: <a href="{{route('contact-us-page')}}">bdprovat.news@gmail.com</a> মোবাইল: ০১৭১৪-০৩৬৬১২
+                        আমাদের মেইল: <a href="{{route('contact-us-page')}}">bdprovat.news@gmail.com</a> মোবাইল:
+                        ০১৭১৪-০৩৬৬১২
                     </p>
 
                     <ul>
@@ -180,6 +192,15 @@
                             <a class="nav-link" href="{{route('about-page')}}">আমাদের কথা</a>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="root bg-danger">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>All rights reserved © @php echo date('Y') @endphp<a href="{{route('website')}}">BD-Provat</a></p>
                 </div>
             </div>
         </div>

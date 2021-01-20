@@ -1,385 +1,4 @@
-@extends('layouts.website')
-@section('title')
-    BD-Provat
-@endsection
-
-@section('style')
-    <style>
-
-    </style>
-@endsection
-
-@section('content')
-    {{-- Main news section start --}}
-    <section id="main_news_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="{{route('single-post-page',$last_top_news->slug)}}">
-                        <div class="main_news_image">
-                            <img src="{{ $last_top_news->thumbnail }}" alt="" class="img-fluid">
-                        </div>
-                        <h5 class="py-2">
-                            {{ $last_top_news->title }}
-                        </h5>
-                        <p>
-                            {!! Illuminate\Support\Str::of($last_top_news->content)->words(20) !!}
-                        </p>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        @foreach($top_news as $t_news)
-                        <div class="col-md-6">
-                            <a class="d-flex" href="{{route('single-post-page',$t_news->slug)}}">
-                                <img height="70" width="100" alt="" src="{{ $t_news->thumbnail }}">
-                                <p class="ml-3 mr-2">{{ $t_news->title }}</p>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Main news section end --}}
-    {{-- National International Section Start --}}
-    <section id="national_international_news">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>
-                        <span>
-                            জাতীয়
-                        </span>
-                    </h3>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="row">
-                                @foreach ($national_posts as $national_post)
-                                <div class="col-md-4">
-                                    <a href="#" class="d-flex"><img height="70" width="100" alt=""
-                                                                    src="{{ $national_post->thumbnail }}">
-                                        <p class="ml-3">{{ $national_post->title }}</p>
-                                    </a>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="tab_for_content">
-                                <nav>
-                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-                                           role="tab" aria-controls="nav-home" aria-selected="true">সর্বশেষ</a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                                           role="tab" aria-controls="nav-profile" aria-selected="false">জনপ্রিয়</a>
-                                    </div>
-                                </nav>
-                                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                         aria-labelledby="nav-home-tab">
-                                        <ul>
-                                            @foreach($latest_news as $l_news)
-                                                <li class="ml-3">
-                                                    <a class="d-flex" href="{{route('single-post-page',$l_news->slug)}}">
-                                                        <img height="70" width="100" alt="{{ $l_news->slug }}"
-                                                             src="{{ $l_news->thumbnail }}">
-                                                        <p class="ml-3 mr-2">{{ $l_news->title }}</p>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                                         aria-labelledby="nav-profile-tab">
-                                        <ul>
-                                            @foreach($popular_news as $p_news)
-                                                <li class="ml-3">
-                                                    <a class="d-flex" href="{{route('single-post-page',$p_news->slug)}}">
-                                                        <img height="70" width="100" alt="{{$p_news->slug}}"
-                                                             src="{{ $p_news->thumbnail }}">
-                                                        <p class="ml-3 mr-2">{{$p_news->title}}</p>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- National International Section End --}}
-    {{-- Politics Technology and Law Section Start --}}
-    <section id="politics_technology_law">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>
-                        <span>
-                            রাজনীতি
-                        </span>
-                    </h3>
-                    <a href="#">
-                        <img src="{{ $last_political_post->thumbnail }}" alt="" width="100%">
-                        <h5 class="pt-2">{{ $last_political_post->title }}</h5>
-                        <p style="text-align:justify">
-                            {{ Illuminate\Support\Str::of($last_international_post->content)->words(15) }}
-                        </p>
-                    </a>
-                    <ul>
-                        @foreach ($political_posts as $key => $political_post)
-                            <li>
-                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                src="{{ $political_post->thumbnail }}">
-                                    <p class="ml-3" style="text-align: justify">
-                                        {{ $political_post->title }}
-                                    </p>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        <span>
-                            তথ্যপ্রযুক্তি
-                        </span>
-                    </h3>
-                    <a href="#">
-                        <img src="{{ $last_info_tech_post->thumbnail }}" alt="" width="100%">
-                        <h5 class="pt-2">{{ $last_info_tech_post->title }}</h5>
-                        <p style="text-align: justify">
-                            {{ Illuminate\Support\Str::of($last_political_post->content)->words(15) }}
-                        </p>
-                    </a>
-                    <ul>
-                        @foreach ($info_tech_posts as $key => $info_tech_post)
-                            <li>
-                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                src="{{ $info_tech_post->thumbnail }}">
-                                    <p class="ml-3" style="text-align: justify">
-                                        {{ $info_tech_post->title }}
-                                    </p>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        <span>
-                            আইন আদালত
-                        </span>
-                    </h3>
-                    <a href="#">
-                        <img src="{{ $last_law_post->thumbnail }}" alt="" class="w-100">
-                        <h5 class="pt-2">{{ $last_law_post->title }}</h5>
-                        {!! Illuminate\Support\Str::of($last_law_post->content)->words(15) !!}
-                    </a>
-                    <ul>
-                        @foreach ($law_posts as $key => $law_post)
-                            <li>
-                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                src="{{ $law_post->thumbnail }}">
-                                    <p class="ml-3">{{ $law_post->title }}</p>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Politics Technology and Law Section End --}}
-    {{-- Entertainment Section Start --}}
-    <section id="entertainment_and_feedback">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>
-                        <span>
-                            বিনোদন
-                        </span>
-                            </h3>
-                        </div>
-                        <a href="#" class="d-flex">
-                            <div class="col-md-5">
-                                <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
-                                <p class="text-justify">
-                                    {{ Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) }}
-                                </p>
-                            </div>
-                            <div class="col-md-7">
-                                <img src="{{ $last_entertainment_post->thumbnail }}" alt="" class="img-fluid">
-                            </div>
-                        </a>
-                        <div class="col-md-12">
-                            <div class="row slider">
-                                @foreach ($entertainment_posts as $key => $entertainment_post)
-                                    <div class="col-md-3 pt-3"><img src="{{ $entertainment_post->thumbnail }}" alt=""
-                                                                    class="img-fluid">
-                                        <p class="pt-2">
-                                            {{ $entertainment_post->title }}
-                                        </p>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        <span>
-                            ফিচার
-                        </span>
-                    </h3>
-                    <ul>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                            src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Entertainment Section End--}}
-    {{-- Lifestyle and Education Section Start --}}
-    <section id="national_international_news">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>
-                        <span>
-                            আন্তর্জাতিক
-                        </span>
-                    </h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="#">
-                                <img src={{ $last_international_post->thumbnail }}" alt="{{ $last_international_post->slug }}
-                                " width="100%">
-                                <h5 class="pt-2">{{ $last_international_post->title }}</h5>
-                                <p>{{ Illuminate\Support\Str::of($last_international_post->content)->words(20) }}
-                                </p>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <ul>
-                                @foreach ($international_posts as $international_post)
-                                    <li class="ml-3">
-                                        <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                        src="{{ $international_post->thumbnail }}">
-                                            <p class="ml-3">{{ $international_post->title }}</p>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h3>
-                        <span>
-                            লাইফস্টাইল
-                        </span>
-                    </h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="#">
-                                <img src="{{ $last_lifestyle_post->thumbnail }}" alt="" width="100%">
-                                <h5 class="pt-2">{{ $last_lifestyle_post->title }}</h5>
-                                <p class="text-justify">
-                                    {{ Illuminate\Support\Str::of($last_lifestyle_post->content)->words(15) }}
-                                </p>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <ul>
-                                @foreach ($lifestyle_posts as $key => $lifestyle_post)
-                                    <li class="ml-3">
-                                        <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                        src="{{ $lifestyle_post->thumbnail }}">
-                                            <p class="ml-3" style="text-align:justify">
-                                                {{ $lifestyle_post->title }}
-                                            </p>
-                                        </a>
-                                    </li>
-                                @endforeach
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Lifestyle and Education Section End --}}
-    {{-- Full Contry Section Start --}}
-    <section id="full_country">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="division_btn btn-group">
-                                <li><a href="javascript:void(0);" data-filter="*">Todos</a></li>
-                                @foreach($divisions as $division)
-                                    <li><a href="javascript:void(0);"
-                                           data-filter="{{$division->id}}">{{$division->name}}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div id="container" class="grid w-100">
-                            @foreach($divisions as $division)
-                                @foreach($division->posts as $division_news)
-                                    <div class="post-item col-md-4 " data-filter="{{$division->id}}">
-                                        <a href="{{route('single-post-page',$division->slug)}}">
-                                            <div class="card-img">
-                                                <img alt="{{$division_news->slug}}"
-                                                     src="{{ $division_news->thumbnail }}">
-                                            </div>
-                                            <h5 class="py-2">
-                                                {{$division_news->title}}
-                                            </h5>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h5>Map</h5>
-                    <div id="map_container" class="map_container">
-                        <svg version="1.1" id="map" xmlns="http://www.w3.org/2000/svg"
+<svg version="1.1" id="map" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-201 -372.5 560 776.5"
                              style="enable-background:new -201 -372.5 560 776.5;" xml:space="preserve">
 <style type="text/css">
@@ -496,7 +115,7 @@
     }
 
     #rangpur:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #rangpur:hover path.st17 {
@@ -508,7 +127,7 @@
     }
 
     #mymensingh:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #mymensingh:hover path.st17 {
@@ -520,7 +139,7 @@
     }
 
     #sylhet:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #sylhet:hover path.st17 {
@@ -532,7 +151,7 @@
     }
 
     #rajshahi:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #rajshahi:hover path.st17 {
@@ -544,7 +163,7 @@
     }
 
     #khulna:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #khulna:hover path.st17 {
@@ -556,7 +175,7 @@
     }
 
     #borishal:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #borishal:hover path.st17 {
@@ -568,7 +187,7 @@
     }
 
     #chittagong:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #chittagong:hover path.st17 {
@@ -580,7 +199,7 @@
     }
 
     #dhaka:hover path {
-        fill: #8c0707;
+        fill: #C8006E;
     }
 
     #dhaka:hover path.st17 {
@@ -1194,7 +813,7 @@
     s0.1,1.4,0.1,1.4l1,1.1l0.5,0.6l1.6-0.9l1.1-0.2c0,0,0-1.1,0-1.6s0-1,0-1l-0.6-0.5C317.8,142.6,317.4,142.5,316.5,142.1z"></path>
                             </g>
                             <g id="rangpur">
-                                <a href="{{route('subcategory-page','রংপুর')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%b0%e0%a6%82%e0%a6%aa%e0%a7%81%e0%a6%b0"
                                    xlink:href="">
                                     <path class="st3" d="M-152-370.6c0,0,0.5,2-2.2,3.8l-1.6,1l0.2,7.5c0,0-3.2,2.5-3.2,3.4l0.2,5c0,0,0.9,1.9,1.6,1.9l1.6-0.9l0.4-3.6
     l1.8-1.4h1l1,0.9l1.1,1.1l2,0.2l4.1,0.1l1.2,0.2l0.9,0.9l1,0.2l0.5,0.5l0.4,1.5v1v1.4v1.4l0.5,1.5c0,0,0.4,1,0.9,1.2
@@ -1372,7 +991,7 @@
                             </g>
 
                             <g id="sylhet">
-                                <a href="{{route('subcategory-page','সিলেট')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%b8%e0%a6%bf%e0%a6%b2%e0%a7%87%e0%a6%9f"
                                    xlink:href="">
                                     <path class="st3" d="M143.6-178.4l-19.2,0.6l2.3,4l-0.7,2.5l-2.8,0.8l2.3,3.3l-1.7,3.2l1.2,3l-0.5,5.8l6.8,4.5l4.9,0.1
     c0,0,3.7,2.3,6.5,6c1.2,1.6,0.2,5.5,0.2,5.5l6.3-1.3l9.2-1l4.8-1.5l3.2,1.3c0,0,0.5,1,0.7,2.3s-0.2,2.2,0.5,3.7s0.7,2.3,0.7,2.3
@@ -1510,7 +1129,7 @@
                                 </a>
                             </g>
                             <g id="khulna">
-                                <a href="{{route('subcategory-page','খুলনা')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%96%e0%a7%81%e0%a6%b2%e0%a6%a8%e0%a6%be"
                                    xlink:href="">
                                     <path class="st3" d="M25.8,164.2c0,0-0.9-4.1-0.9-4.6s0.4-2.5,0.4-2.5l-1.4-1.9c0,0-0.6-2-1-2.4c-0.4-0.4-1.4-3-1.4-3l0.6-1.1
           l-2.6-1.6c0,0,0.1-1.2,0.6-1.4s1.2-0.4,1.6-0.6c0.4-0.2,1.4-3.2,1.4-3.2s-0.6-2.4-0.6-2.9s-0.1-1.6,0-2.1c0.1-0.5,0.6-3.4,0.8-3.8
@@ -1704,7 +1323,7 @@
                                 </a>
                             </g>
                             <g id="dhaka">
-                                <a href="{{route('subcategory-page','ঢাকা')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%a2%e0%a6%be%e0%a6%95%e0%a6%be"
                                    xlink:href="">
                                     <path class="st3" d="M49.4-95.6l1.6-3.1l-5.3-1.9l-2.8-3.5l-2.6-4.1l-2.2-4.1v-2.5l1.7-3.5l-0.2-6.7l-4.2-2.7l-1.8-2.3l2.8-3.2
               l-2.6-0.4l-2.7,0.4l-2.2,1.1l-3.5,3l-3.8,2.2l-3.2-1H16l-2,2.7l-0.7,2l-1.3,2.5l-0.5,1.3L9-117.8c0,0-0.2,0.2-0.5,2.8
@@ -1872,7 +1491,7 @@
                             </g>
 
                             <g id="mymensingh">
-                                <a href="{{route('subcategory-page','ময়মনসিংহ')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%ae%e0%a7%9f%e0%a6%ae%e0%a6%a8%e0%a6%b8%e0%a6%bf%e0%a6%82%e0%a6%b9"
                                    xlink:href="">
                                     <path class="st3" d="M6.5-112l2-3l0.5-2.8l2.5-1.8l2.2-5.2L16-128h2.2l3.2,1l4.5-2.5l2.5-2l2.5-1.8l3.5-0.5l1.8,0.5l-2.8,3.2
                   c0,0,0,0.5,0.8,1.5s5.2,3.5,5.2,3.5l0.8,5.5l-2.2,5.2l0.2,2.8c0,0,1.8,2.8,2,3.2s2,3.2,2,3.2s2,2,2.2,2.8s4,2.8,4.8,2.8
@@ -2019,7 +1638,7 @@
                                 </a>
                             </g>
                             <g id="rajshahi">
-                                <a href="{{route('subcategory-page','রাজশাহী')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%b0%e0%a6%be%e0%a6%9c%e0%a6%b6%e0%a6%be%e0%a6%b9%e0%a7%80"
                                    xlink:href="">
                                     <path class="st14" d="M-184-149.2l0.6,1.8l1.4,0.2v1.4v1.8l0.4,1l0.6,0.8v1.9c0,0-0.5,0.9-0.9,1.4c-0.4,0.5-1.1,2-1.1,2
       s-0.8,0.1-1.2,0.2c-0.4,0.1-1.4,1.4-1.4,1.4l-1.4-0.1h-1l-0.2,1.2v1v1.6l-0.6,1.2l-0.5,0.1h-1.5c0,0,0-0.1-0.5-0.1
@@ -2188,7 +1807,7 @@
                                 </a>
                             </g>
                             <g id="borishal">
-                                <a href="{{route('subcategory-page','বরিশাল')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%ac%e0%a6%b0%e0%a6%bf%e0%a6%b6%e0%a6%be%e0%a6%b2"
                                    xlink:href="">
                                     <path class="st13" d="M72.9,229.1c0.9-1,2.2-2.6,2.2-2.6s1.2-1.5,1.8-2.1s0.9-1.8,0.9-1.8l0.5-5.6c0,0,0-1.5,0.5-1.6
           s1.9-2.1,1.9-2.1v-1.8c0,0,1.5-0.4,1.8-0.8s0.8-2.5,0.8-2.5s-1.5-1.4-1.9-1.8s-1.5-2-1.5-2s-0.5-1,0-1.4s1.1,0,1.2-1.4
@@ -2401,7 +2020,7 @@
                                 </a>
                             </g>
                             <g id="chittagong">
-                                <a href="{{route('subcategory-page','চট্টগ্রাম')}}"
+                                <a href="https://newssitedesign.com/latestnews/archives/category/%e0%a6%b8%e0%a6%be%e0%a6%b0%e0%a6%be%e0%a6%a6%e0%a7%87%e0%a6%b6/%e0%a6%9a%e0%a6%9f%e0%a7%8d%e0%a6%9f%e0%a6%97%e0%a7%8d%e0%a6%b0%e0%a6%be%e0%a6%ae"
                                    xlink:href="">
                                     <path class="st11" d="M355.6,320.6c0-1-0.1-1.6-0.1-2s-1.1-2-1.1-2l-1.8-5l-2.5-10.1l-2.9-27.5l1.2-23.9l1.4-6.1l-0.8-4.1l-1.4-3
         l-1.4-4.6l-0.9-4.6c0,0-0.2-3.6-0.2-4s-1.1-5.9-1.1-5.9l-1.5-0.8c0,0,0-3.2,0.1-3.6s0.8-1.4,0.8-1.4s0,0,0.5,0s1.9,0.1,1.9,0.1
@@ -2882,434 +2501,3 @@
                                 <ellipse class="st27" cx="-94.2" cy="-274.8" rx="2.6" ry="0.4"></ellipse>
                             </g>
 </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Full Contry Section End --}}
-    {{-- Sports Section Start --}}
-    <section id="sport">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>
-                        <span>
-                            খেলাধুলা
-                        </span>
-                    </h3>
-                </div>
-                <div class="col-md-3">
-                    <div class="row">
-                        @foreach($sports_left_posts as $left_post)
-                        <div class="col-md-12">
-                            <a href="{{route('single-post-page',$left_post->slug)}}">
-                                <div class="card-img">
-                                    <img src="{{ $left_post->thumbnail }}" class="w-100">
-                                </div>
-                                <h5 class="py-2">
-                                    {{$left_post->title}}
-                                </h5>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <a href="{{route('single-post-page',$last_sports_post->slug)}}">
-                        <div class="card-img">
-                            <img src="{{ $last_sports_post->thumbnail }}" class="w-100">
-                        </div>
-                        <h5 class="py-2">
-                            {{$last_sports_post->title}}
-                        </h5>
-                        <p>
-                            {!! \Illuminate\Support\str::limit(strip_tags($last_sports_post->content), 150) !!}
-                            @if (strlen(strip_tags($last_sports_post->content)) > 50)
-                                <a href="{{ route('single-post-page', $last_sports_post->slug) }}" class="">বিস্তারিত...</a>
-                            @endif
-                        </p>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <div class="row">
-                        @foreach($sports_right_posts as $right_post)
-                            <div class="col-md-12">
-                                <a href="{{route('single-post-page',$right_post->slug)}}">
-                                    <div class="card-img">
-                                        <img src="{{ $right_post->thumbnail }}" class="w-100">
-                                    </div>
-                                    <h5 class="py-2">
-                                        {{$right_post->title}}
-                                    </h5>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Sports Section End --}}
-    {{-- Photo Feature and Religion Start --}}
-    <section id="photo_galery_religion_feature">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>
-                        <span>
-                            <i class="fa fa-camera"></i> ফটো গ্যালারী
-                        </span>
-                    </h3>
-                    <div class="img-slider">
-                        @foreach($photo_gallery as $photo)
-                            <a href="{{route('single-post-page',$photo->slug)}}">
-                                <div class="card-img">
-                                    <div class="image_box">
-                                        <img src="{{ $photo->thumbnail }}" class="w-100" alt="{{$photo->slug}}" width="544"
-                                             height="367">
-                                    </div>
-                                    <div class="image_overlay">
-                                        <h5 class="py-2">
-                                            {{$photo->title}}
-                                        </h5>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h3>
-                        <span>
-                            অর্থনীতি
-                        </span>
-                    </h3>
-                    <ul>
-                        @foreach($finance_news as $f_news)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$f_news->slug)}}">
-                                <img height="70" width="100" alt="{{$f_news->slug}}" src="{{$f_news->thumbnail}}">
-                                <p class="ml-3">
-                                    {{$f_news->title}}
-                                </p>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h3>
-                        <span>
-                            প্রবাসের খবর
-                        </span>
-                    </h3>
-                    <ul>
-                        @foreach($nrb_news as $nrb)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$nrb->slug)}}">
-                                <img height="70" width="100" alt="{{$nrb->slug}}" src="{{ $nrb->thumbnail }}">
-                                <p class="ml-3">{{$nrb->title}}</p>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Photo Feature and Religion End --}}
-    {{-- Travel Health Foreign Section Start --}}
-    <section id="travel_health_foreign">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>
-                        <span>
-                            ভ্রমণ
-                        </span>
-                    </h3>
-                    <a href="{{route('single-post-page',$last_tourism_post->slug)}}">
-                        <img src="{{ $last_tourism_post->thumbnail }}" alt="{{$last_tourism_post->slug}}" width="100%">
-                        <h5 class="pt-2">{{$last_tourism_post->title}}</h5>
-                        <p>
-                            {!! $last_tourism_post->content !!}
-                        </p>
-                    </a>
-                    <ul>
-                        @foreach($tourism_posts as $tour)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$tour->slug)}}">
-                                <img height="70" width="100" alt="{{$tour->slug}}" src="{{ $tour->thumbnail }}">
-                                <p class="ml-3">{{$tour->title}}</p>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        <span>
-                            স্বাস্থ্য
-                        </span>
-                    </h3>
-                    <a href="{{route('single-post-page',$last_health_post->slug)}}">
-                        <img src="{{ $last_health_post->thumbnail }}" alt="{{$last_health_post->slug}}" width="100%">
-                        <h5 class="pt-2">{{$last_health_post->title}}</h5>
-                        <p>
-                            {!! $last_health_post->content !!}
-                        </p>
-                    </a>
-                    <ul>
-                        @foreach($health_posts as $health)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$health->slug)}}">
-                                <img height="70" width="100" alt="{{$health->slug}}" src="{{ $health->thumbnail }}">
-                                <p class="ml-3">{!! $health->content !!}</p>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3>
-                        <span>
-                            ধর্ম
-                        </span>
-                    </h3>
-                    <a href="{{route('single-post-page',$last_religion_post->slug)}}">
-                        <img src="{{ $last_religion_post->thumbnail }}" alt="{{$last_religion_post->slug}}" width="100%">
-                        <h5 class="pt-2">{{$last_religion_post->title}}</h5>
-                        <p>
-                            {!! $last_religion_post->content !!}
-                        </p>
-                    </a>
-                    <ul>
-                        @foreach($religion_posts as $religion)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$religion->slug)}}">
-                                <img height="70" width="100" alt="{{$religion->slug}}" src="{{ $religion->thumbnail }}">
-                                <p class="ml-3">
-                                    {!! $religion->content !!}
-                                </p>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Travel Health Foreign Section End --}}
-
-@endsection
-@section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.slider').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 4,
-                autoplay: true,
-                slidesToScroll: 1,
-                responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-            $('.img-slider').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 1,
-                autoplay: true,
-                slidesToScroll: 1,
-                responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-
-        });
-        //dummy isotop
-        $(document).ready(function () {
-            // init Isotope
-            var $grid = $('.grid').isotope({
-                // options
-            });
-
-            var itemSelector = '.post-item';
-
-            var $container = $('#container').isotope({
-                itemSelector: itemSelector,
-                masonry: {
-                    columnWidth: itemSelector,
-                    isFitWidth: true
-                }
-            });
-
-            //Ascending order
-            var responsiveIsotope = [
-                [480, 4],
-                [720, 6]
-            ];
-
-            var itemsPerPageDefault = 6;
-            var itemsPerPage = defineItemsPerPage();
-            var currentNumberPages = 1;
-            var currentPage = 1;
-            var currentFilter = '*';
-            var filterAtribute = 'data-filter';
-            var pageAtribute = 'data-page';
-            var pagerClass = 'isotope-pager';
-
-            function changeFilter(selector) {
-                $container.isotope({
-                    filter: selector
-                });
-            }
-
-
-            function goToPage(n) {
-                currentPage = n;
-
-                var selector = itemSelector;
-                selector += (currentFilter != '*') ? '[' + filterAtribute + '="' + currentFilter + '"]' : '';
-                selector += '[' + pageAtribute + '="' + currentPage + '"]';
-
-                changeFilter(selector);
-            }
-
-            function defineItemsPerPage() {
-                var pages = itemsPerPageDefault;
-
-                for (var i = 0; i < responsiveIsotope.length; i++) {
-                    if ($(window).width() <= responsiveIsotope[i][0]) {
-                        pages = responsiveIsotope[i][1];
-                        break;
-                    }
-
-
-                }
-
-                return pages;
-            }
-
-            function setPagination() {
-
-                var SettingsPagesOnItems = function () {
-
-                    var itemsLength = $container.children(itemSelector).length;
-
-                    var pages = Math.ceil(itemsLength / itemsPerPage);
-                    var item = 1;
-                    var page = 1;
-                    var selector = itemSelector;
-                    selector += (currentFilter != '*') ? '[' + filterAtribute + '="' + currentFilter + '"]' : '';
-
-                    $container.children(selector).each(function () {
-                        if (item > itemsPerPage) {
-                            page++;
-                            item = 1;
-                        }
-                        $(this).attr(pageAtribute, page);
-                        item++;
-                    });
-
-                    currentNumberPages = page;
-
-                }();
-
-                var CreatePagers = function () {
-
-                    var $isotopePager = ($('.' + pagerClass).length == 0) ? $('<div class="' + pagerClass + '"></div>') : $('.' + pagerClass);
-
-                    $isotopePager.html('');
-
-                    for (var i = 0; i < currentNumberPages; i++) {
-                        var $pager = $('<a href="javascript:void(0);" class="pager" ' + pageAtribute + '="' + (i + 1) + '"></a>');
-                        $pager.html(i + 1);
-
-                        $pager.click(function () {
-                            var page = $(this).eq(0).attr(pageAtribute);
-                            goToPage(page);
-                        });
-
-                        $pager.appendTo($isotopePager);
-                    }
-
-                    $container.after($isotopePager);
-
-                }();
-
-            }
-
-            setPagination();
-            goToPage(1);
-
-            //Adicionando Event de Click para as categorias
-            $('.division_btn a').click(function () {
-                var filter = $(this).attr(filterAtribute);
-                currentFilter = filter;
-
-                setPagination();
-                goToPage(1);
-
-
-            });
-
-            //Evento Responsivo
-            $(window).resize(function () {
-                itemsPerPage = defineItemsPerPage();
-                setPagination();
-                goToPage(1);
-            });
-
-
-        });
-
-    </script>
-@endsection
