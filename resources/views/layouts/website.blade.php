@@ -196,7 +196,7 @@
             </div>
         </div>
     </div>
-    <div class="root bg-danger">
+    <div class="root">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">

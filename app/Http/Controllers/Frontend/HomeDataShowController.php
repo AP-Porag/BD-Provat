@@ -27,9 +27,6 @@ class HomeDataShowController extends Controller
 
         $national_posts = Post::where('category_id', 1)->where('status', 'published')->orderBy('id', 'DESC')->limit(6)->get();
 
-        $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
-        $international_posts = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_international_post->id)->paginate(4);
-
         $last_political_post = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $political_posts = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_political_post->id)->paginate(4);
 
@@ -42,6 +39,11 @@ class HomeDataShowController extends Controller
         $last_entertainment_post = Post::where('category_id', 6)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $entertainment_posts = Post::where('category_id', 6)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_entertainment_post->id)->paginate(10);
 
+        //international
+        $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
+        $international_posts = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_international_post->id)->limit(4)->get();
+
+        //lifestyle
         $last_lifestyle_post = Post::where('category_id', 9)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $lifestyle_posts = Post::where('category_id', 9)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_entertainment_post->id)->paginate(4);
 
@@ -51,7 +53,8 @@ class HomeDataShowController extends Controller
         //sports news
         $last_sports_post = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
         $sports_left_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_sports_post->id)->limit(2)->get();
-        $sports_right_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 4)->limit(2)->get();
+        $last_left_post = $sports_left_posts->last();
+        $sports_right_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>', $last_left_post->id)->limit(2)->get();
 
         //photo gallery
         $photo_gallery = Post::where('category_id', 6)->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();

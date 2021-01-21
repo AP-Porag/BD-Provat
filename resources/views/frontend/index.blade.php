@@ -14,28 +14,33 @@
     <section id="main_news_section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 p-0">
                     <a href="{{route('single-post-page',$last_top_news->slug)}}">
-                        <div class="main_news_image">
-                            <img src="{{ $last_top_news->thumbnail }}" alt="" class="img-fluid">
-                        </div>
-                        <h5 class="py-2">
-                            {{ $last_top_news->title }}
-                        </h5>
-                        <p>
-                            {!! Illuminate\Support\Str::of($last_top_news->content)->words(20) !!}
-                        </p>
+                            <div class="image_box">
+                                <img src="{{ $last_top_news->thumbnail }}" alt="{{$last_top_news->slug}}" class="img-fluid">
+                            </div>
+                            <div class="image_overlay">
+                                <h5 class="">
+                                    {{ $last_top_news->title }}
+                                </h5>
+                            </div>
                     </a>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         @foreach($top_news as $t_news)
-                        <div class="col-md-6">
-                            <a class="d-flex" href="{{route('single-post-page',$t_news->slug)}}">
-                                <img height="70" width="100" alt="" src="{{ $t_news->thumbnail }}">
-                                <p class="ml-3 mr-2">{{ $t_news->title }}</p>
-                            </a>
-                        </div>
+                            <div class="col-md-6 pl-0">
+                                <a class="" href="{{route('single-post-page',$t_news->slug)}}">
+                                    <div class="small_image_box">
+                                        <img class="img-fluid" alt="{{$t_news->slug}}" src="{{ $t_news->thumbnail }}">
+                                    </div>
+                                    <div class="small_image_overlay">
+                                        <h5 class="">
+                                            {{ $t_news->title }}
+                                        </h5>
+                                    </div>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -43,68 +48,97 @@
         </div>
     </section>
     {{-- Main news section end --}}
-    {{-- National International Section Start --}}
-    <section id="national_international_news">
+    {{-- National Section Start --}}
+    <section id="national_news">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h3>
+                <div class="col-md-9">
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','জাতীয়')}}">
+                            <span>
+                                জাতীয়
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','জাতীয়')}}">
                         <span>
-                            জাতীয়
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <div class="row">
-                        <div class="col-md-8">
-                            <div class="row">
-                                @foreach ($national_posts as $national_post)
-                                <div class="col-md-4">
-                                    <a href="#" class="d-flex"><img height="70" width="100" alt=""
-                                                                    src="{{ $national_post->thumbnail }}">
-                                        <p class="ml-3">{{ $national_post->title }}</p>
-                                    </a>
+                        @foreach ($national_posts as $national_post)
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <a href="{{route('single-post-page',$national_post->slug)}}" class="d-flex">
+                                        <img class="img-fluid card_image" alt="{{$national_post->slug}}" src="{{ $national_post->thumbnail }}">
+                                        </a>
+                                    </div>
+                                    <div class="card-text pl-2 pr-2 pt-2 ">
+                                        <a href="{{route('single-post-page',$national_post->slug)}}" class="d-flex">
+                                            <h4 class="">{{ \Illuminate\Support\str::limit(strip_tags($national_post->title), 50) }}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="card-text pl-2 pr-2 pb-2">
+                                            <p>{!! \Illuminate\Support\str::limit(strip_tags($national_post->content), 50) !!}
+                                            @if (strlen(strip_tags($national_post->content)) > 50)
+                                                <a href="{{ route('single-post-page', $national_post->slug) }}"
+                                                   class="text-danger">বিস্তারিত...</a>
+                                            @endif
+                                            </p>
+                                    </div>
                                 </div>
-                                @endforeach
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="tab_for_content">
-                                <nav>
-                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-                                           role="tab" aria-controls="nav-home" aria-selected="true">সর্বশেষ</a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                                           role="tab" aria-controls="nav-profile" aria-selected="false">জনপ্রিয়</a>
-                                    </div>
-                                </nav>
-                                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                         aria-labelledby="nav-home-tab">
-                                        <ul>
-                                            @foreach($latest_news as $l_news)
-                                                <li class="ml-3">
-                                                    <a class="d-flex" href="{{route('single-post-page',$l_news->slug)}}">
-                                                        <img height="70" width="100" alt="{{ $l_news->slug }}"
-                                                             src="{{ $l_news->thumbnail }}">
-                                                        <p class="ml-3 mr-2">{{ $l_news->title }}</p>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                                         aria-labelledby="nav-profile-tab">
-                                        <ul>
-                                            @foreach($popular_news as $p_news)
-                                                <li class="ml-3">
-                                                    <a class="d-flex" href="{{route('single-post-page',$p_news->slug)}}">
-                                                        <img height="70" width="100" alt="{{$p_news->slug}}"
-                                                             src="{{ $p_news->thumbnail }}">
-                                                        <p class="ml-3 mr-2">{{$p_news->title}}</p>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="tab_for_content">
+                            <nav>
+                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                       href="#nav-home"
+                                       role="tab" aria-controls="nav-home" aria-selected="true">সর্বশেষ</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                       href="#nav-profile"
+                                       role="tab" aria-controls="nav-profile" aria-selected="false">জনপ্রিয়</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                     aria-labelledby="nav-home-tab">
+                                    <ul>
+                                        @foreach($latest_news as $l_news)
+                                            <li class="ml-2 ">
+                                                <a class="d-flex"
+                                                   href="{{route('single-post-page',$l_news->slug)}}">
+                                                    <img alt="{{ $l_news->slug }}"
+                                                         src="{{ $l_news->thumbnail }}">
+                                                    <p class="ml-2 mr-2">
+                                                        {{ \Illuminate\Support\str::limit(strip_tags($l_news->title), 30) }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                     aria-labelledby="nav-profile-tab">
+                                    <ul>
+                                        @foreach($popular_news as $p_news)
+                                            <li class="ml-2">
+                                                <a class="d-flex"
+                                                   href="{{route('single-post-page',$p_news->slug)}}">
+                                                    <img alt="{{$p_news->slug}}"
+                                                         src="{{ $p_news->thumbnail }}">
+                                                    <p class="ml-2 mr-2">
+                                                        {{ \Illuminate\Support\str::limit(strip_tags($p_news->title), 30) }}
+                                                    </p>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -119,24 +153,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','রাজনীতি')}}">
+                            <span>
+                                রাজনীতি
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','রাজনীতি')}}">
                         <span>
-                            রাজনীতি
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
-                    <a href="#">
+                    <a href="{{ route('single-post-page', $last_international_post->slug) }}">
                         <img src="{{ $last_political_post->thumbnail }}" alt="" width="100%">
-                        <h5 class="pt-2">{{ $last_political_post->title }}</h5>
-                        <p style="text-align:justify">
-                            {{ Illuminate\Support\Str::of($last_international_post->content)->words(15) }}
+                        <h5 class="pt-2">
+                            {{ Illuminate\Support\Str::limit($last_political_post->title,38) }}
+                        </h5>
+                        <p>
+                            {!! \Illuminate\Support\str::limit(strip_tags($last_international_post->content), 100) !!}
+                            @if (strlen(strip_tags($last_international_post->content)) > 50)
+                                <a href="{{ route('single-post-page', $last_international_post->slug) }}"
+                                   class="text-danger">বিস্তারিত...</a>
+                            @endif
                         </p>
                     </a>
                     <ul>
                         @foreach ($political_posts as $key => $political_post)
                             <li>
-                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                src="{{ $political_post->thumbnail }}">
-                                    <p class="ml-3" style="text-align: justify">
+                                <a class="d-flex" href="{{route('single-post-page',$political_post->slug)}}"><img alt="{{$political_post->slug}}" src="{{ $political_post->thumbnail }}">
+                                    <p class="ml-3">
                                         {{ $political_post->title }}
                                     </p>
                                 </a>
@@ -145,24 +191,37 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','তথ্যপ্রযুক্তি')}}">
+                            <span>
+                                তথ্যপ্রযুক্তি
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','তথ্যপ্রযুক্তি')}}">
                         <span>
-                            তথ্যপ্রযুক্তি
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
-                    <a href="#">
+                    <a href="{{ route('single-post-page', $last_political_post->slug) }}">
                         <img src="{{ $last_info_tech_post->thumbnail }}" alt="" width="100%">
-                        <h5 class="pt-2">{{ $last_info_tech_post->title }}</h5>
-                        <p style="text-align: justify">
-                            {{ Illuminate\Support\Str::of($last_political_post->content)->words(15) }}
+                        <h5 class="pt-2">
+                            {{ Illuminate\Support\Str::limit($last_info_tech_post->title,38) }}
+                        </h5>
+                        <p>
+                            {!! \Illuminate\Support\str::limit(strip_tags($last_political_post->content), 100) !!}
+                            @if (strlen(strip_tags($last_political_post->content)) > 50)
+                                <a href="{{ route('single-post-page', $last_political_post->slug) }}"
+                                   class="text-danger">বিস্তারিত...</a>
+                            @endif
                         </p>
                     </a>
                     <ul>
                         @foreach ($info_tech_posts as $key => $info_tech_post)
                             <li>
-                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                <a class="d-flex" href="{{route('single-post-page',$info_tech_post->slug)}}"><img alt="{{$info_tech_post->slug}}"
                                                                 src="{{ $info_tech_post->thumbnail }}">
-                                    <p class="ml-3" style="text-align: justify">
+                                    <p class="ml-3">
                                         {{ $info_tech_post->title }}
                                     </p>
                                 </a>
@@ -171,21 +230,35 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','আইন-আদালত')}}">
+                            <span>
+                                আইন আদালত
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','আইন-আদালত')}}">
                         <span>
-                            আইন আদালত
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
-                    <a href="#">
+                    <a href="{{ route('single-post-page', $last_law_post->slug) }}">
                         <img src="{{ $last_law_post->thumbnail }}" alt="" class="w-100">
-                        <h5 class="pt-2">{{ $last_law_post->title }}</h5>
-                        {!! Illuminate\Support\Str::of($last_law_post->content)->words(15) !!}
+                        <h5 class="pt-2">
+                            {{ Illuminate\Support\Str::limit($last_law_post->title,38) }}
+                        </h5>
+                        <p>
+                            {!! \Illuminate\Support\str::limit(strip_tags($last_law_post->content), 100) !!}
+                            @if (strlen(strip_tags($last_law_post->content)) > 50)
+                                <a href="{{ route('single-post-page', $last_law_post->slug) }}"
+                                   class="text-danger">বিস্তারিত...</a>
+                            @endif
+                        </p>
                     </a>
                     <ul>
                         @foreach ($law_posts as $key => $law_post)
                             <li>
-                                <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                src="{{ $law_post->thumbnail }}">
+                                <a class="d-flex" href="{{route('single-post-page',$law_post->slug)}}"><img alt="{{$law_post->slug}}" src="{{ $law_post->thumbnail }}">
                                     <p class="ml-3">{{ $law_post->title }}</p>
                                 </a>
                             </li>
@@ -197,36 +270,45 @@
     </section>
     {{-- Politics Technology and Law Section End --}}
     {{-- Entertainment Section Start --}}
-    <section id="entertainment_and_feedback">
+    <section id="entertainment_and_feature">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>
+                            <h3 class="d-flex justify-content-between">
+                                <a class="section_header" href="{{route('category-page','বিনোদন')}}">
+                            <span>
+                                বিনোদন
+                            </span>
+                                </a>
+                                <a class="section_link" href="{{route('category-page','বিনোদন')}}">
                         <span>
-                            বিনোদন
-                        </span>
+                                সব খবর ...
+                            </span>
+                                </a>
                             </h3>
                         </div>
-                        <a href="#" class="d-flex">
-                            <div class="col-md-5">
-                                <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
-                                <p class="text-justify">
-                                    {{ Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) }}
-                                </p>
-                            </div>
-                            <div class="col-md-7">
-                                <img src="{{ $last_entertainment_post->thumbnail }}" alt="" class="img-fluid">
-                            </div>
-                        </a>
+                        <div class="card ml-3 mr-3 pt-3 pb-3">
+                            <a href="#" class="d-flex">
+                                <div class="col-md-5">
+                                    <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
+                                    <p class="text-justify">
+                                        {{ Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) }}
+                                    </p>
+                                </div>
+                                <div class="col-md-7">
+                                    <img src="{{ $last_entertainment_post->thumbnail }}" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                        </div>
                         <div class="col-md-12">
                             <div class="row slider">
                                 @foreach ($entertainment_posts as $key => $entertainment_post)
                                     <div class="col-md-3 pt-3"><img src="{{ $entertainment_post->thumbnail }}" alt=""
                                                                     class="img-fluid">
                                         <p class="pt-2">
-                                            {{ $entertainment_post->title }}
+                                            {{ \Illuminate\Support\str::limit($entertainment_post->title, 30) }}
                                         </p>
                                     </div>
                                 @endforeach
@@ -235,12 +317,31 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('tag-page','ফিচার')}}">
+                            <span>
+                                ফিচার
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('tag-page','ফিচার')}}">
                         <span>
-                            ফিচার
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <ul>
+                        <li>
+                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                                            src="{{ asset('frontend/images/international.jpg') }}">
+                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
+                                                            src="{{ asset('frontend/images/international.jpg') }}">
+                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                            </a>
+                        </li>
                         <li>
                             <a class="d-flex" href="#"><img height="70" width="100" alt=""
                                                             src="{{ asset('frontend/images/international.jpg') }}">
@@ -271,33 +372,44 @@
         </div>
     </section>
     {{-- Entertainment Section End--}}
-    {{-- Lifestyle and Education Section Start --}}
-    <section id="national_international_news">
+    {{-- Lifestyle and international Section Start --}}
+    <section id="international_lifestyle">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','আন্তর্জাতিক')}}">
+                            <span>
+                                আন্তর্জাতিক
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','আন্তর্জাতিক')}}">
                         <span>
-                            আন্তর্জাতিক
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <div class="row">
-                        <div class="col-md-6">
-                            <a href="#">
-                                <img src={{ $last_international_post->thumbnail }}" alt="{{ $last_international_post->slug }}
-                                " width="100%">
-                                <h5 class="pt-2">{{ $last_international_post->title }}</h5>
-                                <p>{{ Illuminate\Support\Str::of($last_international_post->content)->words(20) }}
+                        <div class="col-md-6 mt-2">
+                            <a href="{{route('single-post-page',$last_international_post->slug)}}">
+                                <img class="img-fluid" src="{{ $last_international_post->thumbnail }}" alt="{{$last_international_post->slug}}">
+                                <h5 class="pt-2">
+                                    {{ Illuminate\Support\Str::limit($last_international_post->title,38) }}
+                                </h5>
+                                <p class="text-justify">
+                                    {{ Illuminate\Support\Str::of($last_international_post->content)->words(25) }}
                                 </p>
                             </a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 pl-0">
                             <ul>
                                 @foreach ($international_posts as $international_post)
-                                    <li class="ml-3">
-                                        <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                        src="{{ $international_post->thumbnail }}">
-                                            <p class="ml-3">{{ $international_post->title }}</p>
+                                    <li class="ml-2">
+                                        <a class="d-flex" href="{{route('single-post-page',$international_post->slug)}}">
+                                            <img class="img-fluid" alt="{{ $international_post->slug }}" src="{{ $international_post->thumbnail }}">
+                                            <p class="ml-2">
+                                                {{ Illuminate\Support\Str::limit($international_post->title,29) }}
+                                            </p>
                                         </a>
                                     </li>
                                 @endforeach
@@ -306,29 +418,38 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','লাইফস্টাইল')}}">
+                            <span>
+                                লাইফস্টাইল
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','লাইফস্টাইল')}}">
                         <span>
-                            লাইফস্টাইল
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <div class="row">
-                        <div class="col-md-6">
-                            <a href="#">
-                                <img src="{{ $last_lifestyle_post->thumbnail }}" alt="" width="100%">
-                                <h5 class="pt-2">{{ $last_lifestyle_post->title }}</h5>
+                        <div class="col-md-6 mt-2">
+                            <a href="{{route('single-post-page',$last_lifestyle_post->slug)}}">
+                                <img class="img-fluid" src="{{ $last_lifestyle_post->thumbnail }}" alt="{{$last_lifestyle_post->slug}}">
+                                <h5 class="pt-2">
+                                    {{ Illuminate\Support\Str::limit($last_lifestyle_post->title,29) }}
+                                </h5>
                                 <p class="text-justify">
-                                    {{ Illuminate\Support\Str::of($last_lifestyle_post->content)->words(15) }}
+                                    {{ Illuminate\Support\Str::of($last_lifestyle_post->content)->words(25) }}
                                 </p>
                             </a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 pl-0">
                             <ul>
                                 @foreach ($lifestyle_posts as $key => $lifestyle_post)
-                                    <li class="ml-3">
-                                        <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                                                        src="{{ $lifestyle_post->thumbnail }}">
-                                            <p class="ml-3" style="text-align:justify">
-                                                {{ $lifestyle_post->title }}
+                                    <li class="ml-2">
+                                        <a class="d-flex" href="{{route('single-post-page',$lifestyle_post->slug)}}">
+                                            <img class="img-fluid" alt="{{$lifestyle_post->slug}}" src="{{ $lifestyle_post->thumbnail }}">
+                                            <p class="ml-2">
+                                                {{ Illuminate\Support\Str::limit($lifestyle_post->title,29) }}
                                             </p>
                                         </a>
                                     </li>
@@ -347,41 +468,49 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="division_btn btn-group">
-                                <li><a href="javascript:void(0);" data-filter="*">Todos</a></li>
+                    <div class="row card">
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <div class="division_btn text-center">
+                                    <ul class="division_btn btn-group">
+                                        <li class="division_btn_li">
+                                            <a class="btn btn-sm" href="javascript:void(0);" data-filter="*">সারাদেশ</a>
+                                        </li>
+                                        @foreach($divisions as $division)
+                                            <li class="division_btn_li">
+                                                <a class="btn btn-sm" href="javascript:void(0);" data-filter="{{$division->id}}">{{$division->name}}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="container" class="grid w-100">
                                 @foreach($divisions as $division)
-                                    <li><a href="javascript:void(0);"
-                                           data-filter="{{$division->id}}">{{$division->name}}</a></li>
+                                    @foreach($division->posts as $division_news)
+                                        <div class="post-item col-md-4 " data-filter="{{$division->id}}">
+                                            <a href="{{route('single-post-page',$division->slug)}}">
+                                                <div class="card-img">
+                                                    <img alt="{{$division_news->slug}}"
+                                                         src="{{ $division_news->thumbnail }}">
+                                                </div>
+                                                <h5 class="py-2">
+                                                    {{ Illuminate\Support\Str::limit($division_news->title,34) }}
+                                                </h5>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 @endforeach
-                            </ul>
-                        </div>
-                        <div id="container" class="grid w-100">
-                            @foreach($divisions as $division)
-                                @foreach($division->posts as $division_news)
-                                    <div class="post-item col-md-4 " data-filter="{{$division->id}}">
-                                        <a href="{{route('single-post-page',$division->slug)}}">
-                                            <div class="card-img">
-                                                <img alt="{{$division_news->slug}}"
-                                                     src="{{ $division_news->thumbnail }}">
-                                            </div>
-                                            <h5 class="py-2">
-                                                {{$division_news->title}}
-                                            </h5>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <h5>Map</h5>
-                    <div id="map_container" class="map_container">
-                        <svg version="1.1" id="map" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-201 -372.5 560 776.5"
-                             style="enable-background:new -201 -372.5 560 776.5;" xml:space="preserve">
+                    <div class="card">
+                        <h5 class="card-header text-center text-capitalize">Map</h5>
+                        <div id="map_container" class="map_container card-body">
+                            <svg version="1.1" id="map" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-201 -372.5 560 776.5"
+                                 style="enable-background:new -201 -372.5 560 776.5;" xml:space="preserve">
 <style type="text/css">
     .st0 {
         opacity: 0.7;
@@ -592,9 +721,9 @@
     }
 
 </style>
-                            <g id="border">
-                                <g id="shadow">
-                                    <path d="M-138.8-67.2c0.6-0.5-0.1-0.2,0.6-0.5s3.5-0.1,3.5-0.1l0.6,0.2c0,0,1.1-0.1,1.5,0.4c0.4,0.5,0.4,1.1,0.9,1.4
+                                <g id="border">
+                                    <g id="shadow">
+                                        <path d="M-138.8-67.2c0.6-0.5-0.1-0.2,0.6-0.5s3.5-0.1,3.5-0.1l0.6,0.2c0,0,1.1-0.1,1.5,0.4c0.4,0.5,0.4,1.1,0.9,1.4
         s0.2,0.4,1.1,0.6c0.9,0.2,1.6,0.5,1.6,0.5l1.1-0.1l0.6-1.5l1.5-0.8c0,0,0.8,0.1,1.2,0.1s1.8,0.8,1.8,0.8l1.2,1.6
         c0,0,1,1.4,1.5,1.9c0.2,0.2,0.2,0.1,0.2,0.1c0,0.1,0.2,0.5,0.7,1.4c1.2,2.4,1.5,4,1.8,4.5s0.1,1.2,0.2,1.9s0.4,1.9,0.4,2.2
         s-0.4,1-0.5,1.4s-0.6,1-0.6,1l-0.5,0.8l0.5,0.8l0.8,0.5l0.1,1.1l0.5,1.1l0.1,0.9c0,0,0,1.1,0.5,1.1s1.8,0.8,1.8,0.8l0.9,1.5
@@ -711,96 +840,96 @@
         c0,0.5-0.4,1.2-0.3,1.7l-0.4-0.7L-66.9-179.7z M-75.9-184.9c0.2,0,1.1,0.1,1.8,0.2h-0.3l-2-0.1l-1-0.4
         C-77-185.1-76.2-184.9-75.9-184.9z M-77-186.2c0,0-0.3,0.4-0.4,0.7l-0.1-1l-1-0.9C-77.8-186.8-77-186.2-77-186.2z M-79.8-188.2
         c0.1,0,0.2,0.2,0.4,0.3l-1.2-0.4C-80.2-188.4-79.9-188.3-79.8-188.2z M-83.4-188.1l-1.2,0.2C-84.6-187.9-84-188.1-83.4-188.1z"></path>
-                                    <path d="M-122.1-16.4L-122.1-16.4L-122.1-16.4z"></path>
-                                    <path d="M-73.2,266.1l-5.8-2.6l-0.9-2.4v-6.4l-0.4-1.2c0,0,0-1,0-1.6s-0.8-2-0.8-2l-1.5-0.9l-0.5-2l-1.4-0.2l-0.1,1.8
+                                        <path d="M-122.1-16.4L-122.1-16.4L-122.1-16.4z"></path>
+                                        <path d="M-73.2,266.1l-5.8-2.6l-0.9-2.4v-6.4l-0.4-1.2c0,0,0-1,0-1.6s-0.8-2-0.8-2l-1.5-0.9l-0.5-2l-1.4-0.2l-0.1,1.8
         c0,0-0.1,1.2-0.1,2.1s1.1,1,1.1,1s0.1,0.6,0.1,1.1s0.5,1.1,0.5,1.1l0.4,0.9l-0.5,4l-0.9,4.8l1.5,0.8l1.9,1.9l2.5,2.2l0.8,2
         c0,0,1.5,2.8,1.9,2.8s1-0.1,1.6-0.1s1.8-1.9,1.8-1.9l-0.4-2.2L-73.2,266.1z"></path>
-                                    <path d="M88.9,64.1c0.1,0.4,0.8,1.2,1.1,1.5s0.6-0.4,1-0.6s0.8-0.8,0.8-0.8s0-0.8,0.2-1.5s0.6-0.1,1.5-0.1s1,0.4,1.5,0.4
+                                        <path d="M88.9,64.1c0.1,0.4,0.8,1.2,1.1,1.5s0.6-0.4,1-0.6s0.8-0.8,0.8-0.8s0-0.8,0.2-1.5s0.6-0.1,1.5-0.1s1,0.4,1.5,0.4
         s1.6,1.4,2,1.6s1.4,2.4,1.4,2.4s1.1,0,1.5,0s0.8-1.2,0.8-1.2l-0.9-1.4L98,63l-2-2c0,0-2-1.1-2.5-1.5s-0.8-0.5-1.4-0.6
         s-2-0.6-2.4-0.8s-2.5-1.6-3-1.9S84.9,56,84.9,56l-4-0.6L80.8,57c0,0,0.9,1.2,1.8,2.1s0.1,0.5,0.4,0.9s0.9,1,1,1.4s1.4,0.5,2.5,0.9
         s0.6,0,1.5,0.1s0.1,0.9,0.1,0.9S88.8,63.8,88.9,64.1z"></path>
-                                    <path d="M13.1,20.6c0.1,0.8,0,0,0.8,0.4s0.6,0.5,0.9,0.9s0.2,1,0.2,1s0.5,0,1.6,0s1-0.1,2.2-0.1s0.9-0.1,1.5-0.2s0.8-0.9,0.8-1.4
+                                        <path d="M13.1,20.6c0.1,0.8,0,0,0.8,0.4s0.6,0.5,0.9,0.9s0.2,1,0.2,1s0.5,0,1.6,0s1-0.1,2.2-0.1s0.9-0.1,1.5-0.2s0.8-0.9,0.8-1.4
         s-0.4-0.6-0.8-1.1s-1-0.4-2-0.9s0,0-1.4-1.2s-0.6-0.4-0.6-0.4l-2.2,0.8h-0.4c0,0,0,0-0.4,0.4s0,0-0.2,0.8S13,19.9,13.1,20.6z"></path>
-                                    <path d="M-0.5-9.5c-0.2-0.4-0.9-1.1-0.9-1.1s0,0-0.4-1.1s-0.2-0.5-0.6-1s-0.9-1-0.9-1l-2.4,0.1c0,0-0.2,0.9-0.4,1.5s0,1,0,1
+                                        <path d="M-0.5-9.5c-0.2-0.4-0.9-1.1-0.9-1.1s0,0-0.4-1.1s-0.2-0.5-0.6-1s-0.9-1-0.9-1l-2.4,0.1c0,0-0.2,0.9-0.4,1.5s0,1,0,1
         s0.5,0.1,1,0.5s0.6,0.9,1,1.1s1,0.8,1,0.8s0,0.5,0,1.4s0,1.8,0,2.8s1.1,0,1.1,0l2,2.2c0,0,0,0,0.6-0.1s0.6-0.5,0.6-0.5l0.1-0.5
         c0,0,0.4-1.1,0.5-1.1S1-7.6,1-7.6s0,0-1.1-0.6S-0.2-9.1-0.5-9.5z"></path>
-                                    <path d="M-9.9-4.6h0.1C-9.8-4.8-9.9-4.8-9.9-4.6z"></path>
-                                    <path d="M-5.5-3.2c-0.9-0.2-0.8-0.2-1.8-1.4h-0.6H-9h-0.8C-9.6-4.3-9.3-3.3-9-3.1c0.4,0.2,0.9,0.5,0.9,0.5S-7-1.4-6.3-1.1
+                                        <path d="M-9.9-4.6h0.1C-9.8-4.8-9.9-4.8-9.9-4.6z"></path>
+                                        <path d="M-5.5-3.2c-0.9-0.2-0.8-0.2-1.8-1.4h-0.6H-9h-0.8C-9.6-4.3-9.3-3.3-9-3.1c0.4,0.2,0.9,0.5,0.9,0.5S-7-1.4-6.3-1.1
         s1.4-0.5,1.4-0.5L-4-2.4L-4.5-3C-4.6-3-4.6-3-5.5-3.2z"></path>
-                                    <path d="M-5.6-23.1l-0.8,1.9l-0.9,1.5c0,0-0.1,0.6-0.2,1s-0.2,1.9-0.2,1.9l1.5,1.4c0,0,0.6,0,1.2-0.1s1.1-0.6,1.1-0.6s0-1.4,0-2
+                                        <path d="M-5.6-23.1l-0.8,1.9l-0.9,1.5c0,0-0.1,0.6-0.2,1s-0.2,1.9-0.2,1.9l1.5,1.4c0,0,0.6,0,1.2-0.1s1.1-0.6,1.1-0.6s0-1.4,0-2
         s-0.5-3.6-0.8-4.4S-5.6-23.1-5.6-23.1z"></path>
-                                    <path d="M3.9-56.7c0-0.4-1.5,0.6-1.5,0.6s-1,0.6-1.8,1.4L0-54.2c0,0,0,0-1,0.5s0,0-0.2,0.6s-0.2,0.9-0.2,0.9s0.5,1.9,1,1.9
+                                        <path d="M3.9-56.7c0-0.4-1.5,0.6-1.5,0.6s-1,0.6-1.8,1.4L0-54.2c0,0,0,0-1,0.5s0,0-0.2,0.6s-0.2,0.9-0.2,0.9s0.5,1.9,1,1.9
         s0.6-0.1,1.4-0.8s0,0,0.5-0.1s0.4-0.8,1-1.5s0,0,1.5-0.9s0-0.5,0.1-1.5S3.9-56.4,3.9-56.7z"></path>
-                                    <path d="M0.2-55.5l0.8-1l1.1-0.8v-1c0,0-0.2-1.8-0.6-1.8s-0.9,0.2-1.2,0.2s-0.9,1-0.9,1l-1.2,0.6l-0.6,1.8v1l0.6,0.2l1.5-0.1
+                                        <path d="M0.2-55.5l0.8-1l1.1-0.8v-1c0,0-0.2-1.8-0.6-1.8s-0.9,0.2-1.2,0.2s-0.9,1-0.9,1l-1.2,0.6l-0.6,1.8v1l0.6,0.2l1.5-0.1
         L0.2-55.5z"></path>
-                                    <path d="M0.1-97.7v2.8l-0.2,1.2c0,0,0-0.1-0.6,0.4s-1.2,0.5-1.2,1s0.2,1.1,0.2,1.1l1.8,0.4l0.5,1.1c0,0,0.4,0.2,0.4,0.8s1.2,1,0,1
+                                        <path d="M0.1-97.7v2.8l-0.2,1.2c0,0,0-0.1-0.6,0.4s-1.2,0.5-1.2,1s0.2,1.1,0.2,1.1l1.8,0.4l0.5,1.1c0,0,0.4,0.2,0.4,0.8s1.2,1,0,1
         s-0.8,0-1.2,0S-1.6-88-1.6-88l-0.2-0.9L-2-87.1c0,0-0.1,1,0.2,1.2s-0.4-0.1,0.4,0.2s0.5-0.9,0.8,0.4s0.4,0.9,0.2,1.8
         s-0.1,1.2,0.6,1.5s1.1,0.5,1.5-0.1s0.8-2.6,0.8-2.6s1.2,1.6,2.4,1.4s0.4,0.6,1.1-0.2s1.4-1.5,1.4-2.9S6-95,6-95v-1.6
         c0,0-0.8-0.2-0.9-1.4s-0.8-1.9-0.8-2.2s0-1,0-1l-1.5-0.1l-0.6,0.8l0.1,2.1l-0.9,1H0.1V-97.7z"></path>
-                                    <path d="M-5.2-119.1l-0.8-0.6c0,0-0.1-0.8-0.1-2s-0.1-0.9-0.2-1.2s-0.5-0.8-0.5-1.1s-0.8-0.5-1.1-0.5s-1,0.6-1,0.6l0.6,2.2
+                                        <path d="M-5.2-119.1l-0.8-0.6c0,0-0.1-0.8-0.1-2s-0.1-0.9-0.2-1.2s-0.5-0.8-0.5-1.1s-0.8-0.5-1.1-0.5s-1,0.6-1,0.6l0.6,2.2
         c0,0,0.2,0.5,0.2,1.1s0.5,0.9,0.6,1.2s0.5,0.9,0.5,0.9s-1.1,0.6-1.2,1.1s-0.2,1.2-0.4,1.6s-0.2,1.1-0.2,1.9s0,0,0,0.9
         s0.5,0.2,2,2.5c1.2,1.8,1.4,1.1,1.4,0.7c0,0.3,0,1,0,1.3c0,0.4,0.4,3.1,0.8,3.2s1.6,1.8,1.6,2.4s-0.4,3.4-0.4,4.2s1.1,0,2-0.2
         s0,0,0.9-1.5s0.4-0.6,0.4-0.6s0.8-0.9,0.6-1.2s0-2.5,0-2.5s0.5-1.4,1-1.5s0.1-1.5,0.1-1.5v-2.8l-0.5-3.4c0,0-1.9-0.6-2-1.8
         s0.6-0.9,0.6-0.9s0,0-0.2-1.6s-1.5-0.6-1.8-1s-0.8-0.9-0.8-0.9l-0.4,0.8c0,0,0.5,1.8,0.5,2.1s1,1.5,1,1.5l-0.6,0.5l-1.8-0.4
         c0,0-0.4-0.6-0.6-1s0-1,0-1.4S-5.2-119.1-5.2-119.1z"></path>
-                                    <path d="M-1-124l-0.8-0.2h-1.9v0.6l0.2,1.4c0,0,0.8,0.6,1.1,0.8c0.3,0.2,0.4,0.6,0.4,0.6l0.8,0.5l1.1,1.4l0.6,1l0.9-0.2l-0.5-1.1
+                                        <path d="M-1-124l-0.8-0.2h-1.9v0.6l0.2,1.4c0,0,0.8,0.6,1.1,0.8c0.3,0.2,0.4,0.6,0.4,0.6l0.8,0.5l1.1,1.4l0.6,1l0.9-0.2l-0.5-1.1
         L0.1-120l-0.4-1l-0.1-1.1v-0.9L-1-124z"></path>
-                                    <path d="M-16.2-141.3c0.1,0.2,0.7,0.2,0.7,0.2s0.3,0.9,0.3,1.1s0.5,1.4,0.5,1.4l0.7,0.9c0,0,0.4-0.5,0.4-0.8s0.3-1.4,0.3-1.4
+                                        <path d="M-16.2-141.3c0.1,0.2,0.7,0.2,0.7,0.2s0.3,0.9,0.3,1.1s0.5,1.4,0.5,1.4l0.7,0.9c0,0,0.4-0.5,0.4-0.8s0.3-1.4,0.3-1.4
         l0.5-0.1c0,0,0-0.9,0.1-1.1s0-1.1,0-1.3s-0.4-0.8-0.4-0.8l-0.3-0.2l-1-0.4l-0.2-0.9L-15-146l-0.2-1.1l-0.5,0.1l-1.1,0.1h-0.5
         l-0.8,1.6c0,0,1,0.6,1.2,0.6s0.2,0.8,0.2,0.8s0.4,0.8,0.4,1.1S-16.3-141.5-16.2-141.3z"></path>
-                                    <path d="M-17.6-148.8c0.2,0,0.9,0.1,1.4,0s0.2-0.2,0.4-0.5s0.5-0.6,0.6-0.8s0.8-1.2,0.8-1.2l0.1-1.6l-0.9-0.4c0,0,0.1-0.8-0.3-1.1
+                                        <path d="M-17.6-148.8c0.2,0,0.9,0.1,1.4,0s0.2-0.2,0.4-0.5s0.5-0.6,0.6-0.8s0.8-1.2,0.8-1.2l0.1-1.6l-0.9-0.4c0,0,0.1-0.8-0.3-1.1
         s-0.2-0.4-0.2-0.4l-0.7,0.7l-0.4,1.4l-0.6,0.7c0,0-0.5,0.8-0.7,1.1s-0.1,0.9-0.1,0.9v1.2C-18.4-148.9-17.9-148.8-17.6-148.8z"></path>
-                                    <path d="M-2.6-190.9c0-0.9-0.1-0.6-0.3-0.9s-0.2-0.5-0.5-0.9s-0.6-0.6-0.6-0.6l-1.3-0.8l-1.4,0.8c0,0,0.1,0.8,0.2,0.9s0,0.8,0,1.1
+                                        <path d="M-2.6-190.9c0-0.9-0.1-0.6-0.3-0.9s-0.2-0.5-0.5-0.9s-0.6-0.6-0.6-0.6l-1.3-0.8l-1.4,0.8c0,0,0.1,0.8,0.2,0.9s0,0.8,0,1.1
         s0.4,0.4,1.3,0.9s0.6,0.2,0.9,0.4s0.4,0.8,0.4,0.8s0,1.1,0,1.4s0.1,0.5,0.1,1.4s0.8,0.7,0.8,0.7s0.3-0.2,0.5-0.3s0.1-0.6,0.1-0.8
         s0-1.2,0-1.8S-2.6-190-2.6-190.9z"></path>
-                                    <path d="M1.6-246.6c0.4,0.2,1,0.1,1.2,0s0.4-0.4,0.7-0.8s0.7-0.3,0.7-0.3s0.4-1.5,0.4-2s0-0.9,0-2s0,0-0.5-1.3l-1-0.6l0.2,0.7h-1
+                                        <path d="M1.6-246.6c0.4,0.2,1,0.1,1.2,0s0.4-0.4,0.7-0.8s0.7-0.3,0.7-0.3s0.4-1.5,0.4-2s0-0.9,0-2s0,0-0.5-1.3l-1-0.6l0.2,0.7h-1
         l-0.5,0.3l-0.1,1.2v0.2l0.1,0.2v0.6c0,0-0.2,0-0.2,0.4c0,0.4-0.4,0.1-0.6,0.2c-0.2,0.1-0.1,1.1-0.1,1.1s-0.3,1.1-0.3,1.2
         S1.2-246.9,1.6-246.6z"></path>
-                                    <path d="M10.1-259.4c-0.6-0.5-0.1-0.9-0.1-1.2c0-0.3,0.4-0.3,0.4-0.8s0-1.8,0-2.8s0.3-2.1,0.4-2.8s-0.7-0.6-0.7-0.6
+                                        <path d="M10.1-259.4c-0.6-0.5-0.1-0.9-0.1-1.2c0-0.3,0.4-0.3,0.4-0.8s0-1.8,0-2.8s0.3-2.1,0.4-2.8s-0.7-0.6-0.7-0.6
         s-0.2,0.7-0.4,1.1c-0.2,0.4-1.1,1.2-1.1,1.2s-0.3,0.8-0.6,1.4c-0.3,0.6-0.3,0.3-0.4,0.6c-0.1,0.3-0.6,0.4-0.8,0.6
         s-0.6,0.2-1.1,0.2s-0.7,0-1.2,0s-1.1,0.5-1.3,0.7s0,0.7,0,0.7L4-260l1.1,0.4l0.6,0.2c0,0,0.2,0.9,0.3,1.3c0.1,0.4,0,0-0.1,1.6
         s-0.2,1.4-0.3,2c-0.1,0.6,0.4,0.4,0.7,0.4s0.9-0.1,3.3-0.2s0.4-0.1,0.8-0.3s0,0,0-1.2c0-1.2,0.5-2.1,0.7-2.6
         S10.6-258.9,10.1-259.4z"></path>
-                                    <path d="M3.6-263.6c0.2,0.3,0.8-0.2,0.8-0.2l0.7-0.2l0.4-0.4c0,0,0.4-0.2,0.6-0.4s0.2-0.4,0.6-0.8s0.5-0.2,0.8-0.4
+                                        <path d="M3.6-263.6c0.2,0.3,0.8-0.2,0.8-0.2l0.7-0.2l0.4-0.4c0,0,0.4-0.2,0.6-0.4s0.2-0.4,0.6-0.8s0.5-0.2,0.8-0.4
         s0.2-0.8,0.4-0.9s0.4-0.4,0.6-0.6s0-0.3,0.1-1.6c0.1-1.3-0.1-0.5-0.7-0.8c-0.6-0.3-0.2,0-0.2,0l-0.9,0.2l-0.6,0.9
         c0,0-0.2,0.4-0.2,0.8s-0.2,0.4-0.4,0.5s-0.4,0.6-0.4,0.6s-0.4,0.4-0.6,0.5s-0.3,0.5-0.8,0.7c-0.5,0.2,0,0-0.4,0.5
         s-0.1,0.6-0.2,0.9C3.1-264,3.3-263.9,3.6-263.6z"></path>
-                                    <path d="M12.7-279c-0.2,0.1-0.8,0.5-1,0.8c-0.2,0.3-0.4,0.1-0.6,0.6s-0.1,0.7-0.3,0.9c-0.2,0.2-0.1,0.2-0.6,0.5
+                                        <path d="M12.7-279c-0.2,0.1-0.8,0.5-1,0.8c-0.2,0.3-0.4,0.1-0.6,0.6s-0.1,0.7-0.3,0.9c-0.2,0.2-0.1,0.2-0.6,0.5
         c-0.5,0.3-0.4,0.5-0.9,0.5s-0.9,0.2-0.9,0.2l-1.1,1.3c0,0-0.4,0.2-0.5,0.5c-0.1,0.3-0.1,0.6-0.1,0.9c0,0.3-0.5,0.6,0,0.9
         s-0.1,0.1,0.5,0.4c0.6,0.3-0.4,0.4,0.6,0.2s0.9-0.5,1.4-0.8c0.5-0.3,0.7-0.8,1-1.1c0.3-0.3,0.4-0.6,0.7-0.8s0.3-0.4,0.6-0.5
         s-0.8,0.1,0.4-0.4s0.8-0.4,1.4-0.4s0.4,0,1.2,0s1,0,1,0l0.1-1.5l0.1-1.5c0,0-0.4-0.9-0.8-0.9S12.9-279.2,12.7-279z"></path>
-                                    <path d="M-93.8-43.6c0.3-0.1,0.9,0,1.2,0s0.9,0.2,1.6,0.2s0.7,0.3,0.7,0.3l0.6,0.8c0,0,1.2,1,1.4,1.3s0.2-0.6,0.1-0.8
+                                        <path d="M-93.8-43.6c0.3-0.1,0.9,0,1.2,0s0.9,0.2,1.6,0.2s0.7,0.3,0.7,0.3l0.6,0.8c0,0,1.2,1,1.4,1.3s0.2-0.6,0.1-0.8
         s-0.2-0.7-0.2-1.1s-0.2-0.4-0.4-0.8s-0.2-0.4-0.4-0.6s-0.4-0.2-0.6-0.2s-1.1-0.2-2-0.4s0,0-0.1-0.2s-0.3-0.2-0.7-0.5
         s-0.4-0.1-0.9-0.1s-0.7,0-1,0s-0.8,0.2-0.9,0.4s-0.3,0.3-0.6,0.4s-0.2,0.6-0.2,0.6h-0.7c0,0-1.2,0-1.8,0s-0.4,0.2-0.7,0.2
         s-0.4,0.9-0.4,0.9s0,0.6,0,0.8s0.4,0,0.4,0h0.6h0.3c0,0,0,0,0.8-0.4s0.7-0.1,1.2-0.1s1.2-0.2,1.6-0.4s0,0,0.1-0.2
         S-94.1-43.5-93.8-43.6z"></path>
-                                    <path d="M170.5,190.6c-0.2-0.4-0.8-0.8-1.2-1.5s-0.5-1.2-0.8-2.4s-0.6-3.8-0.6-3.8s-0.8-3.2-1.2-3.8s-2.9-3.2-2.9-3.2l-2-3
+                                        <path d="M170.5,190.6c-0.2-0.4-0.8-0.8-1.2-1.5s-0.5-1.2-0.8-2.4s-0.6-3.8-0.6-3.8s-0.8-3.2-1.2-3.8s-2.9-3.2-2.9-3.2l-2-3
         l0.6-2.5c0,0,0.1-2.1,0.1-2.5s0-0.9,0-0.9l-1.2-0.6l-1.2,0.5l0.4,4.2l-1,1.6c0,0,0.5,2.1,0.5,2.6s-0.2,1.9-0.4,2.4
         s-0.8,2.2-0.8,3.2s-0.8,1.8-0.8,2.5s0,1.5,0,1.5l-0.4,28.4l-0.8,1.5c0,0,0.5,1.5-0.2,2.2s-0.9,1.5-0.9,1.5s-0.5,0.2-0.9,0.5
         s-0.6,0.6-1.1,1.2s-0.9,0.9-1,1.5s-0.6,2.5,0.2,3s1.2,0.6,2,0.6s0.6,0.1,1.2-0.2s0.5-0.4,0.9-0.9s0.4-0.5,0.4-0.5
         s-0.5-0.1,0.1-0.8s-0.6,0.1,0.6-0.6s0.9-0.2,1.9-1.1s1.4-1.2,1.5-1.9s-1.2,0.2,0.4-1.2s-0.1-0.8,1.6-1.5s-0.6,0,2.4-1
         s4.2-1.5,4.4-2s0.5-2.2,0.5-2.2l1.8-6.1l-0.5-6c0,0,0.5-2.9,0.5-3.5s0.1-1.9-0.1-2.4S170.8,191,170.5,190.6z"></path>
-                                    <path d="M175.9,176.5c-0.4-0.4-0.5-0.8-1.2-1s-1-0.8-2-0.8s-3.1,3-3.1,3v1.5c0,0,0.6,1.4,1.2,1.6s1.1,0.8,1.1,0.8s0.4,0.9,0.4,1.2
+                                        <path d="M175.9,176.5c-0.4-0.4-0.5-0.8-1.2-1s-1-0.8-2-0.8s-3.1,3-3.1,3v1.5c0,0,0.6,1.4,1.2,1.6s1.1,0.8,1.1,0.8s0.4,0.9,0.4,1.2
         s-1,0.8-0.4,1.1s0.9,0.6,1.6,0.4s1.2-0.9,1.2-0.9s0.2-0.2,0.4-0.6s0.1-0.4,0.1-0.4s1.4-0.1,1.4-1.1s0.2-1.8,0-2.5
         S176.2,176.9,175.9,176.5z"></path>
-                                    <path d="M218.9,180.3c-0.4-1-0.9-2.6-1.1-3.1s-2.5-3.9-2.5-3.9l-7.6-14l-1.1-3.5l-1.1-1.6c0,0-1.1-0.6-1.5-0.6s-1.5,0.1-1.5,0.1
+                                        <path d="M218.9,180.3c-0.4-1-0.9-2.6-1.1-3.1s-2.5-3.9-2.5-3.9l-7.6-14l-1.1-3.5l-1.1-1.6c0,0-1.1-0.6-1.5-0.6s-1.5,0.1-1.5,0.1
         l-0.6,0.5c0.1,0.5,0.4,1.6,0.4,2.9s-0.1,2.4-0.2,3s0.4,0.9-0.1,1.4s-0.8,1.5-1.1,1.9s-1.2,2.2-1.2,2.2s-0.2,1-0.4,1.9
         s-0.5,1.8-0.5,2.2s0.4,2.1,0.4,2.1s0.9,3.6,1.6,4.6s2.1,4.6,2.5,5.4s3.6,5.6,3.6,5.6s2.1,3.6,6.2,3.5l2.9-1.8c0,0,0.9-0.8,1.4-1
         s0.8,0,1.2-0.8s0.9-0.8,0.9-1.6s0.2-1.8,0.1-2.9S219.2,181.3,218.9,180.3z"></path>
-                                    <path d="M190.9,151.4c0,0-0.8,0.1-1.4,0.2s-0.2,1.4-0.2,1.4l-1.1,0.1l-1,0.6c0,0,0,0.5,0,1s1,1,1,1l1.5,0.1l1.4-0.9
+                                        <path d="M190.9,151.4c0,0-0.8,0.1-1.4,0.2s-0.2,1.4-0.2,1.4l-1.1,0.1l-1,0.6c0,0,0,0.5,0,1s1,1,1,1l1.5,0.1l1.4-0.9
         c0,0,0.8-1.8,0.8-2.2s-0.2-1-0.2-1L190.9,151.4z"></path>
-                                    <path d="M254.6,262.8c0-0.6,0.9-1.8,0.9-2.1s0.2-1.1,0.2-1.6s0,0,1.4-2.1s0.2-1.5,0.5-2s0-2-0.2-2.8s-0.1-1.6-0.2-2
+                                        <path d="M254.6,262.8c0-0.6,0.9-1.8,0.9-2.1s0.2-1.1,0.2-1.6s0,0,1.4-2.1s0.2-1.5,0.5-2s0-2-0.2-2.8s-0.1-1.6-0.2-2
         s-0.6-1.5-0.6-1.5l0.4-1.5l-0.9-0.9l-1-2l-1.1,0.6l-0.4,1.8c0,0-0.8,0.4-1,0.9s-0.4,1.4-0.5,2s0,1.8,0.2,2.6s0.2,1.1,0.8,1.8
         s-0.1,0.8-0.4,1.9s-0.1,4.1-0.1,5s-1.1,1.8-1.6,2.5s-0.8,1.8-1.4,2.6s-0.5,3.1-0.5,3.1l1.8,1.5l1.8-0.6c0,0,0.4-2.2,0.5-2.6
         s1.1-2.2,1.1-2.2S254.6,263.4,254.6,262.8z"></path>
-                                    <path d="M267.4,299.3c1.4-0.4,1.9-2,1.9-2.6s-0.4-4.4-0.4-4.9s0.1-3.2,0.1-3.2s0.6-1.8,0.6-2.8s-0.4-4.2-0.4-4.2l-1.5-1.1
+                                        <path d="M267.4,299.3c1.4-0.4,1.9-2,1.9-2.6s-0.4-4.4-0.4-4.9s0.1-3.2,0.1-3.2s0.6-1.8,0.6-2.8s-0.4-4.2-0.4-4.2l-1.5-1.1
         l-1.6-3.1l-1-2.2l-0.6-1.9l-0.9-2.6v-2.9V265l-1.2-0.2h-1.1l-0.5,0.6l-0.4,1.5l0.2,0.6l0.8,0.6c0,0-0.2,1.2,0,1.6s0.2,1.6,0.2,1.6
         s0,0.9,0,1.4s-0.4,1-0.8,1.4s-0.1,0.5-1,1s-0.8,0.4-0.8,0.4l-1.1-0.4l-0.5-0.6l0.2-1.2l0.9-0.2c0,0,0.1,0.5,0.5-0.6
         s0.5-3.2,0.5-3.2l-0.1-2l-1.4-0.8h-1.1c0,0,0.4-0.9-0.6,0.8s-1.2,2.4-1.2,2.4s-1,1.5-1,2s-0.2,1.4-0.2,2.4s-0.1,1.8-0.1,2.8
         s0.2,2.9,0.2,2.9l1.1,0.6l0.4,2.1l0.6,0.6l0.5,2.8l0.8,0.8c0,0,0.5,3.5,0.5,3.9s0,0.5-0.8,1.9s-0.4,0.8-1.4,2.9s-1.1,2.5-1.1,3.2
         s0.5,1.9,1,2.4s0.5,2.5,1.5,2.2s0.9-0.5,1.5-0.6s1.8-1,1.8-1s-0.4-1.8,0-2.2s0.5-1.5,0.9-1.5s0.9-0.1,0.9-0.1s0.6,1.5,1.1,1.6
         s1.2,0.4,2.5,0.4S266,299.6,267.4,299.3z"></path>
-                                    <path d="M352.4,323.6c0-1-0.1-1.6-0.1-2s-1.1-2-1.1-2l-1.8-5l-2.5-10.1L344,277l1.2-23.9l1.4-6.1l-0.8-4.1l-1.4-3l-1.4-4.6
+                                        <path d="M352.4,323.6c0-1-0.1-1.6-0.1-2s-1.1-2-1.1-2l-1.8-5l-2.5-10.1L344,277l1.2-23.9l1.4-6.1l-0.8-4.1l-1.4-3l-1.4-4.6
         l-0.9-4.6c0,0-0.2-3.6-0.2-4s-1.1-5.9-1.1-5.9l-1.5-0.8c0,0,0-3.2,0.1-3.6s0.8-1.4,0.8-1.4s0,0,0.5,0s1.9,0.1,1.9,0.1
         s1.5-1.1,1.9-1.4s0.1-1.6,0.1-1.6l-1.5-2.6l-1.8-3l-0.2-5l0.2-3.2l-1.4-1.4l-0.8-3.9l0.6-5.1l-0.6-2.6l-2.2-4.4L336,165l-0.1-0.6
         l-1.5-1l-1.1-4.1l1-2v-4.4l-1.2-1.5c0,0,0.1-1.6,0.1-2.2s0.2-2.4,0.2-2.4l-0.8-1.6l-0.4-5.5l-1.2-1.5c0,0-4.1-2.6-5.1-3.5
@@ -932,7 +1061,7 @@
         c0,0.4-0.5,1.9-0.8,2.8v-0.7H168.4z M160.7-139.6l2.3,1c0,0,0.1,0.1,0.1,0.3L160.7-139.6z M164.1-132.6l-0.7-1.3l0.1-2.8l-0.4-1.4
         c0.2,0.4,0.4,1.1,0.5,1.8C163.8-134.9,163.5-134.1,164.1-132.6s0.7,2.3,0.7,2.3L164.1-132.6z M165.9-57.1l-0.6,0.2
         c1.4-0.8,3.1-1.9,3.1-1.9v-2l1.4,2.1c0,0,1.8,2.5,2.8,3.3l-0.6-0.1l-3.2-3.8l-0.4,0.5L165.9-57.1z"></path>
-                                    <path d="M69.6,232.1c0.9-1,2.2-2.6,2.2-2.6s1.2-1.5,1.8-2.1s0.9-1.8,0.9-1.8L75,220c0,0,0-1.5,0.5-1.6s1.9-2.1,1.9-2.1v-1.8
+                                        <path d="M69.6,232.1c0.9-1,2.2-2.6,2.2-2.6s1.2-1.5,1.8-2.1s0.9-1.8,0.9-1.8L75,220c0,0,0-1.5,0.5-1.6s1.9-2.1,1.9-2.1v-1.8
         c0,0,1.5-0.4,1.8-0.8s0.8-2.5,0.8-2.5s-1.5-1.4-1.9-1.8s-1.5-2-1.5-2s-0.5-1,0-1.4s1.1,0,1.2-1.4s-0.2-3-0.2-3.6s0.5-2,0.5-2h2.2
         c0,0-0.2,1.5,0,2.8s0.5,3.5,0.5,3.5s-0.6,1.9-0.4,2.4s1.1,2,1.1,2.4s0.1,2.2,0.1,2.8s-0.1,1.1-0.4,1.6s-0.9,1.2-1,1.6
         s-0.9,1.4-0.9,2s-1,2.4-1,2.4l-0.9,1.4c0,0,0.8,1.4,1.4,1.8s2,1.1,2,1.1s0.4,1.6,0.9,1.6s0.8,2.1,2,0s0.4-1,1.6-3.1s1.1-2.9,1.5-3
@@ -1053,18 +1182,18 @@
         M50.6,95.9h-0.8c0.2,0,0.6-0.1,1-0.2L50.6,95.9z M51.6,95.2l-0.1-0.3H52L51.6,95.2z M52.9,94.9H54l0.3,0.2L52.9,94.9z M54.8,95.5
         l0.7,0.5c0,0,1,1.9,1,3.6c-0.1-0.4-0.8-3-0.8-3L54.8,95.5z M56.8,105l-0.2-2.8c0,0.4,0.9,2.9,0.9,2.9s0.8,0.8,1.6,1.5L56.8,105z
         M66.5,98.1C66.6,98,66.8,98,67,98l-1.4,0.5C66,98.4,66.3,98.3,66.5,98.1z M66.4,101.1l-1.2-2.4l1,1.9l1.2,0.9L66.4,101.1z"></path>
-                                    <path d="M107,108.8c0-0.4-1.1-1.1-1.8-1.8s-1.2-2.2-1.8-2.9s-1.4-1.6-2.4-2.4s-1.6-1.6-1.6-1.6l-0.9,1.1c0,0-1,1-2,1
+                                        <path d="M107,108.8c0-0.4-1.1-1.1-1.8-1.8s-1.2-2.2-1.8-2.9s-1.4-1.6-2.4-2.4s-1.6-1.6-1.6-1.6l-0.9,1.1c0,0-1,1-2,1
         s-0.5,0.2-1.4,0.8s-0.6,0.8-1.1,1.6s-0.5,1.1-1.1,2.2s-0.6,0.9-1.2,1.6s-0.5,1.6-0.9,2.4s1.5,1,1.9,1.2s3.4,0.4,3.4,0.4h3
         c0,0,0.5-0.4,0.6-0.8s0.4-0.8,0.4-0.8s0.8-0.4,1.1-0.5s1.2,0.1,1.2,0.1l0.5,0.6l0.5,1.4c0,0,0,1.1,0,1.9s1.2,1.5,1.2,1.5
         s1.1,0.9,1.9,1.5s1.5,0.5,2,0.5s0.9-0.8,1.5-1.2s-0.2-1.1-0.2-1.5s-0.9-1.4-0.9-1.4s-0.8-1.2-1.5-2s-0.5-1.5-0.5-1.5
         S107,109.1,107,108.8z"></path>
-                                    <path d="M110.1,122.9c-1.2-0.8-1-0.4-1.6-0.5s-1.6,0-2.1,0s-2.8-0.4-3.1-0.5s-0.6-0.5-1.2-0.5s-1,0.1-1.4,0.1s-1.1,0.4-1.8,0.4
+                                        <path d="M110.1,122.9c-1.2-0.8-1-0.4-1.6-0.5s-1.6,0-2.1,0s-2.8-0.4-3.1-0.5s-0.6-0.5-1.2-0.5s-1,0.1-1.4,0.1s-1.1,0.4-1.8,0.4
         s-1.1-0.2-2.5-0.1s0,0-0.5,0.2s-0.4,0.5-1.1,1.4s-0.5,0.9-1.6,1.6l-1.8-0.8c0,0,0,0-0.9-0.2s0,0-0.4-0.2s-0.6,0-0.6,0l-1.6-0.4
         c0,0,0,0-0.9,0.5s-0.5,0.9-0.5,1.9s0.1,6.5-0.1,8.2s-0.4,0.8-0.8,1.2s1.2,1.5,1.8,1.6s1.2,0.4,1.9,0.8s1.1,0.6,1.6,0.9
         s0.1,0.6,0.1,1.1s-0.2,1.2-0.5,1.6s-0.1,1.6-0.1,2.1s0.6,0.9,0.9,1.4s1,1.8,1,1.8s0.5,0,0.9,0s0.9-0.4,1.2-0.6s2-1.8,2.2-2.8
         s0-1.9,0-3.6s0-2.5,0-2.5l-0.9-1.2V134c0,0,1.6-0.9,2-0.9s2.5,0.1,3.8,0.2s0.6-0.5,1.2-0.6s1.1-0.8,1.1-0.8s1.4,0.2,4.2,0.2
         s1.5-1.4,1.5-1.4l1.1-0.1c0,0,2.4-1.4,2.8-1.8s0-2.6,0-2.6s-0.1-0.6-2.1-2.8S111.4,123.6,110.1,122.9z"></path>
-                                    <path d="M135,172.3c-0.4-0.8-0.5-1.5-0.5-1.5l-9-6.5l-1.1-5.9c0,0,0-1.1,0-1.5s0-1.1-0.5-1.2s-2.2-1-2.8-1.2s-2.6-1-2.6-1
+                                        <path d="M135,172.3c-0.4-0.8-0.5-1.5-0.5-1.5l-9-6.5l-1.1-5.9c0,0,0-1.1,0-1.5s0-1.1-0.5-1.2s-2.2-1-2.8-1.2s-2.6-1-2.6-1
         l-1.9-1.5l-2.1-0.9l-0.6-12.1l-0.8-1.8l-0.6-1.4c0,0-0.8-1.5-1.1-1.5s-2.9,0-4.1,0s-4,0-4.5,0s-2,0.5-2,0.5l-0.5,1.2l-1.1,2.5
         c0,0,0.5,0.9,0.5,1.6s-0.2,3.4-0.2,3.4l-0.8,1l-0.6,1.1L98,147l-0.2,3l-1.1,2v2.4l0.2,0.9l0.5,0.8c0,0,0.4,1.6,1.1,1.9
         s1.4,0.4,1.4,0.4c0.8,0.5,1.9,2.8,1.9,2.8s0.5,1,1,1s1.4,0,1.8,0.1s0.5-0.1,1.5,0.8s0,0.2,1,0.9s1.8,1.2,2.1,1.8s0.5,0.8,1.1,2
@@ -1078,59 +1207,59 @@
         s0.2-2.2,0.2-2.2s1-0.5,1-0.9s0-0.4,0-0.4s1.1-0.1,1.5-0.4s-0.5,0.4,0.4-0.2s-1.1-0.1,0.9-0.6s1.1-0.2,2-0.5s1.4-0.8,1.9-0.8
         s1.1-1.5,1.1-1.5l0.9-1.2v-1.6c0,0,0.2-0.5,0.8-0.9s0.9-1.1,1.8-1.5s1.6-0.6,2.2-1.5s0.1-0.4,0.6-1.9s0.4-1.6,0.6-2.8
         s0.5-2.9,0.5-2.9l2.8-13.8l2.2-22.6c0,0-1.2-1.2-1.2-1.6S135.4,173,135,172.3z"></path>
-                                    <path d="M153.1,184c0-0.2,0-0.3-0.1-0.4c0.1,0.1,0.3,0.2,0.6,0.2c0.8-0.1,0.6,0,1.4-0.1s0.2,0.6,0.8-0.1s-0.2-0.1,0.5-0.8
+                                        <path d="M153.1,184c0-0.2,0-0.3-0.1-0.4c0.1,0.1,0.3,0.2,0.6,0.2c0.8-0.1,0.6,0,1.4-0.1s0.2,0.6,0.8-0.1s-0.2-0.1,0.5-0.8
         s1.2-0.6,1.2-1.8s0.1-1.4,0-2s-0.1-2.2-0.5-2.2s-1.6-0.8-1.6-0.8l-1-0.1c0,0,0,0.5-0.4,0.8s-1.2,0.2-1.2,0.9s0.2-0.4,0.2,1.6
         s-0.1,3.1-0.1,3.5c0,0.2,0,0.4,0.1,0.7c-0.2-0.2-0.5-0.3-1.1-0.6c-0.9-0.4-0.9-1-0.9-1l-1.2,0.4c0,0-0.2,0.5-0.6,0.6
         s-1.6,0.9-1.6,0.9l1,1.9c0,0,0.5,0.5,0.9,0.8s0.8,0.4,0.8,0.4l1.2-0.4c0,0,0.8-0.2,1.1-0.2S153.1,184.9,153.1,184z"></path>
-                                    <path d="M149.5,175.3c-0.5,0.4-0.4,0.9-0.5,1.2s0,1.9,0,1.9l1.1,1.2l1.4-0.1v-0.9v-2l0.2-0.5v-1.8l0.9,0.5l0.1-0.6l-0.5-1
+                                        <path d="M149.5,175.3c-0.5,0.4-0.4,0.9-0.5,1.2s0,1.9,0,1.9l1.1,1.2l1.4-0.1v-0.9v-2l0.2-0.5v-1.8l0.9,0.5l0.1-0.6l-0.5-1
         c0,0-0.6,0-1.5,0.1s0,0-0.5,0.5S150,174.9,149.5,175.3z"></path>
-                                    <path d="M147.5,201.5c1.2-1.2,1-1.4,1.6-1.9s0.6-9,0.6-9l-0.4-0.8c0,0-0.1-0.5-1-0.5s-1.9-0.1-1.9-0.1l-0.2,0.5l-0.4,1.2l1.1,1.8
+                                        <path d="M147.5,201.5c1.2-1.2,1-1.4,1.6-1.9s0.6-9,0.6-9l-0.4-0.8c0,0-0.1-0.5-1-0.5s-1.9-0.1-1.9-0.1l-0.2,0.5l-0.4,1.2l1.1,1.8
         c0,0-0.1,0.8-0.5,1s-0.8-0.4-0.8,0.9s-0.1,2.1-0.1,2.5s-0.2,2.1-0.2,2.1s0.2-0.4-0.4,1.1s-0.5,2-1,2.4s-1,0.5-1.2,1.1
         s-0.4,1.5-0.4,1.5s0.9,0.6,1.6,0.6s2.9-3.2,2.9-3.2S146.2,202.8,147.5,201.5z"></path>
-                                    <path d="M150.4,205.8c0,0,0-2,0-2.5s-0.2-0.9-0.2-0.9s-0.6-0.6-1.6-0.1s0,0-0.6,0.6s0,0.8-0.4,1.6s0,2.6-0.2,3.6s1.1,2.9,1.1,2.9
+                                        <path d="M150.4,205.8c0,0,0-2,0-2.5s-0.2-0.9-0.2-0.9s-0.6-0.6-1.6-0.1s0,0-0.6,0.6s0,0.8-0.4,1.6s0,2.6-0.2,3.6s1.1,2.9,1.1,2.9
         l0.5,0.1l0.6-0.8c0,0,0-0.6,0.2-1.9s0,0,0.5-0.6s0.4-0.8,0.4-0.8L150.4,205.8z"></path>
-                                    <path d="M143.9,209.1l-1.4,0.5c0,0,0,1.4,0,1.8s0,1.5-0.2,3.1s0,0-1.1,0.5s0,0-0.5,0.2s-0.2,0.9-0.2,0.9l0.4,1.5v1.9l1.1,1.8h1.6
+                                        <path d="M143.9,209.1l-1.4,0.5c0,0,0,1.4,0,1.8s0,1.5-0.2,3.1s0,0-1.1,0.5s0,0-0.5,0.2s-0.2,0.9-0.2,0.9l0.4,1.5v1.9l1.1,1.8h1.6
         l1.1-0.4l1-2.9l-0.4-8.9L143.9,209.1L143.9,209.1z"></path>
-                                    <path d="M107.2,176.6c0,0.8-0.1,2.1,0.1,2.6s0.2-0.1,0.2,0.5s0.5,1.2,0.5,1.2s0.2,1.1,0.9-0.2s0.6-1.4,0.6-1.4l1-1.1
+                                        <path d="M107.2,176.6c0,0.8-0.1,2.1,0.1,2.6s0.2-0.1,0.2,0.5s0.5,1.2,0.5,1.2s0.2,1.1,0.9-0.2s0.6-1.4,0.6-1.4l1-1.1
         c0,0,0.2-1.2,0-2.1s-0.2-1.5-0.2-1.5l-0.8-0.1c0,0-0.4-0.8-0.4-1.1s-1-0.8-1-0.8l-0.5,2.4l0.1,0.6
         C107.9,175.6,107.2,175.9,107.2,176.6z"></path>
-                                    <path d="M105,177.5l-0.8-0.8l-1.2,0.6l-0.2,2.1l1.4,2.2l1,1l0.2,1.1l0.8,1.1c0,0,0.5,3.1,0.5,3.5s0.1,0.9,0.1,0.9l-0.1,4.6l0.5,2
+                                        <path d="M105,177.5l-0.8-0.8l-1.2,0.6l-0.2,2.1l1.4,2.2l1,1l0.2,1.1l0.8,1.1c0,0,0.5,3.1,0.5,3.5s0.1,0.9,0.1,0.9l-0.1,4.6l0.5,2
         l1.1-0.1c0,0-0.5-6.9-0.4-7.9s0.8-0.8,0.8-0.8l0.6,1.1l0.8,0.5c0,0,0-0.6,0.1-2.8s-0.1-0.6-0.9-1.6s0,0-0.5-0.2s-0.5-0.5-1-1
         s-1-1.1-1.6-1.5s-0.4-1.6-0.4-1.6L105,177.5z"></path>
-                                    <path d="M102.1,215.4c0,0,0,0-0.8,0s-0.6,0.4-1,0.8s-0.2,1.8-0.4,2.5s0.9,1.6,1.4,1.9s0.1,1,0.1,1l0.6,1.2l0.9-0.1l-0.1-2.5
+                                        <path d="M102.1,215.4c0,0,0,0-0.8,0s-0.6,0.4-1,0.8s-0.2,1.8-0.4,2.5s0.9,1.6,1.4,1.9s0.1,1,0.1,1l0.6,1.2l0.9-0.1l-0.1-2.5
         l0.2-3.8L102.1,215.4z"></path>
-                                    <path d="M98.8,217.8c0,0,0,0-0.8,0.6s-0.6,0.8-1.9,1.6s-1.5,1.5-1.5,1.5s-2,2.5-3.6,2.5s-0.9,0.2-1.1,2.6s-0.1,1.1-0.8,1.9
+                                        <path d="M98.8,217.8c0,0,0,0-0.8,0.6s-0.6,0.8-1.9,1.6s-1.5,1.5-1.5,1.5s-2,2.5-3.6,2.5s-0.9,0.2-1.1,2.6s-0.1,1.1-0.8,1.9
         s-0.4,1.2-0.1,2s0,0,0.5-0.2s0.9-0.5,0.9-0.5s0.9,0,1.5,0s0.4-0.8,0.4-1.1s1.4-0.6,1.4-0.6s0.6,0.1,1,0.2s0.2,0.6,0.1,1.5
         s-0.1,0.8-0.9,1.5s-1.4,0.8-2.1,1.1s-0.9,2.8-0.9,3.1s0.2,0.8,0.8,1.2s1.9,0.1,2.2,0.1s1.8-0.4,2.6-0.9s1.1-2.4,1.6-3.2
         s0.8-2.9,0.9-3.4s0.1-2.6,0.1-3.6s-0.4-2.5-0.4-3s0.5-4.9,0.5-4.9L98.8,217.8z"></path>
-                                    <path d="M103.1,241.3c-0.8-0.6-0.2,0.2-0.8-0.6s-0.4-0.2-0.5-0.9s-1.2-1.1-1.2-1.1s-1.1,3-1.5,3s-0.9,0.4-1.6,0.4s-1.5,0-2,0
+                                        <path d="M103.1,241.3c-0.8-0.6-0.2,0.2-0.8-0.6s-0.4-0.2-0.5-0.9s-1.2-1.1-1.2-1.1s-1.1,3-1.5,3s-0.9,0.4-1.6,0.4s-1.5,0-2,0
         s-1.1,0-1.1,0s-1-0.5-1.2,0.6s-0.5,2.6-0.5,3s0,0.4,0,1.9s0,2.5,0,3s0.2,0.9-0.1,1.6s-1.1,1-1.1,1.5s-0.5,1.4,0.1,1.4
         s1.2,1.2,2.5,0s1.8-1.9,1.9-2.2s0.4-0.1,0.9-1.4s0.4-1.1,1.1-2.1s0-1.1,1.2-1.4s1.4,0.5,1.8-0.2s0.8-1.1,0.8-1.5s-0.2-0.5,0.1-1.1
         s1-1.2,1-1.2s1.5-0.9,1.2-1.4S103.9,241.9,103.1,241.3z"></path>
-                                    <path d="M113.5,239.1c-0.2,0.4-0.9,0.9-0.9,0.9s0.2,0.5-0.1,1s-1.2,0.9-1.2,0.9h-0.8c0,0-0.6-1.2-1.8,0s-0.4,0.5-1.1,1.2
+                                        <path d="M113.5,239.1c-0.2,0.4-0.9,0.9-0.9,0.9s0.2,0.5-0.1,1s-1.2,0.9-1.2,0.9h-0.8c0,0-0.6-1.2-1.8,0s-0.4,0.5-1.1,1.2
         s-0.4,0.2-0.8,0.8s-0.8,2.4-0.8,2.4l0.5,1c0,0-0.2,2.9,0.9,1.6s2.4-3.6,2.4-3.6s-0.5-0.8,0.4-1s-0.6,0.2,0.9-0.2s0.9-0.8,2.1-0.8
         s2.5-2,2.5-2l-0.2-1.9C115.5,239.4,113.8,238.8,113.5,239.1z"></path>
-                                    <path d="M121,246.6c0,0,0.4-0.9-0.5-0.9s-0.8,0.6-0.8,0.6l-0.2,1.1c0,0-0.8,0.6-0.4,0.9s1,0.6,1,0.6s-0.4,0.5,0,0.6s0.5,0.9,1,0.2
+                                        <path d="M121,246.6c0,0,0.4-0.9-0.5-0.9s-0.8,0.6-0.8,0.6l-0.2,1.1c0,0-0.8,0.6-0.4,0.9s1,0.6,1,0.6s-0.4,0.5,0,0.6s0.5,0.9,1,0.2
         s0.5-0.6,0.5-0.6l1.5-0.5l-0.4-2L121,246.6z"></path>
-                                    <path d="M89,259.3l-1.6,0.2h-0.8l-0.4,0.5l1.1,0.9c0,0-0.4,0.4,1,0.8s1,1.1,1.9,0.2s0.9-0.1,0.9-0.9s0-1.2,0-1.2s-0.6-0.5-1-0.5
+                                        <path d="M89,259.3l-1.6,0.2h-0.8l-0.4,0.5l1.1,0.9c0,0-0.4,0.4,1,0.8s1,1.1,1.9,0.2s0.9-0.1,0.9-0.9s0-1.2,0-1.2s-0.6-0.5-1-0.5
         S89,259.3,89,259.3z"></path>
-                                    <path d="M85.5,255.6h-1.2l-1,0.5l-0.6,1c0,0-1.1,0.5-1.5,0.5s-1.8,0.2-1.8,0.2s-0.1-0.1,0,0.5s-1.4,0.9,0.9,1.1s1.2,0.4,2.2,0.2
+                                        <path d="M85.5,255.6h-1.2l-1,0.5l-0.6,1c0,0-1.1,0.5-1.5,0.5s-1.8,0.2-1.8,0.2s-0.1-0.1,0,0.5s-1.4,0.9,0.9,1.1s1.2,0.4,2.2,0.2
         s1.1,0.1,1.5-0.5s0.8-1.1,0.8-1.1s0.1,0.9,0.8-0.2s0.9-1.8,0.9-1.8L85.5,255.6z"></path>
-                                    <path d="M81.9,249.3c0.4,0,1.4,0.1,1.8-0.5s0.5-1.2,1.4-2.2s1.4-1.9,1.5-2.2s0-1.6,0-1.6s-0.1-0.6,1-1s1.9,0.1,1.9-1
+                                        <path d="M81.9,249.3c0.4,0,1.4,0.1,1.8-0.5s0.5-1.2,1.4-2.2s1.4-1.9,1.5-2.2s0-1.6,0-1.6s-0.1-0.6,1-1s1.9,0.1,1.9-1
         s0.4-2.2,0-2.9s-0.8-0.8-1-1.5s-0.6-1.2-1-1.6s-2.1-2.1-2.1-2.1s-1.2-0.1-1.2-0.5s-0.5-1-0.5-1s-0.1-0.6-0.9-0.6s-2.1,0-2.1,0
         l-1.8,1.4l0.1,1.2c0,0-1,1.4-0.5,1.8s2,1.5,2.1,1.9s0.4,0,0.4,1.5s0.5,1.1,0,2.1s-0.2,0.8-1.2,1.9s-0.2,0-1,1.1s-1.1,1.8-1.1,2.6
         s-0.4,2,0.2,2.5s1.1,0.9,1.8,0.9S81.5,249.3,81.9,249.3z"></path>
-                                    <path d="M77.9,232.8c0.5-1.4,0.8-1.5,0.5-2s-0.6-1-0.6-1l-1.1-0.5l-1.5,1.4c0,0-0.5-0.2-0.6,0.8s-0.4,1-0.4,1.5s-0.2,0.5-0.6,0.9
+                                        <path d="M77.9,232.8c0.5-1.4,0.8-1.5,0.5-2s-0.6-1-0.6-1l-1.1-0.5l-1.5,1.4c0,0-0.5-0.2-0.6,0.8s-0.4,1-0.4,1.5s-0.2,0.5-0.6,0.9
         s-0.8,1.1-0.8,1.1l-1,0.8l-0.9,0.8c0,0-0.5,0.1-0.5,0.6s0,0.8,0.9,1s1.1,0.1,1.5-0.2s1.1-1.1,1.6-1.5s-0.5,0.6,0.5-0.4
         s0.1-0.1,1-1s1.2-0.9,1.6-1.5S77.4,234.1,77.9,232.8z"></path>
-                                    <path d="M77.4,238.3l0.8-0.6l-1.2-1c-0.6,0.8-2.6,2.8-2.8,3.1s-0.4,0.9-0.6,1.2s-0.2,0.4-1,1.1s-1.1,1.2-1.1,1.2
+                                        <path d="M77.4,238.3l0.8-0.6l-1.2-1c-0.6,0.8-2.6,2.8-2.8,3.1s-0.4,0.9-0.6,1.2s-0.2,0.4-1,1.1s-1.1,1.2-1.1,1.2
         c-1,0.8-1.8,1-1.8,1.5s0.4,1.1-0.5,1.9s-0.6,1.6-0.6,1.6s0,0.6,0,1.6s-0.2,1.8-0.2,2.1s-0.2,0.5-0.2,1.2s0,1.5,0,2s-0.1,2,0.4,2
         s0.6,0.8,1.6-0.1s1.2-1.1,1.9-2s0.8,0.1,1-1.5s0.2-3,0.2-3.6s-0.2-1.4,0-1.8s-0.1-1,0.9-1.8s0.9-0.6,1.4-1.8s-0.1-0.9,0.6-1.8
         s0.9-1.5,0.9-1.5l-0.2-2.2l0.1-0.8L77.4,238.3z"></path>
-                                    <path d="M93.5,99.6c0.1,0,0.2,0,0.2,0l0,0c0,0,0.2,0,0.4,0c0.9,0,1.5-0.4,1.5-0.4l0.6-0.8l-0.1-1.8l-0.8-0.4l-0.2,0.9
+                                        <path d="M93.5,99.6c0.1,0,0.2,0,0.2,0l0,0c0,0,0.2,0,0.4,0c0.9,0,1.5-0.4,1.5-0.4l0.6-0.8l-0.1-1.8l-0.8-0.4l-0.2,0.9
         c0,0-0.5,0.2-0.9,0.5s-0.4,0.2-0.4,0.2s-0.9,0.1-0.9,0.5S92.9,99.6,93.5,99.6z"></path>
-                                </g>
-                                <path class="st1" d="M-71.5,268.2l5.2-18.2c0,0,8.7-11.3,9.3-13.3s16-8.7,16-8.7s-5.3-6.7-9.3-8.7s19.3-30,19.3-30l4.7,3.3
+                                    </g>
+                                    <path class="st1" d="M-71.5,268.2l5.2-18.2c0,0,8.7-11.3,9.3-13.3s16-8.7,16-8.7s-5.3-6.7-9.3-8.7s19.3-30,19.3-30l4.7,3.3
     c0,0,5.3,8.7,6.7,4.7c1.3-4,0.7-3.3,0.7-10s7.3-1.3,9.3-1.3s3.3,8,3.3,11.3s0,17.3-0.7,23.3s-4.7,12.7-8.7,18s2.7,0.7,6,0
     s2.7-4,6-4.7s0,4.7,0,4.7s-4.7,13.3-2.8,13.9c1.9,0.6,12.1-1.9,16.8-3.2s2-13.3,2-13.3l-8.7-18.7h6.7L11,212l0.7-6.7c0,0,0,0,0-2
     s0.7-6.7,0.7-6.7s-2-10-2-12.7s8.7-8.7,8.7-8.7l13.6-9.9l6.2,0.5L31.7,178l-7.9,14.5v6.7l4,7.3l3.3-1.3c0,0,2.7,0,6,0s6,5.9,6,5.9
@@ -1158,7 +1287,7 @@
     s-3.4,1.2-9.2,1.5s-1.4,8.9-1.4,8.9l3.1,11.9L124,83.2l4.7,26c0,0,1.3,16.7,2,18.7s9.3,6.7,12.7,8c3.3,1.3,12-1.3,14.7-1.3
     s5.3,0,16,0s12.7-4.7,16-6s9.3-11.3,11.3-14s8-0.7,9.5,0.8s1.6,4.2,1.6,4.2l0.8,14.3c0,0,10.7,2,14,2.7S300,66.3,300,66.3l33,85
     l-16,28l-42-26l-27-13l-41-37l-55,23l-14,21.8l8,7l-29.8,61.2L-71.5,268.2z"></path>
-                                <path class="st2" d="M316.5,142.1c-0.9-0.4-0.5-0.2-1.2-0.9s-0.6-1-1.6-2.2s-1.4-0.6-1.4-0.6s-1.4,0-2.1-0.1s-0.5-0.8-0.6-1.1
+                                    <path class="st2" d="M316.5,142.1c-0.9-0.4-0.5-0.2-1.2-0.9s-0.6-1-1.6-2.2s-1.4-0.6-1.4-0.6s-1.4,0-2.1-0.1s-0.5-0.8-0.6-1.1
     s-0.6-1.7-0.6-1.7l0.9-0.2c0,0,0.9-0.9,1.2-1.2c0.4-0.4,0.9-0.4,0.9-0.4l0.9-0.9l0.5-0.9l-1.6-1c0,0,0,0-0.8-1.1
     c-0.7-1.1,0-0.9,0-1.2s-0.5-0.9-0.5-0.9l-0.8,1c0,0-0.1,1.2-0.2,1.6s-1.4-0.8-1.4-0.8s0,0-0.4,0s-0.9,0.1-1.9,0s0,0-1-0.6
     s-0.2-0.9-0.2-1.4s0.4-0.9,0.4-1.4s0.8-0.1,1.2-0.2s0.9-1.9,0.9-1.9s-0.6-0.1-1.1-0.1s-0.2-1.2-0.6-1.5s0-1.2,0-1.2l-0.1-2.8
@@ -1192,11 +1321,11 @@
     s1.5-0.1,2.4-0.8s0,0,0-0.5s0-0.8-0.2-1.1s-0.5-0.4-0.9-0.4s-1.6-1.9-1.9-2.2s-0.9-0.9-1.9-1.5s-0.2-0.5-0.8-0.9s0.2-1.4,0.2-1.4
     l0.4-0.8c0,0,1.2,0,1.8-0.1s1.2,0,1.8,0s0.9,0.4,0.9,0.4l0.6,1.1c0,0,2.2,0,2.6,0s0.8,0.1,1.2,0.2s1.4,0.6,1.8,0.8s0,0.8,0,1.2
     s0.1,1.4,0.1,1.4l1,1.1l0.5,0.6l1.6-0.9l1.1-0.2c0,0,0-1.1,0-1.6s0-1,0-1l-0.6-0.5C317.8,142.6,317.4,142.5,316.5,142.1z"></path>
-                            </g>
-                            <g id="rangpur">
-                                <a href="{{route('subcategory-page','রংপুর')}}"
-                                   xlink:href="">
-                                    <path class="st3" d="M-152-370.6c0,0,0.5,2-2.2,3.8l-1.6,1l0.2,7.5c0,0-3.2,2.5-3.2,3.4l0.2,5c0,0,0.9,1.9,1.6,1.9l1.6-0.9l0.4-3.6
+                                </g>
+                                <g id="rangpur">
+                                    <a href="{{route('subcategory-page','রংপুর')}}"
+                                       xlink:href="">
+                                        <path class="st3" d="M-152-370.6c0,0,0.5,2-2.2,3.8l-1.6,1l0.2,7.5c0,0-3.2,2.5-3.2,3.4l0.2,5c0,0,0.9,1.9,1.6,1.9l1.6-0.9l0.4-3.6
     l1.8-1.4h1l1,0.9l1.1,1.1l2,0.2l4.1,0.1l1.2,0.2l0.9,0.9l1,0.2l0.5,0.5l0.4,1.5v1v1.4v1.4l0.5,1.5c0,0,0.4,1,0.9,1.2
     c0.5,0.2,1.5,1.2,1.5,1.2l0.8,0.4v0.9v1.6l-0.4,0.6c0,0-0.4,0.4-1.2,0.5c-0.8,0.1-3,0.4-3,0.4s-1,0-1.4,0c-0.4,0-1.4-0.9-1.4-0.9
     s0.2-0.5-0.1-0.5s-0.9-0.2-0.9-0.2l-0.8-0.1c0,0-0.5-0.1-0.6,0.6c-0.1,0.7-0.1,0.8-0.1,0.8l-1.2,0.8v0.8v0.4l-0.8,0.5
@@ -1275,9 +1404,9 @@
     l-7.2-6c0,0-0.4-0.9-1.1-0.9s-0.8-1-0.8-1l-0.6-2.1l-1.9-0.1c0,0-0.6,0-1-0.1s-0.6-0.2-1.5-0.5c-0.9-0.3-0.9-0.2-0.9-0.2
     s-1.4-0.6-1.5-1c-0.1-0.4-0.2-1-0.2-1s0-0.5-0.1-0.9c-0.1-0.4-0.4-2.8-0.4-3.1c0-0.3,0-2.5,0-2.5l-0.1-1.5l-0.6-0.8
     C-149.4-371.1-151.4-371-152-370.6z"></path>
-                                    <g class="st16">
-                                        <image style="overflow:visible;opacity:0.75;" width="86" height="43"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAsCAYAAAD/709QAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAA
+                                        <g class="st16">
+                                            <image style="overflow:visible;opacity:0.75;" width="86" height="43"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAsCAYAAAD/709QAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAA
             GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAACgdJREFUeNrsmwmT2kgShSUhIY6m
             T9s7szG7+/9/2ezabTc0IARCqoWJl45v06WGZtsRc5iICmhdlfkqj5dZ6iT58fkun/SMc+kbzhfc
             91vLHb6z/Gfrk/YIHRtvIUQ4A9zQcy4mS9qjYPrCPW8Jamx8A6z9zjQGGP+vcDZp50bM0roIsDZ/
@@ -1325,56 +1454,56 @@
             dliECZpFW8ept/6dgD8zsKdk9i+yZRF2krh3HAoXKmq3Lxf+6sAmybf/k8DwEXo2RTNXnu9PUKq/
             JLBe9pf0yFwVGCI0L/wA9jI9Yhb9lqzmTwvsJXqG5Mfnj/f5rwADANxsEU6PePgGAAAAAElFTkSu
             QmCC" transform="matrix(0.7972 0 0 0.7972 -116.5603 -268.4205)">
-                                        </image>
-                                        <g>
+                                            </image>
                                             <g>
-                                                <path class="st17" d="M-97.7-262.6v14.7h-2.1c-1-1.5-2.6-2.9-5-4.2c-2.4-1.3-4.5-2-6.4-2l-0.7-2.5c2.9-1.9,6.8-3.7,11.8-5.5v-0.5
+                                                <g>
+                                                    <path class="st17" d="M-97.7-262.6v14.7h-2.1c-1-1.5-2.6-2.9-5-4.2c-2.4-1.3-4.5-2-6.4-2l-0.7-2.5c2.9-1.9,6.8-3.7,11.8-5.5v-0.5
           h-13.1v-2h17.1v2H-97.7z M-100-259.6c-2.8,1-5.4,2.2-7.9,3.6c2.9,1,5.5,2.5,7.9,4.6V-259.6z M-104.8-247.3c-0.7-0.7-1.6-1.3-3-2
           l1-1.9c1.3,0.5,2.4,1.3,3.4,2.5L-104.8-247.3z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-95.7-260.1c0-1.2,0.4-2.1,1.1-2.9c0.8-0.8,1.8-1.2,2.9-1.2c1.2,0,2.2,0.5,2.9,1.4c0.7,0.9,1,1.9,1,3.1
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-95.7-260.1c0-1.2,0.4-2.1,1.1-2.9c0.8-0.8,1.8-1.2,2.9-1.2c1.2,0,2.2,0.5,2.9,1.4c0.7,0.9,1,1.9,1,3.1
           c0,2.4-1.4,4-3.8,4C-94-255.7-95.7-257.6-95.7-260.1z M-90.8-248.5c-1.6-1.4-3.1-2.4-4.7-3.3l0-3.3c4.7,3.5,7.7,6.1,9.3,8.3v2.3
           L-90.8-248.5z M-93.6-260c0,1.1,1,2.2,2,2.2c1,0,1.9-0.8,1.9-1.9c0-1.2-0.8-2.3-1.8-2.3C-92.8-262-93.6-261.2-93.6-260z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-72.2-262.6v14.7h-2.3c0-0.8,0-1.6,0.1-2.8c0-1.1,0.1-2,0.1-2.5c0-2.6-0.2-4.2-0.7-4.8
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-72.2-262.6v14.7h-2.3c0-0.8,0-1.6,0.1-2.8c0-1.1,0.1-2,0.1-2.5c0-2.6-0.2-4.2-0.7-4.8
           c-2.4,1.1-5.1,2.5-8.3,4.2l-1-1.7c0.5-1,0.7-1.7,0.7-2.3c0-1.4-0.5-1.9-2.1-2.1l-0.7-1.8c0.8-1,1.7-1.6,2.9-2.1
           c1.1-0.5,2.3-0.7,3.5-0.7c1.3,0,2.5,0.3,3.3,1c0.6,0.5,1.3,1.3,2.2,2.5v-3.5h4.3v2H-72.2z M-79.9-262.3c-1,0-2.1,0.4-3.4,1.2
           c1.1,0.6,1.6,1.5,1.6,2.5c0,0.4-0.1,0.8-0.3,1.3l5.6-2.7c-0.3-0.6-0.7-1.1-1.4-1.6C-78.5-262-79.2-262.3-79.9-262.3z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-71.6-241.1c-0.2-1.1-0.5-1.8-0.8-2.3c-0.2-0.3-0.7-0.8-1.4-1.5c-1.2,1.5-2.4,2.3-3.7,2.3
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-71.6-241.1c-0.2-1.1-0.5-1.8-0.8-2.3c-0.2-0.3-0.7-0.8-1.4-1.5c-1.2,1.5-2.4,2.3-3.7,2.3
           c-2.3,0-3.5-1.5-3.5-3.7c0-0.8,0.3-1.4,1-1.9c0.6-0.4,1.3-0.6,2-0.6c1,0,2.1,0.3,3.1,1l0.5-0.9h2.4c-0.4,0.8-0.9,1.6-1,2
           c1.9,1.4,3,3,3,4.7L-71.6-241.1z M-78.7-245.7c0,0.6,0.6,1.2,1.3,1.2c0.7,0,1.5-0.6,1.7-1.4c-0.8-0.6-1.4-0.9-1.9-0.9
           C-78.2-246.8-78.7-246.2-78.7-245.7z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-56.2-262.6v14.7h-2.1c-1-1.5-2.6-2.9-5-4.2c-2.4-1.3-4.5-2-6.4-2l-0.7-2.5c2.9-1.9,6.8-3.7,11.8-5.5v-0.5
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-56.2-262.6v14.7h-2.1c-1-1.5-2.6-2.9-5-4.2c-2.4-1.3-4.5-2-6.4-2l-0.7-2.5c2.9-1.9,6.8-3.7,11.8-5.5v-0.5
           h-13.1v-2h17.1v2H-56.2z M-58.5-259.6c-2.8,1-5.4,2.2-7.9,3.6c2.9,1,5.5,2.5,7.9,4.6V-259.6z M-63.3-247.3c-0.7-0.7-1.6-1.3-3-2
           l1-1.9c1.3,0.5,2.4,1.3,3.4,2.5L-63.3-247.3z"></path>
+                                                </g>
                                             </g>
                                         </g>
-                                    </g>
-                                    <g>
                                         <g>
-                                            <path class="st17" d="M-93.9-308c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
+                                            <g>
+                                                <path class="st17" d="M-93.9-308c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
         c-2.9,5.7-5.9,11.5-8.8,17.2c-0.1,0.1-0.1,0.2-0.2,0.4c-0.2-0.4-0.4-0.7-0.6-1.1c-1.8-3.5-3.6-6.9-5.3-10.4c-1-2-2.1-4-3.1-6.1
         c-0.7-1.3-1.1-2.7-1.2-4.2c-0.1-2.6,0.5-4.9,2.1-6.9c1.6-2.1,3.8-3.4,6.5-3.8c0.4-0.1,0.9-0.1,1.3-0.2
         C-94.5-308-94.2-308-93.9-308z M-88.8-297.8c0-3.2-2.5-5.7-5.7-5.6c-3.1,0-5.6,2.6-5.6,5.7c0,3.1,2.6,5.6,5.8,5.6
         C-91.3-292.1-88.8-294.7-88.8-297.8z"></path>
-                                            <path class="st19" d="M-84.8-301.1c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
+                                                <path class="st19" d="M-84.8-301.1c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
         l0,4.6c0.4-0.1-0.3,0,0.2,0l-0.2,0c3.2,0,5.7,2.5,5.7,5.6l0,0c0,3.1-2.6,5.7-5.7,5.7c-0.3,0,0.3,0,0,0l0,16.8
         c0.1-0.2,0.2-0.3,0.2-0.4c2.9-5.7,5.9-11.5,8.8-17.2C-84-295.5-83.8-298.3-84.8-301.1z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
+                                    </a>
+                                </g>
 
-                            <g id="sylhet">
-                                <a href="{{route('subcategory-page','সিলেট')}}"
-                                   xlink:href="">
-                                    <path class="st3" d="M143.6-178.4l-19.2,0.6l2.3,4l-0.7,2.5l-2.8,0.8l2.3,3.3l-1.7,3.2l1.2,3l-0.5,5.8l6.8,4.5l4.9,0.1
+                                <g id="sylhet">
+                                    <a href="{{route('subcategory-page','সিলেট')}}"
+                                       xlink:href="">
+                                        <path class="st3" d="M143.6-178.4l-19.2,0.6l2.3,4l-0.7,2.5l-2.8,0.8l2.3,3.3l-1.7,3.2l1.2,3l-0.5,5.8l6.8,4.5l4.9,0.1
     c0,0,3.7,2.3,6.5,6c1.2,1.6,0.2,5.5,0.2,5.5l6.3-1.3l9.2-1l4.8-1.5l3.2,1.3c0,0,0.5,1,0.7,2.3s-0.2,2.2,0.5,3.7s0.7,2.3,0.7,2.3
     l1,3.3c0,0,0,4.8,0,5.3s0,4,0,4v2.5l6.7-0.3l2.5,0.3l0.2,3.2l-1.7,0.8c0,0,0.2,0.5,0,1.8s-1,2.2-1,2.2l-1.7,1.7l-0.3,2.3l3.2,3
     l2.2,1.7c0,0-0.3,1.5-0.3,2.2s-0.5,2.3-0.5,2.3l-2.3,1.2l-1.5,2.7l0.2,2.8l1.3,1.5l2.8,0.7c0,0,0.8,0,0.8,0.5s0,2.5,0,2.5
@@ -1395,9 +1524,9 @@
     v-3.2c0,0-1.8-0.2-2.5-0.2s-2.2,0-2.2,0l-1,2.2l-1.5,0.2l-4.8,1l-1.5,1.5l-3-1.2c0,0-1.5-0.8-2.5-0.8s-2.8-0.8-2.8-0.8l-3-1.5
     c0,0-3.2,0.8-4.2,0.8s-1.2,0.2-2,0.2s-4.2-3.5-4.2-3.5l-3-2.8h-3.2l-2.5,0.5l-1.5,2l-2,0.2h-5.2l-5-1l-3.2-0.8l-2.5,1l-3.2,2.2
     l-5,1.2l-4.8,1.5L143.6-178.4z"></path>
-                                    <g>
-                                        <g class="st18">
-                                            <image style="overflow:visible;" width="95" height="82" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAABTCAYAAAD5jtuOAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+                                        <g>
+                                            <g class="st18">
+                                                <image style="overflow:visible;" width="95" height="82" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAABTCAYAAAD5jtuOAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
             GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAApBJREFUeNrsmetO20AQRuPEuaFe
             QktpS6/v/2aVaGkAu3bwpWPpW2lYOSgqP7qEc6RPNo6DrLPj8XozmQAAAAAAAAAAAAAAAAAAAAAA
             AAAAAADAkZA98eseu/5+zz7yH3mtWbS/T34f7ffIf9x1Tl1m2sYDEER3Lm2qg/AU5AfJuWVuWShz
@@ -1411,22 +1540,22 @@
             9NH39l0k26/ftNGCWucqPakFthTk+z5e6Fgp8X20SHaI6PgFqt+zffZrO2OLZwv31to50c0/iJ6k
             Jjy1hbUsmuuHN93JiOT+gEpO+ter1OT7AYh/Hjwa0SnLj68lOzbRAAAAAAAAAAAAAAAAAAAAAAAA
             AAAAAHDU/BVgADK2EAh8LlXzAAAAAElFTkSuQmCC" transform="matrix(1 0 0 1 189 -178.3333)">
-                                            </image>
-                                        </g>
-                                        <g>
-                                            <path class="st17" d="M225.9-159.6c0.4,0.1,0.7,0.1,1.1,0.2c3.1,0.6,5.3,2.5,6.4,5.4c0.8,2.3,0.6,4.5-0.5,6.7
+                                                </image>
+                                            </g>
+                                            <g>
+                                                <path class="st17" d="M225.9-159.6c0.4,0.1,0.7,0.1,1.1,0.2c3.1,0.6,5.3,2.5,6.4,5.4c0.8,2.3,0.6,4.5-0.5,6.7
         c-2.4,4.7-4.8,9.3-7.2,14c0,0.1-0.1,0.2-0.2,0.3c-0.2-0.3-0.3-0.6-0.5-0.9c-1.5-2.8-2.9-5.6-4.3-8.5c-0.8-1.6-1.7-3.3-2.5-4.9
         c-0.6-1.1-0.9-2.2-0.9-3.5c-0.1-2.1,0.4-4,1.7-5.6c1.3-1.7,3.1-2.8,5.3-3.1c0.4-0.1,0.7-0.1,1.1-0.1
         C225.5-159.6,225.7-159.6,225.9-159.6z M230.1-151.2c0-2.6-2.1-4.6-4.7-4.6c-2.5,0-4.6,2.1-4.5,4.7c0,2.5,2.1,4.6,4.7,4.5
         C228-146.6,230.1-148.7,230.1-151.2z"></path>
-                                            <path class="st19" d="M233.3-153.9c-1.1-3-3.2-4.8-6.4-5.4c-0.4-0.1-0.7-0.1-1.1-0.2c-0.2,0-0.3,0-0.5,0c-0.4,0,0.4,0,0.1,0.1
+                                                <path class="st19" d="M233.3-153.9c-1.1-3-3.2-4.8-6.4-5.4c-0.4-0.1-0.7-0.1-1.1-0.2c-0.2,0-0.3,0-0.5,0c-0.4,0,0.4,0,0.1,0.1
         l0,3.7c0.3-0.1-0.2,0,0.1,0l-0.1,0c2.6,0,4.7,2,4.7,4.6l0,0c0,2.5-2.1,4.6-4.6,4.6c-0.2,0,0.2,0,0,0l0,13.7
         c0.1-0.1,0.1-0.2,0.2-0.3c2.4-4.7,4.8-9.3,7.2-14C234-149.4,234.1-151.7,233.3-153.9z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                    <g>
-                                        <image style="overflow:visible;opacity:0.75;" width="77" height="36"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAAAmCAYAAABqDa0qAAAACXBIWXMAAA0SAAANEgG1gDd0AAAA
+                                        <g>
+                                            <image style="overflow:visible;opacity:0.75;" width="77" height="36"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAAAmCAYAAABqDa0qAAAACXBIWXMAAA0SAAANEgG1gDd0AAAA
               GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAACYlJREFUeNrsmotzGtcVxgUsCIQk
               EMjW27EtxXabNG3SdtKZ/vd9Tjt9OGna2KoVO5Is64EEQuL92N7t/E7m6+2CwKmSTFtmzgDL3XvP
               +c77LImZt3slRlwPZ/5HXokp1kWUhOLuDaEh9F8NZGJCwAJHs47mHGUdpWLujcDqOWo6ajvqOxpw
@@ -1471,48 +1600,48 @@
               JcZVJ5zI3rTHgJiyIQ+u1yTx9ND+c7L1iTcP68fwMOrMKu8FiZP2J5smllyXfXtxz08n/dNNwitO
               h96G0zw0idvDil/761iJ97QnlMVOP56FU5zZl4lHSvrt0Asz4QT73wjcqGvTPq4bt0fC6121FwzH
               xM63OXPU7+FbyjXxYbf5StyWUP9/fYdf/xBgAC9n6lG6sC1xAAAAAElFTkSuQmCC"
-                                               transform="matrix(0.8485 0 0 0.8485 198.1667 -130.2727)">
-                                        </image>
-                                        <g>
-                                            <g class="st16">
-                                                <g>
-                                                    <path class="st17" d="M217.6-124.1c-3.3-2.1-5.9-3-8-3c-1.9,0-3.4,0.4-4.5,1.3c-1.2,0.9-1.8,2.3-1.8,4h1.9v1.9h-2v14.3H201
+                                                   transform="matrix(0.8485 0 0 0.8485 198.1667 -130.2727)">
+                                            </image>
+                                            <g>
+                                                <g class="st16">
+                                                    <g>
+                                                        <path class="st17" d="M217.6-124.1c-3.3-2.1-5.9-3-8-3c-1.9,0-3.4,0.4-4.5,1.3c-1.2,0.9-1.8,2.3-1.8,4h1.9v1.9h-2v14.3H201
             v-14.3h-2v-1.9h2c0-2.4,0.9-4.2,2.5-5.6c1.6-1.3,3.6-1.9,6.1-1.9c1.6,0,3.1,0.4,4.7,1c1.1,0.5,2.5,1.3,4.4,2.5L217.6-124.1z"></path>
-                                                </g>
-                                                <g>
-                                                    <path class="st17" d="M217.5-119.8v14.1h-2.2v-7.3c0-0.9-0.7-1.8-1.5-1.8c-0.7,0-1.5,0.7-2.2,2.3c-0.8,1.8-1.4,2.8-1.6,3.1
+                                                    </g>
+                                                    <g>
+                                                        <path class="st17" d="M217.5-119.8v14.1h-2.2v-7.3c0-0.9-0.7-1.8-1.5-1.8c-0.7,0-1.5,0.7-2.2,2.3c-0.8,1.8-1.4,2.8-1.6,3.1
             c-0.8,1.2-1.8,1.8-3,1.8c-0.6,0-1.4-0.3-2.4-1v-2.3c0.9,0.8,1.5,1.1,2.1,1.1c0.6,0,1.3-0.5,1.9-1.7c0.6-1,0.9-1.9,0.9-2.6
             c0-2.3-1.3-4.3-4.1-5.8h-1.9v-1.9h15.7v1.9H217.5z M215.3-119.8h-6.4c0.6,0.5,1.1,1.1,1.5,1.8c0.5,0.8,0.8,1.5,0.9,2.3
             c0.7-0.7,1.4-1.2,2.1-1.2c0.8,0,1.4,0.4,1.8,1.1V-119.8z"></path>
-                                                </g>
-                                                <g>
-                                                    <path class="st17" d="M221.9-105.5c-1.6-1.7-2.4-3.7-2.4-6.2c0-1.5,0.5-3,1.3-4.5c0.5-0.9,1.5-2.1,2.8-3.6h-5.4v-1.9h9.3v1.9
+                                                    </g>
+                                                    <g>
+                                                        <path class="st17" d="M221.9-105.5c-1.6-1.7-2.4-3.7-2.4-6.2c0-1.5,0.5-3,1.3-4.5c0.5-0.9,1.5-2.1,2.8-3.6h-5.4v-1.9h9.3v1.9
             c-1.6,0.6-2.9,1.7-4.1,3.2c-1.3,1.6-1.9,3.1-1.9,4.6c0,3.8,1.6,5.6,4.6,5.6c0.4,0,0.8-0.2,1.6-0.8v2.4c-0.6,0.3-1.2,0.4-1.8,0.4
             C224.1-104.5,222.6-104.8,221.9-105.5z"></path>
-                                                </g>
-                                                <g>
-                                                    <path class="st17" d="M242.1-119.8v14.3h-2.2c0-0.5,0-1,0-1.7c0-0.7,0.1-1.1,0.1-1.5c0-3.4-0.9-4.9-2.4-4.9
+                                                    </g>
+                                                    <g>
+                                                        <path class="st17" d="M242.1-119.8v14.3h-2.2c0-0.5,0-1,0-1.7c0-0.7,0.1-1.1,0.1-1.5c0-3.4-0.9-4.9-2.4-4.9
             c-0.5,0-1,0.3-1.4,0.9c-0.4,0.5-0.6,1.1-0.7,1.9H233c0-0.8-0.3-1.5-0.7-2c-0.4-0.6-1-0.9-1.6-0.9c-0.8,0-1.3,0.3-1.7,0.9
             c-0.4,0.5-0.6,1.2-0.6,2c0,1.6,1,2.5,3,2.5c0.2,0,0.4,0,0.9-0.1l-0.7,2.2c-0.4,0-0.7,0.1-0.9,0.1c-1.4,0-2.6-0.5-3.5-1.4
             c-0.9-0.9-1.3-2.1-1.3-3.5c0-2.9,1.9-4.9,4.8-4.9c1.4,0,2.6,0.8,3.5,2.3c1-1.5,2.1-2.3,3.3-2.3c0.9,0,1.6,0.6,2.2,1.7v-5.5
             h-15.4v-1.9h19.6v1.9H242.1z"></path>
-                                                </g>
-                                                <g>
-                                                    <path class="st17" d="M246.6-119.8v12.2c0.3,0,0.9,0,0.9,0c1.4,0.1,2.9-0.3,4.6-1.2c1.8-1,2.7-2.1,2.7-3.5
+                                                    </g>
+                                                    <g>
+                                                        <path class="st17" d="M246.6-119.8v12.2c0.3,0,0.9,0,0.9,0c1.4,0.1,2.9-0.3,4.6-1.2c1.8-1,2.7-2.1,2.7-3.5
             c0-1.6-0.7-2.3-2.2-2.3c-0.4,0-1.1,0.3-2.4,1l-0.9-2c1.2-0.9,2.6-1.2,4.1-1.2c1.2,0,2.1,0.4,2.8,1.3c0.6,0.8,0.9,1.8,0.9,3
             c0,1.7-0.8,3.2-2.3,4.4c-1.3,1.1-2.9,1.8-4.6,2.2c-1.2,0.3-3.1,0.4-5.7,0.4v-14.3h-1.5v-1.9h11.3l0-0.3c0-1-0.4-1.8-1.3-2.5
             c-0.8-0.6-1.7-0.9-2.8-0.9c-1.3,0-3.1,0.6-5.6,2l-0.7-1.7c2.4-1.5,4.5-2.2,6.5-2.2c1.7,0,3.1,0.6,4.2,1.7c1.1,1,1.8,2.3,1.8,3.9
             h2.1v1.9H246.6z"></path>
+                                                    </g>
                                                 </g>
                                             </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
-                            <g id="khulna">
-                                <a href="{{route('subcategory-page','খুলনা')}}"
-                                   xlink:href="">
-                                    <path class="st3" d="M25.8,164.2c0,0-0.9-4.1-0.9-4.6s0.4-2.5,0.4-2.5l-1.4-1.9c0,0-0.6-2-1-2.4c-0.4-0.4-1.4-3-1.4-3l0.6-1.1
+                                    </a>
+                                </g>
+                                <g id="khulna">
+                                    <a href="{{route('subcategory-page','খুলনা')}}"
+                                       xlink:href="">
+                                        <path class="st3" d="M25.8,164.2c0,0-0.9-4.1-0.9-4.6s0.4-2.5,0.4-2.5l-1.4-1.9c0,0-0.6-2-1-2.4c-0.4-0.4-1.4-3-1.4-3l0.6-1.1
           l-2.6-1.6c0,0,0.1-1.2,0.6-1.4s1.2-0.4,1.6-0.6c0.4-0.2,1.4-3.2,1.4-3.2s-0.6-2.4-0.6-2.9s-0.1-1.6,0-2.1c0.1-0.5,0.6-3.4,0.8-3.8
           c0.2-0.4-0.4-2.4-0.4-2.4s-1.5-0.6-1.5-1.2c0-0.6,0.2-1.2,0.9-2.1c0.7-0.9,0.6-0.9,0.6-0.9l1.2-2.8l-0.1-1.9c0,0-0.9-1.1-1.2-1.4
           c-0.3-0.3-3-1.1-3-1.1s-1-1.9-1.4-2.2c-0.4-0.3-0.9-2.2-0.9-2.2l-2.4-3.1l-2-1.4l-1.8-1l-0.8-3.8L9,103.4l-2.5-0.5
@@ -1597,9 +1726,9 @@
           s0.5-3.8,0.5-3.8s0.6-7-1.1-9.9c0,0-4.9-8.2-2.4-13.9l4-5.9l1.2-1.6l0.2-1.8c0,0,0.1-1.1-0.5-1.5c-0.6-0.4-1.6-1.5-1.6-1.5
           s-0.2-1.1-0.1-1.5c0.1-0.4,0.6-0.9,1-1c0.4-0.1,1-0.2,1-0.2l4.2-2.9c0,0,0.2-2.4,0.2-2.9s-0.1-2.4-0.1-2.4s-1.9-0.8-2.2-0.8
           s-2.8,0-2.8,0s-0.5-3.2-0.2-3.6s2.5-0.4,2.5-0.4s1.6,0,2,0c0.4,0,0.5,0,1,0s1.4,0.4,1.4-0.2S25.8,164.2,25.8,164.2z"></path>
-                                    <g>
-                                        <g class="st18">
-                                            <image style="overflow:visible;" width="100" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABVCAYAAABQBipiAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+                                        <g>
+                                            <g class="st18">
+                                                <image style="overflow:visible;" width="100" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABVCAYAAABQBipiAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
                 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAvJJREFUeNrsmgtP01AYhlfWCSig
                 eJmKN8T//7eMCfGGdOtl7TxL3pO8OXQIRpN2eZ7kTbeuJN15+p3bmEwAAAAAAAAAAAAAAAAAAAAA
                 AAAAAAAAAABGQ7Yj97/te6yTI1L+4z1nyetsi5B1j5w1Uv79/e5ZpjqmYmLjdzq2yftByxmTlNj4
@@ -1615,22 +1744,22 @@
                 7aT7Q+OzdX9L1xV3gfdtQej7WO09BGyTMIqfhbOB3ENcvMUfrKa2uZguDu8qYDQShijFKyYzSel4
                 s5MChizF72XbP0HspIA+piO4x50WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9+G3AAMAdo9nS2/5
                 hIAAAAAASUVORK5CYII=" transform="matrix(1 0 0 1 -89.9167 35.8333)">
-                                            </image>
-                                        </g>
-                                        <g>
-                                            <path class="st17" d="M-52.9,51.1c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
+                                                </image>
+                                            </g>
+                                            <g>
+                                                <path class="st17" d="M-52.9,51.1c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
         c-2.9,5.7-5.9,11.5-8.8,17.2c-0.1,0.1-0.1,0.2-0.2,0.4c-0.2-0.4-0.4-0.7-0.6-1.1c-1.8-3.5-3.6-6.9-5.3-10.4c-1-2-2.1-4-3.1-6.1
         c-0.7-1.3-1.1-2.7-1.2-4.2c-0.1-2.6,0.5-4.9,2.1-6.9c1.6-2.1,3.8-3.4,6.5-3.8c0.4-0.1,0.9-0.1,1.3-0.2
         C-53.4,51.1-53.1,51.1-52.9,51.1z M-47.7,61.3c0-3.2-2.5-5.7-5.7-5.6c-3.1,0-5.6,2.6-5.6,5.7c0,3.1,2.6,5.6,5.8,5.6
         C-50.2,67-47.7,64.4-47.7,61.3z"></path>
-                                            <path class="st19" d="M-43.7,58c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
+                                                <path class="st19" d="M-43.7,58c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
         l0,4.6c0.4-0.1-0.3,0,0.2,0l-0.2,0c3.2,0,5.7,2.5,5.7,5.6l0,0c0,3.1-2.6,5.7-5.7,5.7c-0.3,0,0.3,0,0,0l0,16.8
         c0.1-0.2,0.2-0.3,0.2-0.4c2.9-5.7,5.9-11.5,8.8-17.2C-43,63.5-42.7,60.8-43.7,58z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                    <g class="st16">
-                                        <image style="overflow:visible;opacity:0.75;" width="72" height="35"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAlCAYAAAAORcT9AAAACXBIWXMAAAv+AAAL/gFBkBnlAAAA
+                                        <g class="st16">
+                                            <image style="overflow:visible;opacity:0.75;" width="72" height="35"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAlCAYAAAAORcT9AAAACXBIWXMAAAv+AAAL/gFBkBnlAAAA
                 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAB/ZJREFUeNrsmotTE1cUxjdkISG8
                 34gKWlFsO33YWtvp39/pTB/aWodqSwERkAhCgEBIspts7535HedzmyCPdlqxO3NmN7t3z97znXO+
                 c+6FTND6yDhJTnHfnl2EIznOsA4RG9yUcen7TbnfcUGASlL2JWqUNzLnpNdJN7/rTo6cNJzkEX8/
@@ -1668,45 +1797,45 @@
                 labwEb8LdNkVCPxZOyJ8247j0q0KL9wnOhalvY9IqUVyeppnOQH3ovyXyRs5yfaQtumPOlN9yY50
                 u9cBatv+PPwPpMx/CiRdDlgD1ynbqdqXhKTaI8Ap03UfXYRUC06YEpk210mLdsFa/y1ZvDbfBZBO
                 oiMrnXhTGsZ3JpLOqicJ/j/eneNPAQYAqlIjWQakbmIAAAAASUVORK5CYII="
-                                               transform="matrix(0.9259 0 0 0.9259 -78.6667 95.6296)">
-                                        </image>
-                                        <g>
+                                                   transform="matrix(0.9259 0 0 0.9259 -78.6667 95.6296)">
+                                            </image>
                                             <g>
-                                                <path class="st17" d="M-62.7,99.4v16h-2.5c-2.7-2.3-6.4-4.1-11.1-5.5l-1-3.4c2,0,3.5-0.4,4.8-1c1.7-0.8,2.5-1.9,2.5-3.4
+                                                <g>
+                                                    <path class="st17" d="M-62.7,99.4v16h-2.5c-2.7-2.3-6.4-4.1-11.1-5.5l-1-3.4c2,0,3.5-0.4,4.8-1c1.7-0.8,2.5-1.9,2.5-3.4
           c0-0.6-0.1-1.3-0.4-1.9c-0.2,0.6-0.5,1.2-0.9,1.7c-0.6,0.8-1.3,1.4-2.1,1.4c-2.1,0-3.7-1.7-3.7-3.8v-2.3h2.8c0,0.3,0,0.5,0,0.7
           c0,0.2-0.1,0.4-0.1,0.6c-0.1,0.4-0.1,0.8-0.1,1c0,0.7,0.7,1.2,1.6,1.2c0.8-0.7,1.2-1.8,1.2-3.5h3c0.4,0.4,0.7,1.3,1,2.7
           c0.3,1.2,0.4,2.2,0.4,2.8c0,1.6-0.7,3-2.1,4.1c-1,0.8-2.2,1.3-3.6,1.5c3.3,1.4,5.9,2.8,7.9,4.3V97.2h5v2.2H-62.7z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-63,123c-0.3-1.3-0.5-2-0.9-2.5c-0.2-0.3-0.8-0.9-1.5-1.6c-1.3,1.6-2.7,2.5-4,2.5c-2.5,0-3.8-1.6-3.8-4.1
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-63,123c-0.3-1.3-0.5-2-0.9-2.5c-0.2-0.3-0.8-0.9-1.5-1.6c-1.3,1.6-2.7,2.5-4,2.5c-2.5,0-3.8-1.6-3.8-4.1
           c0-0.8,0.4-1.5,1.1-2c0.6-0.4,1.4-0.7,2.2-0.7c1.1,0,2.3,0.4,3.4,1.1l0.6-1h2.6c-0.5,0.9-0.9,1.8-1.1,2.2
           c2.1,1.6,3.3,3.3,3.3,5.2L-63,123z M-70.8,118c0,0.7,0.7,1.3,1.5,1.3c0.8,0,1.7-0.7,1.9-1.5c-0.9-0.7-1.6-1-2.1-1
           C-70.2,116.8-70.8,117.4-70.8,118z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-43.1,99.4v16.2h-2.5c0-0.6,0-1.2,0-1.9c0.1-0.7,0.1-1.3,0.1-1.7c0-3.9-1-5.5-2.7-5.5
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-43.1,99.4v16.2h-2.5c0-0.6,0-1.2,0-1.9c0.1-0.7,0.1-1.3,0.1-1.7c0-3.9-1-5.5-2.7-5.5
           c-0.6,0-1.2,0.3-1.6,1c-0.4,0.6-0.7,1.2-0.8,2.1h-2.8c0-1-0.3-1.7-0.8-2.3c-0.5-0.7-1.1-1-1.8-1c-0.8,0-1.5,0.3-1.9,1
           c-0.4,0.6-0.7,1.4-0.7,2.3c0,1.9,1.1,2.8,3.4,2.8c0.2,0,0.5,0,1.1-0.1l-0.8,2.5c-0.5,0.1-0.8,0.1-1,0.1c-1.6,0-2.9-0.5-3.9-1.6
           c-1-1.1-1.5-2.4-1.5-4c0-3.3,2.1-5.5,5.4-5.5c1.6,0,2.9,0.9,4,2.6c1.2-1.7,2.4-2.6,3.8-2.6c1,0,1.8,0.7,2.5,1.9v-6.2H-63v-2.2
           h22.1v2.2H-43.1z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-25.4,99.4v16.2h-2.5v-1.5c0-1.5-0.9-3.1-2.7-4.9c-1.8-1.7-3.5-2.6-5-2.6c-1.4,0-2.6,1.1-2.6,2.4
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-25.4,99.4v16.2h-2.5v-1.5c0-1.5-0.9-3.1-2.7-4.9c-1.8-1.7-3.5-2.6-5-2.6c-1.4,0-2.6,1.1-2.6,2.4
           c0,1.4,1.1,2.5,2.5,2.5c0.4,0,0.9-0.1,1.5-0.4l0.7,2.4c-0.8,0.4-1.7,0.5-2.9,0.5c-1.3,0-2.4-0.5-3.2-1.5c-0.9-1-1.3-2.1-1.3-3.4
           c0-1.4,0.5-2.6,1.4-3.6c1-1,2.1-1.5,3.5-1.5c3,0,5.7,1.7,8,5v-9.7h-14.6v-2.2h19v2.2H-25.4z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17"
-                                                      d="M-19.5,99.4v16.2H-22V99.4h-2.6v-2.2h7.5v2.2H-19.5z"></path>
+                                                </g>
+                                                <g>
+                                                    <path class="st17"
+                                                          d="M-19.5,99.4v16.2H-22V99.4h-2.6v-2.2h7.5v2.2H-19.5z"></path>
+                                                </g>
                                             </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
-                            <g id="dhaka">
-                                <a href="{{route('subcategory-page','ঢাকা')}}"
-                                   xlink:href="">
-                                    <path class="st3" d="M49.4-95.6l1.6-3.1l-5.3-1.9l-2.8-3.5l-2.6-4.1l-2.2-4.1v-2.5l1.7-3.5l-0.2-6.7l-4.2-2.7l-1.8-2.3l2.8-3.2
+                                    </a>
+                                </g>
+                                <g id="dhaka">
+                                    <a href="{{route('subcategory-page','ঢাকা')}}"
+                                       xlink:href="">
+                                        <path class="st3" d="M49.4-95.6l1.6-3.1l-5.3-1.9l-2.8-3.5l-2.6-4.1l-2.2-4.1v-2.5l1.7-3.5l-0.2-6.7l-4.2-2.7l-1.8-2.3l2.8-3.2
               l-2.6-0.4l-2.7,0.4l-2.2,1.1l-3.5,3l-3.8,2.2l-3.2-1H16l-2,2.7l-0.7,2l-1.3,2.5l-0.5,1.3L9-117.8c0,0-0.2,0.2-0.5,2.8
               c-0.1,1.1-0.5,1.8-1,2.2l-0.8-0.3c0,0-0.1,0.5-0.1,1.1c-0.1,0-0.1,0-0.1,0l0.2,0.9c0.2,1,1.5,2.5,1.5,2.5l1.2,2.5l0.8,1.8l1,3l2.2,4
               l1,4l-0.2,4.5l-3,2.5l-1.8,2.2l-1.2,2l-1.5,2.8l-0.2,2L8-74.1l0.8,1l-1,3.2c0,0-1.8-0.5-1.5,0.2s1.2,3.8,1.2,3.8l2.5,2.2l1.8,0.5
@@ -1769,9 +1898,9 @@
               l-1.2,1.5v1.8l-1.2,3l-0.8,1L145-118l-6,3l-2.5-0.5l-4,0.8L131-115l-4.7,1.2l-2.6-0.7l-2.6,2l-2.7,0.3l-2.2-0.6l-2.8,2.5l-1.2,1
               l0.2,3.8l-1.8,3.5l-4.4,0.2l-2.7,2.7l-1.7-0.2l-1.5-1.5l-1.8-0.7l-0.5,1.8L95-98.5l-1.8-0.2l-2-0.8l-1.2-0.8l-3.2,1.1l-2,0.3
               l-0.6,0.1v2.8l2.5,0.5L87-94c0,0,1.5-0.7,1.8,0s2.4,1.3,2.4,1.3l0.8,2.2l0.2,2l0.4,2l0.7,7.2L87-82h-9h-9H51L49.4-95.6z"></path>
-                                    <g class="st16">
-                                        <image style="overflow:visible;opacity:0.75;" width="82" height="39"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAoCAYAAACCV8YCAAAACXBIWXMAAAxNAAAMTQHSzq1OAAAA
+                                        <g class="st16">
+                                            <image style="overflow:visible;opacity:0.75;" width="82" height="39"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAAAoCAYAAACCV8YCAAAACXBIWXMAAAxNAAAMTQHSzq1OAAAA
                     GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAACOBJREFUeNrsmuuS2kgShSUkAQ00
                     fbE99m7svv977cw6PO02fQMkQFKtFHFy4tucggbG9vywicgQIClVefKepST5+flqn/SIc+lPmP74
                     BHc8CswBzg1+AvoHgDHaC2Yq6gHMRPb9R7ZSA67tqAG1tNQ8AmYPXtHRsKORjgUsNP0BQew/dUe7
@@ -1813,33 +1942,33 @@
                     vWZzgQTZOOVuD7SK5JW77RS/BxStOV97DdsL7F87afe8ZNXu2Tfxzx24NtXvkIaIix9qcz0Q7bFA
                     uDUNIm/ChUjsPgnMQwL7N8xi+0JJ8vpbcYfeTzp22JC613JOBuLAmkJkTckpbn6MwMmBh5za26ZH
                     buQdw+MsII5YUzhHiFOv/Ssvu36rT/p3rPF/AgwAgF7g0VhFtnAAAAAASUVORK5CYII="
-                                               transform="matrix(0.8974 0 0 0.8974 40.9551 -36.25)">
-                                        </image>
-                                        <g>
+                                                   transform="matrix(0.8974 0 0 0.8974 40.9551 -36.25)">
+                                            </image>
                                             <g>
-                                                <path class="st17" d="M50.5-29.7v17.2c2.3,0,4.5-0.6,6.8-1.7c2.8-1.3,4.1-3,4.1-5c0-2.3-1-3.4-3.1-3.4c-0.7,0-1.7,0.4-3.3,1.3
+                                                <g>
+                                                    <path class="st17" d="M50.5-29.7v17.2c2.3,0,4.5-0.6,6.8-1.7c2.8-1.3,4.1-3,4.1-5c0-2.3-1-3.4-3.1-3.4c-0.7,0-1.7,0.4-3.3,1.3
               L53.6-24c1.5-1.2,3.3-1.7,5.4-1.7c1.7,0,3,0.6,4.2,1.7c1.1,1.1,1.7,2.5,1.7,4.1c0,3.4-1.7,6.2-5.1,8.1c-2.9,1.7-6.1,2.5-9.8,2.5
               c-0.7,0-1.6,0-2.7-0.1v-20.3h-2.2v-2.8h21.7v2.8H50.5z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17"
-                                                      d="M71.7-29.7v20.3h-3.1v-20.3h-3.3v-2.8h9.5v2.8H71.7z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M88.7-29.7v0.9c2.1,0,4,0.7,5.8,1.8c2.1,1.4,3.2,3.1,3.2,5.2c0,1.7-0.7,3.1-2,4.2c-1.2,1-2.7,1.5-4.4,1.5
+                                                </g>
+                                                <g>
+                                                    <path class="st17"
+                                                          d="M71.7-29.7v20.3h-3.1v-20.3h-3.3v-2.8h9.5v2.8H71.7z"></path>
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M88.7-29.7v0.9c2.1,0,4,0.7,5.8,1.8c2.1,1.4,3.2,3.1,3.2,5.2c0,1.7-0.7,3.1-2,4.2c-1.2,1-2.7,1.5-4.4,1.5
               c-0.1,0-0.2,0-0.3,0c-0.1,0-0.2,0-0.6-0.1v-3.1c0.7,0.1,1.2,0.1,1.6,0.1c1.8,0,2.7-0.8,2.7-2.6c0-2-1.8-3.3-6-3.8v16.4h-2.9
               c-1.3-2.5-2.8-4.5-4.5-6c-2.1-1.9-4.2-2.9-6.6-2.9l-0.9-3.5c1.7-1.2,5.5-3.6,11.6-7.1v-0.9H73v-2.8h26.5v2.8H88.7z M85.5-25.3
               c-1,0.4-2.1,1.1-3.3,2.1c0,0-1,0.9-3.1,2.6c1.2,0.7,2.4,1.8,3.4,3c0.5,0.6,1.5,1.7,3,3.4V-25.3z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17"
-                                                      d="M104.3-29.7v20.3h-3.1v-20.3h-3.3v-2.8h9.5v2.8H104.3z"></path>
+                                                </g>
+                                                <g>
+                                                    <path class="st17"
+                                                          d="M104.3-29.7v20.3h-3.1v-20.3h-3.3v-2.8h9.5v2.8H104.3z"></path>
+                                                </g>
                                             </g>
                                         </g>
-                                    </g>
-                                    <g>
-                                        <g class="st18">
-                                            <image style="overflow:visible;" width="99" height="85" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABVCAYAAABdGFolAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+                                        <g>
+                                            <g class="st18">
+                                                <image style="overflow:visible;" width="99" height="85" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGMAAABVCAYAAABdGFolAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
                         GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAwJJREFUeNrsmmtz0lAQhqEEKBSs
                         WCra1lv//w9Tx3opt3BJ4sn47nTNQMEP6oE+z8w7J00ghH2zu+eE1moAAAAAAAAAAAAAAAAAAAAA
                         AAAAAAAAAPtSP+LvUWDGv7/2emVfscWQAjP+rgknldEHvlTutmsbxqhIDtAIC35D129quMwoTVgH
@@ -1855,26 +1984,26 @@
                         SAUrP2NdV6rSVV1R+4DvG/ii0qQ3/cZBZlRWzFPtS938P3MzpT8J/K6gR/cDUwy/9J3Ufn883pTq
                         bjWdHVvgYzXD9wwvH8ijC3ysZvjrqNce/0+Powl8zGbscz1HFXgAAAAAAAAAAAAAAAAAAAAAAAAA
                         AAAAADgafgowAC4wT/jUaBZlAAAAAElFTkSuQmCC" transform="matrix(1 0 0 1 38 -86)">
-                                            </image>
-                                        </g>
-                                        <g>
-                                            <path class="st17" d="M74.8-70.3c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
+                                                </image>
+                                            </g>
+                                            <g>
+                                                <path class="st17" d="M74.8-70.3c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
           c-2.9,5.7-5.9,11.5-8.8,17.2c-0.1,0.1-0.1,0.2-0.2,0.4c-0.2-0.4-0.4-0.7-0.6-1.1c-1.8-3.5-3.6-6.9-5.3-10.4c-1-2-2.1-4-3.1-6.1
           c-0.7-1.3-1.1-2.7-1.2-4.2c-0.1-2.6,0.5-4.9,2.1-6.9c1.6-2.1,3.8-3.4,6.5-3.8c0.4-0.1,0.9-0.1,1.3-0.2
           C74.3-70.3,74.5-70.3,74.8-70.3z M79.9-60c0-3.2-2.5-5.7-5.7-5.6c-3.1,0-5.6,2.6-5.6,5.7c0,3.1,2.6,5.6,5.8,5.6
           C77.4-54.4,80-56.9,79.9-60z"></path>
-                                            <path class="st19" d="M83.9-63.4c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
+                                                <path class="st19" d="M83.9-63.4c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
           l0,4.6c0.4-0.1-0.3,0,0.2,0l-0.2,0c3.2,0,5.7,2.5,5.7,5.6l0,0c0,3.1-2.6,5.7-5.7,5.7c-0.3,0,0.3,0,0,0l0,16.8
           c0.1-0.2,0.2-0.3,0.2-0.4c2.9-5.7,5.9-11.5,8.8-17.2C84.7-57.8,84.9-60.6,83.9-63.4z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
+                                    </a>
+                                </g>
 
-                            <g id="mymensingh">
-                                <a href="{{route('subcategory-page','ময়মনসিংহ')}}"
-                                   xlink:href="">
-                                    <path class="st3" d="M6.5-112l2-3l0.5-2.8l2.5-1.8l2.2-5.2L16-128h2.2l3.2,1l4.5-2.5l2.5-2l2.5-1.8l3.5-0.5l1.8,0.5l-2.8,3.2
+                                <g id="mymensingh">
+                                    <a href="{{route('subcategory-page','ময়মনসিংহ')}}"
+                                       xlink:href="">
+                                        <path class="st3" d="M6.5-112l2-3l0.5-2.8l2.5-1.8l2.2-5.2L16-128h2.2l3.2,1l4.5-2.5l2.5-2l2.5-1.8l3.5-0.5l1.8,0.5l-2.8,3.2
                   c0,0,0,0.5,0.8,1.5s5.2,3.5,5.2,3.5l0.8,5.5l-2.2,5.2l0.2,2.8c0,0,1.8,2.8,2,3.2s2,3.2,2,3.2s2,2,2.2,2.8s4,2.8,4.8,2.8
                   s1.8,0.8,1.8,0.8l-0.8,1.2l-1,2.2l0.8,1.5l-1.8,4.2v1.5l0.8,4l2,2.5l0.8,2l1.5,1.2l1.5,1.2h3.8l2.8-1.2l3.2,1.2c0,0,0.8,0.2,2.2-0.5
                   s4.5-4,4.5-4l1.5-0.8h2L79-82l2,1.5c0,0,3,0.5,4,0.5s4.2,1,4.2,1l2.8,0.8l1.5-0.5c0,0-0.2-2.2-0.2-3S93-85.5,93-85.5v-1.8
@@ -1896,20 +2025,20 @@
                   l-0.2,1.2l3.2,1.8l1,3l0.5,3l0.5,3.2l-2.5-1.2v-4.5l-3.5-2.5l-0.5,2c0,0,0,2,0.8,2.8s3,3.2,3,3.2l1.8,1.5l1.2,1.5L4-184l-1.8,3.8
                   l-2,3l-1.8,2.5l-1.5,6v3.2c0,0-2,2-3,1.8s-3.5,0-3.5,0l-1,1.5l2.5,3c0,0-0.2,3.2-0.5,5.2s-0.5,4-0.5,4l0.2,4l4.8-3.8l0.8,3.8
                   l-0.8,4.8l3,6.5c0,0,2,3.8,3,4.2s4.2,3.2,4.2,3.2L8-124v3l-1.5,1c0,0,0,1,0,2.2S6.5-112,6.5-112z"></path>
-                                    <g>
                                         <g>
-                                            <path class="st17" d="M47.8-190c0.4,0.1,0.7,0.1,1.1,0.2c3.1,0.6,5.3,2.5,6.4,5.4c0.8,2.3,0.6,4.5-0.5,6.7
+                                            <g>
+                                                <path class="st17" d="M47.8-190c0.4,0.1,0.7,0.1,1.1,0.2c3.1,0.6,5.3,2.5,6.4,5.4c0.8,2.3,0.6,4.5-0.5,6.7
         c-2.4,4.7-4.8,9.3-7.2,14c0,0.1-0.1,0.2-0.2,0.3c-0.2-0.3-0.3-0.6-0.5-0.9c-1.5-2.8-2.9-5.6-4.3-8.5c-0.8-1.6-1.7-3.3-2.5-4.9
         c-0.6-1.1-0.9-2.2-0.9-3.5c-0.1-2.1,0.4-4,1.7-5.6c1.3-1.7,3.1-2.8,5.3-3.1c0.4-0.1,0.7-0.1,1.1-0.1C47.4-190,47.6-190,47.8-190z
         M52-181.6c0-2.6-2.1-4.6-4.7-4.6c-2.5,0-4.6,2.1-4.5,4.7c0,2.5,2.1,4.6,4.7,4.5C50-177,52-179.1,52-181.6z"></path>
-                                            <path class="st19" d="M55.2-184.4c-1.1-3-3.2-4.8-6.4-5.4c-0.4-0.1-0.7-0.1-1.1-0.2c-0.2,0-0.3,0-0.5,0c-0.4,0,0.4,0,0.1,0.1
+                                                <path class="st19" d="M55.2-184.4c-1.1-3-3.2-4.8-6.4-5.4c-0.4-0.1-0.7-0.1-1.1-0.2c-0.2,0-0.3,0-0.5,0c-0.4,0,0.4,0,0.1,0.1
         l0,3.7c0.3-0.1-0.2,0,0.1,0l-0.1,0c2.6,0,4.7,2,4.7,4.6l0,0c0,2.5-2.1,4.6-4.6,4.6c-0.2,0,0.2,0,0,0l0,13.7
         c0.1-0.1,0.1-0.2,0.2-0.3c2.4-4.7,4.8-9.3,7.2-14C55.9-179.8,56.1-182.1,55.2-184.4z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                    <g class="st16">
-                                        <image style="overflow:visible;opacity:0.75;" width="115" height="35"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAAAkCAYAAABYFB7QAAAACXBIWXMAAAomAAAKJgFRqakzAAAA
+                                        <g class="st16">
+                                            <image style="overflow:visible;opacity:0.75;" width="115" height="35"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAAAkCAYAAABYFB7QAAAACXBIWXMAAAomAAAKJgFRqakzAAAA
                     GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAADCFJREFUeNrsm/lTG8kVxzW6L24Q
                     YFgHfOJjd5NNKqnKL/nvU5tKKht7116vARswlwQCSSB0z6RV9XnerycDNvbacZWZqleDpOnu1+/7
                     7h682NV12csLfQ4+Z+aurovllIDiADmAgs8F4CtA3y6fIXhJRylHOUcjjrIAeeqo6agn4BrAwRWg
@@ -1966,62 +2095,62 @@
                     psvy4kldPYa1PUA2m/JmYTv0mo0BXoj9+r5vIFWB9X+Dj/26ZlzO+TLSGWqHmtxf2hUXZV8A0FPA
                     PIxoUCiwSfGs/fB7Vp/i/VttqyUiTl2+1MuT9qf1epso++ASXiV4H5fzW28kiF1deggQlxzEvxLL
                     1fX6+q8AAwAexfCEjBB1ggAAAABJRU5ErkJggg==" transform="matrix(1.0957 0 0 1.0957 -3 -165.3478)">
-                                        </image>
-                                        <g>
+                                            </image>
                                             <g>
-                                                <path class="st17" d="M15.8-152.8v15.8h-2.4v-1.7c0-1.2-0.9-2.6-2.9-4.1c-1.8-1.4-3.4-2.1-4.7-2.1c-0.8,0-1.4,0.2-2,0.6
+                                                <g>
+                                                    <path class="st17" d="M15.8-152.8v15.8h-2.4v-1.7c0-1.2-0.9-2.6-2.9-4.1c-1.8-1.4-3.4-2.1-4.7-2.1c-0.8,0-1.4,0.2-2,0.6
           c-0.7,0.5-1,1-1,1.6c0,1,1.1,2,2.1,2c0.4,0,1-0.2,2.2-0.7l0.8,2.3c-1.2,0.7-2.2,0.9-3.1,0.9c-1.2,0-2.3-0.4-3.2-1.3
           c-0.9-0.8-1.4-1.9-1.4-3.1c0-1.5,0.5-2.6,1.6-3.5c1-0.8,2.2-1.3,3.6-1.3c0.1,0,0.3,0,0.4,0l0-0.2c0.1-0.6-0.2-1.3-0.9-2.1
           c-0.7-0.8-1.4-1.2-2.1-1.3c-0.3,0-0.8,0-1.4,0c-0.3,0-0.7,0-1.5,0.1v-2h-1.7v-2.1h19.5v2.1H15.8z M13.3-152.8H4.6
           c2.6,1.6,4,3.6,4.1,5.8c1.4,0.5,2.9,1.8,4.7,3.7V-152.8z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M33.1-152.8v15.8h-2.3c-2.6-2.1-6.5-3.7-12.1-5l-0.7-2.6l6.7-2.9c-0.6-0.8-1.5-1.6-2.8-2.2
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M33.1-152.8v15.8h-2.3c-2.6-2.1-6.5-3.7-12.1-5l-0.7-2.6l6.7-2.9c-0.6-0.8-1.5-1.6-2.8-2.2
           c-1.2-0.6-2.5-0.9-3.9-1v-2.2h-1.7v-2.1H35v2.1H33.1z M30.7-152.8h-9c1.2,0.7,2.1,1.3,2.8,1.7c1.4,0.9,2.4,1.8,2.9,2.8v2.5
           l-4.6,2.1c3.2,1.3,5.8,2.5,7.9,3.8V-152.8z M26.5-134.5c-1.3-0.6-2.4-1-3.7-1.3l0.4-2.2c1.5,0.2,2.8,0.8,4.3,1.7L26.5-134.5z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M50.9-152.8v15.8h-2.4v-1.7c0-1.2-0.9-2.6-2.9-4.1c-1.8-1.4-3.4-2.1-4.7-2.1c-0.8,0-1.4,0.2-2,0.6
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M50.9-152.8v15.8h-2.4v-1.7c0-1.2-0.9-2.6-2.9-4.1c-1.8-1.4-3.4-2.1-4.7-2.1c-0.8,0-1.4,0.2-2,0.6
           c-0.7,0.5-1,1-1,1.6c0,1,1.1,2,2.1,2c0.4,0,1-0.2,2.2-0.7l0.8,2.3c-1.2,0.7-2.2,0.9-3.1,0.9c-1.2,0-2.3-0.4-3.2-1.3
           c-0.9-0.8-1.4-1.9-1.4-3.1c0-1.5,0.5-2.6,1.6-3.5c1-0.8,2.2-1.3,3.6-1.3c0.1,0,0.3,0,0.4,0l0-0.2c0.1-0.6-0.2-1.3-0.9-2.1
           c-0.7-0.8-1.4-1.2-2.1-1.3c-0.3,0-0.8,0-1.4,0c-0.3,0-0.7,0-1.5,0.1v-2h-1.7v-2.1H53v2.1H50.9z M48.4-152.8h-8.8
           c2.6,1.6,4,3.6,4.1,5.8c1.4,0.5,2.9,1.8,4.7,3.7V-152.8z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M68.2-152.8v15.8h-2.4v-1.4c0-1.5-0.9-3.1-2.6-4.8c-1.8-1.7-3.4-2.5-4.9-2.5c-1.4,0-2.6,1.1-2.6,2.4
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M68.2-152.8v15.8h-2.4v-1.4c0-1.5-0.9-3.1-2.6-4.8c-1.8-1.7-3.4-2.5-4.9-2.5c-1.4,0-2.6,1.1-2.6,2.4
           c0,1.4,1.1,2.4,2.5,2.4c0.4,0,0.8-0.1,1.5-0.4l0.7,2.3c-0.8,0.4-1.7,0.5-2.8,0.5c-1.3,0-2.3-0.5-3.1-1.4c-0.8-1-1.3-2.1-1.3-3.3
           c0-1.4,0.5-2.6,1.4-3.5c0.9-0.9,2.1-1.4,3.5-1.4c3,0,5.6,1.6,7.8,4.9v-9.5H51.4v-2.1H70v2.1H68.2z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M89.1-157.6c-3.6-2.3-6.5-3.3-8.8-3.3c-2.1,0-3.8,0.5-5,1.5c-1.3,1-2,2.5-2,4.5h2.1v2.1h-2.2v15.8h-2.5
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M89.1-157.6c-3.6-2.3-6.5-3.3-8.8-3.3c-2.1,0-3.8,0.5-5,1.5c-1.3,1-2,2.5-2,4.5h2.1v2.1h-2.2v15.8h-2.5
           v-15.8h-2.2v-2.1h2.2c0-2.6,1-4.7,2.8-6.1c1.7-1.4,4-2.1,6.7-2.1c1.7,0,3.5,0.4,5.2,1.2c1.2,0.5,2.8,1.4,4.9,2.8L89.1-157.6z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M89-152.8v15.6h-2.5v-8c0-1-0.8-2-1.7-2c-0.8,0-1.6,0.8-2.5,2.5c-0.9,1.9-1.5,3.1-1.8,3.5
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M89-152.8v15.6h-2.5v-8c0-1-0.8-2-1.7-2c-0.8,0-1.6,0.8-2.5,2.5c-0.9,1.9-1.5,3.1-1.8,3.5
           c-0.9,1.3-2,2-3.3,2c-0.7,0-1.5-0.4-2.6-1.1v-2.5c1,0.9,1.7,1.2,2.4,1.2c0.7,0,1.4-0.6,2.1-1.8c0.6-1.1,0.9-2.1,0.9-2.9
           c0-2.6-1.5-4.7-4.6-6.4h-2.1v-2.1h17.3v2.1H89z M86.6-152.8h-7c0.6,0.5,1.2,1.2,1.7,2c0.5,0.9,0.9,1.7,1,2.5
           c0.8-0.8,1.6-1.3,2.3-1.3c0.8,0,1.5,0.4,2,1.2V-152.8z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M91.5-150.1c0-1.3,0.4-2.3,1.2-3.1c0.8-0.9,1.9-1.3,3.2-1.3c1.3,0,2.3,0.5,3.1,1.5c0.7,0.9,1,2,1,3.3
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M91.5-150.1c0-1.3,0.4-2.3,1.2-3.1c0.8-0.9,1.9-1.3,3.2-1.3c1.3,0,2.3,0.5,3.1,1.5c0.7,0.9,1,2,1,3.3
           c0,2.6-1.5,4.3-4,4.3C93.3-145.4,91.5-147.4,91.5-150.1z M96.8-137.7c-1.7-1.5-3.3-2.6-5.1-3.5l0-3.5c5.1,3.7,8.3,6.6,10,8.9v2.5
           L96.8-137.7z M93.7-150c0,1.2,1,2.3,2.2,2.3c1.1,0,2-0.9,2-2c0-1.2-0.8-2.4-2-2.4C94.6-152.2,93.7-151.3,93.7-150z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M100.7-152.8v-2.1h15.9v2.1H100.7z M115.1-134.9c-1.6-1.2-3.4-2.2-5.7-3.2c-2.5-1.1-4.5-1.6-6.2-1.7
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M100.7-152.8v-2.1h15.9v2.1H100.7z M115.1-134.9c-1.6-1.2-3.4-2.2-5.7-3.2c-2.5-1.1-4.5-1.6-6.2-1.7
           l-1.1-3.3c1.4,0.2,2.3,0.2,2.8,0.2c1.5,0,3-0.3,4.5-0.8c2-0.7,3-1.7,3-2.9c0-1.1-0.4-1.9-1.3-2.6c-0.8-0.6-1.7-0.9-2.9-0.9
           c-0.8,0-1.4,0.1-2,0.4c-0.8,0.3-1.1,0.8-1.1,1.3c0,0.7,0.4,1.1,1.8,1.1l-1.4,2c-1.9,0-3.3-1.3-3.3-3.1c0-1.4,0.7-2.4,2.1-3.2
           c1.1-0.6,2.3-0.8,3.8-0.8c1.7,0,3.2,0.5,4.6,1.3c1.6,1,2.4,2.4,2.4,4c0,1.7-0.8,3.1-2.4,4.2c-1.1,0.8-2.4,1.3-4,1.8
           c2.7,1.1,5.3,2.5,7.9,4.4L115.1-134.9z"></path>
+                                                </g>
                                             </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
-                            <g id="rajshahi">
-                                <a href="{{route('subcategory-page','রাজশাহী')}}"
-                                   xlink:href="">
-                                    <path class="st14" d="M-184-149.2l0.6,1.8l1.4,0.2v1.4v1.8l0.4,1l0.6,0.8v1.9c0,0-0.5,0.9-0.9,1.4c-0.4,0.5-1.1,2-1.1,2
+                                    </a>
+                                </g>
+                                <g id="rajshahi">
+                                    <a href="{{route('subcategory-page','রাজশাহী')}}"
+                                       xlink:href="">
+                                        <path class="st14" d="M-184-149.2l0.6,1.8l1.4,0.2v1.4v1.8l0.4,1l0.6,0.8v1.9c0,0-0.5,0.9-0.9,1.4c-0.4,0.5-1.1,2-1.1,2
       s-0.8,0.1-1.2,0.2c-0.4,0.1-1.4,1.4-1.4,1.4l-1.4-0.1h-1l-0.2,1.2v1v1.6l-0.6,1.2l-0.5,0.1h-1.5c0,0,0-0.1-0.5-0.1
       s-1.1,0.1-1.1,0.1l-0.6,1.4l-0.2,2.6l0.1,1.2v1.2l-0.1,1.2l-0.2,0.8l-0.5,0.6l-1.2-0.1l-1.4,1.5l0.5,2.9l1.6,1.8l1.4,3
       c0,0,2,1.8,2.4,1.9c0.4,0.1,0.9,0.5,0.9,0.5l0.2,1.1l0.6,3.9l-0.2,3.4v1.6l1.8,1.8l1.6,2.1l1.5,0.4l1.2,0.2c0,0-0.2,0,0.5,0
@@ -2056,9 +2185,9 @@
       l-0.4,0.5l-0.6,3c0,0-1,0.1-1.1,0.5c-0.1,0.4-0.4,1.2-0.8,1.4c-0.4,0.2-0.9,0.2-0.9,0.2l-0.8,0.9l-0.5,0.5l-0.6,2.1v1l-0.4,1
       l-0.6,0.5c0,0-2.6-0.1-3-0.2c-0.4-0.1-0.9,0.6-2.2-0.2c-1.3-0.8-1.9-1.5-2.4-1.6s-2-2.1-2-2.1s-0.1-2.2-0.1-2.6s-1.1-2.4-1.1-2.4
       l-1.2-1.6l-1.4,0.1h-1.5l-0.9,0.4l-2.5,0.9l-0.8,0.1c0,0-1,0-1.5,0.1s-1.9,0.1-1.9,0.1s-0.2,1-0.6,1.2s-0.4,0.2-0.4,0.2v1.2H-184z"></path>
-                                    <g>
-                                        <g class="st18">
-                                            <image style="overflow:visible;" width="100" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABVCAYAAABQBipiAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+                                        <g>
+                                            <g class="st18">
+                                                <image style="overflow:visible;" width="100" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABVCAYAAABQBipiAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
                         GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxhJREFUeNrsmolu00AURePEpYGU
                         0hYIpRuU//8vJNaWpFm98CzdkZ4GtyEViHE4R7pyvFRq5/jN8zjt9QAAAAAAAAAAAAAAAAAAAAAA
                         AAAAAAAAoJ3sP/gb6q79QfkOyNjmxqqplL8vo0k/2veDX7vPVcs5KuUPCQkiBlGy6CarJaJJ6T5X
@@ -2074,23 +2203,23 @@
                         9wlou/vbJPSi/pHMC8k8ESG1W9BNtN9Uwp6uKaKBf0hA5QSEwX/oFX1y36dkCU1dA0kIK+89TWWV
                         q5TyNwTUD9z9fB38CDF9tzofRFNb2/RTb5h+OvdPEylJiZv9pu/bd0ZA6lL875NtGOydEdDGoAO/
                         404LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAbfgpwACUCWGrwpLn7AAAAABJRU5ErkJggg=="
-                                                   transform="matrix(1 0 0 1 -129.25 -174.5)">
-                                            </image>
-                                        </g>
-                                        <g>
-                                            <path class="st17" d="M-92.2-159.3c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
+                                                       transform="matrix(1 0 0 1 -129.25 -174.5)">
+                                                </image>
+                                            </g>
+                                            <g>
+                                                <path class="st17" d="M-92.2-159.3c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
         c-2.9,5.7-5.9,11.5-8.8,17.2c-0.1,0.1-0.1,0.2-0.2,0.4c-0.2-0.4-0.4-0.7-0.6-1.1c-1.8-3.5-3.6-6.9-5.3-10.4c-1-2-2.1-4-3.1-6.1
         c-0.7-1.3-1.1-2.7-1.2-4.2c-0.1-2.6,0.5-4.9,2.1-6.9c1.6-2.1,3.8-3.4,6.5-3.8c0.4-0.1,0.9-0.1,1.3-0.2
         C-92.7-159.3-92.5-159.3-92.2-159.3z M-87.1-149c0-3.2-2.5-5.7-5.7-5.6c-3.1,0-5.6,2.6-5.6,5.7c0,3.1,2.6,5.6,5.8,5.6
         C-89.6-143.4-87-145.9-87.1-149z"></path>
-                                            <path class="st19" d="M-83.1-152.4c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
+                                                <path class="st19" d="M-83.1-152.4c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
         l0,4.6c0.4-0.1-0.3,0,0.2,0l-0.2,0c3.2,0,5.7,2.5,5.7,5.6l0,0c0,3.1-2.6,5.7-5.7,5.7c-0.3,0,0.3,0,0,0l0,16.8
         c0.1-0.2,0.2-0.3,0.2-0.4c2.9-5.7,5.9-11.5,8.8-17.2C-82.3-146.8-82.1-149.6-83.1-152.4z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                    <g class="st16">
-                                        <image style="overflow:visible;opacity:0.75;" width="108" height="43"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAsCAYAAACAPl2hAAAACXBIWXMAAAzDAAAMwwFTdG0jAAAA
+                                        <g class="st16">
+                                            <image style="overflow:visible;opacity:0.75;" width="108" height="43"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAsCAYAAACAPl2hAAAACXBIWXMAAAzDAAAMwwFTdG0jAAAA
                       GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAACvpJREFUeNrsnAlz48YRhTE4eIra
                       K7Zz/v+/lnJ25dVBkTgnkKs79entACTXcirlkFVTlElgOOjXx+s3sw7Z9fV7vMKZ18Xfa+Lr63xb
                       Bvl7Dqgof598lVc7vwlQHDne8wRoL8AMGP7fZ0XdFbC3A6qwUZldS/vvXO57AacfR2ejtff+nGi7
@@ -2142,55 +2271,55 @@
                       i0yd+hoSh2wvOlYdJsDLzmz6UoDNndy9NPqnDq+ecyo4y06fXE454dzaw0z05omzlf056/6ef+AQ
                       TjzApa/vve/ctcTfOG/MTh8/P9ehGMWZbIqe9b+AuP4bsP/O65L/b8f19T8K4DVY/h9e/xZgAPwr
                       zXvxONlKAAAAAElFTkSuQmCC" transform="matrix(0.8673 0 0 0.8673 -141.6667 -127)">
-                                        </image>
-                                        <g>
+                                            </image>
                                             <g>
-                                                <path class="st17" d="M-122.5-113.4v14.7h-2.1c-1-1.5-2.6-2.9-5-4.2c-2.4-1.3-4.5-2-6.4-2l-0.7-2.5c2.9-1.9,6.8-3.7,11.8-5.5
+                                                <g>
+                                                    <path class="st17" d="M-122.5-113.4v14.7h-2.1c-1-1.5-2.6-2.9-5-4.2c-2.4-1.3-4.5-2-6.4-2l-0.7-2.5c2.9-1.9,6.8-3.7,11.8-5.5
           v-0.5h-13.1v-2h17v2H-122.5z M-124.9-110.4c-2.8,1-5.4,2.2-7.9,3.6c2.9,1,5.5,2.5,7.9,4.6V-110.4z M-129.6-98.1
           c-0.7-0.7-1.6-1.3-3-2l1-1.9c1.3,0.5,2.4,1.3,3.4,2.5L-129.6-98.1z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17"
-                                                      d="M-117.2-113.4v14.7h-2.3v-14.7h-2.4v-2h6.9v2H-117.2z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-103.5-113.4c0.6,1.7,1.9,2.6,4,2.6c0.3,0,0.6,0,1-0.1l1.5,1.9c-1.2,2.4-1.7,4.1-1.7,5.2
+                                                </g>
+                                                <g>
+                                                    <path class="st17"
+                                                          d="M-117.2-113.4v14.7h-2.3v-14.7h-2.4v-2h6.9v2H-117.2z"></path>
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-103.5-113.4c0.6,1.7,1.9,2.6,4,2.6c0.3,0,0.6,0,1-0.1l1.5,1.9c-1.2,2.4-1.7,4.1-1.7,5.2
           c0,2.5,0.3,4.1,1,5l-1.6,0.9c-1-1.5-1.5-3-1.5-4.8c0-1,0.1-2.1,0.3-3.1c0.1-0.4,0.3-1.4,0.8-2.9c-1.4-0.2-2.7-0.7-3.8-1.5
           c-1.3-0.9-2.1-1.9-2.4-3.2c-1.9,1.4-2.7,2.9-2.7,4.4c0,1,0.4,1.5,1.1,1.5c0.9,0,2.1-0.7,2.5-1.5h2.2c0.5,0.8,0.7,1.9,0.7,3.4
           c0,3.8-2.1,5.8-6.1,5.8c-0.7,0-1.7-0.2-2.5-0.5c-1.1-0.4-1.9-1.5-2-1.6c-0.6-0.8-1-1.4-1.3-2c-0.3-0.6-0.6-1.4-1.2-2.5l1.4-1.3
           c0.6,1.6,1.2,3.4,2.8,5c0.4,0.4,1,0.6,1.5,0.7c0.5,0.1,1,0.1,1.2,0.1c1.1,0,2-0.3,2.7-0.9c0.8-0.6,1.2-1.4,1.2-2.5
           c0-0.5-0.1-0.9-0.3-1.3c-0.9,0.9-1.9,1.4-3,1.4c-2.1,0-3.3-1.6-3.3-3.8c0-1.3,0.6-2.8,1.8-4.4h-7.2v-2h20.8v2H-103.5z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-82-113.4v14.8h-2.3v-11.1c0-0.8-0.2-1.5-0.7-2.1c-0.5-0.7-1.1-1-1.8-1c-1.2,0-2.1,0.9-2.1,2.1
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-82-113.4v14.8h-2.3v-11.1c0-0.8-0.2-1.5-0.7-2.1c-0.5-0.7-1.1-1-1.8-1c-1.2,0-2.1,0.9-2.1,2.1
           c0,1.7,0.6,2.4,1.7,2.4c0.3,0,0.7-0.2,1.2-0.5l0.5-0.4v2.6c-0.7,0.7-1.4,1-2.2,1c-0.8,0-1.5-0.5-2.1-1.3l-0.5-0.7
           c-0.7,1.4-1.7,2.1-3,2.1c-0.9,0-1.7-0.4-2.2-1.2v-2.5c0.8,0.9,1.3,1.2,1.8,1.2c1.1,0,1.8-0.8,1.8-2.7c0-1.5-1.1-2.3-3.5-2.4
           c0,0-0.1,0-0.1,0h-0.7H-97v-2h3.5c1.2,0,2.3,0.8,3.2,2.4c0.5-1.3,1.7-2.3,3.1-2.3c1,0,2,0.6,2.9,1.7v-1.7h4.5v2H-82z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17"
-                                                      d="M-76.5-113.4v14.7h-2.3v-14.7h-2.4v-2h6.9v2H-76.5z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-75.4-113.4v-2h14.8v2H-75.4z M-61.9-96.7c-1.5-1.1-3.2-2.1-5.3-2.9c-2.3-1-4.2-1.5-5.8-1.5l-1-3.1
+                                                </g>
+                                                <g>
+                                                    <path class="st17"
+                                                          d="M-76.5-113.4v14.7h-2.3v-14.7h-2.4v-2h6.9v2H-76.5z"></path>
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-75.4-113.4v-2h14.8v2H-75.4z M-61.9-96.7c-1.5-1.1-3.2-2.1-5.3-2.9c-2.3-1-4.2-1.5-5.8-1.5l-1-3.1
           c1.3,0.2,2.1,0.2,2.6,0.2c1.4,0,2.8-0.3,4.2-0.8c1.9-0.7,2.7-1.6,2.7-2.7c0-1-0.4-1.8-1.2-2.4c-0.7-0.5-1.6-0.8-2.7-0.8
           c-0.7,0-1.3,0.1-1.9,0.4c-0.7,0.3-1,0.7-1,1.2c0,0.7,0.4,1,1.7,1.1l-1.3,1.9c-1.7,0-3.1-1.2-3.1-2.9c0-1.3,0.7-2.3,1.9-2.9
           c1-0.5,2.2-0.8,3.6-0.8c1.6,0,3,0.4,4.3,1.2c1.4,0.9,2.2,2.2,2.2,3.8c0,1.5-0.8,2.9-2.3,4c-1,0.7-2.2,1.2-3.7,1.7
           c2.6,1,5,2.3,7.4,4.1L-61.9-96.7z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M-57-113.4v14.7h-2.3v-14.7h-2.3v-2h2.3l0-0.4c0.1-1.3-0.6-2.6-2.2-3.6c-1.5-1-2.9-1.5-4.3-1.5
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M-57-113.4v14.7h-2.3v-14.7h-2.3v-2h2.3l0-0.4c0.1-1.3-0.6-2.6-2.2-3.6c-1.5-1-2.9-1.5-4.3-1.5
           c-1.3,0-2.8,0.4-4.4,1.1c-0.9,0.4-2.2,1.2-4.2,2.4l-1.2-1.7c3.8-2.8,7-4.2,9.6-4.2c2.1,0,4,0.7,5.9,2.1c2.1,1.5,3.1,3.3,3.1,5.3
           c0,0.2,0,0.3,0,0.5h1.9v2H-57z"></path>
+                                                </g>
                                             </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
-                            <g id="borishal">
-                                <a href="{{route('subcategory-page','বরিশাল')}}"
-                                   xlink:href="">
-                                    <path class="st13" d="M72.9,229.1c0.9-1,2.2-2.6,2.2-2.6s1.2-1.5,1.8-2.1s0.9-1.8,0.9-1.8l0.5-5.6c0,0,0-1.5,0.5-1.6
+                                    </a>
+                                </g>
+                                <g id="borishal">
+                                    <a href="{{route('subcategory-page','বরিশাল')}}"
+                                       xlink:href="">
+                                        <path class="st13" d="M72.9,229.1c0.9-1,2.2-2.6,2.2-2.6s1.2-1.5,1.8-2.1s0.9-1.8,0.9-1.8l0.5-5.6c0,0,0-1.5,0.5-1.6
           s1.9-2.1,1.9-2.1v-1.8c0,0,1.5-0.4,1.8-0.8s0.8-2.5,0.8-2.5s-1.5-1.4-1.9-1.8s-1.5-2-1.5-2s-0.5-1,0-1.4s1.1,0,1.2-1.4
           s-0.2-3-0.2-3.6s0.5-2,0.5-2h2.2c0,0-0.2,1.5,0,2.8s0.5,3.5,0.5,3.5s-0.6,1.9-0.4,2.4s1.1,2,1.1,2.4s0.1,2.2,0.1,2.8
           s-0.1,1.1-0.4,1.6s-0.9,1.2-1,1.6s-0.9,1.4-0.9,2s-1,2.4-1,2.4l-0.9,1.4c0,0,0.8,1.4,1.4,1.8s2,1.1,2,1.1s0.4,1.6,0.9,1.6
@@ -2222,18 +2351,18 @@
           l-0.6,0.5l0.5,11.4l3.9,1.2l1.6-1.1l1.8-2.1l0.4-1.2l0.1-4.5l1.6-1.5l1.6,0.2l-0.1,3.6l0.1,1.8v1.8l-1.6,0.9c0,0-1,0.8-1.2,1.1
           s-0.8,1.1-0.8,1.1l0.1,2.5c0,0,2.4,3,2.8,3s3,0.4,3.6,0.4s2.4,0,4,0c1.6,0,3.1-0.4,3.5-0.6s2-1.1,2.4-1.8s0.5-1.2,1.1-1.8
           s0.8-0.5,1.6-1s2-1.5,2-1.5l4.1-11.4c0,0,0.6-3.2,0.6-3.9s-0.5-3.1,0-4S72,230.1,72.9,229.1z"></path>
-                                    <path class="st13" d="M96,109.1c0.4,0.2,3.4,0.4,3.4,0.4h3c0,0,0.5-0.4,0.6-0.8s0.4-0.8,0.4-0.8s0.8-0.4,1.1-0.5s1.2,0.1,1.2,0.1
+                                        <path class="st13" d="M96,109.1c0.4,0.2,3.4,0.4,3.4,0.4h3c0,0,0.5-0.4,0.6-0.8s0.4-0.8,0.4-0.8s0.8-0.4,1.1-0.5s1.2,0.1,1.2,0.1
           l0.5,0.6l0.5,1.4c0,0,0,1.1,0,1.9s1.2,1.5,1.2,1.5s1.1,0.9,1.9,1.5s1.5,0.5,2,0.5s0.9-0.8,1.5-1.2s-0.2-1.1-0.2-1.5
           s-0.9-1.4-0.9-1.4s-0.8-1.2-1.5-2s-0.5-1.5-0.5-1.5s0-1.2,0-1.6s-1.1-1.1-1.8-1.8s-1.2-2.2-1.8-2.9s-1.4-1.6-2.4-2.4
           s-1.6-1.6-1.6-1.6l-0.9,1.1c0,0-1,1-2,1s-0.5,0.2-1.4,0.8s-0.6,0.8-1.1,1.6s-0.5,1.1-1.1,2.2s-0.6,0.9-1.2,1.6s-0.5,1.6-0.9,2.4
           S95.6,108.9,96,109.1z"></path>
-                                    <path class="st13" d="M113.4,119.9c-1.2-0.8-1-0.4-1.6-0.5s-1.6,0-2.1,0s-2.8-0.4-3.1-0.5s-0.6-0.5-1.2-0.5s-1,0.1-1.4,0.1
+                                        <path class="st13" d="M113.4,119.9c-1.2-0.8-1-0.4-1.6-0.5s-1.6,0-2.1,0s-2.8-0.4-3.1-0.5s-0.6-0.5-1.2-0.5s-1,0.1-1.4,0.1
           s-1.1,0.4-1.8,0.4s-1.1-0.2-2.5-0.1s0,0-0.5,0.2s-0.4,0.5-1.1,1.4s-0.5,0.9-1.6,1.6l-1.8-0.8c0,0,0,0-0.9-0.2s0,0-0.4-0.2
           s-0.6,0-0.6,0l-1.6-0.4c0,0,0,0-0.9,0.5s-0.5,0.9-0.5,1.9s0.1,6.5-0.1,8.2s-0.4,0.8-0.8,1.2s1.2,1.5,1.8,1.6s1.2,0.4,1.9,0.8
           s1.1,0.6,1.6,0.9s0.1,0.6,0.1,1.1s-0.2,1.2-0.5,1.6s-0.1,1.6-0.1,2.1s0.6,0.9,0.9,1.4s1,1.8,1,1.8s0.5,0,0.9,0s0.9-0.4,1.2-0.6
           s2-1.8,2.2-2.8s0-1.9,0-3.6s0-2.5,0-2.5l-0.9-1.2V131c0,0,1.6-0.9,2-0.9s2.5,0.1,3.8,0.2s0.6-0.5,1.2-0.6s1.1-0.8,1.1-0.8
           s1.4,0.2,4.2,0.2s1.5-1.4,1.5-1.4l1.1-0.1c0,0,2.4-1.4,2.8-1.8s0-2.6,0-2.6s-0.1-0.6-2.1-2.8S114.6,120.6,113.4,119.9z"></path>
-                                    <path class="st13" d="M138.3,169.3c-0.4-0.8-0.5-1.5-0.5-1.5l-9-6.5l-1.1-5.9c0,0,0-1.1,0-1.5s0-1.1-0.5-1.2s-2.2-1-2.8-1.2
+                                        <path class="st13" d="M138.3,169.3c-0.4-0.8-0.5-1.5-0.5-1.5l-9-6.5l-1.1-5.9c0,0,0-1.1,0-1.5s0-1.1-0.5-1.2s-2.2-1-2.8-1.2
           s-2.6-1-2.6-1l-1.9-1.5l-2.1-0.9l-0.6-12.1l-0.8-1.8l-0.6-1.4c0,0-0.8-1.5-1.1-1.5s-2.9,0-4.1,0s-4,0-4.5,0s-2,0.5-2,0.5
           l-0.5,1.2l-1.1,2.5c0,0,0.5,0.9,0.5,1.6s-0.2,3.4-0.2,3.4l-0.8,1l-0.6,1.1l-0.1,1.4l-0.2,3l-1.1,2v2.4l0.2,0.9l0.5,0.8
           c0,0,0.4,1.6,1.1,1.9s1.4,0.4,1.4,0.4c0.8,0.5,1.9,2.8,1.9,2.8s0.5,1,1,1s1.4,0,1.8,0.1s0.5-0.1,1.5,0.8s0,0.2,1,0.9
@@ -2248,58 +2377,58 @@
           s-1.1-0.1,0.9-0.6s1.1-0.2,2-0.5s1.4-0.8,1.9-0.8s1.1-1.5,1.1-1.5l0.9-1.2v-1.6c0,0,0.2-0.5,0.8-0.9s0.9-1.1,1.8-1.5
           s1.6-0.6,2.2-1.5s0.1-0.4,0.6-1.9s0.4-1.6,0.6-2.8s0.5-2.9,0.5-2.9l2.8-13.8l2.2-22.6c0,0-1.2-1.2-1.2-1.6S138.6,170,138.3,169.3
           z"></path>
-                                    <path class="st13" d="M155.1,179.8c-0.9-0.4-0.9-1-0.9-1l-1.2,0.4c0,0-0.2,0.5-0.6,0.6s-1.6,0.9-1.6,0.9l1,1.9
+                                        <path class="st13" d="M155.1,179.8c-0.9-0.4-0.9-1-0.9-1l-1.2,0.4c0,0-0.2,0.5-0.6,0.6s-1.6,0.9-1.6,0.9l1,1.9
           c0,0,0.5,0.5,0.9,0.8s0.8,0.4,0.8,0.4l1.2-0.4c0,0,0.8-0.2,1.1-0.2s0.6-1.1,0.6-2S156,180.1,155.1,179.8z"></path>
-                                    <path class="st13" d="M153.4,176.6l1.4-0.1v-0.9v-2l0.2-0.5v-1.8l0.9,0.5l0.1-0.6l-0.5-1c0,0-0.6,0-1.5,0.1s0,0-0.5,0.5
+                                        <path class="st13" d="M153.4,176.6l1.4-0.1v-0.9v-2l0.2-0.5v-1.8l0.9,0.5l0.1-0.6l-0.5-1c0,0-0.6,0-1.5,0.1s0,0-0.5,0.5
           s-0.2,1-0.8,1.4s-0.4,0.9-0.5,1.2s0,1.9,0,1.9L153.4,176.6z"></path>
-                                    <path class="st13" d="M150.8,198.5c1.2-1.2,1-1.4,1.6-1.9s0.6-9,0.6-9l-0.4-0.8c0,0-0.1-0.5-1-0.5s-1.9-0.1-1.9-0.1l-0.2,0.5
+                                        <path class="st13" d="M150.8,198.5c1.2-1.2,1-1.4,1.6-1.9s0.6-9,0.6-9l-0.4-0.8c0,0-0.1-0.5-1-0.5s-1.9-0.1-1.9-0.1l-0.2,0.5
           l-0.4,1.2l1.1,1.8c0,0-0.1,0.8-0.5,1s-0.8-0.4-0.8,0.9s-0.1,2.1-0.1,2.5s-0.2,2.1-0.2,2.1s0.2-0.4-0.4,1.1s-0.5,2-1,2.4
           s-1,0.5-1.2,1.1s-0.4,1.5-0.4,1.5s0.9,0.6,1.6,0.6s2.9-3.2,2.9-3.2S149.5,199.8,150.8,198.5z"></path>
-                                    <path class="st13" d="M153.6,202.8c0,0,0-2,0-2.5s-0.2-0.9-0.2-0.9s-0.6-0.6-1.6-0.1s0,0-0.6,0.6s0,0.8-0.4,1.6s0,2.6-0.2,3.6
+                                        <path class="st13" d="M153.6,202.8c0,0,0-2,0-2.5s-0.2-0.9-0.2-0.9s-0.6-0.6-1.6-0.1s0,0-0.6,0.6s0,0.8-0.4,1.6s0,2.6-0.2,3.6
           s1.1,2.9,1.1,2.9l0.5,0.1l0.6-0.8c0,0,0-0.6,0.2-1.9s0,0,0.5-0.6s0.4-0.8,0.4-0.8L153.6,202.8z"></path>
-                                    <path class="st13" d="M147.1,206.1l-1.4,0.5c0,0,0,1.4,0,1.8s0,1.5-0.2,3.1s0,0-1.1,0.5s0,0-0.5,0.2s-0.2,0.9-0.2,0.9l0.4,1.5
+                                        <path class="st13" d="M147.1,206.1l-1.4,0.5c0,0,0,1.4,0,1.8s0,1.5-0.2,3.1s0,0-1.1,0.5s0,0-0.5,0.2s-0.2,0.9-0.2,0.9l0.4,1.5
           v1.9l1.1,1.8h1.6l1.1-0.4l1-2.9l-0.4-8.9L147.1,206.1L147.1,206.1z"></path>
-                                    <path class="st13" d="M110.5,173.6c0,0.8-0.1,2.1,0.1,2.6s0.2-0.1,0.2,0.5s0.5,1.2,0.5,1.2s0.2,1.1,0.9-0.2s0.6-1.4,0.6-1.4
+                                        <path class="st13" d="M110.5,173.6c0,0.8-0.1,2.1,0.1,2.6s0.2-0.1,0.2,0.5s0.5,1.2,0.5,1.2s0.2,1.1,0.9-0.2s0.6-1.4,0.6-1.4
           l1-1.1c0,0,0.2-1.2,0-2.1s-0.2-1.5-0.2-1.5l-0.8-0.1c0,0-0.4-0.8-0.4-1.1s-1-0.8-1-0.8l-0.5,2.4l0.1,0.6
           C111.1,172.6,110.5,172.9,110.5,173.6z"></path>
-                                    <path class="st13" d="M108.3,174.5l-0.8-0.8l-1.2,0.6l-0.3,2.2l1.4,2.2l1,1l0.2,1.1l0.8,1.1c0,0,0.5,3.1,0.5,3.5s0.1,0.9,0.1,0.9
+                                        <path class="st13" d="M108.3,174.5l-0.8-0.8l-1.2,0.6l-0.3,2.2l1.4,2.2l1,1l0.2,1.1l0.8,1.1c0,0,0.5,3.1,0.5,3.5s0.1,0.9,0.1,0.9
           l-0.1,4.6l0.5,2l1.1-0.1c0,0-0.5-6.9-0.4-7.9s0.8-0.8,0.8-0.8l0.6,1.1l0.8,0.5c0,0,0-0.6,0.1-2.8s-0.1-0.6-0.9-1.6s0,0-0.5-0.2
           s-0.5-0.5-1-1s-1-1.1-1.6-1.5S109,177,109,177L108.3,174.5z"></path>
-                                    <path class="st13" d="M105.4,212.4c0,0,0,0-0.8,0s-0.6,0.4-1,0.8s-0.2,1.8-0.4,2.5s0.9,1.6,1.4,1.9s0.1,1,0.1,1l0.6,1.2l0.9-0.1
+                                        <path class="st13" d="M105.4,212.4c0,0,0,0-0.8,0s-0.6,0.4-1,0.8s-0.2,1.8-0.4,2.5s0.9,1.6,1.4,1.9s0.1,1,0.1,1l0.6,1.2l0.9-0.1
           l-0.1-2.5l0.2-3.8L105.4,212.4z"></path>
-                                    <path class="st13" d="M102,214.8c0,0,0,0-0.8,0.6s-0.6,0.8-1.9,1.6s-1.5,1.5-1.5,1.5s-2,2.5-3.6,2.5s-0.9,0.2-1.1,2.6
+                                        <path class="st13" d="M102,214.8c0,0,0,0-0.8,0.6s-0.6,0.8-1.9,1.6s-1.5,1.5-1.5,1.5s-2,2.5-3.6,2.5s-0.9,0.2-1.1,2.6
           s-0.1,1.1-0.8,1.9s-0.4,1.2-0.1,2s0,0,0.5-0.2s0.9-0.5,0.9-0.5s0.9,0,1.5,0s0.4-0.8,0.4-1.1s1.4-0.6,1.4-0.6s0.6,0.1,1,0.2
           s0.2,0.6,0.1,1.5s-0.1,0.8-0.9,1.5s-1.4,0.8-2.1,1.1s-0.9,2.8-0.9,3.1s0.2,0.8,0.8,1.2s1.9,0.1,2.2,0.1s1.8-0.4,2.6-0.9
           s1.1-2.4,1.6-3.2s0.8-2.9,0.9-3.4s0.1-2.6,0.1-3.6s-0.4-2.5-0.4-3s0.5-4.9,0.5-4.9L102,214.8z"></path>
-                                    <path class="st13" d="M106.4,238.3c-0.8-0.6-0.2,0.2-0.8-0.6s-0.4-0.2-0.5-0.9s-1.2-1.1-1.2-1.1s-1.1,3-1.5,3s-0.9,0.4-1.6,0.4
+                                        <path class="st13" d="M106.4,238.3c-0.8-0.6-0.2,0.2-0.8-0.6s-0.4-0.2-0.5-0.9s-1.2-1.1-1.2-1.1s-1.1,3-1.5,3s-0.9,0.4-1.6,0.4
           s-1.5,0-2,0s-1.1,0-1.1,0s-1-0.5-1.2,0.6s-0.5,2.6-0.5,3s0,0.4,0,1.9s0,2.5,0,3s0.2,0.9-0.1,1.6s-1.1,1-1.1,1.5s-0.5,1.4,0.1,1.4
           s1.2,1.2,2.5,0s1.8-1.9,1.9-2.2s0.4-0.1,0.9-1.4s0.4-1.1,1.1-2.1s0-1.1,1.2-1.4s1.4,0.5,1.8-0.2s0.8-1.1,0.8-1.5
           s-0.2-0.5,0.1-1.1s1-1.2,1-1.2s1.5-0.9,1.2-1.4S107.1,238.9,106.4,238.3z"></path>
-                                    <path class="st13" d="M116.8,236.1c-0.2,0.4-0.9,0.9-0.9,0.9s0.2,0.5-0.1,1s-1.2,0.9-1.2,0.9h-0.8c0,0-0.6-1.2-1.8,0
+                                        <path class="st13" d="M116.8,236.1c-0.2,0.4-0.9,0.9-0.9,0.9s0.2,0.5-0.1,1s-1.2,0.9-1.2,0.9h-0.8c0,0-0.6-1.2-1.8,0
           s-0.4,0.5-1.1,1.2s-0.4,0.2-0.8,0.8s-0.8,2.4-0.8,2.4l0.5,1c0,0-0.2,2.9,0.9,1.6s2.4-3.6,2.4-3.6s-0.5-0.8,0.4-1
           s-0.6,0.2,0.9-0.2s0.9-0.8,2.1-0.8s2.5-2,2.5-2l-0.2-1.9C118.8,236.4,117,235.8,116.8,236.1z"></path>
-                                    <path class="st13" d="M124.3,243.6c0,0,0.4-0.9-0.5-0.9s-0.8,0.6-0.8,0.6l-0.2,1.1c0,0-0.8,0.6-0.4,0.9s1,0.6,1,0.6
+                                        <path class="st13" d="M124.3,243.6c0,0,0.4-0.9-0.5-0.9s-0.8,0.6-0.8,0.6l-0.2,1.1c0,0-0.8,0.6-0.4,0.9s1,0.6,1,0.6
           s-0.4,0.5,0,0.6s0.5,0.9,1,0.2s0.5-0.6,0.5-0.6l1.5-0.5l-0.4-2L124.3,243.6z"></path>
-                                    <path class="st13" d="M92.3,256.3l-1.6,0.2h-0.8l-0.4,0.5l1.1,0.9c0,0-0.4,0.4,1,0.8s1,1.1,1.9,0.2s0.9-0.1,0.9-0.9s0-1.2,0-1.2
+                                        <path class="st13" d="M92.3,256.3l-1.6,0.2h-0.8l-0.4,0.5l1.1,0.9c0,0-0.4,0.4,1,0.8s1,1.1,1.9,0.2s0.9-0.1,0.9-0.9s0-1.2,0-1.2
           s-0.6-0.5-1-0.5S92.3,256.3,92.3,256.3z"></path>
-                                    <path class="st13" d="M88.8,252.6h-1.2l-1,0.5l-0.6,1c0,0-1.1,0.5-1.5,0.5s-1.8,0.2-1.8,0.2s-0.1-0.1,0,0.5s-1.4,0.9,0.9,1.1
+                                        <path class="st13" d="M88.8,252.6h-1.2l-1,0.5l-0.6,1c0,0-1.1,0.5-1.5,0.5s-1.8,0.2-1.8,0.2s-0.1-0.1,0,0.5s-1.4,0.9,0.9,1.1
           s1.2,0.4,2.2,0.2s1.1,0.1,1.5-0.5s0.8-1.1,0.8-1.1s0.1,0.9,0.8-0.2s0.9-1.8,0.9-1.8L88.8,252.6z"></path>
-                                    <path class="st13" d="M85.1,246.3c0.4,0,1.4,0.1,1.8-0.5s0.5-1.2,1.4-2.2s1.4-1.9,1.5-2.2s0-1.6,0-1.6s-0.1-0.6,1-1
+                                        <path class="st13" d="M85.1,246.3c0.4,0,1.4,0.1,1.8-0.5s0.5-1.2,1.4-2.2s1.4-1.9,1.5-2.2s0-1.6,0-1.6s-0.1-0.6,1-1
           s1.9,0.1,1.9-1s0.4-2.2,0-2.9s-0.8-0.8-1-1.5s-0.6-1.2-1-1.6s-2.1-2.1-2.1-2.1s-1.2-0.1-1.2-0.5s-0.5-1-0.5-1s-0.1-0.6-0.9-0.6
           s-2.1,0-2.1,0l-1.8,1.4l0.1,1.2c0,0-1,1.4-0.5,1.8s2,1.5,2.1,1.9s0.4,0,0.4,1.5s0.5,1.1,0,2.1s-0.2,0.8-1.2,1.9s-0.2,0-1,1.1
           s-1.1,1.8-1.1,2.6s-0.4,2,0.2,2.5s1.1,0.9,1.8,0.9S84.8,246.3,85.1,246.3z"></path>
-                                    <path class="st13" d="M81.1,229.8c0.5-1.4,0.8-1.5,0.5-2s-0.6-1-0.6-1l-1.1-0.5l-1.5,1.4c0,0-0.5-0.2-0.6,0.8s-0.4,1-0.4,1.5
+                                        <path class="st13" d="M81.1,229.8c0.5-1.4,0.8-1.5,0.5-2s-0.6-1-0.6-1l-1.1-0.5l-1.5,1.4c0,0-0.5-0.2-0.6,0.8s-0.4,1-0.4,1.5
           s-0.2,0.5-0.6,0.9S76,232,76,232l-1,0.8l-0.9,0.8c0,0-0.5,0.1-0.5,0.6s0,0.8,0.9,1s1.1,0.1,1.5-0.2s1.1-1.1,1.6-1.5
           s-0.5,0.6,0.5-0.4s0.1-0.1,1-1s1.2-0.9,1.6-1.5S80.6,231.1,81.1,229.8z"></path>
-                                    <path class="st13" d="M80.6,235.3l0.8-0.6l-1.2-1c-0.6,0.8-2.6,2.8-2.8,3.1s-0.4,0.9-0.6,1.2s-0.2,0.4-1,1.1s-1.1,1.2-1.1,1.2
+                                        <path class="st13" d="M80.6,235.3l0.8-0.6l-1.2-1c-0.6,0.8-2.6,2.8-2.8,3.1s-0.4,0.9-0.6,1.2s-0.2,0.4-1,1.1s-1.1,1.2-1.1,1.2
           c-1,0.8-1.8,1-1.8,1.5s0.4,1.1-0.5,1.9s-0.6,1.6-0.6,1.6s0,0.6,0,1.6s-0.2,1.8-0.2,2.1s-0.2,0.5-0.2,1.2s0,1.5,0,2s-0.1,2,0.4,2
           s0.6,0.8,1.6-0.1s1.2-1.1,1.9-2s0.8,0.1,1-1.5s0.2-3,0.2-3.6s-0.2-1.4,0-1.8s-0.1-1,0.9-1.8s0.9-0.6,1.4-1.8s-0.1-0.9,0.6-1.8
           s0.9-1.5,0.9-1.5l-0.2-2.2l0.1-0.8L80.6,235.3z"></path>
-                                    <path class="st13" d="M96.8,96.6c0.1,0,0.2,0,0.2,0l0,0c0,0,0.2,0,0.4,0c0.9,0,1.5-0.4,1.5-0.4l0.6-0.8l-0.1-1.8l-0.8-0.4
+                                        <path class="st13" d="M96.8,96.6c0.1,0,0.2,0,0.2,0l0,0c0,0,0.2,0,0.4,0c0.9,0,1.5-0.4,1.5-0.4l0.6-0.8l-0.1-1.8l-0.8-0.4
           l-0.2,0.9c0,0-0.5,0.2-0.9,0.5s-0.4,0.2-0.4,0.2s-0.9,0.1-0.9,0.5S96.1,96.6,96.8,96.6z"></path>
-                                    <g>
-                                        <g class="st18">
-                                            <image style="overflow:visible;" width="100" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABVCAYAAABQBipiAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+                                        <g>
+                                            <g class="st18">
+                                                <image style="overflow:visible;" width="100" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABVCAYAAABQBipiAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
                       GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAvJJREFUeNrsmgtP01AYhlfWCSig
                       eJmKN8T//7eMCfGGdOtl7TxL3pO8OXQIRpN2eZ7kTbeuJN15+p3bmEwAAAAAAAAAAAAAAAAAAAAA
                       AAAAAAAAAABGQ7Yj97/te6yTI1L+4z1nyetsi5B1j5w1Uv79/e5ZpjqmYmLjdzq2yftByxmTlNj4
@@ -2315,22 +2444,22 @@
                       7aT7Q+OzdX9L1xV3gfdtQej7WO09BGyTMIqfhbOB3ENcvMUfrKa2uZguDu8qYDQShijFKyYzSel4
                       s5MChizF72XbP0HspIA+piO4x50WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9+G3AAMAdo9nS2/5
                       hIAAAAAASUVORK5CYII=" transform="matrix(1 0 0 1 26.0833 112.8333)">
-                                            </image>
-                                        </g>
-                                        <g>
-                                            <path class="st17" d="M63.1,128.1c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
+                                                </image>
+                                            </g>
+                                            <g>
+                                                <path class="st17" d="M63.1,128.1c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
         c-2.9,5.7-5.9,11.5-8.8,17.2c-0.1,0.1-0.1,0.2-0.2,0.4c-0.2-0.4-0.4-0.7-0.6-1.1c-1.8-3.5-3.6-6.9-5.3-10.4c-1-2-2.1-4-3.1-6.1
         c-0.7-1.3-1.1-2.7-1.2-4.2c-0.1-2.6,0.5-4.9,2.1-6.9c1.6-2.1,3.8-3.4,6.5-3.8c0.4-0.1,0.9-0.1,1.3-0.2
         C62.6,128.1,62.9,128.1,63.1,128.1z M68.3,138.3c0-3.2-2.5-5.7-5.7-5.6c-3.1,0-5.6,2.6-5.6,5.7c0,3.1,2.6,5.6,5.8,5.6
         C65.8,144,68.3,141.4,68.3,138.3z"></path>
-                                            <path class="st19" d="M72.3,135c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
+                                                <path class="st19" d="M72.3,135c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
         l0,4.6c0.4-0.1-0.3,0,0.2,0l-0.2,0c3.2,0,5.7,2.5,5.7,5.6l0,0c0,3.1-2.6,5.7-5.7,5.7c-0.3,0,0.3,0,0,0l0,16.8
         c0.1-0.2,0.2-0.3,0.2-0.4c2.9-5.7,5.9-11.5,8.8-17.2C73,140.5,73.3,137.8,72.3,135z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                    <g class="st16">
-                                        <image style="overflow:visible;opacity:0.75;" width="73" height="28"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAcCAYAAAApxUKlAAAACXBIWXMAAAnXAAAJ1wGxbhe3AAAA
+                                        <g class="st16">
+                                            <image style="overflow:visible;opacity:0.75;" width="73" height="28"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAcCAYAAAApxUKlAAAACXBIWXMAAAnXAAAJ1wGxbhe3AAAA
                         GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABwlJREFUeNrcmf9PG0cQxe98Z2yM
                         bb4ESEkgISEhpWnVNq2q/tL/P1JSNf2WtknapAkUEgMGDP7uu+5Jn6leVzZxUpBQLY0M3O3u7Js3
                         M2+XMDi/T+h9D/uk3veF/oTnNGdmsbM83+EIoPrOenynFx20swYrwiadTTu75KzM3/zPwNmxsz1n
@@ -2364,46 +2493,46 @@
                         i3Usa+drdMYAYF4DwATfpq6PRxTwUO7757zLQDsztuQKO5Q7fxXXR4Bi+rFEoKekOTX8oL3vDWPO
                         E5ipLBzKOVMFbR7Hqx7lE7nu8ceNun+KROH7/2LTOQLv3cSrSf5dXU504uAsmPUuY9Mhm4yk9iSn
                         pNtZrT3uLWr4tnf+FmAA6KLD8jcePaIAAAAASUVORK5CYII="
-                                               transform="matrix(1.1322 0 0 1.1322 34.7654 163.216)">
-                                        </image>
-                                        <g>
+                                                   transform="matrix(1.1322 0 0 1.1322 34.7654 163.216)">
+                                            </image>
                                             <g>
-                                                <path class="st17" d="M51.4,173.7v14.1h-1.9c-0.9-1.4-2.5-2.8-4.9-4.1c-2.4-1.3-4.4-2-6.2-2l-0.6-2.4c1.2-0.9,3-1.9,5.6-2.9
+                                                <g>
+                                                    <path class="st17" d="M51.4,173.7v14.1h-1.9c-0.9-1.4-2.5-2.8-4.9-4.1c-2.4-1.3-4.4-2-6.2-2l-0.6-2.4c1.2-0.9,3-1.9,5.6-2.9
           c0.8-0.3,2.7-1,5.9-2.3v-0.4H36.5v-1.9h16.8v1.9H51.4z M49.2,176.6c-1.7,0.6-4.3,1.8-7.8,3.4c3,1.1,5.6,2.6,7.8,4.5V176.6z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M70.1,169.5c-3.2-2-5.8-2.9-7.8-2.9c-1.9,0-3.3,0.4-4.4,1.3c-1.1,0.9-1.7,2.2-1.8,4H58v1.9h-1.9v14h-2.2
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M70.1,169.5c-3.2-2-5.8-2.9-7.8-2.9c-1.9,0-3.3,0.4-4.4,1.3c-1.1,0.9-1.7,2.2-1.8,4H58v1.9h-1.9v14h-2.2
           v-14h-1.9v-1.9h2c0-2.3,0.9-4.1,2.5-5.5c1.5-1.3,3.5-1.9,6-1.9c1.6,0,3.1,0.4,4.7,1c1.1,0.4,2.5,1.2,4.4,2.5L70.1,169.5z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M71.2,173.7v14.1h-2c-0.9-1.5-2.5-2.8-4.8-4c-2.3-1.2-4.3-1.9-6.1-1.9l-0.7-2.4c2.8-1.8,6.5-3.6,11.3-5.3
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M71.2,173.7v14.1h-2c-0.9-1.5-2.5-2.8-4.8-4c-2.3-1.2-4.3-1.9-6.1-1.9l-0.7-2.4c2.8-1.8,6.5-3.6,11.3-5.3
           v-0.4H56.4v-1.9h16.3v1.9H71.2z M68.9,176.6c-2.7,1-5.2,2.1-7.6,3.5c2.7,1,5.3,2.4,7.6,4.4V176.6z M64.4,188.3
           c-0.7-0.7-1.6-1.3-2.9-1.9l0.9-1.8c1.2,0.5,2.3,1.2,3.3,2.4L64.4,188.3z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M85.9,173.7v14.1h-2.2v-10.6c0-0.7-0.2-1.4-0.7-2c-0.5-0.7-1.1-1-1.8-1c-1.1,0-2,0.9-2,2
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M85.9,173.7v14.1h-2.2v-10.6c0-0.7-0.2-1.4-0.7-2c-0.5-0.7-1.1-1-1.8-1c-1.1,0-2,0.9-2,2
           c0,1.6,0.6,2.3,1.6,2.3c0.3,0,0.7-0.2,1.2-0.5l0.5-0.3v2.4c-0.6,0.6-1.3,0.9-2.1,0.9c-0.7,0-1.4-0.4-2-1.2L78,179
           c-0.7,1.3-1.6,2-2.9,2c-0.9,0-1.6-0.4-2.1-1.2v-2.4c0.8,0.9,1.3,1.1,1.8,1.1c1.1,0,1.7-0.8,1.7-2.6c0-1.5-1-2.2-3.4-2.3
           c0,0-0.1,0-0.1,0h-0.6h-0.8v-1.9h3.4c1.2,0,2.2,0.8,3,2.3c0.5-1.2,1.6-2.2,2.9-2.2c1,0,1.9,0.6,2.8,1.6v-1.6H88v1.9H85.9z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17"
-                                                      d="M91.2,173.7v14.1H89v-14.1h-2.3v-1.9h6.6v1.9H91.2z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M109.4,173.7v14.1h-2.2c0-0.5,0-1,0-1.7c0-0.6,0.1-1.1,0.1-1.4c0-3.4-0.9-4.8-2.4-4.8c-0.5,0-1,0.3-1.4,0.9
+                                                </g>
+                                                <g>
+                                                    <path class="st17"
+                                                          d="M91.2,173.7v14.1H89v-14.1h-2.3v-1.9h6.6v1.9H91.2z"></path>
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M109.4,173.7v14.1h-2.2c0-0.5,0-1,0-1.7c0-0.6,0.1-1.1,0.1-1.4c0-3.4-0.9-4.8-2.4-4.8c-0.5,0-1,0.3-1.4,0.9
           c-0.4,0.5-0.6,1.1-0.7,1.9h-2.4c0-0.8-0.2-1.4-0.7-2c-0.4-0.6-1-0.9-1.5-0.9c-0.7,0-1.3,0.3-1.7,0.8c-0.4,0.5-0.6,1.2-0.6,2
           c0,1.6,0.9,2.4,2.9,2.4c0.2,0,0.4,0,0.9-0.1l-0.7,2.2c-0.4,0-0.7,0.1-0.8,0.1c-1.4,0-2.5-0.4-3.4-1.4c-0.9-0.9-1.3-2.1-1.3-3.5
           c0-2.8,1.8-4.8,4.7-4.8c1.4,0,2.5,0.8,3.5,2.2c1-1.5,2.1-2.3,3.3-2.3c0.9,0,1.6,0.6,2.2,1.7v-5.4H92.1v-1.9h19.3v1.9H109.4z"></path>
+                                                </g>
                                             </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
-                            <g id="chittagong">
-                                <a href="{{route('subcategory-page','চট্টগ্রাম')}}"
-                                   xlink:href="">
-                                    <path class="st11" d="M355.6,320.6c0-1-0.1-1.6-0.1-2s-1.1-2-1.1-2l-1.8-5l-2.5-10.1l-2.9-27.5l1.2-23.9l1.4-6.1l-0.8-4.1l-1.4-3
+                                    </a>
+                                </g>
+                                <g id="chittagong">
+                                    <a href="{{route('subcategory-page','চট্টগ্রাম')}}"
+                                       xlink:href="">
+                                        <path class="st11" d="M355.6,320.6c0-1-0.1-1.6-0.1-2s-1.1-2-1.1-2l-1.8-5l-2.5-10.1l-2.9-27.5l1.2-23.9l1.4-6.1l-0.8-4.1l-1.4-3
         l-1.4-4.6l-0.9-4.6c0,0-0.2-3.6-0.2-4s-1.1-5.9-1.1-5.9l-1.5-0.8c0,0,0-3.2,0.1-3.6s0.8-1.4,0.8-1.4s0,0,0.5,0s1.9,0.1,1.9,0.1
         s1.5-1.1,1.9-1.4s0.1-1.6,0.1-1.6l-1.5-2.6l-1.8-3l-0.2-5l0.2-3.2l-1.4-1.4l-0.8-3.9l0.6-5.1l-0.6-2.6l-2.2-4.4l-0.9-15.9
         l-0.1-0.6l-1.5-1l-1.1-4.1l1-2v-4.4l-1.2-1.5c0,0,0.1-1.6,0.1-2.2s0.2-2.4,0.2-2.4l-0.8-1.6l-0.4-5.5l-1.2-1.5
@@ -2518,38 +2647,38 @@
         c0.8,1.1,0.8,1.1,0.8,1.1l1.6,1l-0.5,0.9l-0.9,0.9c0,0-0.5,0-0.9,0.4s-1.2,1.2-1.2,1.2l-0.6-0.1c0,0,0.4,1.2,0.5,1.6
         s-0.1,1,0.6,1.1s2.1,0.1,2.1,0.1s0.4-0.6,1.4,0.6s0.9,1.6,1.6,2.2s0.4,0.5,1.2,0.9s1.2,0.5,2,0.8l0.6,0.5
         C319.1,143.4,319.1,143.9,319.1,144.4z"></path>
-                                    <path class="st4" d="M173.8,187.6c-0.2-0.4-0.8-0.8-1.2-1.5s-0.5-1.2-0.8-2.4s-0.6-3.8-0.6-3.8s-0.8-3.2-1.2-3.8s-2.9-3.2-2.9-3.2
+                                        <path class="st4" d="M173.8,187.6c-0.2-0.4-0.8-0.8-1.2-1.5s-0.5-1.2-0.8-2.4s-0.6-3.8-0.6-3.8s-0.8-3.2-1.2-3.8s-2.9-3.2-2.9-3.2
         l-2-3l0.6-2.5c0,0,0.1-2.1,0.1-2.5s0-0.9,0-0.9l-1.2-0.6l-1.2,0.5l0.4,4.2l-1,1.6c0,0,0.5,2.1,0.5,2.6s-0.2,1.9-0.4,2.4
         s-0.8,2.2-0.8,3.2s-0.8,1.8-0.8,2.5s0,1.5,0,1.5l-0.4,28.4l-0.8,1.5c0,0,0.5,1.5-0.2,2.2s-0.9,1.5-0.9,1.5s-0.5,0.2-0.9,0.5
         s-0.6,0.6-1.1,1.2s-0.9,0.9-1,1.5s-0.6,2.5,0.2,3s1.2,0.6,2,0.6s0.6,0.1,1.2-0.2s0.5-0.4,0.9-0.9s0.4-0.5,0.4-0.5
         s-0.5-0.1,0.1-0.8s-0.6,0.1,0.6-0.6s0.9-0.2,1.9-1.1s1.4-1.2,1.5-1.9s-1.2,0.2,0.4-1.2s-0.1-0.8,1.6-1.5s-0.6,0,2.4-1
         s4.2-1.5,4.4-2s0.5-2.2,0.5-2.2l1.8-6.1l-0.5-6c0,0,0.5-2.9,0.5-3.5s0.1-1.9-0.1-2.4S174,188,173.8,187.6z"></path>
-                                    <path class="st6" d="M222.1,177.3c-0.4-1-0.9-2.6-1.1-3.1s-2.5-3.9-2.5-3.9l-7.6-14l-1.1-3.5l-1.1-1.6c0,0-1.1-0.6-1.5-0.6
+                                        <path class="st6" d="M222.1,177.3c-0.4-1-0.9-2.6-1.1-3.1s-2.5-3.9-2.5-3.9l-7.6-14l-1.1-3.5l-1.1-1.6c0,0-1.1-0.6-1.5-0.6
         s-1.5,0.1-1.5,0.1l-0.6,0.5c0.1,0.5,0.4,1.6,0.4,2.9s-0.1,2.4-0.2,3s0.4,0.9-0.1,1.4s-0.8,1.5-1.1,1.9s-1.2,2.2-1.2,2.2
         s-0.2,1-0.4,1.9s-0.5,1.8-0.5,2.2s0.4,2.1,0.4,2.1s0.9,3.6,1.6,4.6s2.1,4.6,2.5,5.4s3.6,5.6,3.6,5.6s2.1,3.6,6.2,3.5l2.9-1.8
         c0,0,0.9-0.8,1.4-1s0.8,0,1.2-0.8s0.9-0.8,0.9-1.6s0.2-1.8,0.1-2.9S222.5,178.3,222.1,177.3z"></path>
-                                    <path class="st9" d="M257.9,259.8c0-0.6,0.9-1.8,0.9-2.1s0.2-1.1,0.2-1.6s0,0,1.4-2.1s0.2-1.5,0.5-2s0-2-0.2-2.8s-0.1-1.6-0.2-2
+                                        <path class="st9" d="M257.9,259.8c0-0.6,0.9-1.8,0.9-2.1s0.2-1.1,0.2-1.6s0,0,1.4-2.1s0.2-1.5,0.5-2s0-2-0.2-2.8s-0.1-1.6-0.2-2
         s-0.6-1.5-0.6-1.5l0.4-1.5l-0.9-0.9l-1-2l-1.1,0.6l-0.4,1.8c0,0-0.8,0.4-1,0.9s-0.4,1.4-0.5,2s0,1.8,0.2,2.6s0.2,1.1,0.8,1.8
         s-0.1,0.8-0.4,1.9s-0.1,4.1-0.1,5s-1.1,1.8-1.6,2.5s-0.8,1.8-1.4,2.6s-0.5,3.1-0.5,3.1l1.8,1.5l1.8-0.6c0,0,0.4-2.2,0.5-2.6
         s1.1-2.2,1.1-2.2S257.9,260.4,257.9,259.8z"></path>
-                                    <path class="st10" d="M270.6,296.3c1.4-0.4,1.9-2,1.9-2.6s-0.4-4.4-0.4-4.9s0.1-3.2,0.1-3.2s0.6-1.8,0.6-2.8s-0.4-4.2-0.4-4.2
+                                        <path class="st10" d="M270.6,296.3c1.4-0.4,1.9-2,1.9-2.6s-0.4-4.4-0.4-4.9s0.1-3.2,0.1-3.2s0.6-1.8,0.6-2.8s-0.4-4.2-0.4-4.2
         l-1.5-1.1l-1.6-3.1l-1-2.2l-0.6-1.9l-0.9-2.6v-2.9V262l-1.2-0.2h-1.1l-0.5,0.6l-0.4,1.5l0.2,0.6l0.8,0.6c0,0-0.2,1.2,0,1.6
         s0.2,1.6,0.2,1.6s0,0.9,0,1.4s-0.4,1-0.8,1.4s-0.1,0.5-1,1s-0.9,0.5-0.9,0.5l-1.1-0.4l-0.5-0.6l0.2-1.2l0.9-0.2
         c0,0,0.1,0.5,0.5-0.6s0.5-3.2,0.5-3.2l-0.1-2l-1.4-0.6H260c0,0,0.4-0.9-0.6,0.8s-1.2,2.4-1.2,2.4s-1,1.5-1,2s-0.2,1.4-0.2,2.4
         s-0.1,1.8-0.1,2.8s0.2,2.9,0.2,2.9l1.1,0.6l0.4,2.1l0.6,0.6l0.5,2.8l0.8,0.8c0,0,0.5,3.5,0.5,3.9s0,0.5-0.8,1.9s-0.4,0.8-1.4,2.9
         s-1.1,2.5-1.1,3.2s0.5,1.9,1,2.4s0.5,2.5,1.5,2.2s0.9-0.5,1.5-0.6s1.8-1,1.8-1s-0.4-1.8,0-2.2s0.5-1.5,0.9-1.5s0.9-0.1,0.9-0.1
         s0.6,1.5,1.1,1.6s1.2,0.4,2.5,0.4S269.3,296.6,270.6,296.3z"></path>
-                                    <path class="st8" d="M194.1,148.4c0,0-0.8,0.1-1.4,0.2s-0.2,1.4-0.2,1.4l-1.1,0.1l-1,0.6c0,0,0,0.5,0,1s1,1,1,1l1.5,0.1l1.4-0.9
+                                        <path class="st8" d="M194.1,148.4c0,0-0.8,0.1-1.4,0.2s-0.2,1.4-0.2,1.4l-1.1,0.1l-1,0.6c0,0,0,0.5,0,1s1,1,1,1l1.5,0.1l1.4-0.9
         c0,0,0.8-1.8,0.8-2.2s-0.2-1-0.2-1L194.1,148.4z"></path>
-                                    <path class="st7" d="M159.5,179.8c0.8-0.6,1.2-0.6,1.2-1.8s0.1-1.4,0-2s-0.1-2.2-0.5-2.2s-1.6-0.8-1.6-0.8l-1-0.1
+                                        <path class="st7" d="M159.5,179.8c0.8-0.6,1.2-0.6,1.2-1.8s0.1-1.4,0-2s-0.1-2.2-0.5-2.2s-1.6-0.8-1.6-0.8l-1-0.1
         c0,0,0,0.5-0.4,0.8s-1.2,0.2-1.2,0.9s0.2-0.4,0.2,1.6s-0.1,3.1-0.1,3.5s0,1.2,0.8,1.1s0.6,0,1.4-0.1s0.2,0.6,0.8-0.1
         S158.8,180.4,159.5,179.8z"></path>
-                                    <path class="st5" d="M179.1,173.5c-0.4-0.4-0.5-0.8-1.2-1s-1-0.8-2-0.8s-3.1,3-3.1,3v1.5c0,0,0.6,1.4,1.2,1.6s1.1,0.8,1.1,0.8
+                                        <path class="st5" d="M179.1,173.5c-0.4-0.4-0.5-0.8-1.2-1s-1-0.8-2-0.8s-3.1,3-3.1,3v1.5c0,0,0.6,1.4,1.2,1.6s1.1,0.8,1.1,0.8
         s0.4,0.9,0.4,1.2s-1,0.8-0.4,1.1s0.9,0.6,1.6,0.4s1.2-0.9,1.2-0.9s0.2-0.2,0.4-0.6s0.1-0.4,0.1-0.4s1.4-0.1,1.4-1.1s0.2-1.8,0-2.5
         S179.5,173.9,179.1,173.5z"></path>
-                                    <g>
-                                        <g class="st18">
-                                            <image style="overflow:visible;" width="99" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABVCAYAAAC/xEFcAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
+                                        <g>
+                                            <g class="st18">
+                                                <image style="overflow:visible;" width="99" height="84" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABVCAYAAAC/xEFcAAAACXBIWXMAAAsSAAALEgHS3X78AAAA
             GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAxZJREFUeNrsmWtv2kAQRQ2YJIKE
             NOkjhVLa9P//sT6TFAJ+YXeR7kqTrd32Q9Wuk3OkKy/gIDN3Z2Z3kyQAAAAAAAAAAAAAAAAAAAAA
             AAAAAAAAALEzeCLP32DIv3nuwW9+R9MyjtqctIdGWA3NuMuQg2ozjjpr0h6aMdRzj3RNW4yxRuyl
@@ -2565,23 +2694,23 @@
             PiClZv2NgnhrzCjN7A9PbsuO4NfBniRcQUVlRGyGVAqy35xtVLaaoNyU5kikMrX/T4KfJD34V24a
             SanyzdofaYzMmVQdbPq6Sk/vgv+rg7wYmvrAGBEeeVjj2oLey+DHbEh4sNiWRY/SgJgN6XqmRxt8
             AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAv8APAQYA7/lckkUOQGUAAAAASUVORK5CYII="
-                                                   transform="matrix(1 0 0 1 231 113.2729)">
-                                            </image>
-                                        </g>
-                                        <g>
-                                            <path class="st17" d="M268,128.3c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
+                                                       transform="matrix(1 0 0 1 231 113.2729)">
+                                                </image>
+                                            </g>
+                                            <g>
+                                                <path class="st17" d="M268,128.3c0.4,0.1,0.9,0.1,1.3,0.2c3.8,0.8,6.5,3,7.8,6.7c1,2.8,0.8,5.6-0.6,8.2
         c-2.9,5.7-5.9,11.5-8.8,17.2c-0.1,0.1-0.1,0.2-0.2,0.4c-0.2-0.4-0.4-0.7-0.6-1.1c-1.8-3.5-3.6-6.9-5.3-10.4c-1-2-2.1-4-3.1-6.1
         c-0.7-1.3-1.1-2.7-1.2-4.2c-0.1-2.6,0.5-4.9,2.1-6.9c1.6-2.1,3.8-3.4,6.5-3.8c0.4-0.1,0.9-0.1,1.3-0.2
         C267.5,128.3,267.7,128.3,268,128.3z M273.1,138.5c0-3.2-2.5-5.7-5.7-5.6c-3.1,0-5.6,2.6-5.6,5.7c0,3.1,2.6,5.6,5.8,5.6
         C270.6,144.2,273.2,141.6,273.1,138.5z"></path>
-                                            <path class="st19" d="M277.1,135.2c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
+                                                <path class="st19" d="M277.1,135.2c-1.3-3.7-4-5.9-7.8-6.7c-0.4-0.1-0.9-0.1-1.3-0.2c-0.3,0-0.4,0-0.6,0c-0.4,0.1,0.5,0,0.1,0.1
         l0,4.6c0.4-0.1-0.3,0,0.2,0l-0.2,0c3.2,0,5.7,2.5,5.7,5.6l0,0c0,3.1-2.6,5.7-5.7,5.7c-0.3,0,0.3,0,0,0l0,16.8
         c0.1-0.2,0.2-0.3,0.2-0.4c2.9-5.7,5.9-11.5,8.8-17.2C277.9,140.8,278.1,138,277.1,135.2z"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                    <g class="st16">
-                                        <image style="overflow:visible;opacity:0.75;" width="70" height="32"
-                                               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAAhCAYAAACLHbZYAAAACXBIWXMAAAn/AAAJ/wEHzD5GAAAA
+                                        <g class="st16">
+                                            <image style="overflow:visible;opacity:0.75;" width="70" height="32"
+                                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAAhCAYAAACLHbZYAAAACXBIWXMAAAn/AAAJ/wEHzD5GAAAA
                     GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAB2tJREFUeNrsmu1TE1cUxrPJJoEQ
                     EogREUQRRUtfra06Tvuh/cv7sTO1LzNqVQQFBd/QYCDEBDbJ9q7zO87TnU2AjszY2sycWfbt3nue
                     +5znnHuXVOr/X9+fd4Rtatth7PjRgZPGss5yznza7znbw7qchx8LOB6g5J2VnB1zNuFshOsRKK+d
@@ -2617,183 +2746,183 @@
                     k77Q/R4Zrp4U57F2u7KXnJQ0ksZ0kE/PFr5B7GtHeJBsdZjv2iZ4K4j0HsVbNuGZhzyzHgu7A30q
                     6XPvvXyGOcrPwRmpaCdl28GLLWRrEra7H/oXT+89tmMb6f2+MalmfRTfylOH/GL6r/pXlL8EGAB5
                     tczJqAPSbQAAAABJRU5ErkJggg==" transform="matrix(1.1106 0 0 1.1106 264.7389 187.973)">
-                                        </image>
-                                        <g>
+                                            </image>
                                             <g>
-                                                <path class="st17" d="M270,197.7v1.7c1.2,1.7,2.9,2.6,4.9,2.6c0.7,0,1.5-0.2,2.4-0.7c1.2,0.8,2.1,1.8,2.7,2.9
+                                                <g>
+                                                    <path class="st17" d="M270,197.7v1.7c1.2,1.7,2.9,2.6,4.9,2.6c0.7,0,1.5-0.2,2.4-0.7c1.2,0.8,2.1,1.8,2.7,2.9
           c-0.4,3.2-1.8,5.5-4.2,7.1c-2.1,1.3-4.8,2-8.3,2v-15.7h-1.7v-2.1h15.6v2.1H270z M277.4,204.6l-0.5-0.7c-0.7,0.4-1.6,0.6-2.6,0.6
           c-1.4,0-2.8-0.7-4.2-2v8.4c1.7,0,3.4-0.6,4.9-1.7c1.9-1.3,2.7-2.8,2.6-4.3L277.4,204.6z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M284,197.7v12.1c1.8,0,3.3-0.3,4.9-1c2-0.8,3-2,3-3.4c0-1.8-0.7-2.6-2.2-2.6c-0.4,0-1.2,0.3-2.8,1.1l-1.1-2
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M284,197.7v12.1c1.8,0,3.3-0.3,4.9-1c2-0.8,3-2,3-3.4c0-1.8-0.7-2.6-2.2-2.6c-0.4,0-1.2,0.3-2.8,1.1l-1.1-2
           c1.2-1,2.6-1.4,4.2-1.4c1.3,0,2.4,0.5,3.2,1.5c0.8,0.9,1.2,2,1.2,3.4c0,1.6-0.7,3.1-2.2,4.3c1.1,0.8,1.7,2,1.7,3.6
           s-0.8,2.8-2.4,3.7c-1.3,0.7-2.8,1.1-4.4,1.1c-1.2,0-2.7-0.6-4.6-1.8l1.1-1.8c1,1,2.2,1.5,3.8,1.5c1,0,1.9-0.2,2.7-0.7
           c0.9-0.5,1.4-1.2,1.4-2.1c0-0.7-0.4-1.4-1.2-2c-2.4,0.9-4.6,1.4-6.6,1.4h-2.1v-14.7h-1.3v-2.1h11.7l0-0.5c0.1-1-0.3-1.8-1.2-2.4
           c-0.8-0.5-1.7-0.8-2.8-0.8c-1.3,0-3.1,0.6-5.7,1.9l-0.8-1.8c2.7-1.5,4.9-2.3,6.6-2.3c1.6,0,3,0.5,4.3,1.5
           c1.4,1.1,2.1,2.3,2.1,3.9c0,0.1,0,0.3,0,0.4h1.9v2.1H284z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M309.8,197.7v15.5h-2.5v-10.5c0-0.2-0.2-0.8-0.8-1.7c-1.3-2-2.8-3-4.7-3c-0.6,0-1.3,0.3-2,0.9
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M309.8,197.7v15.5h-2.5v-10.5c0-0.2-0.2-0.8-0.8-1.7c-1.3-2-2.8-3-4.7-3c-0.6,0-1.3,0.3-2,0.9
           c-0.1,0.1-0.3,0.3-0.6,0.5c0.5-0.1,0.9-0.2,1.3-0.2c1,0,1.9,0.2,2.6,0.8c0.8,0.6,1.2,1.4,1.2,2.4c0,1.3-0.5,2.4-1.4,3.6
           c-0.9,1.1-2,1.9-3.3,2.4l-1.6-2c1.1-0.4,1.9-0.9,2.7-1.7c0.9-0.9,1.3-1.6,1.3-2.3c0-0.3-0.4-0.7-1.5-1c-0.8-0.2-1.6-0.3-2.2-0.3
           c-0.2,0-0.4,0.1-0.8,0.2l-1.2-2.2c1.2-1.3,2-2,2.4-2.3c0.9-0.7,1.9-1,3-1c2.2,0,4.1,1.1,5.6,3.2v-3.2h4.7v2.1H309.8z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M304.3,211.1c-0.5,0-1.2,0.2-2.2,0.5c-1,0.3-1.8,0.5-2.4,0.5c-1.2,0-2.4-0.4-3.5-1.1
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M304.3,211.1c-0.5,0-1.2,0.2-2.2,0.5c-1,0.3-1.8,0.5-2.4,0.5c-1.2,0-2.4-0.4-3.5-1.1
           c-1-0.7-1.8-1.6-2.5-2.9l1.3-1.8c1.4,2.3,2.9,3.2,4.8,3.2c0.5,0,1.2-0.1,2.1-0.4c1-0.3,1.7-0.5,2.2-0.5c1.6,0,3.1,1,4.6,2.8
           l1.7,2c-2-0.4-2.7-0.5-2.9-0.5C306.4,211.7,305.3,211.1,304.3,211.1z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17"
-                                                      d="M315.8,197.7v15.7h-2.4v-15.7h-2.5v-2.1h7.3v2.1H315.8z"></path>
-                                            </g>
-                                            <g>
-                                                <path class="st17" d="M334,197.7v15.7h-2.4v-1.7c0-1.2-0.9-2.6-2.8-4c-1.8-1.4-3.3-2.1-4.7-2.1c-0.7,0-1.4,0.2-1.9,0.6
+                                                </g>
+                                                <g>
+                                                    <path class="st17"
+                                                          d="M315.8,197.7v15.7h-2.4v-15.7h-2.5v-2.1h7.3v2.1H315.8z"></path>
+                                                </g>
+                                                <g>
+                                                    <path class="st17" d="M334,197.7v15.7h-2.4v-1.7c0-1.2-0.9-2.6-2.8-4c-1.8-1.4-3.3-2.1-4.7-2.1c-0.7,0-1.4,0.2-1.9,0.6
           c-0.6,0.5-1,1-1,1.6c0,1,1.1,1.9,2.1,1.9c0.4,0,1-0.2,2.2-0.7l0.7,2.3c-1.2,0.6-2.2,0.9-3.1,0.9c-1.2,0-2.3-0.4-3.2-1.3
           c-0.9-0.8-1.4-1.9-1.4-3.1c0-1.4,0.5-2.6,1.6-3.5c1-0.8,2.2-1.3,3.6-1.3c0.1,0,0.3,0,0.4,0l0-0.2c0.1-0.6-0.2-1.3-0.9-2.1
           c-0.7-0.8-1.4-1.2-2.1-1.3c-0.3,0-0.8,0-1.4,0c-0.3,0-0.7,0-1.5,0.1v-1.9h-1.6v-2.1h19.4v2.1H334z M331.6,197.7h-8.7
           c2.6,1.6,4,3.5,4,5.8c1.4,0.5,2.9,1.8,4.7,3.7V197.7z"></path>
+                                                </g>
                                             </g>
                                         </g>
-                                    </g>
-                                </a>
-                            </g>
-                            <g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_1_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_2_">
-                                        <use style="overflow:visible;"></use>
-                                    </clipPath>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_3_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_4_">
-                                        <use xlink:href="#SVGID_3_" style="overflow:visible;"></use>
-                                    </clipPath>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_5_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_6_">
-                                        <use xlink:href="#SVGID_5_" style="overflow:visible;"></use>
-                                    </clipPath>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_7_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_8_">
-                                        <use xlink:href="#SVGID_7_" style="overflow:visible;"></use>
-                                    </clipPath>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_9_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_10_">
-                                        <use xlink:href="#SVGID_9_" style="overflow:visible;"></use>
-                                    </clipPath>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_11_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_12_">
-                                        <use xlink:href="#SVGID_11_" style="overflow:visible;"></use>
-                                    </clipPath>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_13_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_14_">
-                                        <use xlink:href="#SVGID_13_" style="overflow:visible;"></use>
-                                    </clipPath>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_15_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
-          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
-          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
-          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
-          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
-          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
-          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
-          l0.8-9.8L164.5,163.5z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_16_">
-                                        <use xlink:href="#SVGID_15_" style="overflow:visible;"></use>
-                                    </clipPath>
+                                    </a>
                                 </g>
                                 <g>
                                     <g>
                                         <defs>
-                                            <path id="SVGID_17_" d="M15.9,118.4l0.5,49l-0.5,49l10,43.5c0,0,31.5,21,44,20s59-16,59-16l24-46.5l4-17.5l-0.5-18.9l-0.5-9.1
-          l-3.5-7.5l-26-19l-5.5-19.5l-3.5-11l-9-16.5l-6.9-6.4l-8.8,0.8l-4.8,2.9l-6.6-0.8l-4.5-4.5l-6-1.5l-3.5,3.5l-2,4l-5-6.5
-          c0,0-4.5-2.5-6.5-2.5s-9,1.5-9.5,3s-1,7-4.5,8.5s-11.5,5.5-11.5,5.5s-10.2,5.4-10.5,8S15.9,118.4,15.9,118.4z"></path>
+                                            <path id="SVGID_1_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
                                         </defs>
-                                        <clipPath id="SVGID_18_">
-                                            <use xlink:href="#SVGID_17_" style="overflow:visible;"></use>
+                                        <clipPath id="SVGID_2_">
+                                            <use style="overflow:visible;"></use>
                                         </clipPath>
                                     </g>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_19_" d="M-176-90l-7.8-4l-9-7.2l2.2-6.2l-5.2-7.8l-2.2-4.8l2.5-4.2l1.8-9.2l4-3l4-3.8l1.5-3.5l-2.8-5.8l1.2-2.8
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_3_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
+                                        </defs>
+                                        <clipPath id="SVGID_4_">
+                                            <use xlink:href="#SVGID_3_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_5_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
+                                        </defs>
+                                        <clipPath id="SVGID_6_">
+                                            <use xlink:href="#SVGID_5_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_7_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
+                                        </defs>
+                                        <clipPath id="SVGID_8_">
+                                            <use xlink:href="#SVGID_7_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_9_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
+                                        </defs>
+                                        <clipPath id="SVGID_10_">
+                                            <use xlink:href="#SVGID_9_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_11_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
+                                        </defs>
+                                        <clipPath id="SVGID_12_">
+                                            <use xlink:href="#SVGID_11_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_13_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
+                                        </defs>
+                                        <clipPath id="SVGID_14_">
+                                            <use xlink:href="#SVGID_13_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_15_" d="M164.5,163.5l-17.6-5.9l-13.2-9.8l-11.2-16.5l-5-16.5l-4-9.8L107,92l2.5-14.8l2.5-11.8l-9.8-9.2L104,47
+          l1.2-9.2l14.5-17l3.5-5.8l0.5-4.2l-3.8-0.8l1.2-7l4.8-3.8L124.7-9l4.2-0.5h8l8.5-5.8l9.8-23.2l-1.8-8l-2-4l19.2-15.8
+          c0,0,16.5-0.2,17.8-0.2s12.8,5,12.8,5L199-28.7c0,0-13,16-11.8,17.2S182,27.3,182,27.3l9.8,19.2l3.2,18.8l9.8-4l21.8,32l15-0.2
+          l3.8-7.5l-3.2-11.8c0,0-3-15.2-2-16.5s18.5-20.5,18.5-20.5l6.5-9.2l-6-15.5l6-10c0,0,9.5-2,10.5-2s44,5.2,44,5.2l21.8,103.2
+          L355,226l1.5,33l-0.8,29.2c0,0,8.2,32,7.2,34.2s-13,8.2-13,8.2l-13-8.2l-10-5.8l-7-6.8l-7.2,0.5c0,0-6,8-6,9.2s-1,12.2-1,13.5
+          s2.5,9.5,4,11.8s18.2,51,18.2,51s-12.5,9.5-14.5,9s-20.7-19-21.7-21.5s-6.8-23-7.2-24.5s-16-41.2-16-41.2l-13.8-19l-5.8-24
+          l-9-25.8l6-27.2l-8.2-37.8L206.5,195c0,0-15.8,22-16.8,22.8s-31.5,8.5-31.5,8.5l-6.8-1.8l6.2-15.8l1.2-16.2l-0.2-8.2l-2.8-6
+          l0.8-9.8L164.5,163.5z"></path>
+                                        </defs>
+                                        <clipPath id="SVGID_16_">
+                                            <use xlink:href="#SVGID_15_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <defs>
+                                                <path id="SVGID_17_" d="M15.9,118.4l0.5,49l-0.5,49l10,43.5c0,0,31.5,21,44,20s59-16,59-16l24-46.5l4-17.5l-0.5-18.9l-0.5-9.1
+          l-3.5-7.5l-26-19l-5.5-19.5l-3.5-11l-9-16.5l-6.9-6.4l-8.8,0.8l-4.8,2.9l-6.6-0.8l-4.5-4.5l-6-1.5l-3.5,3.5l-2,4l-5-6.5
+          c0,0-4.5-2.5-6.5-2.5s-9,1.5-9.5,3s-1,7-4.5,8.5s-11.5,5.5-11.5,5.5s-10.2,5.4-10.5,8S15.9,118.4,15.9,118.4z"></path>
+                                            </defs>
+                                            <clipPath id="SVGID_18_">
+                                                <use xlink:href="#SVGID_17_" style="overflow:visible;"></use>
+                                            </clipPath>
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_19_" d="M-176-90l-7.8-4l-9-7.2l2.2-6.2l-5.2-7.8l-2.2-4.8l2.5-4.2l1.8-9.2l4-3l4-3.8l1.5-3.5l-2.8-5.8l1.2-2.8
         c0,0,5.2-3.2,6.5-3.8s6.5-0.8,6.5-0.8l4.2,4c0,0,0.5,4.8,1.2,5.2s4.8,2,4.8,2l8.8-11.2l6.2-13.2l-2-15.5l6.8-3l9.8,4l3.5-3h9
         l10.5,3.2c0,0,2,3,2.8,2s5.8-5,6.8-5s6,4.2,6,4.2l3.2-1.5c0,0,0.8-2.5,0.8-3.2s1.3-3.3,2.7-3.7s5.3,0.5,5.3,0.5s8.9-3.2,8.2,2.9
         l5.5,0.4l3.3-0.8l5.1,1.2l-0.1,1.8l-3.2,2.9v2.2l3.7,2.4l1.9,2l0.6,2.8l2,3.4h4l2.5-2.2c0,0,2.8-0.8,3.5-0.8s0.8,1.2,1.8,1.5
@@ -2802,86 +2931,87 @@
         l-0.8,4l-1.8,2.2l1.5,3.5l1.2,4.8l-0.8,3.5l-1.9,3.1L-10-6l-1.5-0.2l-4.8,2.5l-6-0.2l-5.5-2l-9.5-6.2l-8.8-4.5l-4.8-2.2
         c0,0-12.8-0.5-13.5-0.5s-6.5-1.8-6.5-1.8l-6-2.8l-0.8-6.5l-4.2-9l-1.8-4.3l-1-5.4l-5.7-1.1l-5.3,2l-3.4,4.1l-4.2,2.2l-5.5-1.2
         l-3.5-2.5l-3.2-5.5l-1-6l0.5-5.5l-4.2-4.2c0,0-4.8,0-6,0.5s-8.8,1.8-8.8,1.8l-17.8-8.8l-5.5-8.5l-9.8-5.8L-176-90z"></path>
-                                    </defs>
-                                    <clipPath id="SVGID_20_">
-                                        <use xlink:href="#SVGID_19_" style="overflow:visible;"></use>
-                                    </clipPath>
-                                    <path class="st15" d="M5.3-103.9l0.1,2.1l-0.9,1H3.4v2.8l-0.2,1.2c0,0,0-0.1-0.6,0.4s-1.2,0.5-1.2,1s0.2,1.1,0.2,1.1l1.8,0.4
+                                        </defs>
+                                        <clipPath id="SVGID_20_">
+                                            <use xlink:href="#SVGID_19_" style="overflow:visible;"></use>
+                                        </clipPath>
+                                        <path class="st15" d="M5.3-103.9l0.1,2.1l-0.9,1H3.4v2.8l-0.2,1.2c0,0,0-0.1-0.6,0.4s-1.2,0.5-1.2,1s0.2,1.1,0.2,1.1l1.8,0.4
       l0.5,1.1c0,0,0.4,0.2,0.4,0.8s1.2,1,0,1s-0.8,0-1.2,0s-1.4-0.1-1.4-0.1L1.5-92l-0.2,1.8c0,0-0.1,1,0.2,1.2s-0.4-0.1,0.4,0.2
       s0.5-0.9,0.8,0.4s0.4,0.9,0.2,1.8s-0.1,1.2,0.6,1.5s1.1,0.5,1.5-0.1s0.8-2.6,0.8-2.6s1.2,1.6,2.4,1.4s0.4,0.6,1.1-0.2
       s1.4-1.5,1.4-2.9s-1.4-8.6-1.4-8.6v-1.6c0,0-0.8-0.2-0.9-1.4s-0.8-1.9-0.8-2.2s0-1,0-1l-1.5-0.1L5.3-103.9z"></path>
-                                    <path class="st15" d="M-5.7-127c0,0,0.6-0.6,1-0.6s1.1,0.1,1.1,0.5s0.4,0.8,0.5,1.1s0.2,0,0.2,1.2s0.1,2,0.1,2l0.8,0.6
+                                        <path class="st15" d="M-5.7-127c0,0,0.6-0.6,1-0.6s1.1,0.1,1.1,0.5s0.4,0.8,0.5,1.1s0.2,0,0.2,1.2s0.1,2,0.1,2l0.8,0.6
       c0,0,0.2,0.9,0.2,1.2s-0.2,1,0,1.4s0.6,1,0.6,1l1.8,0.4l0.6-0.5c0,0-1-1.1-1-1.5s-0.5-2.1-0.5-2.1l0.4-0.8c0,0,0.5,0.5,0.8,0.9
       s1.5-0.6,1.8,1c0.3,1.6,0.2,1.6,0.2,1.6s-0.8-0.2-0.6,0.9s2,1.8,2,1.8l0.5,3.4v2.8c0,0,0.4,1.4-0.1,1.5s-1,1.5-1,1.5
       s-0.1,2.1,0,2.5S3.1-104,3.1-104s0.5-0.9-0.4,0.6s0,1.2-0.9,1.5s-2,1.1-2,0.2s0.4-3.6,0.4-4.2s-1.2-2.2-1.6-2.4s-0.8-2.9-0.8-3.2
       s0-1.5,0-1.5s0.1,1.8-1.4-0.5s-2-1.6-2-2.5s0-0.1,0-0.9s0.1-1.5,0.2-1.9s0.2-1.1,0.4-1.6s1.2-1.1,1.2-1.1s-0.4-0.5-0.5-0.9
       s-0.6-0.6-0.6-1.2s-0.2-1.1-0.2-1.1L-5.7-127z"></path>
-                                    <path class="st15" d="M-0.4-127.2h1.9l0.8,0.2l0.8,0.9v0.9l0.1,1.1l0.4,1l0.8,0.8l0.5,1.1L4-121l-0.6-1l-1.1-1.4l-0.8-0.5
+                                        <path class="st15" d="M-0.4-127.2h1.9l0.8,0.2l0.8,0.9v0.9l0.1,1.1l0.4,1l0.8,0.8l0.5,1.1L4-121l-0.6-1l-1.1-1.4l-0.8-0.5
       c0,0,0-0.5-0.4-0.6S0-125.3,0-125.3l-0.2-1.4v-0.5H-0.4z"></path>
-                                    <path class="st15" d="M-13.5-149.8l1.1-0.1l0.5-0.1l0.2,1.1l0.4,1.3l0.2,0.9l1,0.4l0.3,0.2c0,0,0.4,0.5,0.4,0.8s0.1,1.1,0,1.3
+                                        <path class="st15" d="M-13.5-149.8l1.1-0.1l0.5-0.1l0.2,1.1l0.4,1.3l0.2,0.9l1,0.4l0.3,0.2c0,0,0.4,0.5,0.4,0.8s0.1,1.1,0,1.3
       s-0.1,1.1-0.1,1.1l-0.5,0.1c0,0-0.3,1.2-0.3,1.4s-0.4,0.8-0.4,0.8l-0.7-0.9c0,0-0.5-1.2-0.5-1.4s-0.3-1.1-0.3-1.1s-0.6,0-0.7-0.2
       s0.1-1.2,0.1-1.5s-0.4-1.1-0.4-1.1s0-0.7-0.2-0.8s-1.2-0.6-1.2-0.6l0.8-1.6L-13.5-149.8L-13.5-149.8z"></path>
-                                    <path class="st15" d="M-13.8-155.7l0.4-1.4l0.7-0.7c0,0-0.1,0.1,0.2,0.4s0.3,1.1,0.3,1.1l0.9,0.4l-0.1,1.6c0,0-0.7,1.1-0.8,1.2
+                                        <path class="st15" d="M-13.8-155.7l0.4-1.4l0.7-0.7c0,0-0.1,0.1,0.2,0.4s0.3,1.1,0.3,1.1l0.9,0.4l-0.1,1.6c0,0-0.7,1.1-0.8,1.2
       s-0.4,0.6-0.6,0.8s0,0.4-0.4,0.5s-1.1,0-1.4,0s-0.8-0.1-0.8-0.1v-1.2c0,0-0.1-0.6,0.1-0.9s0.7-1.1,0.7-1.1L-13.8-155.7z"></path>
+                                    </g>
+                                    <radialGradient id="SVGID_21_" cx="74.3333" cy="-37.5032" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st20" cx="74.3" cy="-37.5" rx="2.6" ry="0.4"></ellipse>
+                                    <radialGradient id="SVGID_22_" cx="48.3958" cy="-115.741" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st21" cx="48.4" cy="-163.4" rx="2.6" ry="0.4"></ellipse>
+                                    <radialGradient id="SVGID_23_" cx="269.6042" cy="86.1002" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st22" cx="269.6" cy="161.4" rx="2.6" ry="0.4"></ellipse>
+                                    <radialGradient id="SVGID_24_" cx="62.8333" cy="85.8366" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st23" cx="62.8" cy="161" rx="2.6" ry="0.4"></ellipse>
+                                    <radialGradient id="SVGID_25_" cx="-53.4167" cy="37.9919" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st24" cx="-53.4" cy="84" rx="2.6" ry="0.4"></ellipse>
+                                    <radialGradient id="SVGID_26_" cx="-92.6667" cy="-92.8042" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st25" cx="-92.7" cy="-126.5" rx="2.6" ry="0.4"></ellipse>
+                                    <radialGradient id="SVGID_27_" cx="225.0833" cy="-96.6877" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st26" cx="225.1" cy="-132.8" rx="2.6" ry="0.4"></ellipse>
+                                    <radialGradient id="SVGID_28_" cx="-94.25" cy="-184.9175" r="3.7926"
+                                                    gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" style="stop-color:#000000"></stop>
+                                        <stop offset="1" style="stop-color:#FFFFFF"></stop>
+                                    </radialGradient>
+                                    <ellipse class="st27" cx="-94.2" cy="-274.8" rx="2.6" ry="0.4"></ellipse>
                                 </g>
-                                <radialGradient id="SVGID_21_" cx="74.3333" cy="-37.5032" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st20" cx="74.3" cy="-37.5" rx="2.6" ry="0.4"></ellipse>
-                                <radialGradient id="SVGID_22_" cx="48.3958" cy="-115.741" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st21" cx="48.4" cy="-163.4" rx="2.6" ry="0.4"></ellipse>
-                                <radialGradient id="SVGID_23_" cx="269.6042" cy="86.1002" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st22" cx="269.6" cy="161.4" rx="2.6" ry="0.4"></ellipse>
-                                <radialGradient id="SVGID_24_" cx="62.8333" cy="85.8366" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st23" cx="62.8" cy="161" rx="2.6" ry="0.4"></ellipse>
-                                <radialGradient id="SVGID_25_" cx="-53.4167" cy="37.9919" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st24" cx="-53.4" cy="84" rx="2.6" ry="0.4"></ellipse>
-                                <radialGradient id="SVGID_26_" cx="-92.6667" cy="-92.8042" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st25" cx="-92.7" cy="-126.5" rx="2.6" ry="0.4"></ellipse>
-                                <radialGradient id="SVGID_27_" cx="225.0833" cy="-96.6877" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st26" cx="225.1" cy="-132.8" rx="2.6" ry="0.4"></ellipse>
-                                <radialGradient id="SVGID_28_" cx="-94.25" cy="-184.9175" r="3.7926"
-                                                gradientTransform="matrix(1 0 0 1.6094 0 22.8516)"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" style="stop-color:#000000"></stop>
-                                    <stop offset="1" style="stop-color:#FFFFFF"></stop>
-                                </radialGradient>
-                                <ellipse class="st27" cx="-94.2" cy="-274.8" rx="2.6" ry="0.4"></ellipse>
-                            </g>
 </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2889,44 +3019,52 @@
     </section>
     {{-- Full Contry Section End --}}
     {{-- Sports Section Start --}}
-    <section id="sport">
+    <section id="sports">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','খেলাধুলা')}}">
+                            <span>
+                                খেলাধুলা
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','খেলাধুলা')}}">
                         <span>
-                            খেলাধুলা
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                 </div>
                 <div class="col-md-3">
                     <div class="row">
                         @foreach($sports_left_posts as $left_post)
-                        <div class="col-md-12">
-                            <a href="{{route('single-post-page',$left_post->slug)}}">
-                                <div class="card-img">
-                                    <img src="{{ $left_post->thumbnail }}" class="w-100">
-                                </div>
-                                <h5 class="py-2">
-                                    {{$left_post->title}}
-                                </h5>
-                            </a>
-                        </div>
+                            <div class="col-md-12">
+                                <a href="{{route('single-post-page',$left_post->slug)}}">
+                                    <div class="card-img">
+                                        <img alt="{{$left_post->slug}}" src="{{ $left_post->thumbnail }}" class="w-100">
+                                    </div>
+                                    <h5 class="py-2">
+                                        {{ Illuminate\Support\Str::limit($left_post->title,30) }}
+                                    </h5>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                 </div>
                 <div class="col-md-6">
                     <a href="{{route('single-post-page',$last_sports_post->slug)}}">
                         <div class="card-img">
-                            <img src="{{ $last_sports_post->thumbnail }}" class="w-100">
+                            <img alt="{{$last_sports_post->slug}}" src="{{ $last_sports_post->thumbnail }}" class="w-100">
                         </div>
-                        <h5 class="py-2">
+                        <h5 class="pt-2">
                             {{$last_sports_post->title}}
                         </h5>
                         <p>
-                            {!! \Illuminate\Support\str::limit(strip_tags($last_sports_post->content), 150) !!}
+                            {!! \Illuminate\Support\str::of(strip_tags($last_sports_post->content))->words(10) !!}
                             @if (strlen(strip_tags($last_sports_post->content)) > 50)
-                                <a href="{{ route('single-post-page', $last_sports_post->slug) }}" class="">বিস্তারিত...</a>
+                                <a href="{{ route('single-post-page', $last_sports_post->slug) }}"
+                                   class="text-white">বিস্তারিত...</a>
                             @endif
                         </p>
                     </a>
@@ -2951,14 +3089,14 @@
         </div>
     </section>
     {{-- Sports Section End --}}
-    {{-- Photo Feature and Religion Start --}}
-    <section id="photo_galery_religion_feature">
+    {{-- Photo finance and foreign Start --}}
+    <section id="photo_gallery_finance_foreign">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>
-                        <span>
-                            <i class="fa fa-camera"></i> ফটো গ্যালারী
+                    <h3 class="d-flex justify-content-between">
+                        <span class="section_header">
+                                <i class="fa fa-camera"></i> ফটো গ্যালারী
                         </span>
                     </h3>
                     <div class="img-slider">
@@ -2966,12 +3104,13 @@
                             <a href="{{route('single-post-page',$photo->slug)}}">
                                 <div class="card-img">
                                     <div class="image_box">
-                                        <img src="{{ $photo->thumbnail }}" class="w-100" alt="{{$photo->slug}}" width="544"
+                                        <img src="{{ $photo->thumbnail }}" class="w-100" alt="{{$photo->slug}}"
+                                             width="544"
                                              height="367">
                                     </div>
                                     <div class="image_overlay">
                                         <h5 class="py-2">
-                                            {{$photo->title}}
+                                            {{ Illuminate\Support\Str::limit($photo->title,50) }}
                                         </h5>
                                     </div>
                                 </div>
@@ -2980,120 +3119,169 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('subcategory-page','অর্থনীতি')}}">
+                            <span>
+                                অর্থনীতি
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('subcategory-page','অর্থনীতি')}}">
                         <span>
-                            অর্থনীতি
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <ul>
                         @foreach($finance_news as $f_news)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$f_news->slug)}}">
-                                <img height="70" width="100" alt="{{$f_news->slug}}" src="{{$f_news->thumbnail}}">
-                                <p class="ml-3">
-                                    {{$f_news->title}}
-                                </p>
-                            </a>
-                        </li>
+                            <li>
+                                <a class="d-flex" href="{{route('single-post-page',$f_news->slug)}}">
+                                    <img height="70" width="100" alt="{{$f_news->slug}}" src="{{$f_news->thumbnail}}">
+                                    <p class="ml-3">
+                                        {{ Illuminate\Support\Str::limit($f_news->title,40) }}
+                                    </p>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('subcategory-page','প্রবাসের-খবর')}}">
+                            <span>
+                                প্রবাসের খবর
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('subcategory-page','প্রবাসের-খবর')}}">
                         <span>
-                            প্রবাসের খবর
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <ul>
                         @foreach($nrb_news as $nrb)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$nrb->slug)}}">
-                                <img height="70" width="100" alt="{{$nrb->slug}}" src="{{ $nrb->thumbnail }}">
-                                <p class="ml-3">{{$nrb->title}}</p>
-                            </a>
-                        </li>
+                            <li>
+                                <a class="d-flex" href="{{route('single-post-page',$nrb->slug)}}">
+                                    <img height="70" width="100" alt="{{$nrb->slug}}" src="{{ $nrb->thumbnail }}">
+                                    <p class="ml-3">
+                                        {{ Illuminate\Support\Str::limit($nrb->title,40) }}
+                                    </p>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    {{-- Photo Feature and Religion End --}}
-    {{-- Travel Health Foreign Section Start --}}
-    <section id="travel_health_foreign">
+    {{-- Photo finance and foreign End --}}
+    {{-- Travel Health religion Section Start --}}
+    <section id="travel_health_religion">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('subcategory-page','ভ্রমণ')}}">
+                            <span>
+                                ভ্রমণ
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('subcategory-page','ভ্রমণ')}}">
                         <span>
-                            ভ্রমণ
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <a href="{{route('single-post-page',$last_tourism_post->slug)}}">
                         <img src="{{ $last_tourism_post->thumbnail }}" alt="{{$last_tourism_post->slug}}" width="100%">
-                        <h5 class="pt-2">{{$last_tourism_post->title}}</h5>
+                        <h5 class="pt-2">
+                            {{ Illuminate\Support\Str::limit($last_tourism_post->title,40) }}
+                        </h5>
                         <p>
-                            {!! $last_tourism_post->content !!}
+                            {!! Illuminate\Support\Str::limit($last_tourism_post->content,100)  !!}
                         </p>
                     </a>
                     <ul>
                         @foreach($tourism_posts as $tour)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$tour->slug)}}">
-                                <img height="70" width="100" alt="{{$tour->slug}}" src="{{ $tour->thumbnail }}">
-                                <p class="ml-3">{{$tour->title}}</p>
-                            </a>
-                        </li>
+                            <li>
+                                <a class="d-flex" href="{{route('single-post-page',$tour->slug)}}">
+                                    <img height="70" width="100" alt="{{$tour->slug}}" src="{{ $tour->thumbnail }}">
+                                    <p class="ml-3">
+                                        {{ Illuminate\Support\Str::limit($tour->title,40) }}
+                                    </p>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('subcategory-page','স্বাস্থ্য')}}">
+                            <span>
+                                স্বাস্থ্য
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('subcategory-page','স্বাস্থ্য')}}">
                         <span>
-                            স্বাস্থ্য
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <a href="{{route('single-post-page',$last_health_post->slug)}}">
                         <img src="{{ $last_health_post->thumbnail }}" alt="{{$last_health_post->slug}}" width="100%">
-                        <h5 class="pt-2">{{$last_health_post->title}}</h5>
+                        <h5 class="pt-2">
+                            {{ Illuminate\Support\Str::limit($last_health_post->title,40) }}
+                        </h5>
                         <p>
-                            {!! $last_health_post->content !!}
+                          {!! Illuminate\Support\Str::limit($last_health_post->content,100)  !!}
                         </p>
                     </a>
                     <ul>
                         @foreach($health_posts as $health)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$health->slug)}}">
-                                <img height="70" width="100" alt="{{$health->slug}}" src="{{ $health->thumbnail }}">
-                                <p class="ml-3">{!! $health->content !!}</p>
-                            </a>
-                        </li>
+                            <li>
+                                <a class="d-flex" href="{{route('single-post-page',$health->slug)}}">
+                                    <img height="70" width="100" alt="{{$health->slug}}" src="{{ $health->thumbnail }}">
+                                    <p class="ml-3">
+                                        {{ Illuminate\Support\Str::limit($health->title,40) }}
+                                    </p>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h3>
+                    <h3 class="d-flex justify-content-between">
+                        <a class="section_header" href="{{route('category-page','ধর্ম')}}">
+                            <span>
+                                ধর্ম
+                            </span>
+                        </a>
+                        <a class="section_link" href="{{route('category-page','ধর্ম')}}">
                         <span>
-                            ধর্ম
-                        </span>
+                                সব খবর ...
+                            </span>
+                        </a>
                     </h3>
                     <a href="{{route('single-post-page',$last_religion_post->slug)}}">
-                        <img src="{{ $last_religion_post->thumbnail }}" alt="{{$last_religion_post->slug}}" width="100%">
-                        <h5 class="pt-2">{{$last_religion_post->title}}</h5>
+                        <img src="{{ $last_religion_post->thumbnail }}" alt="{{$last_religion_post->slug}}"
+                             width="100%">
+                        <h5 class="pt-2">
+                            {{ Illuminate\Support\Str::limit($last_religion_post->title,40) }}
+                        </h5>
                         <p>
                             {!! $last_religion_post->content !!}
                         </p>
                     </a>
                     <ul>
                         @foreach($religion_posts as $religion)
-                        <li>
-                            <a class="d-flex" href="{{route('single-post-page',$religion->slug)}}">
-                                <img height="70" width="100" alt="{{$religion->slug}}" src="{{ $religion->thumbnail }}">
-                                <p class="ml-3">
-                                    {!! $religion->content !!}
-                                </p>
-                            </a>
-                        </li>
+                            <li>
+                                <a class="d-flex" href="{{route('single-post-page',$religion->slug)}}">
+                                    <img height="70" width="100" alt="{{$religion->slug}}"
+                                         src="{{ $religion->thumbnail }}">
+                                    <p class="ml-3">
+                                        {!! Illuminate\Support\Str::limit($religion->content,90)  !!}
+                                    </p>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
