@@ -13,11 +13,18 @@ class CategoryPageController extends Controller
     {
         //for nav bar
         $categories = Category::all();
-//for breaking news
-        $breaking_news = Post::where('status','published')->orderBy('created_at','DESC')->paginate(5);
+        //for breaking news
+        $breaking_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->paginate(5);
         //for search post belongs to this category
-        $category = Category::where('slug',$slug)->first();
-        $posts = Post::where('category_id',$category->id)->where('status','published')->orderBy('created_at','DESC')->paginate(12);
-        return response(view('frontend.category-subcategory-tag-page',compact('slug','categories','breaking_news','posts')));
+        $category = Category::where('slug', $slug)->first();
+        $main_post = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
+
+        $right_side_posts = Post::where('category_id', $category->id)->where('id', '!=', $main_post->id)->where('status', 'published')->orderBy('created_at', 'DESC')->limit(2)->get();
+
+        $bottom_side_posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 4)->limit(3)->get();
+
+        $posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(4);
+
+        return response(view('frontend.category-subcategory-tag-page', compact('slug', 'categories', 'breaking_news', 'posts', 'main_post', 'category', 'right_side_posts', 'bottom_side_posts')));
     }
 }

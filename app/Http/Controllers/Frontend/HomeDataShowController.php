@@ -110,8 +110,6 @@ class HomeDataShowController extends Controller
             'health_posts',
             'last_religion_post',
             'religion_posts',
-
-
         ]));
     }
 }
