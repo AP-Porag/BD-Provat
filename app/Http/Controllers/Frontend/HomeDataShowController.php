@@ -49,9 +49,13 @@ class HomeDataShowController extends Controller
         $divisions = SubCategory::where('category_id', 3)->get();
 
         //sports news
+        // $last_sports_post = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
+        // $sports_left_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_sports_post->id)->limit(2)->get();
+        // $sports_right_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 4)->limit(2)->get();
         $last_sports_post = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
         $sports_left_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_sports_post->id)->limit(2)->get();
-        $sports_right_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 4)->limit(2)->get();
+        $last_left_post = $sports_left_posts->first();
+        $sports_right_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>', $last_left_post->id)->limit(2)->get();
 
         //photo gallery
         $photo_gallery = Post::where('category_id', 6)->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
@@ -107,6 +111,8 @@ class HomeDataShowController extends Controller
             'health_posts',
             'last_religion_post',
             'religion_posts',
+
+
         ]));
     }
 }

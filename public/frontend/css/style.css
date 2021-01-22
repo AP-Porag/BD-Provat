@@ -36,12 +36,12 @@ h3 span {
     display: inline-block;
 }
 
-h1 > a,
-h2 > a,
-h3 > a,
-h4 > a,
-h5 > a,
-h6 > a {
+h1>a,
+h2>a,
+h3>a,
+h4>a,
+h5>a,
+h6>a {
     color: #111111;
     font-weight: 500;
 }
@@ -182,9 +182,11 @@ marquee ul li a {
     font-size: 16px;
     font-weight: 400;
 }
-marquee ul li a:hover{
+
+marquee ul li a:hover {
     color: #8c0707;
 }
+
 /* Breaking News End */
 /* Main news Sectin Starts */
 
@@ -199,15 +201,15 @@ marquee ul li a:hover{
     font-size: 16px;
 }
 
-nav > .nav.nav-tabs {
+nav>.nav.nav-tabs {
     border: none;
     color: #fff;
     background: #272e38;
     border-radius: 0;
 }
 
-nav > div a.nav-item.nav-link,
-nav > div a.nav-item.nav-link.active {
+nav>div a.nav-item.nav-link,
+nav>div a.nav-item.nav-link.active {
     border: none;
     padding: 18px 25px;
     color: #fff;
@@ -215,7 +217,7 @@ nav > div a.nav-item.nav-link.active {
     border-radius: 0;
 }
 
-nav > div a.nav-item.nav-link.active:after {
+nav>div a.nav-item.nav-link.active:after {
     content: "";
     position: relative;
     bottom: -57px;
@@ -238,8 +240,8 @@ nav > div a.nav-item.nav-link.active:after {
     padding-bottom: 20px;
 }
 
-nav > div a.nav-item.nav-link:hover,
-nav > div a.nav-item.nav-link:focus {
+nav>div a.nav-item.nav-link:hover,
+nav>div a.nav-item.nav-link:focus {
     border: none;
     background: #e74c3c;
     color: #fff;
@@ -341,6 +343,7 @@ nav > div a.nav-item.nav-link:focus {
     border-top: 1px dashed #999;
     border-bottom: 1px dashed #999;
 }
+
 /* Photo Feature and Religion Start */
 #photo_galery_religion_feature ul li {
     padding-top: 10px;
@@ -383,3 +386,20 @@ footer ul li a {
 }
 
 /* Footer End */
+/* single page social icon */
+.single_page_icon li {
+    margin-right: 5px;
+}
+
+.single_page_icon li a {
+    color: #fff;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    background: red;
+    display: block;
+    font-size: 25px;
+}
+
+/* single page social icon end */

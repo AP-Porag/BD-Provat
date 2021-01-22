@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 use Image;
 
 class PostController extends Controller
@@ -146,7 +147,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return 'POst Edit';
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+        $tags = Tag::orderBy('created_at', 'DESC')->get();
+        return response(view('admin.posts.posts-edit', compact('categories', 'subCategories', 'tags')));
     }
 
     /**
@@ -158,7 +162,79 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        return $meta_keywords = $request->meta_keywords;
+        $meta_description = $request->meta_description;
+        //=======
+        $category = $request->category;
+        $subcategory = $request->subcategory;
+        $title = $request->title;
+        $content = $request->post_content;
+        $thumbnail = $request->thumbnail;
+        $status = $request->status;
+        //========
+        $tags = $request->post_tag;
+
+        $this->validate($request, [
+            'category' => 'required',
+            'title' => 'required',
+            'post_content' => 'required',
+            'thumbnail' => 'required',
+        ]);
+        if ($category == 4 || $category == 11) {
+            $this->validate($request, [
+                'subcategory' => 'required'
+            ]);
+        }
+        $post = Post::findOrFail('id', $id)->update([
+            'category_id' => $category,
+            'post_author' => Auth::user()->id,
+            'title' => $title,
+            'slug' => str::slug($title),
+            'content' => $content,
+            'thumbnail' => 'thumbnail',
+            'status' => 'status',
+            'updated_at' => Carbon::now(),
+        ]);
+        if ($post && $subcategory) {
+            $post->sub_category_id = $subcategory;
+            $post->save();
+        }
+        if ($post && $status) {
+            $post->status = 'published';
+            $post->save();
+        } else {
+            $post->status = 'unpublished';
+            $post->save();
+        }
+        if ($post && $thumbnail) {
+
+            $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
+            Image::make($thumbnail)
+                ->resize(400, 350)
+                ->save(base_path('/public/storage/post/' . $image_new_name));
+            $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
+            $post->save();
+        }
+        if ($post) {
+            foreach ($tags as $key => $tag) {
+                PostTag::findorFail('id', $post->id)->update([
+                    'post_id' => $post->id,
+                    'tag_id' => $tag,
+                ]);
+            }
+        }
+        if ($post && $meta_keywords || $meta_description) {
+            $meta = PostMeta::create([
+                'post_id' => $post->id,
+                'meta_keywords' => $request->meta_keywords,
+                'meta_description' => $request->meta_description,
+            ]);
+        }
+        if ($post) {
+            Session::flash('success', 'Post Updated Successfully');
+        }
+        return back();
     }
 
     /**
