@@ -701,3 +701,20 @@ footer .root{
 }
 
 /* Footer End */
+/*Single post page css start*/
+.single_page_icon li {
+    margin-right: 5px;
+}
+
+.single_page_icon li a {
+    color: #fff;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    background: red;
+    display: block;
+    font-size: 25px;
+}
+
+/* single page social icon end */
