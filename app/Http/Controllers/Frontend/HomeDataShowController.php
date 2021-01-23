@@ -14,6 +14,7 @@ class HomeDataShowController extends Controller
     public function HomeDataShow()
     {
         $categories = Category::all();
+
         $breaking_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->paginate(5);
 
         $last_top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->first();

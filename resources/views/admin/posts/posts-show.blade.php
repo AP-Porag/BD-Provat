@@ -165,7 +165,68 @@
                                                         <div class="card-footer">
                                                             <div class="row">
                                                                 <div class="col-md-4">
-                                                                    <a class="btn btn-sm btn-outline-info" href="{{route('reply.create')}}">Give Reply</a>
+                                                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                                                            data-toggle="modal"
+                                                                            data-target="#replyModal{{$comment->id}}">
+                                                                        <i class="fa fa-reply mr-3"></i>Give Reply
+                                                                    </button>
+                                                                    <!--Add stock Modal -->
+                                                                    <div class="modal fade" id="replyModal{{$comment->id}}" tabindex="-1"
+                                                                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title text-capitalize text-primary" id="exampleModalLabel">Give Reply</h5>
+                                                                                    <button type="button" class="close btn-outline-danger" data-dismiss="modal"
+                                                                                            aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form">
+                                                                                        <form action="{{route('reply.store')}}" method="post">
+                                                                                            <div class="form-row">
+                                                                                                @csrf
+                                                                                                @method('post')
+                                                                                                <div class="col-md-12">
+                                                                                                    <input type="text" value="{{\Illuminate\Support\Facades\Auth::user()->id}}"
+                                                                                                           class="form-control" readonly hidden
+                                                                                                           id="user_id" name="user_id">
+                                                                                                    <input type="text" value="{{$post->id}}"
+                                                                                                           class="form-control" readonly hidden
+                                                                                                           id="post_id" name="post_id">
+                                                                                                    <input type="text" value="{{$comment->id}}"
+                                                                                                           name="comment_id" class="form-control"
+                                                                                                            hidden readonly>
+                                                                                                    <input type="text" value="{{$comment->status}}"
+                                                                                                           name="comment_status" class="form-control"
+                                                                                                            hidden readonly>
+                                                                                                </div>
+                                                                                                <div class="col-md-12">
+                                                                                                    <label for="message" class="text-capitalize">message</label>
+                                                                                                    <textarea type="text" value="" name="message"
+                                                                                                              class="form-control @error('message') is-invalid @enderror" id="message"></textarea>
+                                                                                                    @error('message')
+                                                                                                    <div class="invalid-feedback">
+                                                                                                        <strong>Warning! </strong>
+                                                                                                        <p>{{$message}}</p>
+                                                                                                    </div>
+                                                                                                    @enderror
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-row mt-4 card-footer">
+                                                                                                <div class="col-md-12 text-right">
+                                                                                                    <button type="submit" class="btn btn-block btn-sm btn-outline-success">Publish
+                                                                                                        Reply
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-row">
