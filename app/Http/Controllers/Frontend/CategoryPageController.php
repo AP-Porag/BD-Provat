@@ -23,8 +23,15 @@ class CategoryPageController extends Controller
 
         $bottom_side_posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 4)->limit(3)->get();
 
-        $posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(4);
+        $posts = Post::where('category_id', 5)->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(4);
 
         return response(view('frontend.category-subcategory-tag-page', compact('slug', 'categories', 'breaking_news', 'posts', 'main_post', 'category', 'right_side_posts', 'bottom_side_posts')));
+    }
+    function fetch_data(Request $request)
+    {
+        if ($request->ajax()) {
+            $data =  Post::where('category_id', 5)->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(4);
+            return view('frontend.pages.news', compact('data'))->render();
+        }
     }
 }

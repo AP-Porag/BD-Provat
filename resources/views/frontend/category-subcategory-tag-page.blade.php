@@ -17,7 +17,7 @@
                 <h3><span>{{ $category->name }}</span></h3>
                 <div class="row">
                     <div class="col-md-8">
-                        <a href="">
+                        <a href="{{ route('single-post-page', $main_post->slug) }}">
                             <img src="{{ $main_post->thumbnail }}" class="w-100 p-1" style="border: 1px solid #999">
                             <h4 class="mt-3">{{ $main_post->title }}</h4>
                             <p style="text-align:justify">
@@ -28,7 +28,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             @foreach ($right_side_posts as $key => $right_side_post)
-                                <a href="#">
+                                <a href="{{ route('single-post-page', $right_side_post->slug) }}">
                                     <div class="col-md-12">
                                         <img src="{{ $right_side_post->thumbnail }}" class="w-100 p-1"
                                             style="border: 1px solid #EBEBE9">
@@ -44,7 +44,7 @@
 
                     @foreach ($bottom_side_posts as $key => $bottom_side_post)
                         <div class="col-md-4">
-                            <a href="#">
+                            <a href="{{ route('single-post-page', $bottom_side_post->slug) }}">
                                 <img src="{{ $bottom_side_post->thumbnail }}" class="w-100 p-1"
                                     style="border: 1px solid #EBEBE9">
                                 <h6 class="mt-1">{{ $right_side_post->title }}</h6>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="row">
                     @foreach ($posts as $key => $post)
-                        <a href="#">
+                        <a href="{{ route('single-post-page', $post->slug) }}">
                             <div class="col-md-12 d-flex p-2 mb-3" style="background: #EDF3F5">
                                 <div class="img">
                                     <img src="{{ $post->thumbnail }}" class="img-fluid p-1" style="border: 1px solid #fff">
@@ -71,15 +71,14 @@
                     @endforeach
                 </div>
                 {{ $posts->links() }}
+
+
             </div>
         </div>
         <div class="col-md-4"></div>
     </div>
-    </div>
     {{-- Main news section end --}}
-
 @endsection
 @section('script')
-    <script>
-    </script>
+
 @endsection
