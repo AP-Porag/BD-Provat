@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\PostMeta;
 use App\Models\PostTag;
@@ -50,8 +51,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $meta_keywords = $request->meta_keywords;
-        $meta_description = $request->meta_description;
+        //$meta_keywords = $request->meta_keywords;
+        //$meta_description = $request->meta_description;
+       $meta_keywords = str::slug($request->title);
+       $m_description = str::of($request->post_content)->words(20);
+       $meta_description = str::slug($m_description);
         //=======
         $category = $request->category;
         $subcategory = $request->subcategory;
@@ -114,11 +118,11 @@ class PostController extends Controller
                 ]);
             }
         }
-        if ($post && $meta_keywords || $meta_description) {
+        if ($post) {
             $meta = PostMeta::create([
                 'post_id' => $post->id,
-                'meta_keywords' => $request->meta_keywords,
-                'meta_description' => $request->meta_description,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description,
             ]);
         }
         if ($post) {
@@ -135,7 +139,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return 'post show';
+        //for search post
+        $post = Post::where('id',$id)->first();
+
+        //comments for this post
+        $comments = Comment::where('post_id',$post->id)->orderBy('created_at','DESC')->get();
+        return response(view('admin.posts.posts-show',compact('post','comments')));
     }
 
     /**
@@ -238,4 +247,5 @@ class PostController extends Controller
 
         return response($query);
     }
+
 }

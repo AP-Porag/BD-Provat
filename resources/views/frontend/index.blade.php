@@ -96,7 +96,11 @@
                         @endforeach
                     </div>
                 </div>
+
                 @include('frontend.pages.popular-news')
+                <div class="col-md-3">
+                    @include('frontend.popular_last_news')
+                </div>
             </div>
         </div>
     </section>

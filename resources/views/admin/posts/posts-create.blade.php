@@ -74,28 +74,28 @@
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card">
-                                                <div class="card-heading">
-                                                    <h5 class="card-header text-primary">Meta Tags</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label for="meta_keywords"
-                                                               class="text-capitalize">Keywords</label>
-                                                        <input name="meta_keywords" class="form-control"
-                                                               id="meta_keywords">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="meta_description" class="text-capitalize">Description</label>
-                                                        <input name="meta_description" class="form-control"
-                                                               id="meta_description">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-md-12">--}}
+{{--                                            <div class="card">--}}
+{{--                                                <div class="card-heading">--}}
+{{--                                                    <h5 class="card-header text-primary">Meta Tags</h5>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="card-body">--}}
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <label for="meta_keywords"--}}
+{{--                                                               class="text-capitalize">Keywords</label>--}}
+{{--                                                        <input name="meta_keywords" class="form-control"--}}
+{{--                                                               id="meta_keywords">--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <label for="meta_description" class="text-capitalize">Description</label>--}}
+{{--                                                        <input name="meta_description" class="form-control"--}}
+{{--                                                               id="meta_description">--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="card-body">

@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('post_id');
             $table->string('message');
+            $table->string('status')->default('uncertain');
             $table->timestamps();
             $table->softDeletes();
         });
