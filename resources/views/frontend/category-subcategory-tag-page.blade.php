@@ -69,10 +69,10 @@
                                         {!! Illuminate\Support\Str::of($post->content)->words(30) !!}
                                     </p>
                                 </div>
-                            </div>
 
-                        </a>
-                    @endforeach
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="" id="demo">
@@ -82,6 +82,8 @@
             <div class="col-md-4">
                 @include('frontend.popular_last_news')
             </div>
+        </div>
+        <div class="col-md-4">
         </div>
     </div>
     {{-- Main news section end --}}
