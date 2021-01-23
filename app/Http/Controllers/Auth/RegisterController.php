@@ -72,6 +72,6 @@ class RegisterController extends Controller
         if ($user){
             $user->assignRole('subscriber');
         }
-        return $user;
+        return redirect()->back();
     }
 }
