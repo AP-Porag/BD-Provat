@@ -18,7 +18,8 @@
                 <div class="row">
                     <div class="col-md-8">
                         <a href="{{route('single-post-page',$main_post->slug)}}">
-                            <img alt="{{$main_post->slug}}" src="{{ $main_post->thumbnail }}" class="w-100 p-1" style="border: 1px solid #999">
+                            <img alt="{{$main_post->slug}}" src="{{ $main_post->thumbnail }}" class="w-100 p-1"
+                                 style="border: 1px solid #999">
                             <h4 class="mt-3">{{ $main_post->title }}</h4>
                             <p style="text-align:justify">
                                 {!! Illuminate\Support\Str::of($main_post->content)->words(30) !!}
@@ -31,7 +32,8 @@
 
                                 <a href="{{route('single-post-page',$right_side_post->slug)}}">
                                     <div class="col-md-12">
-                                        <img alt="{{$right_side_post->slug}}" src="{{ $right_side_post->thumbnail }}" class="w-100 p-1"
+                                        <img alt="{{$right_side_post->slug}}" src="{{ $right_side_post->thumbnail }}"
+                                             class="w-100 p-1"
                                              style="border: 1px solid #EBEBE9">
                                         <h6 class="mt-1">{{ $right_side_post->title }}</h6>
                                     </div>
@@ -47,7 +49,8 @@
                         <div class="col-md-4">
 
                             <a href="{{route('single-post-page',$bottom_side_post->slug)}}">
-                                <img alt="{{$bottom_side_post->slug}}" src="{{ $bottom_side_post->thumbnail }}" class="w-100 p-1"
+                                <img alt="{{$bottom_side_post->slug}}" src="{{ $bottom_side_post->thumbnail }}"
+                                     class="w-100 p-1"
                                      style="border: 1px solid #EBEBE9">
                                 <h6 class="mt-1">{{ $bottom_side_post->title }}</h6>
                             </a>
@@ -56,7 +59,6 @@
                 </div>
                 <div class="row" id="dataContainer">
                     @foreach ($posts as $key => $post)
-
                         <a href="{{route('single-post-page',$post->slug)}}">
                             <div class="col-md-12 d-flex p-2 mb-3" style="background: #EDF3F5">
                                 <div class="img">
@@ -69,21 +71,17 @@
                                         {!! Illuminate\Support\Str::of($post->content)->words(30) !!}
                                     </p>
                                 </div>
-
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="" id="demo">
-                    {{ $posts->links() }}
+                            </div>
+                        </a>
+                    @endforeach
+                        <div class="" id="demo">
+                            {{ $posts->links() }}
+                        </div>
                 </div>
             </div>
             <div class="col-md-4">
                 @include('frontend.popular_last_news')
             </div>
-        </div>
-        <div class="col-md-4">
         </div>
     </div>
     {{-- Main news section end --}}
