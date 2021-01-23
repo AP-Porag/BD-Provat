@@ -18,11 +18,11 @@
                     <a href="{{ route('single-post-page', $last_top_news->slug) }}">
                         <div class="image_box">
                             <img src="{{ $last_top_news->thumbnail }}" alt="{{ $last_top_news->slug }}" class="img-fluid">
-                        </div>
-                        <div class="image_overlay">
-                            <h5 class="">
-                                {{ $last_top_news->title }}
-                            </h5>
+                            <div class="image_overlay">
+                                <h5 class="">
+                                    {{ $last_top_news->title }}
+                                </h5>
+                            </div>
                         </div>
                     </a>
                 </div>

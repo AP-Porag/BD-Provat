@@ -214,7 +214,6 @@ marquee ul li a:hover {
     width: 100%;
     padding: 5px 15px;
     transition: 0.4s;
-    margin-left: 15px;
 
 }
 
@@ -818,9 +817,7 @@ footer .root {
 
 /* single page social icon end */
 
-.related_post_overlay{
-    left: 15px;
-}
+
 .related_post_image_box{
     margin-bottom: 20px;
 }

@@ -47,11 +47,11 @@
                                         <div class="small_image_box related_post_image_box">
                                             <img class="img-fluid" alt="{{$r_news->slug}}"
                                                  src="{{ $r_news->thumbnail }}">
-                                        </div>
-                                        <div class="small_image_overlay related_post_overlay">
-                                            <h5 class="">
-                                                {{ $r_news->title }}
-                                            </h5>
+                                            <div class="small_image_overlay related_post_overlay">
+                                                <h5 class="">
+                                                    {{ $r_news->title }}
+                                                </h5>
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
