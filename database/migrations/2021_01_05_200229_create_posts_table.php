@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePostsTable extends Migration
@@ -24,7 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('thumbnail');
             $table->string('status');
             $table->integer('views')->default(0);
-            $table->string('publishing_date')->nullable();
+            $table->string('publishing_date')->default(Carbon::now());
             $table->timestamps();
             $table->softDeletes();
         });
