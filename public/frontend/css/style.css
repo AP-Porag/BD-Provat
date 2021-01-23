@@ -36,12 +36,12 @@ h3 span {
     display: inline-block;
 }
 
-h1 > a,
-h2 > a,
-h3 > a,
-h4 > a,
-h5 > a,
-h6 > a {
+h1>a,
+h2>a,
+h3>a,
+h4>a,
+h5>a,
+h6>a {
     color: #111111;
     font-weight: 500;
 }
@@ -60,16 +60,18 @@ section {
     padding-bottom: 30px;
 }
 
-.section_link span{
+.section_link span {
     background: none;
     color: darkgreen;
     padding: 0;
     transition: 0.4s;
 }
-.section_link span:hover{
+
+.section_link span:hover {
     color: #8c0707;
     transform: scale(1.2);
 }
+
 /* common css end */
 .date {
     color: white;
@@ -193,123 +195,143 @@ marquee ul li a {
     font-size: 16px;
     font-weight: 400;
 }
-marquee ul li a:hover{
+
+marquee ul li a:hover {
     color: #8c0707;
 }
+
 /* Breaking News End */
 /* Main news Sectin Starts */
 
-.image_box{
+.image_box {
     position: relative;
     margin-right: 15px;
 }
-.image_overlay{
+
+.image_overlay {
     position: absolute;
-    background-image: linear-gradient(rgba(0 ,0, 0, 0.25), rgba(255,255,255,0.1));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
     top: 0;
     width: 97%;
     padding: 5px 15px;
     transition: 0.4s;
 }
-.image_overlay:hover{
-    background-image: linear-gradient(rgba(255,255,255,0.25),rgba(0 ,0, 0, 0.1));
+
+.image_overlay:hover {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.1));
     transition: 0.4s;
 }
-.image_overlay h5{
+
+.image_overlay h5 {
     color: #fff;
     font-size: 22px;
     font-weight: 400;
     transition: 0.4s;
 }
-.image_overlay:hover.image_overlay h5{
+
+.image_overlay:hover.image_overlay h5 {
     color: #8c0707;
 }
-.small_image_box{
+
+.small_image_box {
     position: relative;
     margin-bottom: 8px;
 }
-.small_image_overlay{
+
+.small_image_overlay {
     position: absolute;
     top: 0;
     right: 15px;
-    background-image: linear-gradient(rgba(0 ,0, 0, 0.25), rgba(255,255,255,0.1));
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.1));
     padding: 5px 15px;
     transition: 0.4s;
 }
-.small_image_overlay:hover{
-    background-image: linear-gradient(rgba(255,255,255,0.25),rgba(0 ,0, 0, 0.1));
+
+.small_image_overlay:hover {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.1));
     transition: 0.4s;
 }
-.small_image_overlay h5{
+
+.small_image_overlay h5 {
     color: #fff;
     font-size: 18px;
     font-weight: 400;
     transition: 0.4s;
 }
-.small_image_overlay:hover.small_image_overlay h5{
+
+.small_image_overlay:hover.small_image_overlay h5 {
     color: #8c0707;
 }
+
 /* Main news Sectin Ends */
 /*national section start*/
-#national_news{
+#national_news {
     background: #F8F8F8;
 }
-#national_news .card{
+
+#national_news .card {
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 15px;
-    -webkit-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    -moz-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
+    -webkit-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
 }
-#national_news .card-text h4{
+
+#national_news .card-text h4 {
     font-size: 16px;
     font-weight: 400;
     color: #676565;
     text-decoration: none;
     transition: 0.4s;
 }
-#national_news .card:hover.card .card-text h4{
+
+#national_news .card:hover.card .card-text h4 {
     color: #8c0707;
 }
-#national_news .card-text p{
+
+#national_news .card-text p {
     font-size: 14px;
     font-weight: 400;
     color: #000000;
     text-decoration: none;
 }
-#national_news .card .card-img{
+
+#national_news .card .card-img {
     overflow: hidden;
 }
-#national_news .card img{
+
+#national_news .card img {
     transition: 0.6s;
 }
-#national_news .card:hover.card .card_image{
+
+#national_news .card:hover.card .card_image {
     position: relative;
     transform: scale(1.121212);
 }
+
 /* Tab start */
 .tab_for_content {
     max-height: 670px;
     overflow: auto;
-    -webkit-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    -moz-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
+    -webkit-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
 }
 
 .tab_for_content p {
     font-size: 14px;
 }
 
-nav > .nav.nav-tabs {
+nav>.nav.nav-tabs {
     border: none;
     color: #fff;
     background: #8c0707;
     border-radius: 0;
 }
 
-nav > div a.nav-item.nav-link,
-nav > div a.nav-item.nav-link.active {
+nav>div a.nav-item.nav-link,
+nav>div a.nav-item.nav-link.active {
     border: none;
     padding: 8px 0;
     color: #fff;
@@ -317,7 +339,7 @@ nav > div a.nav-item.nav-link.active {
     border-radius: 0;
 }
 
-nav > div a.nav-item.nav-link.active:after {
+nav>div a.nav-item.nav-link.active:after {
     content: "";
     position: relative;
     bottom: -57px;
@@ -334,23 +356,28 @@ nav > div a.nav-item.nav-link.active:after {
     border-bottom: 5px solid #8c0707;
     padding: 30px 25px;
 }
-.tab-content ul li{
+
+.tab-content ul li {
     border-bottom: dashed 1px #999;
 }
-.tab-content ul li:last-child{
+
+.tab-content ul li:last-child {
     border-bottom: 0;
 }
+
 .tab-content ul li,
 .middle_content ul li {
     padding-top: 7px;
     padding-bottom: 7px;
 }
-.tab-content img{
+
+.tab-content img {
     height: 70px;
     width: 100px;
 }
-nav > div a.nav-item.nav-link:hover,
-nav > div a.nav-item.nav-link:focus {
+
+nav>div a.nav-item.nav-link:hover,
+nav>div a.nav-item.nav-link:focus {
     border: none;
     background: #8c0707;
     color: #fff;
@@ -362,35 +389,41 @@ nav > div a.nav-item.nav-link:focus {
 /*national section end*/
 
 /* Politics Technology and Law Start */
-#politics_technology_law h5{
+#politics_technology_law h5 {
     color: #8c0707;
     font-weight: 400;
     font-size: 18px;
     transition: 0.4s;
 }
-#politics_technology_law h5:hover{
+
+#politics_technology_law h5:hover {
     color: darkgreen;
 }
-#politics_technology_law p a{
+
+#politics_technology_law p a {
     color: #000000;
 }
+
 #politics_technology_law ul li {
     padding-top: 10px;
     padding-bottom: 10px;
     border-top: 1px dashed #999;
     border-bottom: 1px dashed #999;
 }
-#politics_technology_law ul li:last-child{
+
+#politics_technology_law ul li:last-child {
     border-bottom: 0;
 }
 
 #politics_technology_law ul li:first-child {
     margin-top: 20px;
 }
-#politics_technology_law ul li img{
+
+#politics_technology_law ul li img {
     height: 70px;
     width: 100px;
 }
+
 /* Politics Technology and Law Ends */
 /* Slick Slider Start */
 .slick-next:before,
@@ -431,69 +464,83 @@ nav > div a.nav-item.nav-link:focus {
 .img-slider .slick-dots {
     bottom: 30px;
 }
-#entertainment_and_feature .slick-dots{
+
+#entertainment_and_feature .slick-dots {
     bottom: -43px !important;
 }
-#entertainment_and_feature .slick-dots li{
+
+#entertainment_and_feature .slick-dots li {
     margin-top: 30px !important;
     border-bottom: 0 !important;
 }
 
 /* Slick Slider End */
 /* entertainment Feature Start */
-#entertainment_and_feature{
+#entertainment_and_feature {
     background: #8c0707;
 }
-#entertainment_and_feature .section_link span{
+
+#entertainment_and_feature .section_link span {
     color: #999999;
 }
-#entertainment_and_feature .card{
+
+#entertainment_and_feature .card {
     background: #1b1e21;
 }
-#entertainment_and_feature p{
+
+#entertainment_and_feature p {
     color: #999999;
 }
+
 #entertainment_and_feature ul li {
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 2px dashed #999;
 }
+
 #entertainment_and_feature ul li:last-child {
     border-bottom: 0;
 }
+
 /* entertainment Feature end */
 /* international lifestyle Feature start */
-#international_lifestyle{
+#international_lifestyle {
     background: #f8f8f8;
     margin-top: 30px;
 }
-#international_lifestyle h5{
+
+#international_lifestyle h5 {
     color: #8c0707;
     font-size: 18px;
     font-weight: 400;
 }
+
 #international_lifestyle ul li {
     padding-top: 7px;
     padding-bottom: 7px;
     border-bottom: 2px dashed #999;
 }
+
 #international_lifestyle ul li:last-child {
     border-bottom: 0;
 }
-#international_lifestyle ul li img{
+
+#international_lifestyle ul li img {
     width: 100px;
     height: 70px;
 }
+
 /* international lifestyle Feature end */
 /* Full Country Section Start */
-#full_country .card{
+#full_country .card {
     border: 0;
-    -webkit-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    -moz-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
+    -webkit-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
 }
+
 #full_country .division_btn .division_btn_li {
-    background: rgba(0,100,0,0);
+    background: rgba(0, 100, 0, 0);
     cursor: pointer;
     display: inline-block;
     margin-right: 11px;
@@ -501,37 +548,46 @@ nav > div a.nav-item.nav-link:focus {
     border-radius: 30px;
     transition: 0.4s;
 }
-#full_country ul li:first-child{
+
+#full_country ul li:first-child {
     margin-left: 0;
 }
-#full_country ul li:last-child{
+
+#full_country ul li:last-child {
     margin-right: 0;
 }
+
 #full_country .division_btn .division_btn_li:hover {
-    background: rgba(0,100,0,1);
+    background: rgba(0, 100, 0, 1);
 }
+
 #full_country ul li:hover.division_btn_li a {
     color: #FFFFFF;
     font-weight: 400;
 }
+
 #full_country ul li.active {
     background: red;
     color: #fff;
 }
-#full_country ul li a{
+
+#full_country ul li a {
     color: darkgreen;
     font-size: 18px;
 }
+
 .grid img {
     width: 100%;
 }
-#full_country .isotope-pager{
+
+#full_country .isotope-pager {
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
 }
-#full_country .isotope-pager .pager{
-    background: rgba(0,100,0,0);
+
+#full_country .isotope-pager .pager {
+    background: rgba(0, 100, 0, 0);
     color: darkgreen;
     font-size: 18px;
     font-weight: 400;
@@ -540,126 +596,153 @@ nav > div a.nav-item.nav-link:focus {
     border-right: 0;
     transition: 0.4s;
 }
-#full_country .isotope-pager .pager:last-child{
+
+#full_country .isotope-pager .pager:last-child {
     border-right: 1px solid darkgreen;
 }
-#full_country .isotope-pager .pager:hover{
-    background: rgba(0,100,0,1);
+
+#full_country .isotope-pager .pager:hover {
+    background: rgba(0, 100, 0, 1);
     color: #FFFFFF;
 }
-#full_country .card-img{
+
+#full_country .card-img {
     overflow: hidden;
 }
-#full_country .card-img img{
+
+#full_country .card-img img {
     transition: 0.6s;
 }
-#full_country .card-img img:hover{
+
+#full_country .card-img img:hover {
     position: relative;
     transform: scale(1.15151515);
 }
-#full_country h5{
+
+#full_country h5 {
     font-size: 16px;
     font-weight: 200;
     color: black;
 }
-#full_country h5:hover{
+
+#full_country h5:hover {
     color: darkgreen;
 }
-#full_country .card-header{
-    background: rgba(0,100,0,1);
+
+#full_country .card-header {
+    background: rgba(0, 100, 0, 1);
     color: #FFFFFF;
     font-size: 18px;
     font-weight: 200;
     transition: 0.4s;
 }
-#full_country .card-header:hover{
-    background: rgba(255,255,255,1);
+
+#full_country .card-header:hover {
+    background: rgba(255, 255, 255, 1);
     color: darkgreen;
     border: 1px solid darkgreen;
 }
+
 /* Full Country Section End */
 /* Sport Section Start */
-#sports{
+#sports {
     background: darkgreen;
 }
-#sports .section_link span{
+
+#sports .section_link span {
     color: #999999;
 }
+
 #sports h5 {
     font-size: 16px;
     color: #FFFFFF;
     transition: 0.4s;
     font-weight: 400;
 }
-#sports h5:hover{
- color: #999999;
+
+#sports h5:hover {
+    color: #999999;
 }
-#sports p a{
+
+#sports p a {
     color: #999999;
     font-weight: 400;
 }
-#sports .card-img{
+
+#sports .card-img {
     overflow: hidden;
 }
-#sports .card-img img{
+
+#sports .card-img img {
     transition: 0.6s;
 }
-#sports .card-img img:hover{
+
+#sports .card-img img:hover {
     position: relative;
     transform: scale(1.15151515);
 }
+
 /* Sport Section End */
 /* Photo Feature and Religion start */
-#photo_gallery_finance_foreign .image_box{
+#photo_gallery_finance_foreign .image_box {
     margin-right: 0;
 }
-#photo_gallery_finance_foreign .img-slider ul li{
+
+#photo_gallery_finance_foreign .img-slider ul li {
     border: 0;
 }
+
 #photo_gallery_finance_foreign ul li {
     padding-top: 10px;
     padding-bottom: 10px;
     border-top: 1px dashed #999;
     border-bottom: 1px dashed #999;
 }
+
 #photo_gallery_finance_foreign ul li:last-child {
     border-bottom: 0;
 }
+
 #photo_gallery_finance_foreign ul li:first-child {
     border-top: 0;
 }
 
 /* Photo Feature and Religion End */
 /* Travel Health Foreign Start */
-#travel_health_religion{
+#travel_health_religion {
     background: #f8f8f8;
 }
+
 #travel_health_religion ul li {
     padding-top: 10px;
     padding-bottom: 10px;
     border-top: 1px dashed #999;
     border-bottom: 1px dashed #999;
 }
-#travel_health_religion ul li:first-child {
 
-}
+#travel_health_religion ul li:first-child {}
+
 #travel_health_religion ul li:first-child {
     border-top: 0;
     margin-top: 20px;
 }
+
 #travel_health_religion ul li:last-child {
-border-bottom: 0;
+    border-bottom: 0;
 }
-#travel_health_religion h5{
-color: #000000;
+
+#travel_health_religion h5 {
+    color: #000000;
     font-weight: 200;
     font-size: 18px;
 }
-#travel_health_religion h5:hover{
+
+#travel_health_religion h5:hover {
     color: darkgreen;
     font-weight: 200;
     font-size: 18px;
 }
+
 /* Travel Health Foreign End */
 /* Footer Start */
 footer {
@@ -671,14 +754,17 @@ footer p {
     padding-top: 15px;
     padding-bottom: 15px;
 }
-footer p a{
+
+footer p a {
     color: #FFFFFF;
     font-size: 18px;
     font-weight: 400;
 }
-footer p a:hover{
+
+footer p a:hover {
     color: #000000;
 }
+
 footer ul li a {
     color: #fff;
     font-size: 20px;
@@ -689,13 +775,15 @@ footer ul li a {
     border-radius: 4px;
     transition: 0.4s;
 }
+
 footer ul li a:hover {
     background: darkgreen;
     color: #FFFFFF;
     border-radius: 4px;
     transition: 0.4s;
 }
-footer .root{
+
+footer .root {
     background: red;
     color: #FFFFFF;
 }
@@ -712,7 +800,7 @@ footer .root{
 }
 /*Category Subcategory Page end*/
 /* Footer End */
-/*Single post page css start*/
+/* single_page style start */
 .single_page_icon li {
     margin-right: 5px;
 }
@@ -729,6 +817,7 @@ footer .root{
 }
 
 /* single page social icon end */
+
 .related_post_overlay{
     left: 15px;
 }
@@ -800,3 +889,7 @@ footer .root{
     padding-right: 30px;
     background: #f5edee;
 }
+nav>div a.nav-item.nav-link.active:after {
+    bottom: -46px;
+}
+

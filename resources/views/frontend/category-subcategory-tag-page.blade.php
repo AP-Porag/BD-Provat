@@ -28,6 +28,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             @foreach ($right_side_posts as $key => $right_side_post)
+
                                 <a href="{{route('single-post-page',$right_side_post->slug)}}">
                                     <div class="col-md-12">
                                         <img alt="{{$right_side_post->slug}}" src="{{ $right_side_post->thumbnail }}" class="w-100 p-1"
@@ -44,6 +45,7 @@
 
                     @foreach ($bottom_side_posts as $key => $bottom_side_post)
                         <div class="col-md-4">
+
                             <a href="{{route('single-post-page',$bottom_side_post->slug)}}">
                                 <img alt="{{$bottom_side_post->slug}}" src="{{ $bottom_side_post->thumbnail }}" class="w-100 p-1"
                                      style="border: 1px solid #EBEBE9">
@@ -54,6 +56,7 @@
                 </div>
                 <div class="row" id="dataContainer">
                     @foreach ($posts as $key => $post)
+
                         <a href="{{route('single-post-page',$post->slug)}}">
                             <div class="col-md-12 d-flex p-2 mb-3" style="background: #EDF3F5">
                                 <div class="img">
@@ -71,6 +74,7 @@
                         </a>
                     @endforeach
                 </div>
+
                 <div class="" id="demo">
                     {{ $posts->links() }}
                 </div>
@@ -81,7 +85,7 @@
         </div>
     </div>
     {{-- Main news section end --}}
-
 @endsection
 @section('script')
+
 @endsection

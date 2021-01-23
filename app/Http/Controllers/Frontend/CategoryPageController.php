@@ -24,7 +24,7 @@ class CategoryPageController extends Controller
 
         $bottom_side_posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 4)->limit(3)->get();
 
-        $posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(4);
+        $posts = Post::where('category_id', 5)->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(4);
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 7)->limit(15)->get();
@@ -34,5 +34,4 @@ class CategoryPageController extends Controller
 
         return response(view('frontend.category-subcategory-tag-page', compact('slug', 'categories', 'breaking_news', 'posts', 'main_post', 'category', 'right_side_posts', 'bottom_side_posts','latest_news','popular_news')));
     }
-
 }
