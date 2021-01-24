@@ -20,7 +20,7 @@ class RolePermissionSeeder extends Seeder
         $roleEditor = Role::create(['name' => 'editor']);
         $roleUser = Role::create(['name' => 'user']);
         $rolePatient = Role::create(['name' => 'subscriber']);
-        $roleDoctor = Role::create(['name' => 'doctor']);
+        $roleDoctor = Role::create(['name' => 'journalist']);
         //Permission list as array
         $permissions = [
             //Admin permission

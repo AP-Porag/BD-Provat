@@ -106,12 +106,6 @@
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Suppliers -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-industry"></i>
-                    <span>Company</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -388,7 +382,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Doctor-Care  2020</span>
+                        <span>Copyright &copy; BD-provat  2020</span>
                     </div>
                 </div>
             </footer>

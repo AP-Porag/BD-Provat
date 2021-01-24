@@ -105,19 +105,19 @@ class PostController extends Controller
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-                ->resize(400, 350)
+//                ->resize(400, 350)
                 ->save(base_path('/public/storage/post/' . $image_new_name));
             $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
             $post->save();
         }
-        if ($post) {
-            foreach ($tags as $key => $tag) {
-                PostTag::create([
-                    'post_id' => $post->id,
-                    'tag_id' => $tag,
-                ]);
-            }
-        }
+//        if ($post) {
+//            foreach ($tags as $key => $tag) {
+//                PostTag::create([
+//                    'post_id' => $post->id,
+//                    'tag_id' => $tag,
+//                ]);
+//            }
+//        }
         if ($post) {
             $meta = PostMeta::create([
                 'post_id' => $post->id,
@@ -184,11 +184,10 @@ class PostController extends Controller
     //Extra Methods
     public static function postSoftDelete(int $id)
     {
-        return 'post-trashed';
         $post = Post::findOrFail($id)->delete();
 
         if ($post) {
-            Session::flash('success', 'User Inactivated Successfully !');
+            Session::flash('success', 'Post Deleted Successfully !');
         }
 
         return back();

@@ -10,6 +10,6 @@ class Tag extends Model
 
     public function posts()
     {
-        return $this->hasMany(Tag::class);
+        return $this->hasMany(PostTag::class,'post_id');
     }
 }
