@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="{{asset('frontend/images/fevicon.ico.png')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('frontend/img/272px-90px-Logo.png')}}" type="image/x-icon"/>
     <title>@yield('title')</title>
 @yield('style')
 {{--    <link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
@@ -36,7 +36,7 @@
             <!-- Sidebar - Brand -->
             <li class="sidebar-brand d-flex justify-content-between mb-4">
                 <a href="{{route('home')}}" class="sidebar-brand-icon">
-                    <img src="{{asset('frontend/images/fevicon.ico.png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/img/272px-90px-Logo.png')}}" alt="" class="img-fluid">
                 </a>
                 <div class="sidebar-brand-text mt-3"><a href="{{route('home')}}" class=""></a>BD-Provat</div>
             </li>
@@ -105,12 +105,6 @@
                         <a class="collapse-item text-capitalize" href="{{route('post.create')}}">Add new Post</a>
                     </div>
                 </div>
-            </li>
-            <!-- Nav Item - Suppliers -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-industry"></i>
-                    <span>Company</span></a>
             </li>
 
             <!-- Divider -->
@@ -388,7 +382,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Doctor-Care  2020</span>
+                        <span>Copyright &copy; BD-Provat  @php echo date('Y') @endphp</span>
                     </div>
                 </div>
             </footer>

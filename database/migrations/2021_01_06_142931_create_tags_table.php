@@ -20,6 +20,12 @@ class CreateTagsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        //post_tag migration table blueprint
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->integer('post_id');
+            $table->integer('tag_id');
+        });
     }
 
     /**
@@ -30,5 +36,6 @@ class CreateTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('post_tag');
     }
 }

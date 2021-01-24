@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->foreignId('post_author');
             $table->string('title');
             $table->string('slug');
-            $table->string('content');
+            $table->text('content');
             $table->string('thumbnail');
             $table->string('status');
             $table->integer('views')->default(0);

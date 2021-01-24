@@ -53,9 +53,9 @@ class PostController extends Controller
 
         //$meta_keywords = $request->meta_keywords;
         //$meta_description = $request->meta_description;
-       $meta_keywords = str::slug($request->title);
+       $meta_keywords = $request->title;
        $m_description = str::of($request->post_content)->words(20);
-       $meta_description = str::slug($m_description);
+       $meta_description = $m_description;
         //=======
         $category = $request->category;
         $subcategory = $request->subcategory;
@@ -105,18 +105,13 @@ class PostController extends Controller
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-                ->resize(400, 350)
+//                ->resize(400, 350)
                 ->save(base_path('/public/storage/post/' . $image_new_name));
             $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
             $post->save();
         }
         if ($post) {
-            foreach ($tags as $key => $tag) {
-                PostTag::create([
-                    'post_id' => $post->id,
-                    'tag_id' => $tag,
-                ]);
-            }
+            $post->tags()->attach($tags);
         }
         if ($post) {
             $meta = PostMeta::create([
@@ -155,7 +150,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return 'POst Edit';
+        return 'Coming soon';
     }
 
     /**
@@ -184,11 +179,10 @@ class PostController extends Controller
     //Extra Methods
     public static function postSoftDelete(int $id)
     {
-        return 'post-trashed';
         $post = Post::findOrFail($id)->delete();
 
         if ($post) {
-            Session::flash('success', 'User Inactivated Successfully !');
+            Session::flash('success', 'Post Inactivated Successfully !');
         }
 
         return back();
@@ -205,7 +199,7 @@ class PostController extends Controller
         $post = Post::onlyTrashed()->findOrFail($id)->restore();
 
         if ($post) {
-            Session::flash('success', 'User Activated Again !');
+            Session::flash('success', 'Post Activated Again !');
         }
 
         return back();
@@ -216,7 +210,7 @@ class PostController extends Controller
         $post = Post::onlyTrashed()->findOrFail($id)->forceDelete();
 
         if ($post) {
-            Session::flash('success', 'User Deleted Successfully !');
+            Session::flash('success', 'Post Deleted Successfully !');
         }
 
         return back();

@@ -17,7 +17,7 @@
                 <div class="col-md-6 mb-2">
                     <a href="{{ route('single-post-page', $last_top_news->slug) }}">
                         <div class="image_box">
-                            <img src="{{ $last_top_news->thumbnail }}" alt="{{ $last_top_news->slug }}" class="img-fluid">
+                            <img src="{{ $last_top_news->thumbnail }}" alt="{{ $last_top_news->slug }}" class="w-100" style="max-height: 286px">
                             <div class="image_overlay">
                                 <h5 class="">
                                     {{ $last_top_news->title }}
@@ -247,27 +247,31 @@
                             </h3>
                         </div>
                         <div class="card ml-3 mr-3 pt-3 pb-3">
-                            <a href="#" class="d-flex for-position-image">
+                            <a href="{{route('single-post-page',$last_entertainment_post->slug)}}" class="d-flex for-position-image">
                                 <div class="col-md-5 col-12">
                                     <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
                                     <p class="text-justify">
-                                        {{ Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) }}
+                                        {!! Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) !!}
                                     </p>
                                 </div>
                                 <div class="col-md-7 col-12">
-                                    <img src="{{ $last_entertainment_post->thumbnail }}" alt="" class="img-fluid">
+                                    <img src="{{ $last_entertainment_post->thumbnail }}" alt="{{$last_entertainment_post->slug}}" class="img-fluid">
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-12">
                             <div class="row slider">
                                 @foreach ($entertainment_posts as $key => $entertainment_post)
-                                    <div class="col-md-3 pt-3"><img src="{{ $entertainment_post->thumbnail }}" alt=""
-                                            class="img-fluid">
-                                        <p class="pt-2">
-                                            {{ \Illuminate\Support\str::limit($entertainment_post->title, 30) }}
-                                        </p>
-                                    </div>
+                                        <div class="col-md-3 pt-3">
+                                            <a href="{{route('single-post-page',$entertainment_post->slug)}}" style="border: 0">
+                                            <div>
+                                                <img src="{{ $entertainment_post->thumbnail }}" alt="{{$entertainment_post->slug}}" class="img-fluid">
+                                                <p class="pt-2">
+                                                    {{ \Illuminate\Support\str::limit($entertainment_post->title, 30) }}
+                                                </p>
+                                            </div>
+                                            </a>
+                                        </div>
                                 @endforeach
                             </div>
                         </div>
@@ -287,42 +291,15 @@
                         </a>
                     </h3>
                     <ul>
+                        @foreach($feature_news as $f_news)
                         <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
+                            <a class="d-flex" href="{{route('single-post-page',$f_news->slug)}}">
+                                <img height="70" width="100" alt="{{$f_news->slug}}"
+                                    src="{{ $f_news->thumbnail}}">
+                                <p class="ml-3">{{$f_news->title}}</p>
                             </a>
                         </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="d-flex" href="#"><img height="70" width="100" alt=""
-                                    src="{{ asset('frontend/images/international.jpg') }}">
-                                <p class="ml-3">দুদকের মামলায় বিএনপি নেতা মীর নাসিরকে জামিন</p>
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -1,8 +1,7 @@
 @extends('layouts.website')
-@section('title')
-    BD-Provat-{{ $slug }}
-@endsection
-
+@section('title', $post->title)
+{{--@section('meta_keywords', $post->postMeta->meta_keywords)--}}
+{{--@section('meta_description', $post->postMeta->meta_description)--}}
 @section('style')
     <style>
 
@@ -14,10 +13,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3><span>বিস্তারিত</span></h3>
                 <div class="row">
                     <div class="col-md-8 mx-auto">
-
+                        <h3><span>বিস্তারিত</span></h3>
                         <h6 style="color:#444"><i class="fa fa-clock-o pr-2" aria-hidden="true"></i> আপডেট টাইম
                             :@php echo(' ') @endphp {{ $post->created_at->diffForhumans() }}
                         </h6>
@@ -29,7 +27,11 @@
                         <h5>নিউজটি শেয়ার করুন</h5>
                         <div class="single_page_icon">
                             <ul class="d-flex">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl() }}&display=popup">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
@@ -38,6 +40,16 @@
                     <div class="col-md-4">
                         @include('frontend.popular_last_news')
                     </div>
+                    @if($post->tags_count > 0)
+                        <div class="col-md-8" id="tag_box">
+                            <h3><span>খবর সম্পর্কিত ট্যাগ..</span></h3>
+                            @foreach($post->tags as $tag)
+                                <a class="tags" href="{{route('tag-page',$tag->slug)}}">
+                                {{$tag->name}}
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                     <div class="col-md-8">
                         <h3><span>এ জাতীয় আরো খবর..</span></h3>
                         <div class="row">
@@ -81,7 +93,8 @@
                                                         <div class="card single_reply">
                                                             <div class="card-body">
                                                                 <div class="card-text">
-                                                                    <p class="replier align-self-end font-italic">BD-Provat</p>
+                                                                    <p class="replier align-self-end font-italic">
+                                                                        BD-Provat</p>
                                                                     <p class="comment_message">{{$reply->message}}</p>
                                                                 </div>
                                                             </div>
@@ -119,7 +132,8 @@
                                         <input type="text" name="password" class="form-control" id="password"
                                                aria-describedby="password" placeholder="Password Automatically" hidden>
                                         <input type="text" name="post_id" class="form-control" id="post_id"
-                                               aria-describedby="post_id" placeholder="Post ID" value="{{$post->id}}" hidden>
+                                               aria-describedby="post_id" placeholder="Post ID" value="{{$post->id}}"
+                                               hidden>
                                         <small id="email" class="form-text text-muted">
                                             We'll never share your email with anyone else.</small>
                                     </div>
@@ -139,7 +153,7 @@
 @endsection
 @section('script')
     <script>
-        $('#email').change(function() {
+        $('#email').change(function () {
             $('#password').val($(this).val());
         });
     </script>

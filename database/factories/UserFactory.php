@@ -4,8 +4,8 @@
 
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\PostTag;
 use App\Models\Reply;
+use App\Models\PostMeta;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -43,14 +43,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'content'=>$faker->paragraph,
         'status'=>'published',
         'thumbnail'=>$faker->imageUrl(),
-    ];
-});
-
-//seeding Post Tag
-$factory->define(PostTag::class, function (Faker $faker) {
-    return [
-        'post_id'=>rand(1,120),
-        'tag_id'=>rand(1,20),
+        'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
     ];
 });
 
@@ -70,5 +63,14 @@ $factory->define(Reply::class, function (Faker $faker) {
         'post_id'=>rand(1,120),
         'comment_id'=>rand(1,200),
         'message'=>$faker->unique()->sentence,
+    ];
+});
+
+//seeding Post Meta
+$factory->define(PostMeta::class, function (Faker $faker) {
+    return [
+        'post_id' => Post::all()->random()->id,
+        'meta_keywords'=>$faker->unique()->sentence,
+        'meta_description'=>$faker->unique()->sentence,
     ];
 });
