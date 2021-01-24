@@ -14,7 +14,12 @@ class AboutPageController extends Controller
         //for nav bar
         $categories = Category::all();
         //for breaking news
-        $breaking_news = Post::where('status','published')->orderBy('created_at','DESC')->paginate(5);
+        $breaking_tag = '1';
+        $breaking_news = Post::whereHas('tags', function($q) use($breaking_tag){
+
+            $q->where('id', '=', $breaking_tag);
+
+        })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
 
         //for dynamic title
         $slug = 'আমাদের-কথা';

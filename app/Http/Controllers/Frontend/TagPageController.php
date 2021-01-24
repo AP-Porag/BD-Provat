@@ -16,16 +16,22 @@ class TagPageController extends Controller
         //for nav bar
         $categories = Category::all();
         //for breaking news
-        $breaking_news = Post::where('status','published')->orderBy('created_at','DESC')->paginate(5);
+        $breaking_tag = '1';
+        $breaking_news = Post::whereHas('tags', function($q) use($breaking_tag){
+
+            $q->where('id', '=', $breaking_tag);
+
+        })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
         //for search post belongs to this tag
         $category = Tag::where('slug',$slug)->first();
-        $main_post = Post::where('tag_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
 
-        $right_side_posts = Post::where('tag_id', $category->id)->where('id', '!=', $main_post->id)->where('status', 'published')->orderBy('created_at', 'DESC')->limit(2)->get();
+        $search = $category->id;
 
-        $bottom_side_posts = Post::where('tag_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 4)->limit(3)->get();
+        $posts = Post::whereHas('tags', function($q) use($search){
 
-        $posts = Post::where('tag_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(4);
+            $q->where('id', '=', $search);
+
+        })->where('status', 'published')->orderBy('created_at', 'DESC')->paginate(6);
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 7)->limit(15)->get();
@@ -33,6 +39,6 @@ class TagPageController extends Controller
         //popular news
         $popular_news = Post::orderBy('views', 'DESC')->whereDate('created_at', '>', Carbon::now()->subMonth())->limit(15)->get();
 
-        return response(view('frontend.category-subcategory-tag-page', compact('slug', 'categories', 'breaking_news', 'posts', 'main_post', 'category', 'right_side_posts', 'bottom_side_posts','latest_news','popular_news')));
+        return response(view('frontend.tag-page', compact('slug', 'categories', 'breaking_news', 'posts', 'category','latest_news','popular_news')));
     }
 }

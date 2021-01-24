@@ -2,8 +2,8 @@
 
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\PostTag;
 use App\Models\Reply;
+use App\Models\PostMeta;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
         //seeding using factory
         factory(User::class,10)->create();
         factory(Post::class,120)->create();
-        factory(PostTag::class,130)->create();
         factory(Comment::class,200)->create();
         factory(Reply::class,230)->create();
+        factory(PostMeta::class,120)->create();
 
         //user Role Permission seeder
         $this->call(RolePermissionSeeder::class);

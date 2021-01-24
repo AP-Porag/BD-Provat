@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- Site Metas -->
-    <title>@yield('title')</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <title>@yield('title','BD-Provat')</title>
+        <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
+        <meta name="description" content="@yield('meta_description','BD-Provat')">
+        <link rel="canonical" href="{{url()->current()}}"/>
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{{ asset('frontend/images/fevicon.ico.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('frontend/img/272px-90px-Logo.png') }}" type="image/x-icon" />
     <!-- Bootstrap CSS -->
     <!-- Fonts -->
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">

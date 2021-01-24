@@ -18,9 +18,14 @@ class SinglePostPageController extends Controller
         $categories = Category::all();
 
         //for breaking news
-        $breaking_news = Post::where('status','published')->orderBy('created_at','DESC')->paginate(5);
+        $breaking_tag = '1';
+        $breaking_news = Post::whereHas('tags', function($q) use($breaking_tag){
+
+            $q->where('id', '=', $breaking_tag);
+
+        })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
         //for search post
-        $post = Post::where('slug',$slug)->first();
+        $post = Post::where('slug',$slug)->withCount('tags')->first();
 
         //update post views count in database
         $post_id = $post->id;
