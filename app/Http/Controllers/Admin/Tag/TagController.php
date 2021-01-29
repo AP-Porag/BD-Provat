@@ -17,7 +17,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::paginate(10);
+        return view('admin.tag.tag-show', compact('tags'));
     }
 
     /**
@@ -38,15 +39,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'tag'=>'required|min:3|unique:tags,name'
+        $this->validate($request, [
+            'tag' => 'required|min:3|unique:tags,name'
         ]);
         $tag = Tag::create([
-            'name'=>$request->tag,
-            'slug'=>str::slug($request->tag,'-'),
+            'name' => $request->tag,
+            'slug' => str::slug($request->tag, '-'),
         ]);
-        if ($tag){
-            Session::flash('success','Tag Created Successfully');
+        if ($tag) {
+            Session::flash('success', 'Tag Created Successfully');
         }
         return back();
     }
@@ -68,9 +69,10 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        $arr['tag'] = $tag;
+        return view('admin.tag.tag-edit')->with($arr);
     }
 
     /**
@@ -80,9 +82,15 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2']
+        ]);
+        $tag->name = $request->name;
+        $tag->save();
+        Session::flash('success', 'Tag Updated Successfully');
+        return back();
     }
 
     /**
@@ -93,6 +101,9 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+        Session::flash('success', 'Tag Deleted Successfully');
+        return back();
     }
 }

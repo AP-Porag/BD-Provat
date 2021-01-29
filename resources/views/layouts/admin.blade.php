@@ -36,9 +36,9 @@
             <!-- Sidebar - Brand -->
             <li class="sidebar-brand d-flex justify-content-between mb-4">
                 <a href="{{route('home')}}" class="sidebar-brand-icon">
-                    <img src="{{asset('frontend/img/272px-90px-Logo.png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/img/272px-90px-Logo.png')}}" alt="{{asset('frontend/img/272px-90px-Logo.png')}}" class="img-fluid">
                 </a>
-                <div class="sidebar-brand-text mt-3"><a href="{{route('home')}}" class=""></a>BD-Provat</div>
+                {{--  <div class="sidebar-brand-text mt-3"><a href="{{route('home')}}" class=""></a>BD-Provat</div>  --}}
             </li>
 
             <!-- Divider -->
@@ -106,6 +106,53 @@
                     </div>
                 </div>
             </li>
+
+
+            <!-- Nav Item - Category management -->
+            <li class="nav-item">
+                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseCategory"
+                   aria-expanded="true" aria-controls="collapsePost">
+                    <i class="fa fa-file-alt"></i>
+                    <i class="" aria-hidden="true"></i>
+                    <span class="text-capitalize">Categories</span>
+                </a>
+                <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item text-capitalize" href="{{route('category.index')}}">Category List</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Subcategory management -->
+            <li class="nav-item">
+                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsesubcategory"
+                   aria-expanded="true" aria-controls="collapsePost">
+                    <i class="fa fa-file-alt"></i>
+                    <i class="" aria-hidden="true"></i>
+                    <span class="text-capitalize">Subcategories</span>
+                </a>
+                <div id="collapsesubcategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item text-capitalize" href="{{route('subcategory.index')}}">Subcategory List</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Subcategory management -->
+            <li class="nav-item">
+                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsetag"
+                   aria-expanded="true" aria-controls="collapsePost">
+                    <i class="fa fa-file-alt"></i>
+                    <i class="" aria-hidden="true"></i>
+                    <span class="text-capitalize">Tags</span>
+                </a>
+                <div id="collapsetag" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item text-capitalize" href="{{route('tag.index')}}">Tag List</a>
+                    </div>
+                </div>
+            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -312,7 +359,7 @@
                                     <li style="list-style: none;">
                                         <span class="mr-2 d-none d-lg-inline text-info small text-capitalize">
                                             @foreach(Auth::user()->roles as $role)
-                                                {{$role->name}}
+                                                {{ $role->name }}
                                             @endforeach
                                         </span>
                                     </li>

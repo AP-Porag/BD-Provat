@@ -1,7 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 ul,
 ol {
     list-style: none;
     padding: 0 !important;
+}
+
+.navbar {
+    background-color: red;
+    position: relative;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+a.nav-link {
+    padding: 15px 8px;
+}
+
+/* 
+.nav-items {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+
+} */
+
+
+.navFixed {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    font-size: 20px;
 }
 
 a,
@@ -14,7 +50,7 @@ p {
     padding: 0;
     font-size: 16px;
     font-weight: 400;
-    color: black;
+    color: #000;
     line-height: 21px;
 }
 
@@ -51,7 +87,7 @@ body {
 }
 
 .login:hover {
-    background: #8c0707;
+    background: red;
     color: #fff !important;
 }
 
@@ -74,18 +110,24 @@ section {
 
 /* common css end */
 .date {
-    color: white;
+    color: red;
     font-size: 24px;
 }
 
-.social-icon a i {
+.social-icon li {
     font-size: 25px;
     margin-left: 10px;
-    color: #fff;
+    color: #000;
+    background-color: red;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 50px;
 }
 
-.top-box {
-    background: red;
+.social-icon li a {
+    color: #fff;
 }
 
 .social-icon-content {
@@ -132,10 +174,15 @@ section {
 }
 
 .login {
-    border: 1px solid #fff;
     padding: 5px 20px;
     margin-top: 2px;
     transition: 0.4s;
+    color: #fff;
+    background-color: red;
+}
+
+.first-login {
+    margin-top: 2px;
 }
 
 .navbar-nav .nav-item:hover .nav-link {
@@ -447,7 +494,6 @@ nav>div a.nav-item.nav-link:focus {
     width: 20px;
     height: 20px;
     content: "•";
-    text-align: center;
     opacity: 1;
     color: red;
     -webkit-font-smoothing: antialiased;
@@ -455,10 +501,7 @@ nav>div a.nav-item.nav-link:focus {
 }
 
 .slick-dots li.slick-active button:before {
-    opacity: 1;
-    border: 2px solid red;
-    color: white;
-    border-radius: 50%;
+    color: #fff;
 }
 
 .img-slider .slick-dots {
@@ -720,8 +763,6 @@ nav>div a.nav-item.nav-link:focus {
     border-bottom: 1px dashed #999;
 }
 
-#travel_health_religion ul li:first-child {}
-
 #travel_health_religion ul li:first-child {
     border-top: 0;
     margin-top: 20px;
@@ -746,13 +787,18 @@ nav>div a.nav-item.nav-link:focus {
 /* Travel Health Foreign End */
 /* Footer Start */
 footer {
-    background: #8c0707;
+    background: #000;
     padding-top: 30px;
 }
 
 footer p {
+    color: #fff;
+}
+
+footer .root p {
     padding-top: 15px;
     padding-bottom: 15px;
+    color: #fff;
 }
 
 footer p a {
@@ -787,17 +833,24 @@ footer .root {
     background: red;
     color: #FFFFFF;
 }
+
+footer .google-play-img {
+    border: 1px solid #fff;
+}
+
 /*Category Subcategory Page start*/
-#category_sub_category_tag_list h4{
+#category_sub_category_tag_list h4 {
     color: black;
     font-size: 20px;
     font-weight: 400;
 }
-#category_sub_category_tag_list h6{
+
+#category_sub_category_tag_list h6 {
     color: black;
     font-size: 18px;
     font-weight: 400;
 }
+
 /*Category Subcategory Page end*/
 /* Footer End */
 /* single_page style start */
@@ -819,86 +872,99 @@ footer .root {
 /* single page social icon end */
 
 
-.related_post_image_box{
+.related_post_image_box {
     margin-bottom: 20px;
 }
 
-#comment_showing_box{
+#comment_showing_box {
     margin-bottom: 30px;
     margin-top: 30px;
 }
-#comment_showing_box .single_comment{
+
+#comment_showing_box .single_comment {
     margin-top: 30px;
     margin-bottom: 30px;
     background: #EDF3F5;
-    -webkit-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    -moz-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
+    -webkit-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
 
 }
-#comment_showing_box .single_comment .comment_message{
+
+#comment_showing_box .single_comment .comment_message {
     margin-bottom: 80px;
     padding-right: 15px;
     padding-left: 15px;
     font-weight: 200;
 }
-#comment_showing_box .single_comment .commenter{
+
+#comment_showing_box .single_comment .commenter {
     font-size: 15px;
     font-weight: 200;
     color: darkgreen;
     padding-right: 15px;
     padding-left: 15px;
 }
-#comment_showing_box .single_reply{
+
+#comment_showing_box .single_reply {
     position: relative;
     margin-top: 30px;
     margin-bottom: 30px;
     background: #f5edee;
-    -webkit-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    -moz-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
+    -webkit-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
 }
-#comment_showing_box .single_reply .replier{
+
+#comment_showing_box .single_reply .replier {
     font-size: 15px;
     font-weight: 200;
     color: #8c0707;
     padding-right: 15px;
     padding-left: 15px;
 }
-#comment_showing_box .single_reply .comment_message{
+
+#comment_showing_box .single_reply .comment_message {
     padding-right: 15px;
     padding-left: 15px;
     font-weight: 200;
 }
-#commenting_box{
+
+#commenting_box {
     margin-top: 30px;
     margin-bottom: 60px;
     padding-left: 0;
     padding-right: 0;
-    -webkit-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    -moz-box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
-    box-shadow: 0px 12px 11px -1px rgba(0,0,0,0.17);
+    -webkit-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 12px 11px -1px rgba(0, 0, 0, 0.17);
 }
-#commenting_box .card{
+
+#commenting_box .card {
     border: 0;
 }
-#commenting_box .card .card-header{
+
+#commenting_box .card .card-header {
     padding-left: 30px;
     padding-right: 30px;
     background: #f5edee;
 }
+
 nav>div a.nav-item.nav-link.active:after {
     bottom: -46px;
 }
-#tag_box{
+
+#tag_box {
     padding-top: 60px;
     padding-bottom: 60px;
 }
-#tag_box h3{
+
+#tag_box h3 {
     margin-bottom: 60px;
     padding-left: 0 !important;
 }
-#tag_box .tags{
+
+#tag_box .tags {
     padding: 7px 10px;
     background: #e7e5e5;
     margin-left: 15px;
@@ -907,6 +973,7 @@ nav>div a.nav-item.nav-link.active:after {
     font-weight: 200;
     border-radius: 10px;
 }
-#tag_box .tags:first-child{
+
+#tag_box .tags:first-child {
     margin-left: 0;
 }
