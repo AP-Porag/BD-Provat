@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- Site Metas -->
-        <title>@yield('title','BD-Provat')</title>
-        <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
-        <meta name="description" content="@yield('meta_description','BD-Provat')">
-        <link rel="canonical" href="{{url()->current()}}"/>
+    <title>@yield('title','BD-Provat')</title>
+    <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
+    <meta name="description" content="@yield('meta_description','BD-Provat')">
+    <link rel="canonical" href="{{ url()->current() }}" />
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{{ asset('frontend/img/272px-90px-Logo.png') }}" type="image/x-icon" />
     <!-- Bootstrap CSS -->
@@ -39,18 +39,21 @@
                 <div class="col-md-12">
                     <div class="top-box">
                         <div class="social-icon-content d-flex justify-content-between">
-                            <p class="date ml-3 mt-3">
+                            <h2 class="date ml-3 mt-4">
                                 @php
                                 echo date('D - d , M-Y');
                                 @endphp
-                            </p>
-                            <ul class="d-flex social-icon mr-3 mt-3">
+                            </h2>
+                            <ul class="d-flex social-icon mr-3 mt-4">
                                 <li><a href=""><i class="fa fa-facebook"></i></a></li>
                                 <li><a href=""><i class="fa fa-instagram"></i></a></li>
                                 <li><a href=""><i class="fa fa-twitter"></i></a></li>
                                 <li><a href=""><i class="fa fa-youtube"></i></a></li>
+
+                            </ul>
+                            <ul class="d-flex mr-3 mt-4">
                                 @guest
-                                    <li class="ml-3"><a href="{{ route('login') }}"
+                                    <li class="ml-3 first-login"><a href="{{ route('login') }}"
                                             class="text-white login btn btn-sm">Login</a>
                                     </li>
                                     <li class="ml-3"><a href="{{ route('register') }}"
@@ -73,7 +76,8 @@
         <div class="container my-4">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" class="img-fluid" width="200">
+                    <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}"
+                        alt="{{ asset('frontend/img/272px-90px-Logo.png') }}" class="img-fluid">
                 </div>
                 <div class="col-md-8">
                     <img src="https://demo.tagdiv.com/newspaper_pro/wp-content/uploads/2019/08/newspaper-rec728.jpg"
@@ -82,8 +86,8 @@
             </div>
         </div>
         {{-- Logo and Add Place Ends --}}
-        <div class="container">
-            <nav class="navbar px-0 navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar px-0 navbar-expand-lg" id="navbar">
+            <div class="container for-padding">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -139,8 +143,8 @@
                     </div>
 
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
         {{-- Navbar End --}}
         <div class="container">
             <div class="row">
@@ -185,7 +189,7 @@
                     </div>
 
                     <div class="editor d-flex justify-content-between">
-                        <p>
+                        <p class="pb-3 pt-2">
                             ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
                             <br>এম, কে, আর এন্টারপ্রাইজের একটি প্রতিষ্ঠান<br>
                             প্রধান কার্যালয়: আলফা টাওয়ার, আবদুল্লাহপুর, উত্তরা, ঢাকা-১২৩০।<br>
@@ -234,3 +238,17 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function() {
+        $navOffset = $('#navbar').offset().top;
+        $(window).scroll(function() {
+            $scrolling = $(this).scrollTop();
+            if ($scrolling > $navOffset) {
+                $('#navbar').addClass('navFixed');
+            } else {
+                $('#navbar').removeClass('navFixed');
+            }
+        });
+    });
+
+</script>

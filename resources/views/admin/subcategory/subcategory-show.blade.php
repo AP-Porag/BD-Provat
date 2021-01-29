@@ -8,7 +8,8 @@
                 <div class="col-sm-12">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Admin</a></li>
-                        <li class="breadcrumb-item active text-capitalize"><a href="{{ route('tag.index') }}">Tag
+                        <li class="breadcrumb-item active text-capitalize"><a
+                                href="{{ route('subcategory.index') }}">Subcategory
                                 List</a></li>
                     </ol>
                 </div><!-- /.col -->
@@ -25,19 +26,35 @@
                     <div class="card">
                         <div class="card-header border-2 bg-gradient-indigo">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Create Tag</h4>
+                                <h4 class="card-title">Create Subcategory</h4>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="col-md-6">
-                                <form action="{{ route('tag.store') }}" method="POST">
+                                <form action="{{ route('subcategory.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="tag">Tag Name</label>
-                                        <input type="text" name="tag"
-                                            class="form-control @error('tag') is-invalid @enderror" id="tag"
+                                        <label for="subcategory">Subcategory Name</label>
+                                        <input type="text" name="name"
+                                            class="form-control @error('name') is-invalid @enderror" id="subcategory"
                                             aria-describedby="emailHelp">
-                                        @error('tag')
+
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category">Category Name</label>
+                                        <select class="custom-select mr-sm-2 @error('category') is-invalid @enderror"
+                                            id="category" name="category">
+                                            <option selected disabled>--Select Category--</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('category')
                                             <span class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </span>
@@ -53,7 +70,7 @@
                     <div class="card">
                         <div class="card-header border-2 bg-gradient-indigo">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title">Tags</h4>
+                                <h4 class="card-title">Subcategories</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -61,21 +78,22 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">SL</th>
-                                        <th scope="col">Category Name</th>
+                                        <th scope="col">Sub Category Name</th>
                                         <th scope="col" class="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tags as $key => $tag)
+                                    @foreach ($subcategories as $key => $subcategory)
                                         <tr>
-                                            <td>{{ $tag->id }}</td>
-                                            <td>{{ $tag->name }}</td>
+                                            <td>{{ $subcategory->id }}</td>
+                                            <td>{{ $subcategory->name }}</td>
                                             <td class="text-right">
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ route('tag.edit', $tag->id) }}"
+                                                    <a href="{{ route('subcategory.edit', $subcategory->id) }}"
                                                         class="btn btn-warning">Edit</a>
                                                     @role('supper-admin')
-                                                    <form action="{{ route('tag.destroy', $tag->id) }}" method="POST">
+                                                    <form action="{{ route('subcategory.destroy', $subcategory->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                         {{ method_field('DELETE') }}
                                                         <input class="btn btn-danger" type="submit" name="submit"
@@ -86,12 +104,15 @@
                                             </td>
                                         </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
+
                         </div>
-                        {{ $tags->links() }}
                     </div>
+                    {{ $subcategories->links() }}
                 </div>
+
             </div>
             <!-- /.row -->
         </div>

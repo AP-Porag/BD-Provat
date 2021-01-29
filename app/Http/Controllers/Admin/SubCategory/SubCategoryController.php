@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Admin\SubCategory;
 
-use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\SubCategory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Admin\Category\CategoryController;
 
 class SubCategoryController extends Controller
 {
@@ -14,7 +20,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        $subcategories = SubCategory::paginate(10);
+        return view('admin.subcategory.subcategory-show', compact('subcategories', 'categories'));
     }
 
     /**
@@ -33,9 +41,19 @@ class SubCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, SubCategory $subCategory)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2'],
+            'category' => ['required']
+        ]);
+
+        $subCategory->name = $request->name;
+        $subCategory->slug = Str::slug($request->name);
+        $subCategory->category_id = $request->category;
+        $subCategory->save();
+        Session::flash('success', 'Subcategory Created Successfully');
+        return back();
     }
 
     /**
@@ -57,7 +75,9 @@ class SubCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subcategory = SubCategory::findOrFail($id);
+        $categories = Category::all();
+        return view('admin.subcategory.subcategory-edit', compact('subcategory', 'categories'));
     }
 
     /**
@@ -67,9 +87,18 @@ class SubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SubCategory $subCategory)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2'],
+            'category' => ['required']
+        ]);
+        $subCategory->name = $request->name;
+        $subCategory->slug = Str::slug($request->name);
+        $subCategory->category_id = $request->category;
+        $subCategory->save();
+        Session::flash('success', 'Subcategory Updated Successfully');
+        return back();
     }
 
     /**
@@ -80,6 +109,13 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $posts = Post::where('sub_category_id', $id)->get();
+        foreach ($posts as $post) {
+            $post->delete();
+        }
+        $subCategory = SubCategory::findOrFail($id);
+        $subCategory->delete();
+        Session::flash('success', 'Subcategory Deleted Successfully');
+        return back();
     }
 }

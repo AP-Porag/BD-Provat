@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Category;
 
-use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -14,7 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('admin.category.category-show', compact('categories'));
     }
 
     /**
@@ -33,9 +39,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2']
+        ]);
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->save();
+        Session::flash('success', 'Category Created Successfully');
+        return back();
     }
 
     /**
@@ -55,9 +68,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        $arr['category'] = $category;
+        return view('admin.category.category-edit')->with($arr);
     }
 
     /**
@@ -67,9 +81,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2']
+        ]);
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->save();
+        Session::flash('success', 'Category Updated Successfully');
+        return back();
     }
 
     /**
@@ -80,6 +101,19 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $posts = Post::where('category_id', $id)->get();
+        foreach ($posts as $post) {
+            $post->delete();
+        }
+
+        $subcategories = SubCategory::where('category_id', $id)->get();
+        foreach ($subcategories as $subcategory) {
+            $subcategory->delete();
+        }
+
+        $category = Category::findOrFail($id);
+        $category->delete();
+        Session::flash('success', 'Category Deleted Successfully');
+        return back();
     }
 }
