@@ -45,10 +45,12 @@
                                 @endphp
                             </h2>
                             <ul class="d-flex social-icon mr-3 mt-4">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="https://www.facebook.com/Bdprovat" target="_blank"><i
+                                            class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/bdprovat" target="_blank"><i
+                                            class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCH-diWvfcvZtHVKwCBbcVHw/featured?fbclid=IwAR1koVXNchXY4_h38vJxL_jVDjjzTCmLR5mRKyOvkt04_IJwsYoHNp-xy4g"
+                                        target="_blank"><i class="fa fa-youtube"></i></a></li>
 
                             </ul>
                             <ul class="d-flex mr-3 mt-4">
@@ -181,10 +183,12 @@
 
                     <div class="logo_play_store d-flex justify-content-between">
                         <a href="{{ route('website') }}">
-                            <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" width="200">
+                            <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}"
+                                alt="{{ asset('frontend/img/272px-90px-Logo.png') }}" width="200">
                         </a>
                         <a href="#" class="google-play-img">
-                            <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
+                            <img src="{{ asset('frontend/images/google_play.png') }}"
+                                alt="{{ asset('frontend/images/google_play.png') }}" width="150">
                         </a>
                     </div>
 
@@ -217,6 +221,9 @@
             </div>
         </div>
     </footer>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
     {{-- Footer Section End --}}
     <!-- all js files -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -250,5 +257,30 @@
             }
         });
     });
+
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        })
+    }
 
 </script>
