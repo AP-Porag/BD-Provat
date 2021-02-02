@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorDataShowController;
 use Illuminate\Support\Facades\Route;
 
 // front end route start
@@ -95,6 +96,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     //Tag Route Start
     Route::resource('tag', 'Admin\Tag\TagController');
+
+    //Tag Route Start
+    Route::resource('author', 'Admin\Author\AuthorController');
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

@@ -10,10 +10,10 @@ use App\Models\PostMeta;
 use App\Models\PostTag;
 use App\Models\SubCategory;
 use App\Models\Tag;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
 use Image;
 
 class PostController extends Controller
@@ -53,13 +53,15 @@ class PostController extends Controller
 
         //$meta_keywords = $request->meta_keywords;
         //$meta_description = $request->meta_description;
-       $meta_keywords = $request->title;
-       $m_description = str::of($request->post_content)->words(20);
-       $meta_description = $m_description;
+        $meta_keywords = $request->title;
+        $m_description = str::of($request->post_content)->words(20);
+        $meta_description = $m_description;
         //=======
         $category = $request->category;
         $subcategory = $request->subcategory;
         $title = $request->title;
+        $characters = [" ", ":", "‘", "’", "“", "”", ",", "--", ""];
+        $slug = str_replace($characters, "-", $title);
         $content = $request->post_content;
         $thumbnail = $request->thumbnail;
         $status = $request->status;
@@ -83,7 +85,7 @@ class PostController extends Controller
             'category_id' => $category,
             'post_author' => Auth::user()->id,
             'title' => $title,
-            'slug' => str::slug($title),
+            'slug' => $slug,
             'content' => $content,
             'thumbnail' => 'thumbnail',
             'status' => 'status'
@@ -105,7 +107,7 @@ class PostController extends Controller
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-//                ->resize(400, 350)
+                // ->resize(400, 300)
                 ->save(base_path('/public/storage/post/' . $image_new_name));
             $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
             $post->save();
@@ -135,11 +137,10 @@ class PostController extends Controller
     public function show($id)
     {
         //for search post
-        $post = Post::where('id',$id)->first();
-
+        $post = Post::where('id', $id)->first();
         //comments for this post
-        $comments = Comment::where('post_id',$post->id)->orderBy('created_at','DESC')->get();
-        return response(view('admin.posts.posts-show',compact('post','comments')));
+        $comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'DESC')->get();
+        return response(view('admin.posts.posts-show', compact('post', 'comments')));
     }
 
     /**
@@ -241,5 +242,4 @@ class PostController extends Controller
 
         return response($query);
     }
-
 }

@@ -78,8 +78,7 @@
         <div class="container my-4">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}"
-                        alt="{{ asset('frontend/img/272px-90px-Logo.png') }}" class="img-fluid">
+                    <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="img-fluid">
                 </div>
                 <div class="col-md-8">
                     <img src="https://demo.tagdiv.com/newspaper_pro/wp-content/uploads/2019/08/newspaper-rec728.jpg"
@@ -88,14 +87,13 @@
             </div>
         </div>
         {{-- Logo and Add Place Ends --}}
-        <nav class="navbar px-0 navbar-expand-lg" id="navbar">
-            <div class="container for-padding">
+        <nav class="navbar px-0 navbar-expand-lg navbar-light" id="navbar">
+            <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse justify-content-between navigation-bar"
                     id="navbarSupportedContent">
                     <div class="right-side">
@@ -132,7 +130,6 @@
                                 <a class="nav-link {{ \Illuminate\Support\Facades\Route::current()->getName() == 'about-page' ? 'active' : '' }}"
                                     href="{{ route('about-page') }}">আমাদের কথা</a>
                             </li>
-
                         </ul>
                     </div>
 
@@ -143,7 +140,6 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </nav>
@@ -183,8 +179,7 @@
 
                     <div class="logo_play_store d-flex justify-content-between">
                         <a href="{{ route('website') }}">
-                            <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}"
-                                alt="{{ asset('frontend/img/272px-90px-Logo.png') }}" width="200">
+                            <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" width="200">
                         </a>
                         <a href="#" class="google-play-img">
                             <img src="{{ asset('frontend/images/google_play.png') }}"
@@ -194,16 +189,17 @@
 
                     <div class="editor d-flex justify-content-between">
                         <p class="pb-3 pt-2">
-                            ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
-                            <br>এম, কে, আর এন্টারপ্রাইজের একটি প্রতিষ্ঠান<br>
-                            প্রধান কার্যালয়: আলফা টাওয়ার, আবদুল্লাহপুর, উত্তরা, ঢাকা-১২৩০।<br>
-                            আমাদের মেইল: <a href="{{ route('contact-us-page') }}">bdprovat.news@gmail.com</a> মোবাইল:
-                            ০১৭১৪-০৩৬৬১২
+                            {{ $author->authorname }}
+                            <br>{{ $author->enterprisename }}<br>
+                            {{ $author->enterpriseheadquarter }}।<br>
+                            আমাদের মেইল: <a href="{{ $author->email }}">bdprovat.news@gmail.com</a>
+                            </br>মোবাইল:
+                            {{ $author->mobilenumber }}
                         </p>
 
                         <ul>
                             <li>
-                                <a class="nav-link about-us" href="{{ route('about-page') }}">আমাদের কথা</a>
+                                <a class="nav-link about-us" href="">আমাদের কথা</a>
                             </li>
                         </ul>
                     </div>
@@ -222,9 +218,7 @@
         </div>
     </footer>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-
-    {{-- Footer Section End --}}
+    {{-- Footer Section End--}}
     <!-- all js files -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

@@ -138,7 +138,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Subcategory management -->
+            <!-- Nav Item - Tag management -->
             <li class="nav-item">
                 <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsetag"
                    aria-expanded="true" aria-controls="collapsePost">
@@ -149,6 +149,22 @@
                 <div id="collapsetag" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item text-capitalize" href="{{route('tag.index')}}">Tag List</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Author management -->
+            <li class="nav-item">
+                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseauthor"
+                   aria-expanded="true" aria-controls="collapsePost">
+                    <i class="fa fa-file-alt"></i>
+                    <i class="" aria-hidden="true"></i>
+                    <span class="text-capitalize">Author</span>
+                </a>
+                <div id="collapseauthor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item text-capitalize" href="{{route('author.index')}}">Author Details</a>
+                        <a class="collapse-item text-capitalize" href="{{route('author.create')}}">Create Author</a>
                     </div>
                 </div>
             </li>

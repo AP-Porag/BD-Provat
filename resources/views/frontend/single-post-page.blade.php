@@ -26,7 +26,7 @@
                         <p style="text-align:justify" class="pb-3">
                             {!! $post->content !!}
                         </p>
-                        <h5>নিউজটি শেয়ার করুন</h5>
+                        <h4 class="pt-3">নিউজটি শেয়ার করুন</h4>
                         <div class="single_page_icon">
                             <ul class="d-flex">
                                 <li>
