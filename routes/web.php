@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorDataShowController;
 use Illuminate\Support\Facades\Route;
 
 // front end route start
@@ -16,15 +17,15 @@ Auth::routes();
 
 
 
-//frontend rout start
+//frontend route start
 Route::get('/', 'Frontend\HomeDataShowController@HomeDataShow')->name('website');
-Route::get('/category/{slug}','Frontend\CategoryPageController@index')->name('category-page');
-Route::get('/subcategory/{slug}','Frontend\SubCategoryPageController@index')->name('subcategory-page');
-Route::get('/single-post/{slug}','Frontend\SinglePostPageController@index')->name('single-post-page');
-Route::get('/tag/{slug}','Frontend\TagPageController@index')->name('tag-page');
-Route::get('/আমাদের-কথা','Frontend\AboutPageController@index')->name('about-page');
-Route::get('/contact-us','Frontend\ContactUsPageController@index')->name('contact-us-page');
-Route::post('/comment','Frontend\CommentingController@comment')->name('commenting');
+Route::get('/category/{slug}', 'Frontend\CategoryPageController@index')->name('category-page');
+Route::get('/subcategory/{slug}', 'Frontend\SubCategoryPageController@index')->name('subcategory-page');
+Route::get('/single-post/{slug}', 'Frontend\SinglePostPageController@index')->name('single-post-page');
+Route::get('/tag/{slug}', 'Frontend\TagPageController@index')->name('tag-page');
+Route::get('/আমাদের-কথা', 'Frontend\AboutPageController@index')->name('about-page');
+Route::get('/contact-us', 'Frontend\ContactUsPageController@index')->name('contact-us-page');
+Route::post('/comment', 'Frontend\CommentingController@comment')->name('commenting');
 
 
 //backend route start
@@ -79,12 +80,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/post/get/updateStatus', 'Admin\Post\PostController@updateStatus')->name('updateStatus');
     Route::get('/post/get/tags', 'Admin\Post\PostController@getTags')->name('getTags');
 
-//Reply Route Start
+    //Reply Route Start
     Route::resource('comment', 'Admin\Comment\CommentController');
     Route::post('/comment/approved/posts', 'Admin\Comment\CommentController@approvedComment')->name('approvedComment');
 
     //Reply Route Start
     Route::resource('reply', 'Admin\Reply\ReplyController');
+
+
+    //Category Route Start
+    Route::resource('category', 'Admin\Category\CategoryController');
+
+    //Subcategory Route Start
+    Route::resource('subcategory', 'Admin\SubCategory\SubCategoryController');
+
+    //Tag Route Start
+    Route::resource('tag', 'Admin\Tag\TagController');
+
+    //Tag Route Start
+    Route::resource('author', 'Admin\Author\AuthorController');
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

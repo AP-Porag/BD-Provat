@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Category;
-use App\Models\Post;
-use App\Http\Controllers\Controller;
-use App\Models\SubCategory;
 use Carbon\Carbon;
+use App\Models\Post;
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeDataShowController extends Controller
 {
@@ -16,10 +17,9 @@ class HomeDataShowController extends Controller
         $categories = Category::all();
 
         $breaking_tag = '1';
-        $breaking_news = Post::whereHas('tags', function($q) use($breaking_tag){
+        $breaking_news = Post::whereHas('tags', function ($q) use ($breaking_tag) {
 
             $q->where('id', '=', $breaking_tag);
-
         })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
 
         $last_top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->first();
@@ -36,8 +36,8 @@ class HomeDataShowController extends Controller
         $last_political_post = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $political_posts = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_political_post->id)->paginate(4);
 
-        $last_info_tech_post = Post::where('category_id', 7)->where('status', 'published')->orderBy('id', 'DESC')->first();
-        $info_tech_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_info_tech_post->id)->paginate(4);
+        $last_info_tech_post = Post::where('category_id', 8)->where('status', 'published')->orderBy('id', 'DESC')->first();
+        $info_tech_posts = Post::where('category_id', 8)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_info_tech_post->id)->paginate(4);
 
         $last_law_post = Post::where('category_id', 5)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $law_posts = Post::where('category_id', 5)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_law_post->id)->paginate(4);
@@ -47,10 +47,9 @@ class HomeDataShowController extends Controller
 
         //feature news
         $feature_tag = '2';
-        $feature_news = Post::whereHas('tags', function($q) use($feature_tag){
+        $feature_news = Post::whereHas('tags', function ($q) use ($feature_tag) {
 
             $q->where('id', '=', $feature_tag);
-
         })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
         //international
         $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
@@ -90,6 +89,7 @@ class HomeDataShowController extends Controller
         $last_religion_post = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
         $religion_posts = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_religion_post->id)->limit(4)->get();
 
+        //author show
         return view('frontend.index', compact([
             'categories',
             'breaking_news',

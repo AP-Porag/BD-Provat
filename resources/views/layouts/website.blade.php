@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- Site Metas -->
-        <title>@yield('title','BD-Provat')</title>
-        <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
-        <meta name="description" content="@yield('meta_description','BD-Provat')">
-        <link rel="canonical" href="{{url()->current()}}"/>
+    <title>@yield('title','BD-Provat')</title>
+    <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
+    <meta name="description" content="@yield('meta_description','BD-Provat')">
+    <link rel="canonical" href="{{ url()->current() }}" />
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{{ asset('frontend/img/272px-90px-Logo.png') }}" type="image/x-icon" />
     <!-- Bootstrap CSS -->
@@ -39,18 +39,23 @@
                 <div class="col-md-12">
                     <div class="top-box">
                         <div class="social-icon-content d-flex justify-content-between">
-                            <p class="date ml-3 mt-3">
+                            <h2 class="date ml-3 mt-4">
                                 @php
                                 echo date('D - d , M-Y');
                                 @endphp
-                            </p>
-                            <ul class="d-flex social-icon mr-3 mt-3">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                            </h2>
+                            <ul class="d-flex social-icon mr-3 mt-4">
+                                <li><a href="https://www.facebook.com/Bdprovat" target="_blank"><i
+                                            class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/bdprovat" target="_blank"><i
+                                            class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCH-diWvfcvZtHVKwCBbcVHw/featured?fbclid=IwAR1koVXNchXY4_h38vJxL_jVDjjzTCmLR5mRKyOvkt04_IJwsYoHNp-xy4g"
+                                        target="_blank"><i class="fa fa-youtube"></i></a></li>
+
+                            </ul>
+                            <ul class="d-flex mr-3 mt-4">
                                 @guest
-                                    <li class="ml-3"><a href="{{ route('login') }}"
+                                    <li class="ml-3 first-login"><a href="{{ route('login') }}"
                                             class="text-white login btn btn-sm">Login</a>
                                     </li>
                                     <li class="ml-3"><a href="{{ route('register') }}"
@@ -73,7 +78,7 @@
         <div class="container my-4">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" class="img-fluid" width="200">
+                    <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="img-fluid">
                 </div>
                 <div class="col-md-8">
                     <img src="https://demo.tagdiv.com/newspaper_pro/wp-content/uploads/2019/08/newspaper-rec728.jpg"
@@ -82,14 +87,13 @@
             </div>
         </div>
         {{-- Logo and Add Place Ends --}}
-        <div class="container">
-            <nav class="navbar px-0 navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar px-0 navbar-expand-lg navbar-light" id="navbar">
+            <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse justify-content-between navigation-bar"
                     id="navbarSupportedContent">
                     <div class="right-side">
@@ -126,7 +130,6 @@
                                 <a class="nav-link {{ \Illuminate\Support\Facades\Route::current()->getName() == 'about-page' ? 'active' : '' }}"
                                     href="{{ route('about-page') }}">আমাদের কথা</a>
                             </li>
-
                         </ul>
                     </div>
 
@@ -137,10 +140,9 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
         {{-- Navbar End --}}
         <div class="container">
             <div class="row">
@@ -177,25 +179,27 @@
 
                     <div class="logo_play_store d-flex justify-content-between">
                         <a href="{{ route('website') }}">
-                            <img src="{{ asset('frontend/img/272px-90px-Logo.png') }}" alt="" width="200">
+                            <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" width="200">
                         </a>
                         <a href="#" class="google-play-img">
-                            <img src="{{ asset('frontend/images/google_play.png') }}" alt="" height="90" width="272">
+                            <img src="{{ asset('frontend/images/google_play.png') }}"
+                                alt="{{ asset('frontend/images/google_play.png') }}" width="150">
                         </a>
                     </div>
 
                     <div class="editor d-flex justify-content-between">
-                        <p>
-                            ভারপ্রাপ্ত সম্পাদক, কাজী রফিক
-                            <br>এম, কে, আর এন্টারপ্রাইজের একটি প্রতিষ্ঠান<br>
-                            প্রধান কার্যালয়: আলফা টাওয়ার, আবদুল্লাহপুর, উত্তরা, ঢাকা-১২৩০।<br>
-                            আমাদের মেইল: <a href="{{ route('contact-us-page') }}">bdprovat.news@gmail.com</a> মোবাইল:
-                            ০১৭১৪-০৩৬৬১২
+                        <p class="pb-3 pt-2">
+                            {{ $author->authorname }}
+                            <br>{{ $author->enterprisename }}<br>
+                            {{ $author->enterpriseheadquarter }}।<br>
+                            আমাদের মেইল: <a href="{{ $author->email }}">bdprovat.news@gmail.com</a>
+                            </br>মোবাইল:
+                            {{ $author->mobilenumber }}
                         </p>
 
                         <ul>
                             <li>
-                                <a class="nav-link about-us" href="{{ route('about-page') }}">আমাদের কথা</a>
+                                <a class="nav-link about-us" href="">আমাদের কথা</a>
                             </li>
                         </ul>
                     </div>
@@ -213,7 +217,8 @@
             </div>
         </div>
     </footer>
-    {{-- Footer Section End --}}
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    {{-- Footer Section End--}}
     <!-- all js files -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
@@ -234,3 +239,42 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function() {
+        $navOffset = $('#navbar').offset().top;
+        $(window).scroll(function() {
+            $scrolling = $(this).scrollTop();
+            if ($scrolling > $navOffset) {
+                $('#navbar').addClass('navFixed');
+            } else {
+                $('#navbar').removeClass('navFixed');
+            }
+        });
+    });
+
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        })
+    }
+
+</script>

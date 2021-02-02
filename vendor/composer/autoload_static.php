@@ -511,6 +511,7 @@ class ComposerStaticInita237f843c9870ca6b0f013427f4bc717
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\Autor\\AuthorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Autor/AuthorController.php',
         'App\\Http\\Controllers\\Admin\\Category\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Category/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\Comment\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Comment/CommentController.php',
         'App\\Http\\Controllers\\Admin\\DataController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DataController.php',
@@ -547,6 +548,7 @@ class ComposerStaticInita237f843c9870ca6b0f013427f4bc717
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Listeners\\ResizeUploadedImage' => __DIR__ . '/../..' . '/app/Listeners/ResizeUploadedImage.php',
+        'App\\Models\\Author' => __DIR__ . '/../..' . '/app/Models/Author.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Group' => __DIR__ . '/../..' . '/app/Models/Group.php',

@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\Admin\\Autor\\AuthorController' => $baseDir . '/app/Http/Controllers/Admin/Autor/AuthorController.php',
     'App\\Http\\Controllers\\Admin\\Category\\CategoryController' => $baseDir . '/app/Http/Controllers/Admin/Category/CategoryController.php',
     'App\\Http\\Controllers\\Admin\\Comment\\CommentController' => $baseDir . '/app/Http/Controllers/Admin/Comment/CommentController.php',
     'App\\Http\\Controllers\\Admin\\DataController' => $baseDir . '/app/Http/Controllers/Admin/DataController.php',
@@ -44,6 +45,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Listeners\\ResizeUploadedImage' => $baseDir . '/app/Listeners/ResizeUploadedImage.php',
+    'App\\Models\\Author' => $baseDir . '/app/Models/Author.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
     'App\\Models\\Group' => $baseDir . '/app/Models/Group.php',

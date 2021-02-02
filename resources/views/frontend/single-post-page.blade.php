@@ -1,7 +1,9 @@
 @extends('layouts.website')
 @section('title', $post->title)
-{{--@section('meta_keywords', $post->postMeta->meta_keywords)--}}
-{{--@section('meta_description', $post->postMeta->meta_description)--}}
+    {{--@section('meta_keywords',
+    $post->postMeta->meta_keywords)--}}
+    {{--@section('meta_description',
+    $post->postMeta->meta_description)--}}
 @section('style')
     <style>
 
@@ -24,28 +26,29 @@
                         <p style="text-align:justify" class="pb-3">
                             {!! $post->content !!}
                         </p>
-                        <h5>নিউজটি শেয়ার করুন</h5>
+                        <h4 class="pt-3">নিউজটি শেয়ার করুন</h4>
                         <div class="single_page_icon">
                             <ul class="d-flex">
                                 <li>
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl() }}&display=popup">
+                                    <a
+                                        href="https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl() }}&display=popup">
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://twitter.com/intent/tweet?text={{ Request::fullUrl() }}"><i
+                                            class="fa fa-twitter"></i></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-4">
                         @include('frontend.popular_last_news')
                     </div>
-                    @if($post->tags_count > 0)
+                    @if ($post->tags_count > 0)
                         <div class="col-md-8" id="tag_box">
                             <h3><span>খবর সম্পর্কিত ট্যাগ..</span></h3>
-                            @foreach($post->tags as $tag)
-                                <a class="tags" href="{{route('tag-page',$tag->slug)}}">
-                                {{$tag->name}}
+                            @foreach ($post->tags as $tag)
+                                <a class="tags" href="{{ route('tag-page', $tag->slug) }}">
+                                    {{ $tag->name }}
                                 </a>
                             @endforeach
                         </div>
@@ -53,12 +56,11 @@
                     <div class="col-md-8">
                         <h3><span>এ জাতীয় আরো খবর..</span></h3>
                         <div class="row">
-                            @foreach($related_news as $r_news)
+                            @foreach ($related_news as $r_news)
                                 <div class="col-md-4 pl-3">
-                                    <a class="" href="{{route('single-post-page',$r_news->slug)}}">
+                                    <a class="" href="{{ route('single-post-page', $r_news->slug) }}">
                                         <div class="small_image_box related_post_image_box">
-                                            <img class="img-fluid" alt="{{$r_news->slug}}"
-                                                 src="{{ $r_news->thumbnail }}">
+                                            <img class="img-fluid" alt="{{ $r_news->slug }}" src="{{ $r_news->thumbnail }}">
                                             <div class="small_image_overlay related_post_overlay">
                                                 <h5 class="">
                                                     {{ $r_news->title }}
@@ -70,32 +72,34 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($comments->count() > 0)
+                    @if ($comments->count() > 0)
                         <div class="col-md-8" id="comment_showing_box">
                             <h3><span>মন্তব্য..</span></h3>
                             <div class="row">
                                 <div class="col-md-12">
-                                    @foreach($comments as $comment)
+                                    @foreach ($comments as $comment)
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card single_comment">
                                                     <div class="card-body">
                                                         <div class="card-text d-flex justify-content-between">
-                                                            <p class="comment_message">{{$comment->message}}</p>
-                                                            <p class="commenter align-self-end font-italic">{{$comment->user->name}}</p>
+                                                            <p class="comment_message">{{ $comment->message }}</p>
+                                                            <p class="commenter align-self-end font-italic">
+                                                                {{ $comment->user->name }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @if($comment->replies->count() > 0)
-                                                @foreach($comment->replies as $reply)
+                                            @if ($comment->replies->count() > 0)
+                                                @foreach ($comment->replies as $reply)
                                                     <div class="col-md-10 offset-2">
                                                         <div class="card single_reply">
                                                             <div class="card-body">
                                                                 <div class="card-text">
                                                                     <p class="replier align-self-end font-italic">
                                                                         BD-Provat</p>
-                                                                    <p class="comment_message">{{$reply->message}}</p>
+                                                                    <p class="comment_message">{{ $reply->message }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -114,7 +118,7 @@
                                 <span>মন্তব্য দিন</span>
                             </div>
                             <div class="card-body">
-                                <form action="{{route('commenting')}}" method="post">
+                                <form action="{{ route('commenting') }}" method="post">
                                     @csrf
                                     @method('post')
                                     <div class="form-group">
@@ -128,12 +132,11 @@
                                     <div class="form-group">
                                         <label for="email">Email address</label>
                                         <input type="email" name="email" class="form-control" id="email"
-                                               aria-describedby="email">
+                                            aria-describedby="email">
                                         <input type="text" name="password" class="form-control" id="password"
-                                               aria-describedby="password" placeholder="Password Automatically" hidden>
+                                            aria-describedby="password" placeholder="Password Automatically" hidden>
                                         <input type="text" name="post_id" class="form-control" id="post_id"
-                                               aria-describedby="post_id" placeholder="Post ID" value="{{$post->id}}"
-                                               hidden>
+                                            aria-describedby="post_id" placeholder="Post ID" value="{{ $post->id }}" hidden>
                                         <small id="email" class="form-text text-muted">
                                             We'll never share your email with anyone else.</small>
                                     </div>
@@ -153,11 +156,9 @@
 @endsection
 @section('script')
     <script>
-        $('#email').change(function () {
+        $('#email').change(function() {
             $('#password').val($(this).val());
         });
+
     </script>
 @endsection
-
-
-
