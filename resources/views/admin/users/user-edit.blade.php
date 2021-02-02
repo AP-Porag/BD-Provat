@@ -111,7 +111,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="contact">Contact Number</label>
-                                    <input type="text" class="form-control" name="contact" placeholder="Personal Contact Number"
+                                    <input type="text" class="form-control" name="contact"
+                                           placeholder="Personal Contact Number"
                                            value="{{$user->profile->contact,old('contact')}}" id="contact">
                                 </div>
                             </div>
@@ -152,7 +153,8 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="custom-file ml-5">
-                                                                    <input type="text" name="user_id" value="{{$user->id}}" hidden readonly>
+                                                                    <input type="text" name="user_id"
+                                                                           value="{{$user->id}}" hidden readonly>
                                                                     <input type="file" name="thumbnail"
                                                                            class="form-control @error('thumbnail') is-invalid @enderror"
                                                                            id="thumbnail"
@@ -200,48 +202,48 @@
                                         <span>
                                                 Joining Date :
                                             @if($user->profile->joiningDate != null)
-        {{--{{($user->profile->joiningDate)->diffForHumans()}}--}}
-    @else
-        <span class="text-warning">Give your joining date please !</span>
-    @endif
+                                                {{--{{($user->profile->joiningDate)->diffForHumans()}}--}}
+                                            @else
+                                                <span class="text-warning">Give your joining date please !</span>
+                                            @endif
     </span> <br>
-<span>
+                                        <span>
     @php
         $years = \Carbon\Carbon::parse($user->profile->joiningDate)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
     @endphp
     Servicing Age : {{$years}}
     </span> <br>
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
-<script>
-$('#preview').attr('src', '{{$user->profile->profilePicture}}');
-$('.thumbnail_submit_btn').attr('disabled',true).removeClass('bg-gradient-primary');
+    <script>
+        $('#preview').attr('src', '{{$user->profile->profilePicture}}');
+        $('.thumbnail_submit_btn').attr('disabled', true).removeClass('bg-gradient-primary');
 
-function readURL(input) {
-if (input.files && input.files[0]) {
-$('.thumbnail_submit_btn').attr('disabled',false).addClass('bg-gradient-primary');
-var reader = new FileReader();
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                $('.thumbnail_submit_btn').attr('disabled', false).addClass('bg-gradient-primary');
+                var reader = new FileReader();
 
-reader.onload = function (e) {
-$('#preview').attr('src', e.target.result);
-}
+                reader.onload = function (e) {
+                    $('#preview').attr('src', e.target.result);
+                }
 
-reader.readAsDataURL(input.files[0]); // convert to base64 string
-}
-}
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
 
-$("#thumbnail").change(function () {
-readURL(this);
-});
-</script>
+        $("#thumbnail").change(function () {
+            readURL(this);
+        });
+    </script>
 @endsection
