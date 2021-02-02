@@ -4,6 +4,7 @@
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Profile;
 use App\Models\Reply;
 use App\Models\PostMeta;
 use App\User;
@@ -31,7 +32,12 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
-
+//seeding user - profile
+$factory->define(Profile::class, function (Faker $faker) {
+    return [
+        'user_id'=>rand(1,12),
+    ];
+});
 //seeding Post
 $factory->define(Post::class, function (Faker $faker) {
     return [

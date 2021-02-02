@@ -20,7 +20,6 @@ class PostSeeder extends Seeder
             'slug'=>'দেশের-৩-বিভাগে-বৃষ্টির-আভাস',
             'content'=>'<strong>বিডি প্রভাত, ডেস্ক:</strong> রংপুর, রাজশাহী ও ময়মনসিংহ বিভাগের দু-এক জায়গায় হালকা বা গুঁড়িগুঁড়ি বৃষ্টি হতে পারে। সোমবার (৪ জানুয়ারি) সন্ধ্যায় এ তথ্য জানিয়েছে আবহাওয়া অধিদফতর। সন্ধ্যা ৬টা থেকে পরবর্তী ২৪ ঘণ্টার পূর্বাভাসে বলা হয়েছে, অস্থায়ীভাবে ',
             'status'=>'published',
-            'thumbnail'=>'https://bdprovat.news/wp-content/uploads/2021/01/15-1.jpg',
         ]);
         Post::create([
             'category_id'=>rand(1,12),
@@ -32,7 +31,6 @@ class PostSeeder extends Seeder
 
 অ্যাসাঞ্জের বর্তমান মানসিক অবস্থার',
             'status'=>'published',
-            'thumbnail'=>'https://bdprovat.news/wp-content/uploads/2021/01/Bdprovat-Final-Share-Logo-copy-63.jpg',
         ]);
         Post::create([
             'category_id'=>rand(1,12),
@@ -44,7 +42,6 @@ class PostSeeder extends Seeder
 
 সোমবার (৪ জানুয়ারি) সকালে উপজেলার দেওপাড়া ইউনিয়নের গানজানা স্বনির্ভর সূর্যের হাসি ক্লিনিকে এই ঘট',
             'status'=>'published',
-            'thumbnail'=>'https://bdprovat.news/wp-content/uploads/2021/01/Bdprovat-Final-Share-Logo-copy-62.jpg',
         ]);
         Post::create([
             'category_id'=>rand(1,12),
@@ -56,7 +53,6 @@ class PostSeeder extends Seeder
 
 সোমবার (৪ঠা জানুয়ারী) বিকেলে মান্দা উপজেলার কসবা-মান্দা বঙ্গবন্ধু স্মৃতি সংসদ অফিসে ভারশ',
             'status'=>'published',
-            'thumbnail'=>'https://bdprovat.news/wp-content/uploads/2021/01/Bdprovat-Final-Share-Logo-copy-61.jpg',
         ]);
         Post::create([
             'category_id'=>rand(1,12),
@@ -68,7 +64,6 @@ class PostSeeder extends Seeder
 
 ৪ জানোয়ারী সোমবার বিকাল ০৪ ঘটিকায় শ্রীনগর উপজেলা চেয়া',
             'status'=>'published',
-            'thumbnail'=>'https://bdprovat.news/wp-content/uploads/2021/01/29-1.jpg',
         ]);
 
     }

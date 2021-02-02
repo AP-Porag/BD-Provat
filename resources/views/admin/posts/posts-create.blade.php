@@ -74,28 +74,28 @@
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-8">
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-md-12">--}}
-{{--                                            <div class="card">--}}
-{{--                                                <div class="card-heading">--}}
-{{--                                                    <h5 class="card-header text-primary">Meta Tags</h5>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="card-body">--}}
-{{--                                                    <div class="form-group">--}}
-{{--                                                        <label for="meta_keywords"--}}
-{{--                                                               class="text-capitalize">Keywords</label>--}}
-{{--                                                        <input name="meta_keywords" class="form-control"--}}
-{{--                                                               id="meta_keywords">--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="form-group">--}}
-{{--                                                        <label for="meta_description" class="text-capitalize">Description</label>--}}
-{{--                                                        <input name="meta_description" class="form-control"--}}
-{{--                                                               id="meta_description">--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-heading">
+                                                    <h5 class="card-header text-primary">Meta Tags</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="meta_keywords"
+                                                               class="text-capitalize">Keywords</label>
+                                                        <input name="meta_keywords" class="form-control"
+                                                               id="meta_keywords">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="meta_description" class="text-capitalize">Description</label>
+                                                        <input name="meta_description" class="form-control"
+                                                               id="meta_description">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="card-body">
@@ -223,7 +223,7 @@
                                             <div class="form-group">
                                                 <input id="status" name="status" type="checkbox" data-toggle="toggle"
                                                        data-on="Published" data-off="Unpublished" data-onstyle="primary"
-                                                       data-offstyle="secondary">
+                                                       data-offstyle="secondary" data-size="sm">
                                                 <label for="status" class="text-capitalize ml-3">Publishing
                                                     Status</label>
                                             </div>
@@ -298,7 +298,7 @@
                                                                placeholder="Enter Tag name" value="{{ old('tag') }}">
                                                         @error('tag')
                                                         <div class="invalid-feedback mt-1">
-                                                            <strong>Warning! </strong> <span>{{$message}}</span>
+                                                            <strong>Warning! </strong><span>{{$message}}</span>
                                                         </div>
                                                         @enderror
                                                     </div>
@@ -332,7 +332,7 @@
         loader.hide();
         subcategory.attr('disabled','disabled');
 
-        $('#preview').attr('src', 'http://127.0.0.1:8000/storage/no-image/upload-image.png');
+        $('#preview').attr('src', '{{asset('storage/no-image/upload-image.png')}}');
 
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -406,9 +406,9 @@
     <script>
         var options = {
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
         };
     </script>
     <script>

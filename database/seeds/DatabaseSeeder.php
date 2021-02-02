@@ -2,6 +2,7 @@
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Profile;
 use App\Models\Reply;
 use App\Models\PostMeta;
 use App\User;
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
 
         //seeding using factory
         factory(User::class,10)->create();
+        factory(Profile::class,12)->create();
         factory(Post::class,120)->create();
         factory(Comment::class,200)->create();
         factory(Reply::class,230)->create();

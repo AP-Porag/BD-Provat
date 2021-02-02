@@ -95,7 +95,7 @@ class CommentController extends Controller
             ->update(['status' => $status]);
 
         if ($comment) {
-            Session::flash('success', 'User Deleted Successfully !');
+            Session::flash('success', 'Status Changed Successfully !');
         }
         return redirect()->back();
     }

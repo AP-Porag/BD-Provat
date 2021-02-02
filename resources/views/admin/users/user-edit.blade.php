@@ -1,168 +1,247 @@
 @extends('layouts.admin')
 
 @section('module')
-    Role
-@endsection
-
-@section('before-path')
-    Role-List
+    User profile
 @endsection
 
 @section('title')
-    Update Role
+    Edit Profile
 @endsection
 
 @section('breadcumb')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item text-capitalize"><a href="{{route('home')}}">Dashboard</a></li>
-            <li class="breadcrumb-item text-capitalize"><a href="{{route('role.index')}}">@yield('before-path')</a></li>
             <li class="breadcrumb-item active text-capitalize" aria-current="page">@yield('title')</li>
         </ol>
     </nav>
 @endsection
 @section('style')
     <style>
+        .card_heading_bg {
+            background: url("{{asset('admin/img/bg5.jpg')}}") center no-repeat;
+            background-size: cover;
+            height: 120px;
+        }
 
+        .thumbnail_submit_btn {
+            padding-bottom: 7px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 7px;
+        }
     </style>
 @endsection
 
 @section('content')
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-end">
-            <a href="{{route('role.index')}}" class="btn btn-sm btn-outline-primary"><i
-                    class="fa fa-list"></i>@yield('before-path')</a>
-        </div>
-        <div class="card-body">
-            <div class="form">
-                <form action="{{route('role.update',$role->id)}}" method="post">
-                    @csrf
-                    @method('put')
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="name" class="text-capitalize">Name</label>
-                                <input type="text" name="name" class="form-control" id="name"
-                                       placeholder="Enter Role name" value="{{ $role->name,old('name') }}">
-                                @error('name')
-                                <div class="invalid-feedback">
-                                    <strong>Warning! </strong>
-                                    <p>{{$message}}</p>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Edit Profile</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('user.update',$user->id)}}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="row">
+                            <div class="col-md-5 pr-1">
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" class="form-control" disabled="" placeholder="Company"
+                                           value="BD-Provat">
                                 </div>
-                                @enderror
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label for="name">Username</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Username"
+                                           value="{{$user->name}}" id="name">
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-1">
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" placeholder="Email"
+                                           value="{{$user->email}}" id="email" disabled>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="d-flex">
-                                    <label for="permissions" class="text-capitalize">Permissions</label>
-                                    <div class="form-check ml-5">
-                                        <input type="checkbox" class="form-check-input" id="permissionAll" value="" {{\App\Models\User::roleHasPermissions($role,$permissions_all) ? 'checked' : ''}}>
-                                        <label for="permissionAll" class="text-capitalize form-check-label">All</label>
-                                    </div>
+
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label for="firstname">First Name</label>
+                                    <input type="text" class="form-control" name="firstname" placeholder="First Name"
+                                           value="{{$user->profile->firstName,old('firstname')}}" id="firstname">
                                 </div>
-                                <div class="card p-3" id="permissions">
-                                    @foreach($permissionsGroup as $group)
-                                        @php
-                                            $permissions = \Spatie\Permission\Models\Permission::where('group_name',$group->group_name)->get();
-                                        @endphp
-                                        <div class="form-row border-bottom">
-                                            <div class="col-md-4">
-                                                <div class="form-check ml-5">
-                                                    <input type="checkbox" class="form-check-input"
-                                                           id="permissiongroup{{$group->group_name}}"
-                                                           value="{{$group->group_name}}"
-                                                           onclick="checkPermissionByGroup('permission{{$group->group_name}}',this)" {{\App\Models\User::roleHasPermissions($role,$permissions_all) ? 'checked' : ''}}>
-                                                    <label for="permission{{$group->group_name}}"
-                                                           class="text-capitalize form-check-label">{{$group->group_name}}</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 permission{{$group->group_name}}">
-                                                @foreach($permissions as $permission)
-                                                    <div class="form-check">
-                                                        <input type="checkbox" name="permissions[]"
-                                                               {{$role->hasPermissionTo($permission->name) ? 'checked' : ''}}
-                                                               class="form-check-input"
-                                                               id="permission-{{$permission->id}}"
-                                                               value="{{$permission->id,old('permissions[]')}}"
-                                                        onclick="checkSinglePermission('permission{{$group->group_name}}','permissiongroup{{$group->group_name}}','{{count($permissions)}}')">
-                                                        <label for="permission-{{$permission->id}}"
-                                                               class="text-capitalize form-check-label">{{$permission->name}}</label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endforeach
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label for="lastname">Last Name</label>
+                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name"
+                                           value="{{$user->profile->lastName,old('lastname')}}" id="lastname">
                                 </div>
-                                @error('permissions')
-                                <div class="invalid-feedback">
-                                    <strong>Warning! </strong>
-                                    <p>{{$message}}</p>
-                                </div>
-                                @enderror
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update @yield('module')</button>
-                </form>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label for="dob">Date Of Birth</label>
+                                    <input type="date" class="form-control" name="dob" placeholder="Date of birth"
+                                           value="{{$user->profile->dob,old('dob')}}" id="dob">
+                                </div>
+                            </div>
+                            <div class="col-md-6 px-1">
+                                <div class="form-group">
+                                    <label for="jod">Joining Date</label>
+                                    <input type="date" class="form-control" name="jod" placeholder="Joining Date"
+                                           value="{{$user->profile->jod,old('jod')}}" id="jod">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" name="address" placeholder="Home Address"
+                                           value="{{$user->profile->address,old('address')}}" id="address">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="contact">Contact Number</label>
+                                    <input type="text" class="form-control" name="contact" placeholder="Personal Contact Number"
+                                           value="{{$user->profile->contact,old('contact')}}" id="contact">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right mt-1">
+                                <button type="submit"
+                                        class="btn btn-primary btn-sm text-capitalize">
+                                    Save Profile
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="card-user">
+                        <div class="card_heading_bg"></div>
+                        <div class="card_info_box">
+                            <div class="profile_picture_form">
+                                <form action="{{route('updateProfile')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('post')
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6 offset-3">
+                                                        <div class="img-thumbnail border-0 mb-3">
+                                                            <img src="" alt="preview" class="img-fluid"
+                                                                 id="preview">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 align-self-end">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <div class="custom-file ml-5">
+                                                                    <input type="text" name="user_id" value="{{$user->id}}" hidden readonly>
+                                                                    <input type="file" name="thumbnail"
+                                                                           class="form-control @error('thumbnail') is-invalid @enderror"
+                                                                           id="thumbnail"
+                                                                           placeholder="Enter Post photo"
+                                                                           @change="fileChange">
+                                                                    @error('thumbnail')
+                                                                    <div class="invalid-feedback">
+                                                                        <strong>Warning! </strong>{{$message}}
+                                                                    </div>
+                                                                    @enderror
+
+                                                                </div>
+                                                                <div class="input-group-append mr-5">
+                                                    <span class="input-group-text text-light p-0"
+                                                          id=""><button type="submit"
+                                                                        class="border-0 text-white thumbnail_submit_btn">Change Picture</button></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="user_box text-center w-100">
+                                <div class="author">
+                                    <h5 class="title text-primary text-capitalize">
+                                        @if($user->profile->firstName != null && $user->profile->lastName != null)
+                                            {{$user->profile->firstName}} {{$user->profile->lastName}}
+                                        @else
+                                            {{$user->name}}
+                                        @endif
+                                    </h5>
+                                    <p class="description">
+                                        {{$user->name}}
+                                    </p>
+                                    <p class="description text-center">
+                                            <span>
+                                                @foreach($user->roles as $role)
+                                                    {{$role->name}}
+                                                @endforeach
+                                            </span> <br>
+                                        <span>
+                                                Joining Date :
+                                            @if($user->profile->joiningDate != null)
+        {{--{{($user->profile->joiningDate)->diffForHumans()}}--}}
+    @else
+        <span class="text-warning">Give your joining date please !</span>
+    @endif
+    </span> <br>
+<span>
+    @php
+        $years = \Carbon\Carbon::parse($user->profile->joiningDate)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
+    @endphp
+    Servicing Age : {{$years}}
+    </span> <br>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection
 
 @section('script')
-    <script>
-        $('#permissionAll').click(function () {
-            if ($(this).is(':checked')) {
-                //Checked all the permission checkbox
-                $('input[type=checkbox]').prop('checked', true)
-            } else {
-                //Un-Checked all the permission checkbox
-                $('input[type=checkbox]').prop('checked', false)
-            }
-        });
+<script>
+$('#preview').attr('src', '{{$user->profile->profilePicture}}');
+$('.thumbnail_submit_btn').attr('disabled',true).removeClass('bg-gradient-primary');
 
-        function checkPermissionByGroup(className, checkThis) {
+function readURL(input) {
+if (input.files && input.files[0]) {
+$('.thumbnail_submit_btn').attr('disabled',false).addClass('bg-gradient-primary');
+var reader = new FileReader();
 
-            const groupIDName = $("#" + checkThis.id);
-            const classCheckbox = $('.' + className + ' input');
+reader.onload = function (e) {
+$('#preview').attr('src', e.target.result);
+}
 
-            if (groupIDName.is(':checked')) {
-                //Checked all the permission checkbox
-                classCheckbox.prop('checked', true)
-            } else {
-                //Un-Checked all the permission checkbox
-                classCheckbox.prop('checked', false)
-            }
-            allChecked();
+reader.readAsDataURL(input.files[0]); // convert to base64 string
+}
+}
 
-        }
-        function checkSinglePermission(groupClassName,groupID,countTotalPermission){
-
-            const classCheckBox = $('.'+groupClassName+' input');
-            const groupIDCheckBox = $('#'+groupID);
-
-            if ($('.'+groupClassName+' input:checked').length == countTotalPermission){
-                groupIDCheckBox.prop('checked',true);
-            }else {
-                groupIDCheckBox.prop('checked',false);
-            }
-            allChecked();
-        }
-        function allChecked(){
-            const countPermissions = {{count($permissions_all)}};
-            const countPermissionGroups = {{count($permissionsGroup)}};
-            const checkedCheckbox = $('input[type="checkbox"]:checked').length;
-
-            //console.log(checkedCheckbox);
-            //console.log(countPermissions);
-            //console.log(countPermissions + countPermissionGroups);
-
-            if (checkedCheckbox >= countPermissions + countPermissionGroups){
-                $('#permissionAll').prop('checked',true);
-            }else {
-                $('#permissionAll').prop('checked',false);
-            }
-        }
-    </script>
+$("#thumbnail").change(function () {
+readURL(this);
+});
+</script>
 @endsection

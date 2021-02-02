@@ -44,7 +44,6 @@ return [
     | Folder Names
     |--------------------------------------------------------------------------
      */
-
     'folder_categories'        => [
         'file'  => [
             'folder_name'  => 'files',

@@ -235,22 +235,36 @@
     </section>
     {{-- Politics Technology and Law Section End --}}
     {{-- Entertainment Section Start --}}
-    <section id="entertainment_and_feature">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="d-flex justify-content-between">
-                                <a class="section_header" href="{{ route('category-page', 'বিনোদন') }}">
+        <section id="entertainment_and_feature">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="d-flex justify-content-between">
+                                    <a class="section_header" href="{{ route('category-page', 'বিনোদন') }}">
                                     <span>
                                         বিনোদন
                                     </span>
-                                </a>
-                                <a class="section_link" href="{{ route('category-page', 'বিনোদন') }}">
+                                    </a>
+                                    <a class="section_link" href="{{ route('category-page', 'বিনোদন') }}">
                                     <span>
                                         সব খবর ...
                                     </span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="card ml-3 mr-3 pt-3 pb-3">
+                                <a href="{{route('single-post-page',$last_entertainment_post->slug)}}" class="d-flex for-position-image">
+                                    <div class="col-md-5 col-12">
+                                        <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
+                                        <p class="text-justify">
+                                            {!! Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) !!}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-7 col-12">
+                                        <img src="{{ $last_entertainment_post->thumbnail }}" alt="{{$last_entertainment_post->slug}}" class="img-fluid">
+                                    </div>
                                 </a>
                             </h3>
                         </div>
@@ -288,15 +302,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="d-flex justify-content-between">
-                        <a class="section_header" href="{{ route('tag-page', 'ফিচার') }}">
+                    <div class="col-md-4">
+                        <h3 class="d-flex justify-content-between">
+                            <a class="section_header" href="{{ route('tag-page', 'ফিচার') }}">
                             <span>
                                 ফিচার
                             </span>
-                        </a>
-                        <a class="section_link" href="{{ route('tag-page', 'ফিচার') }}">
+                            </a>
+                            <a class="section_link" href="{{ route('tag-page', 'ফিচার') }}">
                             <span>
                                 সব খবর ...
                             </span>

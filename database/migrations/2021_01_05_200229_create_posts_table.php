@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->string('thumbnail');
+            $table->string('thumbnail')->default(asset('storage/no-image/no-image-available.webp'));
             $table->string('status');
             $table->integer('views')->default(0);
             $table->string('publishing_date')->default(Carbon::now());

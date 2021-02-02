@@ -22,6 +22,8 @@
 @endsection
 
 @section('style')
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+          rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     <style>
         table.dataTable thead th, table.dataTable thead td, table.dataTable tbody tr {
@@ -59,8 +61,6 @@
             <div class="d-flex justify-content-between">
                 <a href="{{route('post.create')}}" class="btn btn-sm btn-outline-primary text-capitalize mr-3"><i
                         class="fa fa-plus-circle"></i> Add new @yield('module')</a>
-                <a href="{{route('post_inactive')}}" class="btn btn-sm btn-outline-danger text-capitalize"><i
-                        class="fa fa-ban"></i> In-Active @yield('module')</a>
             </div>
         </div>
         <div class="card-body">
@@ -77,6 +77,7 @@
                                     <th class="text-capitalize">Author</th>
                                     <th class="text-capitalize">title</th>
                                     <th class="text-capitalize">status</th>
+                                    <th class="text-capitalize">Change Status</th>
                                     <th class="text-capitalize">Publishing Date</th>
                                     <th class="text-capitalize">views</th>
                                     <th class="text-capitalize">comment</th>
@@ -95,6 +96,7 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script>
         let postUrl = '{{route('post.index')}}';
     </script>
@@ -112,7 +114,19 @@
                     {"data": "created_at"},
                     {"data": "user.name"},
                     {"data": "title"},
-                    {"data": "status"},
+                    {
+                        data: function (row) {
+                            return'<span id="status_id-'+ row.id +'" class="status_text text-capitalize">'+ row.status +'</span>'
+                        },
+                        name: 'id'
+                    },
+                    //{"data": "status"},
+                    {
+                        data: function (row) {
+                            return'<input id="changeStatus" data-id="'+ row.id +'" class="form-check" type="checkbox" '+ (row.status == "published" ? 'checked' : '') +'>'
+                        },
+                        name: 'id'
+                    },
                     {"data": "publishing_date"},
                     {"data": "views"},
                     {"data": "comments_count"},
@@ -155,10 +169,26 @@
                         name: 'id'
                     },
                 ],
-                columnDefs:[{targets:[1,5], render:function(data){
+                columnDefs:[{targets:[1,6], render:function(data){
                         return moment(data).format('Do , MMMM , YYYY');
                     }}]
             });
         });
+
+        $(document).on('change','#changeStatus',function () {
+            var status = $(this).prop('checked') == true ? 'published' : 'unpublished';
+            var post_id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '/admin/post/get/updateStatus',
+                data: {'status': status, 'post_id': post_id},
+                success: function(data){
+                    $('#status_id-'+data.id).text(data.status)
+                }
+            });
+        })
+
     </script>
 @endsection
