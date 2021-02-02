@@ -34,31 +34,11 @@
             <div class="d-flex justify-content-between">
                 <a href="{{ route('user.create') }}" class="btn btn-sm btn-outline-primary text-capitalize mr-3"><i
                         class="fa fa-plus-circle"></i> Add new @yield('module')</a>
-                <a href="{{ route('inactive_users') }}" class="btn btn-sm btn-outline-danger text-capitalize"><i
-                        class="fa fa-ban"></i> In-Active @yield('module')</a>
             </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length"
-                                        aria-controls="dataTable"
-                                        class="custom-select custom-select-sm form-control form-control-sm">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select> entries</label></div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                        class="form-control form-control-sm" placeholder=""
-                                        aria-controls="dataTable"></label>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <table class="table table-bordered dataTable table-striped table-hover" id="dataTable"
@@ -81,6 +61,14 @@
                                             colspan="1" aria-label="Office: activate to sort column ascending">
                                             User Role
                                         </th>
+                                        <th class="sorting text-center" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending">
+                                            Contact Number
+                                        </th>
+                                        <th class="sorting text-center" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending">
+                                            Servicing Age
+                                        </th>
                                         <th rowspan="1" colspan="1" class="text-center">Action
                                         </th>
                                     </tr>
@@ -99,11 +87,14 @@
                                                     {{ $role->name }}
                                                 @endforeach
                                             </td>
+                                            <td class="sorting_1 text-capitalize">
+
+                                            </td>
+                                            <td class="sorting_1 text-capitalize">
+                                                Servicing Age :
+                                            </td>
                                             <td>
                                                 <div class="btn-group d-flex justify-content-center">
-                                                    <a href="{{ route('user.show', $user->id) }}"
-                                                        class="btn btn-sm btn-outline-info mr-3"><i
-                                                            class="fa fa-eye"></i></a>
                                                     <a href="{{ route('user.edit', $user->id) }}"
                                                         class="btn btn-sm btn-outline-warning mr-3"><i
                                                             class="fa fa-edit"></i></a>

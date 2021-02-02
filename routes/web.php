@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     //User maneging start
     Route::resource('user', 'Admin\User\UsersController');
+    Route::post('/user/profile/update', 'Admin\User\UsersController@updateProfile')->name('updateProfile');
     Route::get('/user/soft-delete/{id}', 'Admin\User\UsersController@softDelete')->name('user_soft_delete');
     Route::get('/user/restore/{id}', 'Admin\User\UsersController@restore')->name('restore_user');
     Route::get('/user/force-delete/{id}', 'Admin\User\UsersController@forceDelete')->name('forceDelete_user');
@@ -64,9 +65,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     //Post Route Start
     Route::resource('post', 'Admin\Post\PostController');
     Route::get('/post/soft-delete/{id}', 'Admin\Post\PostController@postSoftDelete')->name('post_soft_delete');
-    Route::get('/post/inactive/user', 'Admin\Post\PostController@postInactive')->name('post_inactive');
-    Route::get('/post/restore/{id}', 'Admin\Post\PostController@postRestore')->name('post_restore');
-    Route::get('/post/force-delete/{id}', 'Admin\Post\PostController@postForceDelete')->name('post_forceDelete');
     Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
 
     //tag Route Start
@@ -77,6 +75,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/post/force-delete/{id}', 'Admin\Post\PostController@postForceDelete')->name('post_forceDelete');
     Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
     Route::get('/post/get/subcategory', 'Admin\Post\PostController@findSubcategory')->name('findSubcategory');
+    Route::get('/post/get/sub-category', 'Admin\Post\PostController@getSubcategory')->name('getSubcategory');
+    Route::get('/post/get/updateStatus', 'Admin\Post\PostController@updateStatus')->name('updateStatus');
     Route::get('/post/get/tags', 'Admin\Post\PostController@getTags')->name('getTags');
 
 //Reply Route Start

@@ -51,11 +51,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        //$meta_keywords = $request->meta_keywords;
-        //$meta_description = $request->meta_description;
-       $meta_keywords = $request->title;
-       $m_description = str::of($request->post_content)->words(20);
-       $meta_description = $m_description;
+        $meta_keywords = $request->meta_keywords;
+        $meta_description = $request->meta_description;
+//       $meta_keywords = $request->title;
+//       $m_description = str::of($request->post_content)->words(20);
+//       $meta_description = $m_description;
         //=======
         $category = $request->category;
         $subcategory = $request->subcategory;
@@ -72,7 +72,7 @@ class PostController extends Controller
             'post_content' => 'required',
             'thumbnail' => 'required',
         ]);
-        if ($category == 4 || $category == 11) {
+        if ($category == 3 || $category == 11) {
             $this->validate($request, [
                 'subcategory' => 'required'
             ]);
@@ -106,6 +106,7 @@ class PostController extends Controller
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
 //                ->resize(400, 350)
+                ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
                 ->save(base_path('/public/storage/post/' . $image_new_name));
             $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
             $post->save();
@@ -150,7 +151,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return 'Coming soon';
+       $post = Post::where('id',$id)->first();
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+        $tags = Tag::orderBy('created_at', 'DESC')->get();
+        return response(view('admin.posts.posts-edit', compact('post','categories', 'subCategories', 'tags')));
     }
 
     /**
@@ -162,7 +167,51 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::where('id',$id)->first();
+        $thumbnail = $request->thumbnail;
+        $this->validate($request, [
+            'title' => "required|unique:posts,title,$post->id",
+            'category' => 'required',
+            'thumbnail' => 'sometimes|image',
+            'post_content' => 'required',
+
+        ]);
+        $post->category_id = $request->category;
+        $post->sub_category_id = $request->subcategory;
+        $post->title = $request->title;
+        $post->slug = str::slug($request->title);
+        $post->content = $request->post_content;
+        $post->save();
+        if ($request->has('status')){
+            $post->status = 'published';
+            $post->save();
+        }
+        if ($request->has('thumbnail')) {
+
+            $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
+            Image::make($thumbnail)
+//                ->resize(400, 350)
+                ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
+                ->save(base_path('/public/storage/post/' . $image_new_name));
+            $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
+            $post->save();
+        }
+
+        if ($request->has('meta_keywords')){
+            $meta = PostMeta::where('post_id',$id)->first();
+            $meta->meta_keywords = $request->meta_keywords;
+            $meta->save();
+        }
+        if ($request->has('meta_description')) {
+            $meta = PostMeta::where('post_id',$id)->first();
+            $meta->meta_description = $request->meta_description;
+            $meta->save();
+        }
+
+        $post->tags()->sync($request->post_tag);
+
+        Session::flash('success', 'Post Updated successfully');
+        return redirect()->back();
     }
 
     /**
@@ -182,39 +231,12 @@ class PostController extends Controller
         $post = Post::findOrFail($id)->delete();
 
         if ($post) {
-            Session::flash('success', 'Post Inactivated Successfully !');
-        }
-
-        return back();
-    }
-
-    public static function postInactive()
-    {
-        $trashed_posts = Post::onlyTrashed()->orderBy('created_at', 'DESC')->paginate(5);
-        return response()->view('admin.users.trashed-users', compact('trashed_posts'));
-    }
-
-    public static function postRestore(int $id)
-    {
-        $post = Post::onlyTrashed()->findOrFail($id)->restore();
-
-        if ($post) {
-            Session::flash('success', 'Post Activated Again !');
-        }
-
-        return back();
-    }
-
-    public static function postForceDelete(int $id)
-    {
-        $post = Post::onlyTrashed()->findOrFail($id)->forceDelete();
-
-        if ($post) {
             Session::flash('success', 'Post Deleted Successfully !');
         }
 
         return back();
     }
+
 
     //get data for data table
     public function getPosts()
@@ -233,6 +255,14 @@ class PostController extends Controller
 
         return response()->json($subcategory);
     }
+    public function getSubcategory(Request $request)
+    {
+
+        //'it will get price if its id match with product id';
+        $subcategory = SubCategory::where('id', $request->sub_category_id)->get();
+
+        return response()->json($subcategory);
+    }
 
     //get data for data table
     public function getTags()
@@ -241,5 +271,12 @@ class PostController extends Controller
 
         return response($query);
     }
+    public function updateStatus(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        $post->status = $request->status;
+        $post->save();
 
+        return response($post);
+    }
 }
