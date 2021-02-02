@@ -1,10 +1,31 @@
 @media (min-width:320px) and (max-width:575px) {
-    .social-icon-content .date {
-        display: none;
+
+    .navbar {
+        background: none;
     }
 
-    .social-icon li:last-child {
-        display: none;
+    .navbar-light .navbar-toggler {
+        border: 0;
+        outline: none;
+    }
+
+    .navbar-light .navbar-toggler:focus {
+        border: 0;
+        outline: none;
+    }
+
+    .navFixed {
+        position: inherit;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        font-size: 20px;
+    }
+
+    .social-icon-content {
+        display: inherit !important;
     }
 
     .for-position-image {
@@ -29,8 +50,33 @@
 }
 
 @media (min-width:576px) and (max-width:767px) {
+
+    .navbar {
+        background: none;
+    }
+
+    .navbar-light .navbar-toggler {
+        border: 0;
+        outline: none;
+    }
+
+    .navbar-light .navbar-toggler:focus {
+        border: 0;
+        outline: none;
+    }
+
+    .navFixed {
+        position: inherit;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        font-size: 20px;
+    }
+
     .social-icon-content .date {
-        display: none;
+        display: inherit;
     }
 
     .social-icon li:last-child {
@@ -55,7 +101,29 @@
 }
 
 @media (min-width:768px) and (max-width:991px) {
+    .navbar {
+        background: none;
+    }
 
+    .navbar-light .navbar-toggler {
+        border: 0;
+        outline: none;
+    }
+
+    .navbar-light .navbar-toggler:focus {
+        border: 0;
+        outline: none;
+    }
+
+    .navFixed {
+        position: inherit;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        font-size: 20px;
+    }
 
     .social-icon li:last-child {
         display: none;
