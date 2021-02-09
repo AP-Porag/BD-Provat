@@ -16,11 +16,7 @@ class HomeDataShowController extends Controller
     {
         $categories = Category::all();
 
-        $breaking_tag = '1';
-        $breaking_news = Post::whereHas('tags', function ($q) use ($breaking_tag) {
-
-            $q->where('id', '=', $breaking_tag);
-        })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
+        $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','DESC')->get();
 
         $last_top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->first();
         $top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_top_news->id)->paginate(4);
@@ -47,10 +43,7 @@ class HomeDataShowController extends Controller
 
         //feature news
         $feature_tag = '2';
-        $feature_news = Post::whereHas('tags', function ($q) use ($feature_tag) {
-
-            $q->where('id', '=', $feature_tag);
-        })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
+        $feature_news = Post::Where('featured','featured')->orderBy('created_at','DESC')->get();
         //international
         $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $international_posts = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_international_post->id)->limit(4)->get();

@@ -23,6 +23,7 @@ Route::get('/category/{slug}', 'Frontend\CategoryPageController@index')->name('c
 Route::get('/subcategory/{slug}', 'Frontend\SubCategoryPageController@index')->name('subcategory-page');
 Route::get('/single-post/{slug}', 'Frontend\SinglePostPageController@index')->name('single-post-page');
 Route::get('/tag/{slug}', 'Frontend\TagPageController@index')->name('tag-page');
+Route::post('/search', 'Frontend\SearchPageController@index')->name('search-page');
 Route::get('/আমাদের-কথা', 'Frontend\AboutPageController@index')->name('about-page');
 Route::get('/contact-us', 'Frontend\ContactUsPageController@index')->name('contact-us-page');
 Route::post('/comment', 'Frontend\CommentingController@comment')->name('commenting');
@@ -67,6 +68,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('post', 'Admin\Post\PostController');
     Route::get('/post/soft-delete/{id}', 'Admin\Post\PostController@postSoftDelete')->name('post_soft_delete');
     Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
+    Route::get('/post/get/updateStatus', 'Admin\Post\PostController@updateStatus')->name('updateStatus');
+    Route::get('/post/get/updateBreaking', 'Admin\Post\PostController@updateBreaking')->name('updateBreaking');
+    Route::get('/post/get/updateFeatured', 'Admin\Post\PostController@updateFeatured')->name('updateFeatured');
 
     //tag Route Start
     Route::resource('tag', 'Admin\Tag\TagController');
@@ -77,7 +81,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
     Route::get('/post/get/subcategory', 'Admin\Post\PostController@findSubcategory')->name('findSubcategory');
     Route::get('/post/get/sub-category', 'Admin\Post\PostController@getSubcategory')->name('getSubcategory');
-    Route::get('/post/get/updateStatus', 'Admin\Post\PostController@updateStatus')->name('updateStatus');
     Route::get('/post/get/tags', 'Admin\Post\PostController@getTags')->name('getTags');
 
     //Reply Route Start
@@ -99,6 +102,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     //Tag Route Start
     Route::resource('author', 'Admin\Author\AuthorController');
+
+    //Subscriber Route start
+    Route::get('/subscriber/list', 'Admin\Subscriber\SubscriberController@index')->name('subscriber-list');
+    Route::get('/subscriber/delete/{id}', 'Admin\Subscriber\SubscriberController@subscriberDelete')->name('subscriber-delete');
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

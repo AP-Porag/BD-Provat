@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\SubCategory;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -134,7 +135,24 @@ class HomeController extends Controller
                 'religion_posts',
             ]));
         } else {
-            return view('admin.index');
+            //Dashboard Data Controlling start
+            //All Post
+            $postCount = Post::where('status','published')->count();
+            $postForThisMonth = Post::select('*')->whereMonth('created_at', Carbon::now()->month)->count();
+            $subscriberCount = User::role('subscriber')->count();
+
+            //for progressive bar
+            $categories = Category::orderBy('created_at','DESC')->paginate(5,['*'],'categories');
+
+            $subCategories = SubCategory::orderBy('created_at','DESC')->paginate(5,['*'],'subCategories');
+
+            return view('admin.index',compact([
+                'postCount',
+                'postForThisMonth',
+                'subscriberCount',
+                'categories',
+                'subCategories'
+            ]));
         }
     }
 }

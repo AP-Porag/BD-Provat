@@ -33,5 +33,10 @@ class UserSeeder extends Seeder
             'mobilenumber'=>'০১৭১৪-০৩৬৬১২',
         ]);
 
+        //Author Seeder
+        Author::create([
+            'authorname'=>'ভারপ্রাপ্ত সম্পাদক, কাজী রফিক',
+        ]);
+
     }
 }

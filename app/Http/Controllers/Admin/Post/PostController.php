@@ -110,7 +110,7 @@ class PostController extends Controller
 //                ->resize(400, 350)
                 ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
                 ->save(base_path('/public/storage/post/' . $image_new_name));
-            $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
+            $post->thumbnail = url('/').'/storage/post/' . $image_new_name;
             $post->save();
         }
         if ($post) {
@@ -242,7 +242,8 @@ class PostController extends Controller
     //get data for data table
     public function getPosts()
     {
-        return $query = Post::select('id', 'created_at', 'post_author', 'title', 'status', 'publishing_date', 'views')->withCount(['comments'])->with('user')->get();
+        return $query = Post::select('id', 'created_at', 'post_author', 'title', 'status','breaking','featured', 'publishing_date', 'views')->withCount(['comments'])->with('user')->get();
+
         //return$query = Post::all();
         datatables($query)->make(true);
     }
@@ -276,6 +277,22 @@ class PostController extends Controller
     {
         $post = Post::find($request->post_id);
         $post->status = $request->status;
+        $post->save();
+
+        return response($post);
+    }
+    public function updateBreaking(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        $post->breaking = $request->breaking;
+        $post->save();
+
+        return response($post);
+    }
+    public function updateFeatured(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        $post->featured = $request->featured;
         $post->save();
 
         return response($post);

@@ -90,6 +90,9 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <div class="sidebar-heading">
+                Post Settings
+            </div>
             <!-- Nav Item - Post Management -->
             <li class="nav-item">
                 <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsePost"
@@ -110,7 +113,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseCategory"
                    aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fa fa-file-alt"></i>
+                    <i class="fas fa-list"></i>
                     <i class="" aria-hidden="true"></i>
                     <span class="text-capitalize">Categories</span>
                 </a>
@@ -125,7 +128,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsesubcategory"
                    aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fa fa-file-alt"></i>
+                    <i class="fas fa-stream"></i>
                     <i class="" aria-hidden="true"></i>
                     <span class="text-capitalize">Subcategories</span>
                 </a>
@@ -140,7 +143,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsetag"
                    aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fa fa-file-alt"></i>
+                    <i class="fa fa-tags"></i>
                     <i class="" aria-hidden="true"></i>
                     <span class="text-capitalize">Tags</span>
                 </a>
@@ -151,11 +154,17 @@
                 </div>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <div class="sidebar-heading">
+                Author & Subscriber Settings
+            </div>
             <!-- Nav Item - Author management -->
             <li class="nav-item">
                 <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseauthor"
                    aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fa fa-file-alt"></i>
+                    <i class="fas fa-crown"></i>
                     <i class="" aria-hidden="true"></i>
                     <span class="text-capitalize">Author</span>
                 </a>
@@ -163,6 +172,21 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item text-capitalize" href="{{route('author.index')}}">Author Details</a>
                         <a class="collapse-item text-capitalize" href="{{route('author.create')}}">Create Author</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Subscriber management -->
+            <li class="nav-item">
+                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseSubscriber"
+                   aria-expanded="true" aria-controls="collapseSubscriber">
+                    <i class="fas fa-street-view"></i>
+                    <i class="" aria-hidden="true"></i>
+                    <span class="text-capitalize">Subscriber</span>
+                </a>
+                <div id="collapseSubscriber" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item text-capitalize" href="{{route('subscriber-list')}}">All Subscriber</a>
                     </div>
                 </div>
             </li>
@@ -285,8 +309,6 @@
                         <div class="content">
                             @yield('breadcumb')
                         </div>
-                        {{--                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--}}
-                        {{--                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>--}}
                     </div>
 
                     <div class="content">

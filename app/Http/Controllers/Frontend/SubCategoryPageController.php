@@ -16,12 +16,7 @@ class SubCategoryPageController extends Controller
         //for nav bar
         $categories = Category::all();
         //for breaking news
-        $breaking_tag = '1';
-        $breaking_news = Post::whereHas('tags', function($q) use($breaking_tag){
-
-            $q->where('id', '=', $breaking_tag);
-
-        })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
+        $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','DESC')->get();
         //for search post belongs to this subcategory
         $category = SubCategory::where('slug',$slug)->first();
         $main_post = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
