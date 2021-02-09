@@ -136,7 +136,50 @@
                     <div class="left-side">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-search"></i></a>
+                                <!-- Large modal -->
+                                <a type="button" class="btn btn-sm nav-link" data-toggle="modal" data-target=".bd-search-modal-lg"><i class="fa fa-search"></i></a>
+
+                                <div class="modal fade bd-search-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySearchModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header border-0">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="search-form">
+                                                    <form action="{{route('search-page')}}" method="post">
+                                                        @csrf
+                                                        @method('post')
+                                                        <div class="form-row">
+                                                            <div class="col-md-12 align-self-end">
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="custom-file ml-5">
+                                                                            <input type="text" name="search"
+                                                                                   class="form-control @error('search') is-invalid @enderror"
+                                                                                   id="search"
+                                                                                   placeholder="এখানে লিখুন..">
+                                                                        </div>
+                                                                        <div class="input-group-append mr-5">
+                                                                                <button type="submit" class="border-0 search-btn"><i class="fa fa-search"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    @error('search')
+                                                                    <div class="invalid-feedback">
+                                                                        <strong>Warning! </strong>{{$message}}
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>

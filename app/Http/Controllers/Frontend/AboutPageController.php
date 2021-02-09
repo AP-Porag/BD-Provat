@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class AboutPageController extends Controller
@@ -14,15 +15,16 @@ class AboutPageController extends Controller
         //for nav bar
         $categories = Category::all();
         //for breaking news
-        $breaking_tag = '1';
-        $breaking_news = Post::whereHas('tags', function($q) use($breaking_tag){
-
-            $q->where('id', '=', $breaking_tag);
-
-        })->where('status', 'published')->orderBy('created_at', 'DESC')->limit(6)->get();
+        $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','DESC')->get();
 
         //for dynamic title
         $slug = 'আমাদের-কথা';
-        return response(view('frontend.about-page',compact('slug','categories','breaking_news')));
+
+        $users = User::whereHas('roles', function($q){
+
+            $q->where('name', '!=', 'supper-admin')->where('name', '!=', 'admin')->where('name', '!=', 'subscriber')->where('name', '!=', 'user');
+
+        })->get();
+        return response(view('frontend.about-page',compact('slug','categories','breaking_news','users')));
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Author;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -22,6 +23,11 @@ class UserSeeder extends Seeder
             'name'=>'Razaul Karim',
             'email'=>'razaul@aic.mail.com',
             'password'=>Hash::make('razaul@aic.mail.com'),
+        ]);
+
+        //Author Seeder
+        Author::create([
+            'authorname'=>'ভারপ্রাপ্ত সম্পাদক, কাজী রফিক',
         ]);
 
     }

@@ -33,24 +33,39 @@
         table.dataTable.no-footer {
             border-bottom: 0;
         }
-        .dataTables_info{
+
+        .dataTables_info {
             padding-top: 41px !important;
             color: #1d68a7 !important;
         }
+
         .dataTables_paginate {
             padding-top: 30px !important;
             padding-bottom: 30px;
         }
-        .dropdown-menu li:hover{
+
+        .dropdown-menu li:hover {
             background: #999999;
             color: red;
         }
-        .dropdown-menu i{
+
+        .dropdown-menu i {
             line-height: 0;
         }
-        .dropdown-menu p{
+
+        .dropdown-menu p {
             margin-bottom: 0;
         }
+        .status_input{
+            margin-top: 2px;
+            margin-bottom: 10px;
+        }
+        .status_input input{
+            height: 25px;
+            width: 25px;
+            cursor: pointer;
+        }
+
     </style>
 @endsection
 
@@ -76,7 +91,7 @@
                                     <th class="text-capitalize">Post Date</th>
                                     <th class="text-capitalize">Author</th>
                                     <th class="text-capitalize">title</th>
-                                    <th class="text-capitalize">status</th>
+                                    <th class="text-capitalize">status/breaking/feature</th>
                                     <th class="text-capitalize">Change Status</th>
                                     <th class="text-capitalize">Publishing Date</th>
                                     <th class="text-capitalize">views</th>
@@ -101,7 +116,8 @@
         let postUrl = '{{route('post.index')}}';
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#datatable').DataTable({
@@ -116,14 +132,18 @@
                     {"data": "title"},
                     {
                         data: function (row) {
-                            return'<span id="status_id-'+ row.id +'" class="status_text text-capitalize">'+ row.status +'</span>'
+                            return '<p id="status_id-' + row.id + '" class="status_text text-capitalize">' + row.status + '</p>'+
+                                '<p id="breaking_id-' + row.id + '" class="status_text text-capitalize text-danger">' + row.breaking + '</p>'+
+                                '<p id="featured_id-' + row.id + '" class="status_text text-capitalize text-success">' + row.featured + '</p>'
                         },
                         name: 'id'
                     },
                     //{"data": "status"},
                     {
                         data: function (row) {
-                            return'<input id="changeStatus" data-id="'+ row.id +'" class="form-check" type="checkbox" '+ (row.status == "published" ? 'checked' : '') +'>'
+                            return '<p class="status_input text-center"><input id="changeStatus" data-id="' + row.id + '" class="form-check w-100" type="checkbox" ' + (row.status == "published" ? 'checked' : '') + '></p>' +
+                                '<p class="status_input text-center"><input id="changeBreaking" data-id="' + row.id + '" class="form-check w-100" type="checkbox" ' + (row.breaking == "true" ? 'checked' : '') + '></p>'+
+                                '<p class="status_input text-center"><input id="changeFeatured" data-id="' + row.id + '" class="form-check w-100" type="checkbox" ' + (row.featured == "true" ? 'checked' : '') + '></p>'
                         },
                         name: 'id'
                     },
@@ -132,50 +152,52 @@
                     {"data": "comments_count"},
                     {
                         data: function (row) {
-                            return '<div class="dropdown">'+
-                            '<button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-                            'Actions' +
-                                '</button>'+
-            '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+
-                '<div class="text-center">' +
-                                '<a href="' + postUrl + '/' + row.id +'" class="text-decoration-none text-info">' +
-                                '<ul class="list-group">'+
-                                '<li class="d-flex align-items-center pl-3 pt-2 pb-2">'+
-                                '<i class="fa fa-eye mr-3"></i><p>View Post</p>'+
-                                '</li>'+
-                                '</ul>'+
-                                '</a>'+
-                                '</div>'+
-                '<div class="text-center">' +
-                                '<a href="' + postUrl + '/' + row.id +'/edit" class="text-decoration-none text-gray-900">' +
-                                '<ul class="list-group">'+
-                                '<li class="d-flex align-items-center pl-3 pt-2 pb-2">'+
-                                '<i class="fa fa-edit mr-3"></i><p>Edit Post</p>'+
-                                '</li>'+
-                                '</ul>'+
-                                '</a>'+
-                                '</div>'+
-                '<div class="text-center">' +
-                                '<a href="' + postUrl + '/soft-delete/' + row.id +'" class="text-decoration-none text-warning">' +
-                                '<ul class="list-group">'+
-                                '<li class="d-flex align-items-center pl-3 pt-2 pb-2">'+
-                                '<i class="fa fa-trash mr-3"></i><p>Trash Post</p>'+
-                                '</li>'+
-                                '</ul>'+
-                                '</a>'+
-                                '</div>'+
-            '</div>'
+                            return '<div class="dropdown">' +
+                                '<button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                                'Actions' +
+                                '</button>' +
+                                '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+                                '<div class="text-center">' +
+                                '<a href="' + postUrl + '/' + row.id + '" class="text-decoration-none text-info">' +
+                                '<ul class="list-group">' +
+                                '<li class="d-flex align-items-center pl-3 pt-2 pb-2">' +
+                                '<i class="fa fa-eye mr-3"></i><p>View Post</p>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</a>' +
+                                '</div>' +
+                                '<div class="text-center">' +
+                                '<a href="' + postUrl + '/' + row.id + '/edit" class="text-decoration-none text-gray-900">' +
+                                '<ul class="list-group">' +
+                                '<li class="d-flex align-items-center pl-3 pt-2 pb-2">' +
+                                '<i class="fa fa-edit mr-3"></i><p>Edit Post</p>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</a>' +
+                                '</div>' +
+                                '<div class="text-center">' +
+                                '<a href="' + postUrl + '/soft-delete/' + row.id + '" class="text-decoration-none text-warning">' +
+                                '<ul class="list-group">' +
+                                '<li class="d-flex align-items-center pl-3 pt-2 pb-2">' +
+                                '<i class="fa fa-trash mr-3"></i><p>Trash Post</p>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</a>' +
+                                '</div>' +
+                                '</div>'
                         },
                         name: 'id'
                     },
                 ],
-                columnDefs:[{targets:[1,6], render:function(data){
+                columnDefs: [{
+                    targets: [1, 6], render: function (data) {
                         return moment(data).format('Do , MMMM , YYYY');
-                    }}]
+                    }
+                }]
             });
         });
 
-        $(document).on('change','#changeStatus',function () {
+        $(document).on('change', '#changeStatus', function () {
             var status = $(this).prop('checked') == true ? 'published' : 'unpublished';
             var post_id = $(this).data('id');
 
@@ -184,8 +206,36 @@
                 dataType: "json",
                 url: '/admin/post/get/updateStatus',
                 data: {'status': status, 'post_id': post_id},
-                success: function(data){
-                    $('#status_id-'+data.id).text(data.status)
+                success: function (data) {
+                    $('#status_id-' + data.id).text(data.status)
+                }
+            });
+        });
+        $(document).on('change', '#changeBreaking', function () {
+            var breaking = $(this).prop('checked') == true ? 'breaking' : 'not-breaking';
+            var post_id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '/admin/post/get/updateBreaking',
+                data: {'breaking': breaking, 'post_id': post_id},
+                success: function (data) {
+                    $('#breaking_id-' + data.id).text(data.breaking)
+                }
+            });
+        })
+        $(document).on('change', '#changeFeatured', function () {
+            var featured = $(this).prop('checked') == true ? 'featured' : 'not-featured';
+            var post_id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '/admin/post/get/updateFeatured',
+                data: {'featured': featured, 'post_id': post_id},
+                success: function (data) {
+                    $('#featured_id-' + data.id).text(data.featured)
                 }
             });
         })

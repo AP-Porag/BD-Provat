@@ -24,6 +24,8 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('thumbnail')->default(asset('storage/no-image/no-image-available.webp'));
             $table->string('status');
+            $table->string('breaking')->default('not-breaking');
+            $table->string('featured')->default('not-featured');
             $table->integer('views')->default(0);
             $table->string('publishing_date')->default(Carbon::now());
             $table->timestamps();
