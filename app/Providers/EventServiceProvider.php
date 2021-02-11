@@ -22,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         ImageWasUploaded::class => [
             '\App\Listeners\ResizeUploadedImage',
         ],
+        \App\Events\NewCommentCreatedEvent::class => [
+            \App\Listeners\SendingNotificationToAllUserListener::class,
+        ],
     ];
 
     /**

@@ -13,21 +13,35 @@ class GroupSeeder extends Seeder
     public function run()
     {
 
-        Group::create([
-            'name'=>'admin'
-        ]);
-        Group::create([
-            'name'=>'role'
-        ]);
+        //Original group
         Group::create([
             'name'=>'dashboard'
         ]);
         Group::create([
-            'name'=>'profile'
+            'name'=>'user'
         ]);
         Group::create([
-            'name'=>'blog'
+            'name'=>'post'
         ]);
+        Group::create([
+            'name'=>'category'
+        ]);
+        Group::create([
+            'name'=>'subcategory'
+        ]);
+        Group::create([
+            'name'=>'tag'
+        ]);
+        Group::create([
+            'name'=>'author'
+        ]);
+        Group::create([
+            'name'=>'subscriber'
+        ]);
+        Group::create([
+            'name'=>'advertisement'
+        ]);
+
 
     }
 }

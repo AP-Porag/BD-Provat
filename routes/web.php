@@ -33,6 +33,9 @@ Route::post('/comment', 'Frontend\CommentingController@comment')->name('commenti
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
+    //Dashboard Chart data route start
+    Route::get('/post/creation/overview/getYearlyMonthWisePost','Admin\Dashboard\ChartDataController@getYearlyMonthWisePost');
+    Route::get('/post/creation/overview/setArrayValue','Admin\Dashboard\ChartDataController@setArrayValue');
     //User maneging start
     Route::resource('user', 'Admin\User\UsersController');
     Route::post('/user/profile/update', 'Admin\User\UsersController@updateProfile')->name('updateProfile');
@@ -86,6 +89,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     //Reply Route Start
     Route::resource('comment', 'Admin\Comment\CommentController');
     Route::post('/comment/approved/posts', 'Admin\Comment\CommentController@approvedComment')->name('approvedComment');
+
+    //Notification Route start
+    Route::get('/notification/list', 'Admin\Notification\NotificationController@index')->name('notification-list');
+    Route::get('/notification/view/{id}', 'Admin\Notification\NotificationController@notificationView')->name('notification-view');
+    Route::get('/notification/delete/{id}', 'Admin\Notification\NotificationController@notificationDelete')->name('notification-delete');
 
     //Reply Route Start
     Route::resource('reply', 'Admin\Reply\ReplyController');

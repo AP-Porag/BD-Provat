@@ -74,7 +74,9 @@
                                                            value="{{$group->group_id}}"
                                                            onclick="checkPermissionByGroup('permission{{$group->group_id}}',this)" {{\App\User::roleHasPermissions($role,$permissions_all) ? 'checked' : ''}}>
                                                     <label for="permission{{$group->group_id}}"
-                                                           class="text-capitalize form-check-label">{{$group->group_id}}</label>
+                                                           class="text-capitalize form-check-label">
+                                                        {{$group->group->name}}
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 permission{{$group->group_id}}">
@@ -154,9 +156,9 @@
             const countPermissionGroups = {{count($permissionsGroup)}};
             const checkedCheckbox = $('input[type="checkbox"]:checked').length;
 
-            //console.log(checkedCheckbox);
-            //console.log(countPermissions);
-            //console.log(countPermissions + countPermissionGroups);
+            console.log(checkedCheckbox);
+            console.log(countPermissions);
+            console.log(countPermissions + countPermissionGroups);
 
             if (checkedCheckbox >= countPermissions + countPermissionGroups){
                 $('#permissionAll').prop('checked',true);

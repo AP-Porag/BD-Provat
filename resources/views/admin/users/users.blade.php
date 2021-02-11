@@ -34,6 +34,8 @@
             <div class="d-flex justify-content-between">
                 <a href="{{ route('user.create') }}" class="btn btn-sm btn-outline-primary text-capitalize mr-3"><i
                         class="fa fa-plus-circle"></i> Add new @yield('module')</a>
+                <a href="{{ route('inactive_users') }}" class="btn btn-sm btn-outline-danger text-capitalize mr-3"><i
+                        class="fa fa-plus-circle"></i> inactive @yield('module')</a>
             </div>
         </div>
         <div class="card-body">
@@ -69,8 +71,10 @@
                                             colspan="1" aria-label="Office: activate to sort column ascending">
                                             Servicing Age
                                         </th>
+                                        @can('user-edit','user-soft-delete','user-assign-role','user-assign-permission')
                                         <th rowspan="1" colspan="1" class="text-center">Action
                                         </th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,27 +92,39 @@
                                                 @endforeach
                                             </td>
                                             <td class="sorting_1 text-capitalize">
-
+                                                {{$user->profile->contact}}
                                             </td>
                                             <td class="sorting_1 text-capitalize">
-                                                Servicing Age :
+                                                @if($user->profile->joiningDate != null)
+                                                {{\Carbon\Carbon::parse($user->profile->joiningDate)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days')}}
+                                                @endif
                                             </td>
+                                            @can('user-edit','user-soft-delete','user-assign-role','user-assign-permission')
                                             <td>
                                                 <div class="btn-group d-flex justify-content-center">
-                                                    <a href="{{ route('user.edit', $user->id) }}"
-                                                        class="btn btn-sm btn-outline-warning mr-3"><i
-                                                            class="fa fa-edit"></i></a>
+                                                    @can('user-edit')
+                                                        <a href="{{ route('user.edit', $user->id) }}"
+                                                           class="btn btn-sm btn-outline-warning mr-3"><i
+                                                                class="fa fa-edit"></i></a>
+                                                    @endcan
+                                                    @can('user-soft-delete')
                                                     <a href="{{ route('user_soft_delete', $user->id) }}"
                                                         class="btn btn-sm btn-outline-danger mr-3"><i
                                                             class="fa fa-trash"></i></a>
+                                                        @endcan
+                                                        @can('user-assign-role')
                                                     <a href="{{ route('assignRolePageView', $user->id) }}"
                                                         class="btn btn-sm btn-outline-primary mr-3"><i
                                                             class="fa fa-user-lock"></i></a>
+                                                        @endcan
+                                                        @can('user-assign-permission')
                                                     <a href="{{ route('assignPermissionPageView', $user->id) }}"
                                                         class="btn btn-sm btn-outline-dark"><i
                                                             class="fa fa-lock-open"></i></a>
+                                                        @endcan
                                                 </div>
                                             </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -116,11 +132,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="dataTable_info" User="status" aria-live="polite">Showing 51
-                                to 57 of 57 entries
-                            </div>
-                        </div>
                         <div class="col-sm-12 col-md-7">
                             {{ $users->links() }}
                         </div>

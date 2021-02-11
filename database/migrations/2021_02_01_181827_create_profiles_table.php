@@ -22,8 +22,9 @@ class CreateProfilesTable extends Migration
             $table->date('joiningDate')->nullable();
             $table->string('address')->nullable();
             $table->string('contact')->nullable();
-            $table->string('profilePicture')->default(asset('admin/img/undraw_profile.svg'));
+            $table->string('profilePicture')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

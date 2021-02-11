@@ -103,6 +103,13 @@ class CategoryController extends Controller
     {
         $posts = Post::where('category_id', $id)->get();
         foreach ($posts as $post) {
+            $thumbnail = $post->thumbnail;
+
+            if (file_exists(public_path($thumbnail))){
+
+                unlink(public_path($thumbnail));
+
+            }
             $post->delete();
         }
 

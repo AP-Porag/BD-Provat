@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Notification;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\User;
@@ -36,8 +37,10 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         if ($user->hasRole('subscriber')) {
+
             $categories = Category::all();
-            $breaking_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->paginate(5);
+
+            $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','DESC')->get();
 
             $last_top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->first();
             $top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_top_news->id)->paginate(4);
@@ -53,8 +56,8 @@ class HomeController extends Controller
             $last_political_post = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->first();
             $political_posts = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_political_post->id)->paginate(4);
 
-            $last_info_tech_post = Post::where('category_id', 7)->where('status', 'published')->orderBy('id', 'DESC')->first();
-            $info_tech_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_info_tech_post->id)->paginate(4);
+            $last_info_tech_post = Post::where('category_id', 8)->where('status', 'published')->orderBy('id', 'DESC')->first();
+            $info_tech_posts = Post::where('category_id', 8)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_info_tech_post->id)->paginate(4);
 
             $last_law_post = Post::where('category_id', 5)->where('status', 'published')->orderBy('id', 'DESC')->first();
             $law_posts = Post::where('category_id', 5)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_law_post->id)->paginate(4);
@@ -62,6 +65,8 @@ class HomeController extends Controller
             $last_entertainment_post = Post::where('category_id', 6)->where('status', 'published')->orderBy('id', 'DESC')->first();
             $entertainment_posts = Post::where('category_id', 6)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_entertainment_post->id)->paginate(10);
 
+            //feature news
+            $feature_news = Post::Where('featured','featured')->orderBy('created_at','DESC')->get();
             //international
             $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
             $international_posts = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_international_post->id)->limit(4)->get();
@@ -100,6 +105,7 @@ class HomeController extends Controller
             $last_religion_post = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
             $religion_posts = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_religion_post->id)->limit(4)->get();
 
+
             return view('frontend.index', compact([
                 'categories',
                 'breaking_news',
@@ -118,6 +124,7 @@ class HomeController extends Controller
                 'law_posts',
                 'last_entertainment_post',
                 'entertainment_posts',
+                'feature_news',
                 'last_lifestyle_post',
                 'lifestyle_posts',
                 'divisions',
@@ -146,12 +153,17 @@ class HomeController extends Controller
 
             $subCategories = SubCategory::orderBy('created_at','DESC')->paginate(5,['*'],'subCategories');
 
+            $categoriesViews = Category::orderBy('created_at','DESC')->paginate(5,['*'],'categoriesViews');
+            $subCategoriesViews = SubCategory::orderBy('created_at','DESC')->paginate(5,['*'],'subCategoriesViews');
+
             return view('admin.index',compact([
                 'postCount',
                 'postForThisMonth',
                 'subscriberCount',
                 'categories',
-                'subCategories'
+                'subCategories',
+                'categoriesViews',
+                'subCategoriesViews'
             ]));
         }
     }

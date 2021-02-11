@@ -32,7 +32,7 @@ class ResizeUploadedImage
         $imagePath = $event->path();
 
         // Open the image file
-        $img = Image::make($imagePath);
+        $img = Image::make($imagePath)->resize(1024, 693);
 
         // Insert the watermark
         $img->insert(base_path('/public/settings-images/watermark.png'), 'bottom');

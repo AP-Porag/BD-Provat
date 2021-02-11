@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Notification;
 use App\Models\Post;
 use App\Models\PostMeta;
 use App\Models\PostTag;
 use App\Models\SubCategory;
 use App\Models\Tag;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -73,6 +75,8 @@ class PostController extends Controller
             'title' => 'required',
             'post_content' => 'required',
             'thumbnail' => 'required',
+            'meta_keywords' => 'required',
+            'meta_description' => 'required',
         ]);
         if ($category == 3 || $category == 11) {
             $this->validate($request, [
@@ -107,10 +111,10 @@ class PostController extends Controller
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-//                ->resize(400, 350)
+                ->resize(1024, 693)
                 ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
-                ->save(base_path('/public/storage/post/' . $image_new_name));
-            $post->thumbnail = url('/').'/storage/post/' . $image_new_name;
+                ->save(base_path('/public/storage/post/'.$post->slug.'-'. $image_new_name));
+            $post->thumbnail = '/storage/post/'.$post->slug.'-'. $image_new_name;
             $post->save();
         }
         if ($post) {
@@ -141,6 +145,7 @@ class PostController extends Controller
         $post = Post::where('id', $id)->first();
         //comments for this post
         $comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'DESC')->get();
+
         return response(view('admin.posts.posts-show', compact('post', 'comments')));
     }
 
@@ -175,6 +180,8 @@ class PostController extends Controller
             'category' => 'required',
             'thumbnail' => 'sometimes|image',
             'post_content' => 'required',
+            'meta_keywords' => 'required',
+            'meta_description' => 'required',
 
         ]);
         $post->category_id = $request->category;
@@ -189,12 +196,20 @@ class PostController extends Controller
         }
         if ($request->has('thumbnail')) {
 
+            $thumbnail_old = $post->thumbnail;
+
+            if (file_exists(public_path($thumbnail_old))){
+
+                unlink(public_path($thumbnail_old));
+
+            }
+
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-//                ->resize(400, 350)
+                ->resize(1024, 693)
                 ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
-                ->save(base_path('/public/storage/post/' . $image_new_name));
-            $post->thumbnail = 'http://127.0.0.1:8000/storage/post/' . $image_new_name;
+                ->save(base_path('/public/storage/post/'.$post->slug.'-'. $image_new_name));
+            $post->thumbnail = '/storage/post/'.$post->slug.'-'. $image_new_name;
             $post->save();
         }
 
@@ -229,7 +244,17 @@ class PostController extends Controller
     //Extra Methods
     public static function postSoftDelete(int $id)
     {
-        $post = Post::findOrFail($id)->delete();
+        $post = Post::findOrFail($id);
+
+        $thumbnail = $post->thumbnail;
+
+        if (file_exists(public_path($thumbnail))){
+
+            unlink(public_path($thumbnail));
+
+        }
+
+        $post->delete();
 
         if ($post) {
             Session::flash('success', 'Post Deleted Successfully !');
