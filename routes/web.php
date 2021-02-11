@@ -111,6 +111,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     //Tag Route Start
     Route::resource('author', 'Admin\Author\AuthorController');
 
+    //CustomAdd Route Start
+    Route::resource('customadd', 'Frontend\CustomAddController');
+
     //Subscriber Route start
     Route::get('/subscriber/list', 'Admin\Subscriber\SubscriberController@index')->name('subscriber-list');
     Route::get('/subscriber/delete/{id}', 'Admin\Subscriber\SubscriberController@subscriberDelete')->name('subscriber-delete');
