@@ -46,8 +46,7 @@ class HomeDataShowController extends Controller
         $entertainment_posts = Post::where('category_id', 6)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_entertainment_post->id)->paginate(10);
 
         //feature news
-        $feature_tag = '2';
-        $feature_news = Post::Where('featured', 'featured')->orderBy('created_at', 'DESC')->get();
+        $feature_news = Post::Where('featured','featured')->orderBy('created_at','DESC')->get();
         //international
         $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $international_posts = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_international_post->id)->limit(4)->get();

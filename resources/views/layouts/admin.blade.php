@@ -45,151 +45,188 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->segment(1) == 'home' ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
+            @can('user-settings')
+                <!-- Divider -->
+                    <hr class="sidebar-divider">
+
+                    <!-- Heading -->
+                    <div class="sidebar-heading">
+                        User Settings
+                    </div>
+
+                    <!-- Nav Item - start here Collapse Menu -->
+                    <!-- Nav Item - User Management -->
+                    <li class="nav-item {{ request()->segment(2) == 'user' ? 'active' : '' }}">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                           aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fa fa-user-plus"></i>
+                            <span>User Management</span>
+                        </a>
+                        @can('user-list')
+                            <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <a class="collapse-item" href="{{route('user.index')}}">User List</a>
+                                </div>
+                            </div>
+                        @endcan
+                    </li>
+                    <!-- Nav Item - Role Management -->
+                    <li class="nav-item {{ request()->segment(2) == 'role' ? 'active' : '' }}">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRole"
+                           aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fa fa-lock"></i>
+                            <span>Role Management</span>
+                        </a>
+                        <div id="collapseRole" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="{{route('role.index')}}">Role List</a>
+                                <a class="collapse-item" href="{{route('permission.index')}}">Permission List</a>
+                            </div>
+                        </div>
+                    </li>
+            @endcan
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                User Settings
-            </div>
-
-            <!-- Nav Item - start here Collapse Menu -->
-            <!-- Nav Item - User Management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa fa-user-plus"></i>
-                    <span>User Management</span>
-                </a>
-                <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('user.index')}}">User List</a>
-                    </div>
+                @can('post-settings','category-settings','subcategory-settings','tag-settings')
+                <div class="sidebar-heading">
+                    Post Settings
                 </div>
-            </li>
-            <!-- Nav Item - Role Management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRole"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa fa-lock"></i>
-                    <span>Role Management</span>
-                </a>
-                <div id="collapseRole" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('role.index')}}">Role List</a>
-                        <a class="collapse-item" href="{{route('permission.index')}}">Permission List</a>
+                @endcan
+        @can('post-settings')
+                <!-- Nav Item - Post Management -->
+                <li class="nav-item {{ request()->segment(2) == 'post' ? 'active' : '' }}">
+                    <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsePost"
+                       aria-expanded="true" aria-controls="collapsePost">
+                        <i class="fa fa-file-alt"></i>
+                        <span class="text-capitalize">Posts</span>
+                    </a>
+                    <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item text-capitalize" href="{{route('post.index')}}">Post List</a>
+                            <a class="collapse-item text-capitalize" href="{{route('post.create')}}">Add new Post</a>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <div class="sidebar-heading">
-                Post Settings
-            </div>
-            <!-- Nav Item - Post Management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsePost"
-                   aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fa fa-file-alt"></i>
-                    <span class="text-capitalize">Posts</span>
-                </a>
-                <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-capitalize" href="{{route('post.index')}}">Post List</a>
-                        <a class="collapse-item text-capitalize" href="{{route('post.create')}}">Add new Post</a>
-                    </div>
-                </div>
-            </li>
+                </li>
+            @endcan
 
 
-            <!-- Nav Item - Category management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseCategory"
-                   aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fas fa-list"></i>
-                    <i class="" aria-hidden="true"></i>
-                    <span class="text-capitalize">Categories</span>
-                </a>
-                <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-capitalize" href="{{route('category.index')}}">Category List</a>
-                    </div>
-                </div>
-            </li>
+            @can('category-settings')
+                <!-- Nav Item - Category management -->
+                    <li class="nav-item {{ request()->segment(2) == 'category' ? 'active' : '' }}">
+                        <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseCategory"
+                           aria-expanded="true" aria-controls="collapsePost">
+                            <i class="fas fa-list"></i>
+                            <i class="" aria-hidden="true"></i>
+                            <span class="text-capitalize">Categories</span>
+                        </a>
+                        <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item text-capitalize" href="{{route('category.index')}}">Category List</a>
+                            </div>
+                        </div>
+                    </li>
+            @endcan
 
-            <!-- Nav Item - Subcategory management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsesubcategory"
-                   aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fas fa-stream"></i>
-                    <i class="" aria-hidden="true"></i>
-                    <span class="text-capitalize">Subcategories</span>
-                </a>
-                <div id="collapsesubcategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-capitalize" href="{{route('subcategory.index')}}">Subcategory List</a>
-                    </div>
-                </div>
-            </li>
+            @can('subcategory-settings')
+                <!-- Nav Item - Subcategory management -->
+                    <li class="nav-item {{ request()->segment(2) == 'subcategory' ? 'active' : '' }}">
+                        <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsesubcategory"
+                           aria-expanded="true" aria-controls="collapsePost">
+                            <i class="fas fa-stream"></i>
+                            <i class="" aria-hidden="true"></i>
+                            <span class="text-capitalize">Subcategories</span>
+                        </a>
+                        <div id="collapsesubcategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item text-capitalize" href="{{route('subcategory.index')}}">Subcategory List</a>
+                            </div>
+                        </div>
+                    </li>
+            @endcan
 
-            <!-- Nav Item - Tag management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsetag"
-                   aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fa fa-tags"></i>
-                    <i class="" aria-hidden="true"></i>
-                    <span class="text-capitalize">Tags</span>
-                </a>
-                <div id="collapsetag" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-capitalize" href="{{route('tag.index')}}">Tag List</a>
+            @can('tag-settings')
+                <!-- Nav Item - Tag management -->
+                    <li class="nav-item {{ request()->segment(2) == 'tag' ? 'active' : '' }}">
+                        <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapsetag"
+                           aria-expanded="true" aria-controls="collapsePost">
+                            <i class="fa fa-tags"></i>
+                            <i class="" aria-hidden="true"></i>
+                            <span class="text-capitalize">Tags</span>
+                        </a>
+                        <div id="collapsetag" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item text-capitalize" href="{{route('tag.index')}}">Tag List</a>
+                            </div>
+                        </div>
+                    </li>
+            @endcan
+
+        <!-- Nav Item - Tag management -->
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item {{ request()->segment(2) == 'notification' ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('notification-list')}}">
+                    <div class="d-flex justify-content-between">
+                        <span><i class="fa fa-bell"></i>Notifications</span>
+                        @php
+                            use App\Models\Notification;$user_id = Auth::user()->id;
+                            $notifications = Notification::where('user_id',$user_id)->where('status','unseen')->get();
+                        @endphp
+                        @if($notifications->count() > 0)
+                        <span class="badge badge-danger badge-counter mr-3">{{$notifications->count()}}</span>
+                        @endif
                     </div>
-                </div>
+                </a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <div class="sidebar-heading">
-                Author & Subscriber Settings
-            </div>
-            <!-- Nav Item - Author management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseauthor"
-                   aria-expanded="true" aria-controls="collapsePost">
-                    <i class="fas fa-crown"></i>
-                    <i class="" aria-hidden="true"></i>
-                    <span class="text-capitalize">Author</span>
-                </a>
-                <div id="collapseauthor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-capitalize" href="{{route('author.index')}}">Author Details</a>
-                        <a class="collapse-item text-capitalize" href="{{route('author.create')}}">Create Author</a>
-                    </div>
+            @can('author-settings','subscriber-settings')
+                <div class="sidebar-heading">
+                    Author & Subscriber Settings
                 </div>
-            </li>
+            @endcan
+            @can('author-settings')
+                <!-- Nav Item - Author management -->
+                    <li class="nav-item {{ request()->segment(2) == 'author' ? 'active' : '' }}">
+                        <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseauthor"
+                           aria-expanded="true" aria-controls="collapsePost">
+                            <i class="fas fa-crown"></i>
+                            <i class="" aria-hidden="true"></i>
+                            <span class="text-capitalize">Author</span>
+                        </a>
+                        <div id="collapseauthor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item text-capitalize" href="{{route('author.index')}}">Author Details</a>
+                                <a class="collapse-item text-capitalize" href="{{route('author.create')}}">Create Author</a>
+                            </div>
+                        </div>
+                    </li>
+            @endcan
 
-            <!-- Nav Item - Subscriber management -->
-            <li class="nav-item">
-                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseSubscriber"
-                   aria-expanded="true" aria-controls="collapseSubscriber">
-                    <i class="fas fa-street-view"></i>
-                    <i class="" aria-hidden="true"></i>
-                    <span class="text-capitalize">Subscriber</span>
-                </a>
-                <div id="collapseSubscriber" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-capitalize" href="{{route('subscriber-list')}}">All Subscriber</a>
-                    </div>
-                </div>
-            </li>
+            @can('subscriber-settings')
+                <!-- Nav Item - Subscriber management -->
+                    <li class="nav-item {{ request()->segment(2) == 'subscriber' ? 'active' : '' }}">
+                        <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseSubscriber"
+                           aria-expanded="true" aria-controls="collapseSubscriber">
+                            <i class="fas fa-street-view"></i>
+                            <i class="" aria-hidden="true"></i>
+                            <span class="text-capitalize">Subscriber</span>
+                        </a>
+                        <div id="collapseSubscriber" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item text-capitalize" href="{{route('subscriber-list')}}">All Subscriber</a>
+                            </div>
+                        </div>
+                    </li>
+            @endcan
 
             <!-- Nav Item - Custom Advertisment Section -->
             <li class="nav-item">
@@ -242,30 +279,41 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+{{--                        notification dropdown--}}
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                @if($notifications->count() > 0)
+                                    <span class="badge badge-danger badge-counter">{{$notifications->count()}}</span>
+                                @endif
+
                             </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                               placeholder="Search for..." aria-label="Search"
-                                               aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Unseen Notifications
+                                </h6>
+                                @foreach($notifications as $notification)
+                                    <a class="dropdown-item d-flex align-items-center" href="{{route('notification-view',$notification->id)}}">
+                                        <div>
+                                            <div class="small text-gray-500 d-flex justify-content-between">
+                                                <p><span class="text-primary">{{$notification->commenter->name}}</span> made comment</p>
+                                                <p class="ml-5">{{($notification->created_at)->diffForHumans()}}</p>
+                                            </div>
+                                            <div class="">
+                                                <span class="font-weight-bold">{{$notification->post->title}}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </a>
+                                @endforeach
+                                @if($notifications->count() > 0)
+                                <a class="dropdown-item text-center small text-gray-500" href="{{route('notification-list')}}">Show All Notifications</a>
+                                @else
+                                    <p class="dropdown-item text-center small text-gray-500">You have no Notifications</p>
+                                @endif
                             </div>
                         </li>
-
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 

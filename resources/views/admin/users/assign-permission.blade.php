@@ -46,7 +46,7 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <div class="d-flex">
-                                    <label for="permissions" class="text-capitalize">Roles</label>
+                                    <label for="permissions" class="text-capitalize">Permissions</label>
                                     <div class="form-check ml-5">
                                         <input type="checkbox" class="form-check-input" id="permissionAll" value=""}}>
                                         <label for="permissionAll" class="text-capitalize form-check-label">All</label>
@@ -56,9 +56,9 @@
                                     @foreach($permissions as $permission)
                                         <div class="form-check">
                                             <input type="checkbox" name="roles[]"
-                                                   class="form-check-input"
+                                                   class="form-check-input singlePermission"
                                                    id="role-{{$permission->id}}"
-                                                   value="{{$permission->id,old('roles[]')}}">
+                                                   value="{{$permission->id,old('roles[]')}}" {{$user_id->hasPermissionTo($permission->name) ? 'checked' : ''}}>
                                             <label for="role-{{$permission->id}}"
                                                    class="text-capitalize form-check-label">{{$permission->name}}</label>
                                         </div>
@@ -82,6 +82,26 @@
 
 @section('script')
     <script>
+
+        $('#permissionAll').click(function () {
+            if ($(this).is(':checked')) {
+                //Checked all the permission checkbox
+                $('input[type=checkbox]').prop('checked', true)
+            } else {
+                //Un-Checked all the permission checkbox
+                $('input[type=checkbox]').prop('checked', false)
+            }
+        });
+        $('.singlePermission').change(function () {
+            const countTotalRole = {{$permissions_count}};
+            const checkedCheckbox = $('.singlePermission:checked').length;
+
+            if (checkedCheckbox >= countTotalRole ){
+                $('#permissionAll').prop('checked',true);
+            }else {
+                $('#permissionAll').prop('checked',false);
+            }
+        });
 
     </script>
 @endsection

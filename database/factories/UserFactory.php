@@ -35,7 +35,11 @@ $factory->define(User::class, function (Faker $faker) {
 //seeding user - profile
 $factory->define(Profile::class, function (Faker $faker) {
     return [
-        'user_id'=>rand(1,12),
+        'user_id'=>rand(3,12),
+        'firstName' => $faker->name,
+        'lastName' => $faker->name,
+        'contact' => 'please update your contact !',
+        'profilePicture' => asset('admin/img/undraw_profile.svg'),
     ];
 });
 //seeding Post

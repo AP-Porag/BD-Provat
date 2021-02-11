@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -72,6 +73,13 @@ class RegisterController extends Controller
         if ($user){
             $user->assignRole('subscriber');
         }
-        return redirect()->back();
+        if ($user){
+            $no_image = url('/').'/admin/img/undraw_profile.svg';
+            $profile = Profile::create([
+                'user_id'=>$user->id,
+                'profilePicture'=>$no_image
+            ]);
+        }
+        return $user;
     }
 }

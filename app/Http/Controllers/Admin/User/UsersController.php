@@ -22,7 +22,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at', 'ASC')->paginate(5);
+        $users = User::whereHas('roles', function($q){
+
+            $q->where('name', '!=', 'supper-admin')->where('name', '!=', 'subscriber');
+
+        })->orderBy('created_at', 'ASC')->paginate(5);
         return response(view('admin.users.users', compact('users')));
     }
 
@@ -33,7 +37,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
+        $roles = Role::where('name','!=','supper-admin')->where('name','!=','subscriber')->get();
         return response(view('admin.users.user-create', compact('roles')));
     }
 
@@ -65,8 +69,13 @@ class UsersController extends Controller
         if ($user) {
             $profile = Profile::create([
                 'user_id' => $user->id,
-                'fullName' => $user->name,
-            ]);
+                'firstName' => $user->name,
+                'lastName' => $user->name,
+                'contact' => 'please update your contact !',
+                ]);
+
+            $profile->profilePicture = asset('admin/img/undraw_profile.svg');
+            $profile->save();
         }
         if ($user || $profile) {
 
@@ -139,7 +148,7 @@ class UsersController extends Controller
             Image::make($thumbnail)
                 ->resize(256, 256)
                 ->save(base_path('/public/storage/profile_picture/' . $image_new_name));
-            $profile->profilePicture = 'http://127.0.0.1:8000/storage/profile_picture/' . $image_new_name;
+            $profile->profilePicture = '/storage/profile_picture/' . $image_new_name;
             $profile->save();
 
             Session::flash('success', 'User Profile Picture Updated Successfully !');
@@ -155,27 +164,31 @@ class UsersController extends Controller
         return back();
     }
 
-//    public static function inactive()
-//    {
-//        $trashed_users = User::onlyTrashed()->orderBy('created_at', 'DESC')->paginate(5);
-//        return response()->view('admin.users.trashed-users', compact('trashed_users'));
-//    }
+    public static function inactive()
+    {
+        $trashed_users = User::whereHas('roles', function($q){
 
-//    public static function restore(int $id)
-//    {
-//        User::onlyTrashed()->findOrFail($id)->restore();
-//
-//        Session::flash('success', 'User Activated Again !');
-//        return back();
-//    }
+            $q->where('name', '!=', 'supper-admin')->where('name', '!=', 'subscriber');
 
-//    public static function forceDelete(int $id)
-//    {
-//        User::onlyTrashed()->findOrFail($id)->forceDelete();
-//
-//        Session::flash('success', 'User Deleted Successfully !');
-//        return back();
-//    }
+        })->onlyTrashed()->orderBy('created_at', 'desc')->paginate(5);
+        return response()->view('admin.users.trashed-users', compact('trashed_users'));
+    }
+
+    public static function restore(int $id)
+    {
+        User::onlyTrashed()->findOrFail($id)->restore();
+
+        Session::flash('success', 'User Activated Again !');
+        return back();
+    }
+
+    public static function forceDelete(int $id)
+    {
+        User::onlyTrashed()->findOrFail($id)->forceDelete();
+
+        Session::flash('success', 'User Deleted Successfully !');
+        return back();
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -199,8 +212,9 @@ class UsersController extends Controller
     public function assignRolePageView($id)
     {
         $user_id = User::findOrFail($id);
-        $roles = Role::all();
-        return response(view('admin.users.assign-role', compact('user_id', 'roles')));
+        $roles = Role::where('name', '!=', 'supper-admin')->where('name', '!=', 'subscriber')->get();
+        $role_count = $roles->count();
+        return response(view('admin.users.assign-role', compact('user_id', 'roles','role_count')));
     }
 
     /**
@@ -233,7 +247,8 @@ class UsersController extends Controller
     {
         $user_id = User::findOrFail($id);
         $permissions = Permission::all();
-        return response(view('admin.users.assign-permission', compact('user_id', 'permissions')));
+        $permissions_count = $permissions->count();
+        return response(view('admin.users.assign-permission', compact('user_id', 'permissions','permissions_count')));
     }
 
     /**

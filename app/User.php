@@ -7,11 +7,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -35,7 +37,7 @@ class User extends Authenticatable
 
     public static function getPermissionGroups()
     {
-        return $permissionGroups = DB::table('permissions')->select('group_id')->groupBy('group_id')->get();
+        return $permissionGroups = Permission::groupBy('group_id')->get();
         //return $permissionGroups = DB::table('permissions')->select('group_name')->groupBy('group_name')->get();
     }
 

@@ -56,11 +56,11 @@
                                     @foreach($roles as $role)
                                         <div class="form-check">
                                             <input type="checkbox" name="roles[]"
-                                                   class="form-check-input"
+                                                   class="form-check-input singleRole"
                                                    id="role-{{$role->id}}"
-                                                   value="{{$role->id,old('roles[]')}}">
+                                                   value="{{$role->id,old('roles[]')}}"  {{$user_id->hasRole($role->name) ? 'checked' : ''}}>
                                             <label for="role-{{$role->id}}"
-                                                   class="text-capitalize form-check-label">{{$role->name}}</label>
+                                                   class="text-capitalize form-check-label">{{$role->name}} </label>
                                         </div>
                                     @endforeach
                                 </div>
@@ -78,10 +78,31 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('script')
     <script>
+
+        $('#permissionAll').click(function () {
+            if ($(this).is(':checked')) {
+                //Checked all the permission checkbox
+                $('input[type=checkbox]').prop('checked', true)
+            } else {
+                //Un-Checked all the permission checkbox
+                $('input[type=checkbox]').prop('checked', false)
+            }
+        });
+        $('.singleRole').change(function () {
+            const countTotalRole = {{$role_count}};
+            const checkedCheckbox = $('.singleRole:checked').length;
+
+            if (checkedCheckbox >= countTotalRole ){
+                $('#permissionAll').prop('checked',true);
+            }else {
+                $('#permissionAll').prop('checked',false);
+            }
+        });
 
     </script>
 @endsection

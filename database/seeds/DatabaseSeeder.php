@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
 
         //seeding using factory
         factory(User::class,10)->create();
-        factory(Profile::class,12)->create();
+        factory(Profile::class,10)->create();
         factory(Post::class,120)->create();
         factory(Comment::class,200)->create();
         factory(Reply::class,230)->create();
-        factory(PostMeta::class,120)->create();
+        factory(PostMeta::class,125)->create();
 
         //user Role Permission seeder
         $this->call(RolePermissionSeeder::class);

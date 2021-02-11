@@ -17,64 +17,105 @@ class RolePermissionSeeder extends Seeder
 
         $roleSupperAdmin = Role::create(['name' => 'supper-admin']);
         $roleAdmin = Role::create(['name' => 'admin']);
-        $roleEditor = Role::create(['name' => 'chief-editor']);
-        $roleEditor = Role::create(['name' => 'acting-chief-editor']);
-        $roleEditor = Role::create(['name' => 'acting-editor']);
-        $roleEditor = Role::create(['name' => 'executive-editor']);
+        $roleChiefEditor = Role::create(['name' => 'chief-editor']);
+        $roleActingChiefEditor = Role::create(['name' => 'acting-chief-editor']);
+        $roleActingEditor = Role::create(['name' => 'acting-editor']);
+        $roleExecutiveEditor = Role::create(['name' => 'executive-editor']);
         $roleEditor = Role::create(['name' => 'editor']);
-        $roleEditor = Role::create(['name' => 'news-in-charge']);
-        $roleEditor = Role::create(['name' => 'reporter']);
-        $roleEditor = Role::create(['name' => 'staff-reporter']);
-        $roleEditor = Role::create(['name' => 'journalist']);
-        $rolePatient = Role::create(['name' => 'subscriber']);
+        $roleNewsInCharge = Role::create(['name' => 'news-in-charge']);
+        $roleReporter = Role::create(['name' => 'reporter']);
+        $roleStaffReporter = Role::create(['name' => 'staff-reporter']);
+        $roleJournalist = Role::create(['name' => 'journalist']);
+        $roleSubscriber = Role::create(['name' => 'subscriber']);
         //Permission list as array
         $permissions = [
             //Admin permission
             [
                 'group_id'=>'1',
                 'permissions'=>[
-                    'admin.view',
-                    'admin.create',
-                    'admin.edit',
-                    'admin.delete',
-                    'admin.approve',
+                    'dashboard-settings',
+                    'dashboard'
                 ]
             ],
             //Role permission
             [
                 'group_id'=>'2',
                 'permissions'=>[
-                    'role-view',
-                    'role-create',
+                    'user-settings',
+                    'user-list',
+                    'user-edit',
+                    'user-soft-delete',
+                    'user-assign-role',
+                    'user-assign-permission',
                     'role-edit',
                     'role-delete',
-                    'role-approve',
                 ]
             ],
             //dashboard
             [
                 'group_id'=>'3',
                 'permissions'=>[
-                    'dashboard.view',
+                    'post-settings',
+                    'post-list',
+                    'add-post',
+                    'view-post',
+                    'edit-post',
+                    'delete-post',
+                    'comment-approval',
+                    'give-reply',
                 ]
             ],
             //Profile permission
             [
                 'group_id'=>'4',
                 'permissions'=>[
-                    'profile.view',
-                    'profile.edit',
+                    'category-settings',
+                    'category-list',
+                    'add-category',
+                    'edit-category',
+                    'delete-category',
                 ]
             ],
             //blog permission
             [
                 'group_id'=>'5',
                 'permissions'=>[
-                    'blog.view',
-                    'blog.create',
-                    'blog.edit',
-                    'blog.delete',
-                    'blog.approve',
+                    'subcategory-settings',
+                    'subcategory-list',
+                    'add-subcategory',
+                    'edit-subcategory',
+                    'delete-subcategory',
+                ]
+            ],
+            [
+                'group_id'=>'6',
+                'permissions'=>[
+                    'tag-settings',
+                    'tag-list',
+                    'add-tag',
+                    'edit-tag',
+                    'delete-tag',
+                ]
+            ],
+            [
+                'group_id'=>'7',
+                'permissions'=>[
+                    'author-settings',
+                    'author'
+                ]
+            ],
+            [
+                'group_id'=>'8',
+                'permissions'=>[
+                    'subscriber-settings',
+                    'subscriber-info'
+                ]
+            ],
+            [
+                'group_id'=>'9',
+                'permissions'=>[
+                    'advertisement-settings',
+                    'advertisement'
                 ]
             ],
 
@@ -87,8 +128,10 @@ class RolePermissionSeeder extends Seeder
             $permissionGroup = $permissions[$i]['group_id'];
 
             for ($j=0; $j<count($permissions[$i]['permissions']); $j++){
-                //create permission for supper-admin
+
                 $permission = Permission::create(['name' => $permissions[$i]['permissions'][$j],'group_id'=>$permissionGroup]);
+
+                //create permission for supper-admin
                 $roleSupperAdmin->givePermissionTo($permission);
                 $permission->assignRole($roleSupperAdmin);
 

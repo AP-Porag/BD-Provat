@@ -1,9 +1,13 @@
 @extends('layouts.website')
-@section('title', $post->title)
-    {{--@section('meta_keywords',
-    $post->postMeta->meta_keywords)--}}
-    {{--@section('meta_description',
-    $post->postMeta->meta_description)--}}
+@section('title')
+    {{$post->title}}
+@endsection
+@section('meta_keywords')
+    {{$post->postMeta->meta_keywords ? $post->postMeta->meta_keywords : 'BD-Provat'}}
+@endsection
+@section('meta_description')
+    {{$post->postMeta->meta_description ? $post->postMeta->meta_description : 'BD-Provat'}}
+@endsection
 @section('style')
     <style>
 
@@ -60,7 +64,8 @@
                                 <div class="col-md-4 pl-3">
                                     <a class="" href="{{ route('single-post-page', $r_news->slug) }}">
                                         <div class="small_image_box related_post_image_box">
-                                            <img class="img-fluid" alt="{{ $r_news->slug }}" src="{{ $r_news->thumbnail }}">
+                                            <img class="img-fluid" alt="{{ $r_news->slug }}"
+                                                 src="{{ $r_news->thumbnail }}">
                                             <div class="small_image_overlay related_post_overlay">
                                                 <h5 class="">
                                                     {{ $r_news->title }}
@@ -132,11 +137,12 @@
                                     <div class="form-group">
                                         <label for="email">Email address</label>
                                         <input type="email" name="email" class="form-control" id="email"
-                                            aria-describedby="email">
+                                               aria-describedby="email">
                                         <input type="text" name="password" class="form-control" id="password"
-                                            aria-describedby="password" placeholder="Password Automatically" hidden>
+                                               aria-describedby="password" placeholder="Password Automatically" hidden>
                                         <input type="text" name="post_id" class="form-control" id="post_id"
-                                            aria-describedby="post_id" placeholder="Post ID" value="{{ $post->id }}" hidden>
+                                               aria-describedby="post_id" placeholder="Post ID" value="{{ $post->id }}"
+                                               hidden>
                                         <small id="email" class="form-text text-muted">
                                             We'll never share your email with anyone else.</small>
                                     </div>
@@ -156,7 +162,7 @@
 @endsection
 @section('script')
     <script>
-        $('#email').change(function() {
+        $('#email').change(function () {
             $('#password').val($(this).val());
         });
 

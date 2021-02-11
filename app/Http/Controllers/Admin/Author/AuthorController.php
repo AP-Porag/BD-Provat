@@ -59,7 +59,7 @@ class AuthorController extends Controller
         Image::make($request->thumbnail)
             //                ->resize(400, 350)
             ->save(base_path('/public/storage/author/' . $image_new_name));
-        $author->thumbnail = 'http://127.0.0.1:8000/storage/author/' . $image_new_name;
+        $author->thumbnail = '/storage/author/' . $image_new_name;
         $author->save();
         Session::flash('success', 'Author Created Successfully');
         return back();
@@ -116,7 +116,7 @@ class AuthorController extends Controller
         Image::make($request->thumbnail)
             //                ->resize(400, 350)
             ->save(base_path('/public/storage/author/' . $image_new_name));
-        $author->thumbnail = 'http://127.0.0.1:8000/storage/author/' . $image_new_name;
+        $author->thumbnail = '/storage/author/' . $image_new_name;
         $author->save();
         Session::flash('success', 'Author Updated Successfully');
         return back();

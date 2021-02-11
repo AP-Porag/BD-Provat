@@ -18,6 +18,11 @@
 @endsection
 @section('style')
     <style>
+        .card_info_box .img-thumbnail{
+            margin-top: 20px;
+            border-radius: 50%;
+            background: rgba(1,10,78,1);
+        }
         .card_heading_bg {
             background: url("{{asset('admin/img/bg5.jpg')}}") center no-repeat;
             background-size: cover;
@@ -89,14 +94,14 @@
                                 <div class="form-group">
                                     <label for="dob">Date Of Birth</label>
                                     <input type="date" class="form-control" name="dob" placeholder="Date of birth"
-                                           value="{{$user->profile->dob,old('dob')}}" id="dob">
+                                           value="{{$user->profile->dateOfBirth,old('dob')}}" id="dob">
                                 </div>
                             </div>
                             <div class="col-md-6 px-1">
                                 <div class="form-group">
                                     <label for="jod">Joining Date</label>
                                     <input type="date" class="form-control" name="jod" placeholder="Joining Date"
-                                           value="{{$user->profile->jod,old('jod')}}" id="jod">
+                                           value="{{$user->profile->joiningDate,old('jod')}}" id="jod">
                                 </div>
                             </div>
                         </div>
@@ -146,7 +151,7 @@
                                                     <div class="col-md-6 offset-3">
                                                         <div class="img-thumbnail border-0 mb-3">
                                                             <img src="" alt="preview" class="img-fluid"
-                                                                 id="preview">
+                                                                 id="preview" style="border-radius: 50%;">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 align-self-end">
@@ -199,19 +204,19 @@
                                                     {{$role->name}}
                                                 @endforeach
                                             </span> <br>
-                                        <span>
+                                        <span class="text-primary">
                                                 Joining Date :
                                             @if($user->profile->joiningDate != null)
-                                                {{--{{($user->profile->joiningDate)->diffForHumans()}}--}}
+                                                {{$user->profile->joiningDate}}
                                             @else
                                                 <span class="text-warning">Give your joining date please !</span>
                                             @endif
     </span> <br>
-                                        <span>
-    @php
-        $years = \Carbon\Carbon::parse($user->profile->joiningDate)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
-    @endphp
-    Servicing Age : {{$years}}
+                                        <span class="text-warning">
+                                            @if($user->profile->joiningDate != null)
+                                                Servicing Age
+                                                :   {{\Carbon\Carbon::parse($user->profile->joiningDate)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days')}}
+                                            @endif
     </span> <br>
                                     </p>
                                 </div>

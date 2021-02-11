@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->string('thumbnail')->default(asset('storage/no-image/no-image-available.webp'));
+            $table->string('thumbnail')->nullable();
             $table->string('status');
             $table->string('breaking')->default('not-breaking');
             $table->string('featured')->default('not-featured');
