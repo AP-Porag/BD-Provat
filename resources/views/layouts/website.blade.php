@@ -41,7 +41,7 @@
                         <div class="social-icon-content d-flex justify-content-between">
                             <h2 class="date ml-3 mt-4">
                                 @php
-                                echo date('D - d , M-Y');
+                                    echo date('D - d , M-Y');
                                 @endphp
                             </h2>
                             <ul class="d-flex social-icon mr-3 mt-4">
@@ -137,19 +137,22 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <!-- Large modal -->
-                                <a type="button" class="btn btn-sm nav-link" data-toggle="modal" data-target=".bd-search-modal-lg"><i class="fa fa-search"></i></a>
+                                <a type="button" class="btn btn-sm nav-link" data-toggle="modal"
+                                    data-target=".bd-search-modal-lg"><i class="fa fa-search"></i></a>
 
-                                <div class="modal fade bd-search-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySearchModalLabel" aria-hidden="true">
+                                <div class="modal fade bd-search-modal-lg" tabindex="-1" role="dialog"
+                                    aria-labelledby="mySearchModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header border-0">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="search-form">
-                                                    <form action="{{route('search-page')}}" method="post">
+                                                    <form action="{{ route('search-page') }}" method="post">
                                                         @csrf
                                                         @method('post')
                                                         <div class="form-row">
@@ -158,18 +161,19 @@
                                                                     <div class="input-group">
                                                                         <div class="custom-file ml-5">
                                                                             <input type="text" name="search"
-                                                                                   class="form-control @error('search') is-invalid @enderror"
-                                                                                   id="search"
-                                                                                   placeholder="এখানে লিখুন..">
+                                                                                class="form-control @error('search') is-invalid @enderror"
+                                                                                id="search" placeholder="এখানে লিখুন..">
                                                                         </div>
                                                                         <div class="input-group-append mr-5">
-                                                                                <button type="submit" class="border-0 search-btn"><i class="fa fa-search"></i></button>
+                                                                            <button type="submit"
+                                                                                class="border-0 search-btn"><i
+                                                                                    class="fa fa-search"></i></button>
                                                                         </div>
                                                                     </div>
                                                                     @error('search')
-                                                                    <div class="invalid-feedback">
-                                                                        <strong>Warning! </strong>{{$message}}
-                                                                    </div>
+                                                                        <div class="invalid-feedback">
+                                                                            <strong>Warning! </strong>{{ $message }}
+                                                                        </div>
                                                                     @enderror
                                                                 </div>
                                                             </div>
@@ -208,8 +212,7 @@
         </div>
         {{-- Braking News End --}}
     </header>
-
-    {{--main content--}}
+    {{-- main content --}}
     <div class="content">
         @yield('content')
     </div>
@@ -218,50 +221,69 @@
     <footer id="footer" class="footer-area wow fadeIn">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-
-                    <div class="logo_play_store d-flex justify-content-between">
+                <div class="col-md-4">
+                    <div>
                         <a href="{{ route('website') }}">
                             <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" width="200">
                         </a>
-                        <a href="#" class="google-play-img">
-                            <img src="{{ asset('frontend/images/google_play.png') }}"
-                                alt="{{ asset('frontend/images/google_play.png') }}" width="150">
-                        </a>
                     </div>
-
-                    <div class="editor d-flex justify-content-between">
-                        <p class="pb-3 pt-2">
-                            {{ $author->authorname }}
-                            <br>{{ $author->enterprisename }}<br>
+                </div>
+                <div class="col-md-4 text-center">
+                    <span> {{ $author->authorname }}</span>
+                    <div class="copyright">
+                        <p>©All rights reserved by BD-Provat - @php echo date('Y') @endphp<a href="{{ route('website') }}"></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="editor">
+                        <p class="pb-3">
+                            {{ $author->enterprisename }}<br>
                             {{ $author->enterpriseheadquarter }}।<br>
                             আমাদের মেইল: <a href="{{ $author->email }}">bdprovat.news@gmail.com</a>
                             </br>মোবাইল:
                             {{ $author->mobilenumber }}
                         </p>
+                    </div>
+                </div>
+            </div>
 
-                        <ul>
+        </div>
+
+    </footer>
+    <section id="headline">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <p class="breaking-news-title">শিরোনাম</p>
+                </div>
+                <div class="col-md-10">
+                    <marquee scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();">
+                        <ul class="d-flex">
                             <li>
-                                <a class="nav-link about-us" href="">আমাদের কথা</a>
+                                <span>বিডি</span>
+                                <a href="">চাল সংগ্রহে বারবার ব্যর্থতা ঝুঁকিতে ফেলছে খাদ্য নিরাপত্তাকে</a>
+                            </li>
+                            <li>
+                                <span>বিডি</span>
+                                <a href="">চাল সংগ্রহে বারবার ব্যর্থতা ঝুঁকিতে ফেলছে খাদ্য নিরাপত্তাকে</a>
+                            </li>
+                            <li>
+                                <span>বিডি</span>
+                                <a href="">চাল সংগ্রহে বারবার ব্যর্থতা ঝুঁকিতে ফেলছে খাদ্য নিরাপত্তাকে</a>
+                            </li>
+                            <li>
+                                <span>বিডি</span>
+                                <a href="">চাল সংগ্রহে বারবার ব্যর্থতা ঝুঁকিতে ফেলছে খাদ্য নিরাপত্তাকে</a>
                             </li>
                         </ul>
-                    </div>
+                    </marquee>
                 </div>
             </div>
         </div>
-        <div class="root">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p>All rights reserved © @php echo date('Y') @endphp<a
-                                href="{{ route('website') }}">BD-Provat</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </section>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    {{-- Footer Section End--}}
+    {{-- Footer Section End --}}
     <!-- all js files -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
