@@ -191,6 +191,22 @@
                 </div>
             </li>
 
+            <!-- Nav Item - Custom Advertisment Section -->
+            <li class="nav-item">
+                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseadvertisement"
+                   aria-expanded="true" aria-controls="collapseadvertisement">
+                    <i class="fas fa-street-view"></i>
+                    <i class="" aria-hidden="true"></i>
+                    <span class="text-capitalize">Custom Advertisement</span>
+                </a>
+                <div id="collapseadvertisement" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item text-capitalize" href="{{route('customadd.index')}}">Custom Advertisement</a>
+                    </div>
+                </div>
+            </li>
+
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -270,7 +286,8 @@
                                         </span>
                                     </li>
                                 </ul>
-                                <img class="img-profile rounded-circle" src="{{Auth::user()->profile->profilePicture}}"
+                         
+                                <img class="img-profile rounded-circle" src=""
                                      alt="{{Auth::user()->name}}">
                             </a>
                             <!-- Dropdown - User Information -->

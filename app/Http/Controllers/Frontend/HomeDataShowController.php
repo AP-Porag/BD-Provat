@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\CustomAdd;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Author;
@@ -16,7 +17,7 @@ class HomeDataShowController extends Controller
     {
         $categories = Category::all();
 
-        $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','DESC')->get();
+        $breaking_news = Post::Where('breaking', 'breaking')->orderBy('created_at', 'DESC')->get();
 
         $last_top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->first();
         $top_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_top_news->id)->paginate(4);
@@ -24,10 +25,13 @@ class HomeDataShowController extends Controller
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 7)->limit(15)->get();
 
+        //custom add
+        $custom_add = CustomAdd::first();
+
         //popular news
         $popular_news = Post::orderBy('views', 'DESC')->whereDate('created_at', '>', Carbon::now()->subMonth())->limit(15)->get();
 
-        $national_posts = Post::where('category_id', 1)->where('status', 'published')->orderBy('id', 'DESC')->limit(6)->get();
+        $national_posts = Post::where('category_id', 1)->where('status', 'published')->orderBy('id', 'DESC')->limit(9)->get();
 
         $last_political_post = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $political_posts = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_political_post->id)->paginate(4);
@@ -43,7 +47,7 @@ class HomeDataShowController extends Controller
 
         //feature news
         $feature_tag = '2';
-        $feature_news = Post::Where('featured','featured')->orderBy('created_at','DESC')->get();
+        $feature_news = Post::Where('featured', 'featured')->orderBy('created_at', 'DESC')->get();
         //international
         $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
         $international_posts = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_international_post->id)->limit(4)->get();
@@ -117,6 +121,7 @@ class HomeDataShowController extends Controller
             'health_posts',
             'last_religion_post',
             'religion_posts',
+            'custom_add',
         ]));
     }
 }

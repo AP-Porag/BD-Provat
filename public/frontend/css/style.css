@@ -212,7 +212,7 @@ section {
     background: darkgreen;
 }
 
-.search-btn{
+.search-btn {
     background: #8c0707;
     padding-left: 15px;
     padding-right: 15px;
@@ -221,13 +221,13 @@ section {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
+
 /* Breaking News Start */
 .breaking-news-title {
     background: darkgreen;
     color: #fff;
     padding: 5px;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 marquee ul li {
@@ -796,7 +796,14 @@ nav>div a.nav-item.nav-link:focus {
 footer {
     background: #000;
     padding-top: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 52px;
 }
+
+footer .copyright {
+    padding-top: 80px;
+}
+
 
 footer p {
     color: #fff;
@@ -814,8 +821,24 @@ footer p a {
     font-weight: 400;
 }
 
+footer span {
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+}
+
+footer span:before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    background: #fff;
+    width: 100%;
+    left: 0;
+    top: 30px;
+}
+
 footer p a:hover {
-    color: #000000;
+    color: red;
 }
 
 footer ul li a {
@@ -961,7 +984,7 @@ footer .root {
 }
 
 nav>div a.nav-item.nav-link.active:after {
-    bottom: -46px;
+    bottom: -44px;
 }
 
 #tag_box {
@@ -993,7 +1016,7 @@ nav>div a.nav-item.nav-link.active:after {
     bottom: 60px;
     right: 30px;
     z-index: 99;
-    font-size: 18px;
+    font-size: 14px;
     border: none;
     outline: none;
     background-color: red;
@@ -1007,18 +1030,38 @@ nav>div a.nav-item.nav-link.active:after {
     background-color: #555;
     transition: all linear 0.4s;
 }
-.about-row{
+
+.about-row {
     margin-bottom: 300px;
 }
-.about-row .card-img{
+
+.about-row .card-img {
     border-radius: 50%;
 }
-.about-row .card-footer{
+
+.about-row .card-footer {
     background: #8c0707;
 }
-.about-row .card-footer .name{
+
+.about-row .card-footer .name {
     color: #e2dfdf;
 }
-.about-row .card-footer .role{
+
+.about-row .card-footer .role {
     color: #929191;
 }
+
+/* Headline start */
+#headline {
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #F0F8FF;
+    padding: 0;
+    margin: 0;
+}
+
+/* Headline end */
