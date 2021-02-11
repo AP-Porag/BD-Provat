@@ -222,6 +222,7 @@
                 </marquee>
             </div>
         </div>
+    </div>
         {{-- Braking News End --}}
     </header>
     {{-- main content --}}
@@ -230,7 +231,6 @@
 
     </div>
     {{-- Braking News End --}}
-</header>
 
     {{-- Footer Section Start --}}
     <footer id="footer" class="footer-area wow fadeIn">
@@ -256,7 +256,7 @@
                             {{ $author->enterprisename }}<br>
                             {{ $author->enterpriseheadquarter }}।<br>
                             আমাদের মেইল: <a href="{{ $author->email }}">bdprovat.news@gmail.com</a>
-                            </br>মোবাইল:
+                            <br>মোবাইল:
                             {{ $author->mobilenumber }}
                         </p>
                     </div>

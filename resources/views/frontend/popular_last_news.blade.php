@@ -1,7 +1,9 @@
 <div class="coustom_advertise">
     <div class="row">
         <div class="col-md-12">
-            <img src="{{ $custom_add->customadd }}" class="img-fluid">
+
+            <img src="" class="img-fluid">
+
         </div>
     </div>
 </div>
