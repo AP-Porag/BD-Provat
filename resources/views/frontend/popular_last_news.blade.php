@@ -1,9 +1,9 @@
 <div class="coustom_advertise">
     <div class="row">
         <div class="col-md-12">
-
-            <img src="" class="img-fluid">
-
+            @if (isset($custom_add))
+            <img src="{{$custom_add->customadd}}" class="img-fluid">
+            @endif
         </div>
     </div>
 </div>

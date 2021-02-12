@@ -253,12 +253,10 @@ class PostController extends Controller
             unlink(public_path($thumbnail));
 
         }
-
+        //$post_meta = PostMeta::where('post_id',$post->id)->delete();
         $post->delete();
 
-        if ($post) {
-            Session::flash('success', 'Post Deleted Successfully !');
-        }
+        Session::flash('success', 'Post Deleted Successfully !');
 
         return back();
     }

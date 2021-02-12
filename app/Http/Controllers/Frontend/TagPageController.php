@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\CustomAdd;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
@@ -30,10 +31,11 @@ class TagPageController extends Controller
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 7)->limit(15)->get();
+        $custom_add = CustomAdd::first();
 
         //popular news
         $popular_news = Post::orderBy('views', 'DESC')->whereDate('created_at', '>', Carbon::now()->subMonth())->limit(15)->get();
 
-        return response(view('frontend.tag-page', compact('slug', 'categories', 'breaking_news', 'posts', 'category','latest_news','popular_news')));
+        return response(view('frontend.tag-page', compact('slug', 'categories', 'breaking_news', 'posts', 'category','latest_news','popular_news','custom_add')));
     }
 }

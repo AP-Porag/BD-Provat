@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\CustomAdd;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
@@ -20,6 +21,7 @@ class SearchPageController extends Controller
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '>=', 7)->limit(15)->get();
+        $custom_add = CustomAdd::first();
 
         //popular news
         $popular_news = Post::orderBy('views', 'DESC')->whereDate('created_at', '>', Carbon::now()->subMonth())->limit(15)->get();
@@ -30,6 +32,6 @@ class SearchPageController extends Controller
         $search_text = $request->search;
         $posts = Post::where('title','LIKE','%'.$search_text.'%')->orderBy('created_at', 'DESC')->paginate(6);
 
-        return response(view('frontend.search-result-page', compact('search_text', 'categories', 'breaking_news', 'posts','latest_news','popular_news')));
+        return response(view('frontend.search-result-page', compact('search_text', 'categories', 'breaking_news', 'posts','latest_news','popular_news','custom_add')));
     }
 }
