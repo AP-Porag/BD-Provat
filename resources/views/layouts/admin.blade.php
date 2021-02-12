@@ -168,8 +168,7 @@
                     </li>
             @endcan
 
-        <!-- Nav Item - Tag management -->
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Notification -->
             <li class="nav-item {{ request()->segment(2) == 'notification' ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('notification-list')}}">
                     <div class="d-flex justify-content-between">
@@ -228,21 +227,16 @@
                     </li>
             @endcan
 
-            <!-- Nav Item - Custom Advertisment Section -->
-            <li class="nav-item">
-                <a class="nav-link collapsed text-capitalize" href="#" data-toggle="collapse" data-target="#collapseadvertisement"
-                   aria-expanded="true" aria-controls="collapseadvertisement">
-                    <i class="fas fa-street-view"></i>
-                    <i class="" aria-hidden="true"></i>
-                    <span class="text-capitalize">Custom Advertisement</span>
-                </a>
-                <div id="collapseadvertisement" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item text-capitalize" href="{{route('customadd.index')}}">Custom Advertisement</a>
+            @can('advertisement-settings','advertisement')
+        <!-- Nav Item - Advertisement -->
+            <li class="nav-item {{ request()->segment(2) == 'customadd' ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('customadd.index')}}">
+                    <div class="d-flex justify-content-between">
+                        <span><i class="fas fa-ad"></i>Advertisement</span>
                     </div>
-                </div>
+                </a>
             </li>
-
+            @endcan
 
 
             <!-- Divider -->
@@ -334,8 +328,8 @@
                                         </span>
                                     </li>
                                 </ul>
-                         
-                                <img class="img-profile rounded-circle" src=""
+
+                                <img class="img-profile rounded-circle" src="{{Auth::user()->profile->profilePicture}}"
                                      alt="{{Auth::user()->name}}">
                             </a>
                             <!-- Dropdown - User Information -->

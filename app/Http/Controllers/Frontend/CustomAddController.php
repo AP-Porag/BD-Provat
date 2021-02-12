@@ -40,18 +40,28 @@ class CustomAddController extends Controller
      */
     public function store(Request $request)
     {
-        $thumbnail = $request->customadd;
+
         $this->validate($request, [
             'customadd' => 'required',
         ]);
 
-        $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
-        Image::make($thumbnail)
-            //                ->resize(400, 350)
-            ->save(base_path('/public/storage/customadd/' . $image_new_name));
-        $customadd->customadd = url('/') . '/storage/customadd/' . $image_new_name;
-        $customadd->save();
-        Session::flash('success', 'Author Updated Successfully');
+        $thumbnail = $request->customadd;
+
+        if ($request->has('customadd')) {
+
+            $customadd = CustomAdd::create([
+                'customadd'=>'image.jpg'
+            ]);
+
+            $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
+            Image::make($thumbnail)
+                //                ->resize(400, 350)
+                ->save(base_path('/public/storage/customadd/' . $image_new_name));
+            $customadd->customadd = '/storage/customadd/' . $image_new_name;
+            $customadd->save();
+            Session::flash('success', 'Add Created Successfully');
+        }
+
         return back();
     }
 
@@ -74,8 +84,7 @@ class CustomAddController extends Controller
      */
     public function edit($id)
     {
-        $customadd = CustomAdd::where('id', $id)->first();
-        return view('admin.customadd.customadd-edit', compact('customadd'));
+
     }
 
     /**
@@ -88,19 +97,6 @@ class CustomAddController extends Controller
     public function update(Request $request, CustomAdd $customadd)
     {
 
-        $thumbnail = $request->customadd;
-        $this->validate($request, [
-            'customadd' => 'required',
-        ]);
-
-        $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
-        Image::make($thumbnail)
-            //                ->resize(400, 350)
-            ->save(base_path('/public/storage/customadd/' . $image_new_name));
-        $customadd->customadd = url('/') . '/storage/customadd/' . $image_new_name;
-        $customadd->save();
-        Session::flash('success', 'Author Updated Successfully');
-        return back();
     }
 
     /**
@@ -112,8 +108,16 @@ class CustomAddController extends Controller
     public function destroy($id)
     {
         $customadd = CustomAdd::findOrfail($id);
+        $thumbnail_old = $customadd->customadd;
+
+        if (file_exists(public_path($thumbnail_old))){
+
+            unlink(public_path($thumbnail_old));
+
+        }
+
         $customadd->delete();
-        Session::flash('success', 'Author Updated Successfully');
+        Session::flash('success', 'Add deleted Successfully');
         return back();
     }
 }

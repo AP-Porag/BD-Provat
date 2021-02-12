@@ -30,15 +30,17 @@
                         </div>
                         <div class="card-body">
                             <div class="col-md-6">
-                                <form action="{{ route('customadd.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('customadd.store') }}" method="POST"
+                                      enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="category">Upload Image</label>
                                         <input type="file" name="customadd"
-                                            class="form-control @error('customadd') is-invalid @enderror" id="category"
-                                            aria-describedby="emailHelp">
+                                               class="form-control @error('customadd') is-invalid @enderror"
+                                               id="category"
+                                               aria-describedby="emailHelp">
                                         @error('customadd')
-                                            <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </span>
                                         @enderror
@@ -60,38 +62,35 @@
                         <div class="card-body">
                             <table class="table">
                                 <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">SL</th>
-                                        <th scope="col">Custom Add Image</th>
-                                        <th scope="col" class="text-center">Actions</th>
-                                    </tr>
+                                <tr>
+                                    <th scope="col">SL</th>
+                                    <th scope="col">Custom Add Image</th>
+                                    <th scope="col" class="text-center">Actions</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @if (isset($customadd))
-                                        <tr>
-                                            <td>{{ $customadd->id ?? ' ' }}</td>
-                                            <td><img src="{{ $customadd->customadd ?? '' }}"
-                                                    alt="{{ $customadd->customadd ?? '' }}" class="w-25"> </td>
-                                            <td class="text-right">
-                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ route('customadd.edit', $customadd->id) }}"
-                                                        class="btn btn-warning">Edit</a>
-
-                                                    <form action="{{ route('customadd.destroy', $customadd->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        {{ method_field('DELETE') }}
-                                                        <input class="btn btn-danger" type="submit" name="submit"
-                                                            value="Delete">
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @else
-                                        <tr>
-                                            <td class="text-center" colspan="3">No Data Found</td>
-                                        </tr>
-                                    @endif
+                                @if (isset($customadd))
+                                    <tr>
+                                        <td>{{ $customadd->id ?? ' ' }}</td>
+                                        <td><img src="{{ $customadd->customadd ?? '' }}"
+                                                 alt="{{ $customadd->customadd ?? '' }}" class="w-25"></td>
+                                        <td class="text-right">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <form action="{{ route('customadd.destroy', $customadd->id) }}"
+                                                      method="POST">
+                                                    @csrf
+                                                    {{ method_field('DELETE') }}
+                                                    <input class="btn btn-danger" type="submit" name="submit"
+                                                           value="Delete">
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <tr>
+                                        <td class="text-center" colspan="3">No Data Found</td>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>

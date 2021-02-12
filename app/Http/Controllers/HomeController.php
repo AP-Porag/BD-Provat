@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\TotalVisitorChart;
+use App\CustomAdd;
 use App\Models\Category;
 use App\Models\Notification;
 use App\Models\Post;
@@ -10,6 +12,8 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Analytics\AnalyticsFacade as Analytics;
+use Spatie\Analytics\Period;
 
 class HomeController extends Controller
 {
@@ -66,7 +70,7 @@ class HomeController extends Controller
             $entertainment_posts = Post::where('category_id', 6)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_entertainment_post->id)->paginate(10);
 
             //feature news
-            $feature_news = Post::Where('featured','featured')->orderBy('created_at','DESC')->get();
+            $feature_news = Post::Where('featured','featured')->orderBy('created_at','DESC')->limit(9)->get();
             //international
             $last_international_post = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->first();
             $international_posts = Post::where('category_id', 4)->where('status', 'published')->orderBy('id', 'DESC')->where('id', '!=', $last_international_post->id)->limit(4)->get();
@@ -104,7 +108,7 @@ class HomeController extends Controller
             //religion
             $last_religion_post = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'DESC')->first();
             $religion_posts = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'DESC')->where('id', '!=', $last_religion_post->id)->limit(4)->get();
-
+            $custom_add = CustomAdd::first();
 
             return view('frontend.index', compact([
                 'categories',
@@ -140,6 +144,7 @@ class HomeController extends Controller
                 'health_posts',
                 'last_religion_post',
                 'religion_posts',
+                'custom_add'
             ]));
         } else {
             //Dashboard Data Controlling start
@@ -156,6 +161,45 @@ class HomeController extends Controller
             $categoriesViews = Category::orderBy('created_at','DESC')->paginate(5,['*'],'categoriesViews');
             $subCategoriesViews = SubCategory::orderBy('created_at','DESC')->paginate(5,['*'],'subCategoriesViews');
 
+            //google analytics
+            $totalVisitors = Analytics::fetchTotalVisitorsAndPageViews(Period :: days(7));
+
+            // Retrieve Total Visitors and Page Views
+            $total_visitors = Analytics::fetchTotalVisitorsAndPageViews(Period::months(1))->pluck('date','visitors'); //bar chart
+            $total_visitors_pageViews = Analytics::fetchTotalVisitorsAndPageViews(Period::months(1))->pluck('date','pageViews'); //bar chart
+
+            $totalVisitorsChart = new TotalVisitorChart();
+            $totalVisitorsChart->labels($total_visitors->values());
+            $totalVisitorsChart->dataset('Visitors', 'bar', $total_visitors->keys())->backgroundColor('#4167d6');
+            $totalVisitorsChart->dataset('Page-Views', 'line', $total_visitors_pageViews->keys())->backgroundColor('#2c9faf');
+
+
+            // Retrieve User Types
+            $user_types = Analytics::fetchUserTypes(Period::days(7))->pluck('type','sessions');
+            $user_typesChart = new TotalVisitorChart();
+            $user_typesChart->labels($user_types->values());
+            $user_typesChart->dataset('Visitors', 'doughnut', $user_types->keys())->backgroundColor('');
+
+            //Retrieve Top Browsers
+            $top_browser = Analytics::fetchTopBrowsers(Period::months(1))->pluck('browser','sessions'); //bar chart
+            $top_browserChart = new TotalVisitorChart();
+            $top_browserChart->labels($top_browser->values());
+            $top_browserChart->dataset('Browsers', 'bar', $top_browser->keys())->backgroundColor('#2c9faf');
+
+            //Retrieve Most Visited Pages
+            $pages = Analytics::fetchMostVisitedPages(Period::months(1));
+
+            //retrieve visitors and pageview data for the current day and the last fifteen days
+            $googlevisitors = Analytics::fetchVisitorsAndPageViews(Period::days(15)); //col-md-4-pie chart
+
+
+            // Retrieve Top Referrers
+            $top_referrers = Analytics::fetchTopReferrers(Period::days(7))->pluck('url','pageViews');
+            $top_referrerChart = new TotalVisitorChart();
+            $top_referrerChart->labels($top_referrers->values());
+            $top_referrerChart->dataset('Referrers', 'bar', $top_referrers->keys())->backgroundColor('#e6ae1e');
+
+
             return view('admin.index',compact([
                 'postCount',
                 'postForThisMonth',
@@ -163,7 +207,14 @@ class HomeController extends Controller
                 'categories',
                 'subCategories',
                 'categoriesViews',
-                'subCategoriesViews'
+                'subCategoriesViews',
+                'totalVisitors',
+                'pages',
+                'totalVisitorsChart',
+                'user_typesChart',
+                'top_browserChart',
+                'googlevisitors',
+                'top_referrerChart'
             ]));
         }
     }
