@@ -1,12 +1,16 @@
+@if (isset($right_side_one_add))
 <div class="coustom_advertise">
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-12">
-            @if (isset($custom_add))
-            <img src="{{$custom_add->customadd}}" class="img-fluid">
-            @endif
+
+            <div class="" >
+                <img src="{{$right_side_one_add->customadd}}" class="" style="width: 350px; max-height: 275px">
+            </div>
+
         </div>
     </div>
 </div>
+@endif
 <div class="card">
     <nav>
         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -50,3 +54,4 @@
         </div>
     </div>
 </div>
+

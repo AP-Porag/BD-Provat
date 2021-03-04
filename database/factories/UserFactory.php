@@ -47,6 +47,7 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'category_id'=>rand(1,12),
         'sub_category_id'=>rand(1,20),
+        'sub_menu_id'=>rand(1,64),
         'post_author'=>rand(3,12),
         'title'=>$faker->unique()->sentence,
         'slug'=>$faker->unique()->slug,

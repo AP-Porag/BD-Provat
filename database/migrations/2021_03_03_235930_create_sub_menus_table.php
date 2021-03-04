@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomAddsTable extends Migration
+class CreateSubMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateCustomAddsTable extends Migration
      */
     public function up()
     {
-        Schema::create('custom_adds', function (Blueprint $table) {
+        Schema::create('sub_menus', function (Blueprint $table) {
             $table->id();
-            $table->string('customadd');
-            $table->string('place')->nullable();
+            $table->foreignId('category_id');
+            $table->foreignId('sub_category_id');
+            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +31,6 @@ class CreateCustomAddsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('custom_adds');
+        Schema::dropIfExists('sub_menus');
     }
 }

@@ -35,6 +35,12 @@
             width: 25px;
         }
 
+        #menu-loader {
+            position: absolute;
+            right: 18px;
+            top: 38px;
+            width: 25px;
+        }
         #preview {
             min-width: 100%;
             max-width: 100%;
@@ -108,7 +114,7 @@
                                         <div class="col-md-12">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="category" class="text-capitalize">Post
                                                                 Category</label>
@@ -130,7 +136,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="subcategory" class="text-capitalize">Post
                                                                 Sub-Category</label>
@@ -142,6 +148,24 @@
                                                             <img id="loader" src="{{asset('admin/img/loader.gif')}}"
                                                                  alt="loader">
                                                             @error('subcategory')
+                                                            <div class="invalid-feedback mt-1">
+                                                                <strong>Warning! </strong> <span>{{$message}}</span>
+                                                            </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="submenu" class="text-capitalize">Post
+                                                                Sub-Menu/Dist.</label>
+                                                            <select
+                                                                class="custom-select mr-sm-2 @error('submenu') is-invalid @enderror"
+                                                                id="submenu"
+                                                                name="submenu">
+                                                            </select>
+                                                            <img id="menu-loader" src="{{asset('admin/img/loader.gif')}}"
+                                                                 alt="loader">
+                                                            @error('submenu')
                                                             <div class="invalid-feedback mt-1">
                                                                 <strong>Warning! </strong> <span>{{$message}}</span>
                                                             </div>
@@ -345,9 +369,16 @@
             src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script>
         var loader = $('#loader');
+        var menuLoader = $('#menu-loader');
         var subcategory = $('#subcategory');
+        var submenu = $('#submenu');
         loader.hide();
-        var subCategory = "<?php echo $post->sub_category_id; ?>"
+        menuLoader.hide();
+        var subCategory = "<?php echo $post->sub_category_id; ?>";
+        var subMenu = "<?php echo $post->sub_menu_id; ?>";
+
+        console.log(subMenu)
+        //selected sub category
         if (subCategory != null) {
             subcategory.removeAttr('disabled');
             $.ajax({
@@ -383,6 +414,44 @@
         } else {
 
             subcategory.attr('disabled', 'disabled');
+        }
+
+        //selected sub menu
+        if (subMenu != null) {
+            submenu.removeAttr('disabled');
+            $.ajax({
+                type: 'get',
+                url: '/admin/post/get/sub-menu',
+                data: {'sub_menu_id': subMenu},
+                dataType: 'json',//return data will be json
+                success: function (data) {
+                    console.log('Submenu ' + data)
+                    var select = '<option selected disabled>--Select Sub-Category--</option>';
+
+                    data.forEach(function (row) {
+                        var subMenu = "<?php echo $post->sub_menu_id; ?>";
+
+                        select += '<option value="' + row.id + '" ' + (subMenu == row.id ? 'selected' : '') + ' >' + row.name + '</option>';
+                    });
+
+                    if (!$.trim(data)) {
+                        submenu.attr('disabled', 'disabled');
+                        menuLoader.hide();
+                    } else {
+                        submenu.removeAttr('disabled');
+                        submenu.html(select);
+                        menuLoader.hide();
+                    }
+
+
+                },
+                error: function () {
+
+                }
+            });
+        } else {
+
+            submenu.attr('disabled', 'disabled');
         }
 
         $('#preview').attr('src', '{{$post->thumbnail}}');
@@ -443,6 +512,131 @@
                     }
                 });
             }
+
+
+        });
+
+        //dependable subMenu dropdown
+        $(document).on('change', '#category', function () {
+            var category_id = $(this).val();
+
+            console.log('Category ID - ' + category_id);
+
+            if (category_id){
+                menuLoader.show();
+                submenu.attr('disabled','disabled');
+
+                $.ajax({
+                    type: 'get',
+                    url: '/admin/post/get/findSubmenu',
+                    data: {'category_id': category_id},
+                    dataType: 'json',//return data will be json
+                    success: function (data) {
+                        console.log(data)
+                        var select = '<option selected disabled>--Select Sub-Menu/Dist.--</option>';
+
+                        data.forEach(function (row){
+                            select += '<option value="'+row.id+'">'+row.name+'</option>';
+                        });
+
+                        if (!$.trim(data)){
+                            submenu.attr('disabled','disabled');
+                            menuLoader.hide();
+                        }
+                        else{
+                            submenu.removeAttr('disabled');
+                            submenu.html(select);
+                            menuLoader.hide();
+                        }
+
+
+
+
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+
+
+
+        });
+
+        //Set select subcategory for selected sub menu
+        $(document).on('change', '#submenu', function () {
+            var submenu_id = $(this).val();
+
+            console.log('Submenu ID - ' + submenu_id);
+
+            if (submenu_id){
+                subcategory.show();
+                //subcategory.attr('disabled','disabled');
+
+                $.ajax({
+                    type: 'get',
+                    url: '/admin/post/get/findSubmenuSubcategory',
+                    data: {'submenu_id': submenu_id},
+                    dataType: 'json',//return data will be json
+                    success: function (data) {
+                        console.log(data)
+                        key = data[0].sub_category_id;
+                        $( '#subcategory' ).find('option[value="' + key + '"]').attr('selected','selected')
+
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+
+
+
+        });
+
+        //dependable submenu dropdown
+        $(document).on('change', '#subcategory', function () {
+            var sub_category_id = $(this).val();
+
+            console.log('Sub Category ID - ' + sub_category_id);
+
+            if (sub_category_id){
+                menuLoader.show();
+                submenu.attr('disabled','disabled');
+
+                $.ajax({
+                    type: 'get',
+                    url: '/admin/post/get/getSubcategorySubmenu',
+                    data: {'sub_category_id': sub_category_id},
+                    dataType: 'json',//return data will be json
+                    success: function (data) {
+                        console.log(data)
+                        var select = '<option selected disabled>--Select Sub-Menu--</option>';
+
+                        data.forEach(function (row){
+                            select += '<option value="'+row.id+'">'+row.name+'</option>';
+                        });
+
+                        if (!$.trim(data)){
+                            submenu.attr('disabled','disabled');
+                            menuLoader.hide();
+                        }
+                        else{
+                            submenu.removeAttr('disabled');
+                            submenu.html(select);
+                            menuLoader.hide();
+                        }
+
+
+
+
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+
 
 
         });
@@ -508,6 +702,7 @@
     <script>
         $(document).ready(function () {
             $('#datatable').DataTable({
+                "order": [[ 0, "desc" ]],
                 "ajax": {
                     "url": "/admin/post/get/tags",
                     "dataSrc": ""

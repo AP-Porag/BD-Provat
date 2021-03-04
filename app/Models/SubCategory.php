@@ -12,7 +12,10 @@ class SubCategory extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function submenus()
+    {
+        return $this->hasMany(SubMenu::class);
+    }
     public function posts()
     {
         return $this->hasMany(Post::class);

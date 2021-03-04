@@ -18,8 +18,8 @@ class CustomAddController extends Controller
      */
     public function index()
     {
-        $customadd = CustomAdd::first();
-        return view('admin.customadd.customadd-show', compact('customadd'));
+        $customadds = CustomAdd::limit(5)->get();
+        return view('admin.customadd.customadd-show', compact('customadds'));
     }
 
     /**
@@ -43,6 +43,7 @@ class CustomAddController extends Controller
 
         $this->validate($request, [
             'customadd' => 'required',
+            'place' => 'required|unique:custom_adds,place',
         ]);
 
         $thumbnail = $request->customadd;
@@ -50,12 +51,12 @@ class CustomAddController extends Controller
         if ($request->has('customadd')) {
 
             $customadd = CustomAdd::create([
-                'customadd'=>'image.jpg'
+                'customadd'=>'image.jpg',
+                'place'=>$request->place,
             ]);
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-                //                ->resize(400, 350)
                 ->save(base_path('/public/storage/customadd/' . $image_new_name));
             $customadd->customadd = '/storage/customadd/' . $image_new_name;
             $customadd->save();
@@ -96,7 +97,33 @@ class CustomAddController extends Controller
      */
     public function update(Request $request, CustomAdd $customadd)
     {
+        $thumbnail = $request->customadd;
 
+        if ($request->has('customadd')) {
+
+            $thumbnail_old = $customadd->customadd;
+
+            if (file_exists(public_path($thumbnail_old))){
+
+                unlink(public_path($thumbnail_old));
+
+            }
+
+            $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
+            Image::make($thumbnail)
+                ->save(base_path('/public/storage/customadd/' . $image_new_name));
+            $customadd->customadd = '/storage/customadd/' . $image_new_name;
+            $customadd->save();
+
+        }
+        if ($request->has('place')){
+
+            $customadd->place = $request->place;
+            $customadd->save();
+        }
+
+        Session::flash('success', 'Add Updated Successfully');
+        return back();
     }
 
     /**

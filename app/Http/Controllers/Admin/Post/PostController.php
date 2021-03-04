@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\PostMeta;
 use App\Models\PostTag;
 use App\Models\SubCategory;
+use App\Models\SubMenu;
 use App\Models\Tag;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -27,7 +28,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'DESC')->paginate(10);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return response(view('admin.posts.posts', compact('posts')));
     }
 
@@ -40,7 +41,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $subCategories = SubCategory::all();
-        $tags = Tag::orderBy('created_at', 'DESC')->get();
+        $tags = Tag::orderBy('created_at', 'desc')->get();
         return response(view('admin.posts.posts-create', compact('categories', 'subCategories', 'tags')));
     }
 
@@ -53,21 +54,18 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $meta_keywords = $request->meta_keywords;
+        $characters = [" ", ":", "‘", "’", "“", "”", ",", "--", ""];
+        $requested_meta_keywords = $request->meta_keywords;
+        $meta_keywords = str_replace($characters, ",", $requested_meta_keywords);
         $meta_description = $request->meta_description;
-//       $meta_keywords = $request->title;
-//       $m_description = str::of($request->post_content)->words(20);
-//       $meta_description = $m_description;
-        //=======
         $category = $request->category;
         $subcategory = $request->subcategory;
+        $submenu = $request->submenu;
         $title = $request->title;
-        $characters = [" ", ":", "‘", "’", "“", "”", ",", "--", ""];
         $slug = str_replace($characters, "-", $title);
         $content = $request->post_content;
         $thumbnail = $request->thumbnail;
         $status = $request->status;
-        //========
         $tags = $request->post_tag;
 
         $this->validate($request, [
@@ -100,6 +98,10 @@ class PostController extends Controller
             $post->sub_category_id = $subcategory;
             $post->save();
         }
+        if ($post && $submenu) {
+            $post->sub_menu_id = $submenu;
+            $post->save();
+        }
         if ($post && $status) {
             $post->status = 'published';
             $post->save();
@@ -123,9 +125,17 @@ class PostController extends Controller
         if ($post) {
             $meta = PostMeta::create([
                 'post_id' => $post->id,
-                'meta_keywords' => $meta_keywords,
-                'meta_description' => $meta_description,
+                //'meta_keywords' => $meta_keywords,
+                //'meta_description' => $meta_description,
             ]);
+        }
+        if ($meta && $meta_keywords) {
+            $meta->meta_keywords = $meta_keywords;
+            $meta->save();
+        }
+        if ($meta && $meta_description) {
+            $meta->meta_description = $meta_description;
+            $meta->save();
         }
         if ($post) {
             Session::flash('success', 'Post Created Successfully');
@@ -144,7 +154,7 @@ class PostController extends Controller
         //for search post
         $post = Post::where('id', $id)->first();
         //comments for this post
-        $comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'DESC')->get();
+        $comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
 
         return response(view('admin.posts.posts-show', compact('post', 'comments')));
     }
@@ -160,7 +170,7 @@ class PostController extends Controller
        $post = Post::where('id',$id)->first();
         $categories = Category::all();
         $subCategories = SubCategory::all();
-        $tags = Tag::orderBy('created_at', 'DESC')->get();
+        $tags = Tag::orderBy('created_at', 'desc')->get();
         return response(view('admin.posts.posts-edit', compact('post','categories', 'subCategories', 'tags')));
     }
 
@@ -184,10 +194,14 @@ class PostController extends Controller
             'meta_description' => 'required',
 
         ]);
+        $characters = [" ", ":", "‘", "’", "“", "”", ",", "--", ""];
+        $requested_meta_keywords = $request->meta_keywords;
+        $meta_keywords = str_replace($characters, ",", $requested_meta_keywords);
         $post->category_id = $request->category;
         $post->sub_category_id = $request->subcategory;
+        $post->sub_menu_id = $request->submenu;
         $post->title = $request->title;
-        $post->slug = str::slug($request->title);
+        $post->slug = str_replace($characters, "-", $request->title);
         $post->content = $request->post_content;
         $post->save();
         if ($request->has('status')){
@@ -215,7 +229,7 @@ class PostController extends Controller
 
         if ($request->has('meta_keywords')){
             $meta = PostMeta::where('post_id',$id)->first();
-            $meta->meta_keywords = $request->meta_keywords;
+            $meta->meta_keywords = $meta_keywords;
             $meta->save();
         }
         if ($request->has('meta_description')) {
@@ -245,7 +259,6 @@ class PostController extends Controller
     public static function postSoftDelete(int $id)
     {
         $post = Post::findOrFail($id);
-
         $thumbnail = $post->thumbnail;
 
         if (file_exists(public_path($thumbnail))){
@@ -253,7 +266,12 @@ class PostController extends Controller
             unlink(public_path($thumbnail));
 
         }
-        //$post_meta = PostMeta::where('post_id',$post->id)->delete();
+        $post_meta = PostMeta::where('post_id',$post->id)->delete();
+
+        if ($post->tags()->count() > 0){
+
+            $post->tags()->detach();
+        }
         $post->delete();
 
         Session::flash('success', 'Post Deleted Successfully !');
@@ -265,7 +283,7 @@ class PostController extends Controller
     //get data for data table
     public function getPosts()
     {
-        return $query = Post::select('id', 'created_at', 'post_author', 'title', 'status','breaking','featured', 'publishing_date', 'views')->withCount(['comments'])->with('user')->get();
+        return $query = Post::select('id', 'created_at', 'post_author', 'title', 'status','breaking','featured', 'publishing_date', 'views')->orderBy('created_at', 'desc')->withCount(['comments'])->with('user')->get();
 
         //return$query = Post::all();
         datatables($query)->make(true);
@@ -275,18 +293,55 @@ class PostController extends Controller
     public function findSubcategory(Request $request)
     {
 
-        //'it will get price if its id match with product id';
-        $subcategory = SubCategory::where('category_id', $request->category_id)->get();
+        //'it will get subcategory of the category'$request->category_id;
+        $subcategory = SubCategory::where('category_id',$request->category_id )->get();
 
         return response()->json($subcategory);
+    }
+    //get subcategory as category selected
+    public function findSubmenu(Request $request)
+    {
+
+        //'it will get subcategory of the category'$request->category_id;
+        $submenu = SubMenu::where('category_id', $request->category_id)->get();
+
+        return response()->json($submenu);
+    }
+    //get subcategory as category selected
+    public function findSubmenuSubcategory(Request $request)
+    {
+
+        //'it will get subcategory of the category'$request->category_id;
+        return$submenu = SubMenu::where('id', $request->submenu_id)->select('sub_category_id')->get();
+
+        return response($submenu);
     }
     public function getSubcategory(Request $request)
     {
 
-        //'it will get price if its id match with product id';
+        //'it will get subcategory of the category';
         $subcategory = SubCategory::where('id', $request->sub_category_id)->get();
 
         return response()->json($subcategory);
+    }
+
+    public function getSubmenu(Request $request)
+    {
+
+        //'it will get subcategory of the category';
+        $submenu = SubMenu::where('id', $request->sub_menu_id)->get();
+
+        return response()->json($submenu);
+    }
+
+    //get sub menu with sub category
+    public function getSubcategorySubmenu(Request $request)
+    {
+
+        //'it will get subcategory of the category';
+        $submenu = SubMenu::where('sub_category_id', $request->sub_category_id)->get();
+
+        return response()->json($submenu);
     }
 
     //get data for data table

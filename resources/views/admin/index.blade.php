@@ -14,7 +14,55 @@
 
 @section('style')
     <style>
+        .grid {
+            position: relative;
+            border: 1px solid #e3e6f0;
+            padding-top: 37px;
+            background: #00007c;
+            width: 100%;
+        }
 
+        .grid-container {
+            overflow-y: auto;
+            height: 280px;
+        }
+
+        table {
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        td + td {
+            border-left: 1px solid #e3e6f0;
+        }
+
+        td, th {
+            border-bottom: 1px solid #e3e6f0;
+            background: #fff;
+            color: #000;
+            padding: 10px 25px;
+        }
+
+        th {
+            height: 0;
+            line-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            color: transparent;
+            border: none;
+            white-space: nowrap;
+        }
+
+        th div {
+            position: absolute;
+            background: transparent;
+            color: #fff;
+            padding: 9px 25px;
+            top: 0;
+            margin-left: -25px;
+            line-height: normal;
+            border-left: 1px solid #e3e6f0;
+        }
     </style>
 @endsection
 
@@ -127,7 +175,8 @@
                         <!-- Card Body -->
                         <div class="card-body">
                             <div class="chart-area">
-                                <canvas id="myAreaChart"></canvas>
+                                {!! $post_creationChart->container() !!}
+                                {!! $post_creationChart->script() !!}
                             </div>
                         </div>
                     </div>
@@ -142,7 +191,7 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <div class="chart-pie pt-4 pb-2">
+                            <div class="chart-pie">
                                 {!! $user_typesChart->container() !!}
                                 {!! $user_typesChart->script() !!}
                             </div>
@@ -169,7 +218,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Area Chart -->
+                <!-- most visited table -->
                 <div class="col-md-5">
                     <div class="card shadow mb-4">
                         <!-- Card Header - Dropdown -->
@@ -178,60 +227,82 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <div class="chart-area">
-                                <table class="table table-hover table-bordered">
-                                    <thead style="display: block;">
-                                        <tr class="text-center text-capitalize text-primary">
-                                            <th style="width: 10%;">Sl.</th>
-                                            <th style="width: 73%;">Title</th>
-                                            <th style="width: 20%;">Page - Views</th>
+                            <div class="grid">
+                                <div class="grid-container">
+                                    <table>
+                                        <thead>
+                                        <tr class="header">
+                                            <th>SL.
+                                                <div>SL.</div>
+                                            </th>
+                                            <th>Title
+                                                <div>Title</div>
+                                            </th>
+                                            <th>Page - Views
+                                                <div>Page - Views</div>
+                                            </th>
                                         </tr>
-                                    </thead>
-                                    <tbody style="display: block; overflow-y: auto; overflow-x: hidden; height: 243px; ">
-                                    @foreach($pages as $key =>$page)
+                                        </thead>
+                                        <tbody>
+                                        @foreach($pages as $key =>$page)
                                         <tr>
-                                            <td style="width: 10%;">{{$key+1}}</td>
-                                            <td style="width: 76%;"><a href="{{$page['url']}}">{{$page['pageTitle']}}</a></td>
-                                            <td style="width: 20%;">{{$page['pageViews']}}</td>
+                                            <td>{{$key+1}}</td>
+                                            <td>
+                                                <a href="{{$page['url']}}">{{$page['pageTitle']}}</a>
+                                            </td>
+                                            <td class="text-center">{{$page['pageViews']}}</td>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Area Chart -->
+            <!-- Area Chart -->
                 <div class="col-md-7">
                     <div class="card shadow mb-4">
                         <!-- Card Header - Dropdown -->
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary text-capitalize">visitors and page-view for the current day and the last 15 days</h6>
+                            <h6 class="m-0 font-weight-bold text-primary text-capitalize">visitors and page-view for the
+                                current day and the last 15 days</h6>
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <div class="chart-area">
-                                <table class="table table-hover table-bordered">
-                                    <thead style="display: block;">
-                                    <tr class="text-center text-capitalize text-primary">
-                                        <th style="width: 7%">Sl.</th>
-                                        <th style="width: 75%">Title</th>
-                                        <th style="width: 10%">visitor</th>
-                                        <th style="width: 10%">Page - Views</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody style="display:block;overflow-y: auto; overflow-x: hidden; height: 220px;">
-                                    @foreach($googlevisitors as $key =>$goov)
-                                        <tr>
-                                            <td>{{$key + 1}}</td>
-                                            <td style=""><p >{{$goov['pageTitle']}}</p></td>
-                                            <td style="">{{$goov['visitors']}}</td>
-                                            <td style="">{{$goov['pageViews']}}</td>
+                            <div class="grid">
+                                <div class="grid-container">
+                                    <table>
+                                        <thead>
+                                        <tr class="header">
+                                            <th>Sl.
+                                                <div>Sl.</div>
+                                            </th>
+                                            <th>Title
+                                                <div>Title</div>
+                                            </th>
+                                            <th>visitor
+                                                <div>visitor</div>
+                                            </th>
+                                            <th>Page - Views
+                                                <div>Page - Views</div>
+                                            </th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($googlevisitors as $key =>$goov)
+                                            <tr>
+                                                <td>{{$key+1}}</td>
+                                                <td>
+                                                    {{$goov['pageTitle']}}
+                                                </td>
+                                                <td class="text-center">{{$goov['visitors']}}</td>
+                                                <td class="text-center">{{$goov['pageViews']}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -517,7 +588,7 @@
 @endsection
 
 @section('script')
-<script>
+    <script>
 
-</script>
+    </script>
 @endsection

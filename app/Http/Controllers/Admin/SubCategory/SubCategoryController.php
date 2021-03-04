@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\SubCategory;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\PostMeta;
 use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -117,6 +118,12 @@ class SubCategoryController extends Controller
 
                 unlink(public_path($thumbnail));
 
+            }
+            $post_meta = PostMeta::where('post_id',$post->id)->delete();
+
+            if ($post->tags()->count() > 0){
+
+                $post->tags()->detach();
             }
             $post->delete();
         }

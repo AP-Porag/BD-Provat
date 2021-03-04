@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/', 'Frontend\HomeDataShowController@HomeDataShow')->name('website');
 Route::get('/category/{slug}', 'Frontend\CategoryPageController@index')->name('category-page');
 Route::get('/subcategory/{slug}', 'Frontend\SubCategoryPageController@index')->name('subcategory-page');
+Route::get('/submenu/{slug}', 'Frontend\SubMenuPageController@index')->name('submenu-page');
 Route::get('/single-post/{slug}', 'Frontend\SinglePostPageController@index')->name('single-post-page');
 Route::get('/tag/{slug}', 'Frontend\TagPageController@index')->name('tag-page');
 Route::post('/search', 'Frontend\SearchPageController@index')->name('search-page');
@@ -74,17 +75,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/post/get/updateStatus', 'Admin\Post\PostController@updateStatus')->name('updateStatus');
     Route::get('/post/get/updateBreaking', 'Admin\Post\PostController@updateBreaking')->name('updateBreaking');
     Route::get('/post/get/updateFeatured', 'Admin\Post\PostController@updateFeatured')->name('updateFeatured');
-
-    //tag Route Start
-    Route::resource('tag', 'Admin\Tag\TagController');
-    Route::get('/post/soft-delete/{id}', 'Admin\Post\PostController@postSoftDelete')->name('post_soft_delete');
     Route::get('/post/inactive/user', 'Admin\Post\PostController@postInactive')->name('post_inactive');
     Route::get('/post/restore/{id}', 'Admin\Post\PostController@postRestore')->name('post_restore');
     Route::get('/post/force-delete/{id}', 'Admin\Post\PostController@postForceDelete')->name('post_forceDelete');
-    Route::get('/post/get/posts', 'Admin\Post\PostController@getPosts')->name('getPosts');
     Route::get('/post/get/subcategory', 'Admin\Post\PostController@findSubcategory')->name('findSubcategory');
+    Route::get('/post/get/findSubmenu', 'Admin\Post\PostController@findSubmenu')->name('findSubmenu');
+    Route::get('/post/get/findSubmenuSubcategory', 'Admin\Post\PostController@findSubmenuSubcategory')->name('findSubmenuSubcategory');
+    Route::get('/post/get/getSubcategorySubmenu', 'Admin\Post\PostController@getSubcategorySubmenu')->name('getSubcategorySubmenu');
     Route::get('/post/get/sub-category', 'Admin\Post\PostController@getSubcategory')->name('getSubcategory');
+    Route::get('/post/get/sub-menu', 'Admin\Post\PostController@getSubmenu')->name('getSubmenu');
     Route::get('/post/get/tags', 'Admin\Post\PostController@getTags')->name('getTags');
+
+    //tag Route Start
+    Route::resource('tag', 'Admin\Tag\TagController');
 
     //Reply Route Start
     Route::resource('comment', 'Admin\Comment\CommentController');
