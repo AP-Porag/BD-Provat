@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Category;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\PostMeta;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -109,6 +110,12 @@ class CategoryController extends Controller
 
                 unlink(public_path($thumbnail));
 
+            }
+            $post_meta = PostMeta::where('post_id',$post->id)->delete();
+
+            if ($post->tags()->count() > 0){
+
+                $post->tags()->detach();
             }
             $post->delete();
         }

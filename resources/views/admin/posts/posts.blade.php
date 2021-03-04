@@ -121,6 +121,7 @@
     <script>
         $(document).ready(function () {
             $('#datatable').DataTable({
+                "order": [[ 0, "desc" ]],
                 "ajax": {
                     "url": "/admin/post/get/posts",
                     "dataSrc": ""

@@ -15,7 +15,8 @@ class AboutPageController extends Controller
         //for nav bar
         $categories = Category::all();
         //for breaking news
-        $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','DESC')->get();
+        $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','desc')->get();
+        $headlines = Post::orderBy('created_at','desc')->limit(10)->get();
 
         //for dynamic title
         $slug = 'আমাদের-কথা';
@@ -25,6 +26,6 @@ class AboutPageController extends Controller
             $q->where('name', '!=', 'supper-admin')->where('name', '!=', 'admin')->where('name', '!=', 'subscriber')->where('name', '!=', 'user');
 
         })->get();
-        return response(view('frontend.about-page',compact('slug','categories','breaking_news','users')));
+        return response(view('frontend.about-page',compact('slug','categories','breaking_news','headlines','users')));
     }
 }

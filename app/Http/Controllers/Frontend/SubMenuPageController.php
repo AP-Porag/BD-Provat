@@ -6,11 +6,12 @@ use App\CustomAdd;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\Tag;
+use App\Models\SubCategory;
+use App\Models\SubMenu;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class TagPageController extends Controller
+class SubMenuPageController extends Controller
 {
     protected function index($slug)
     {
@@ -19,16 +20,15 @@ class TagPageController extends Controller
         //for breaking news
         $breaking_news = Post::Where('breaking','breaking')->orderBy('created_at','desc')->get();
         $headlines = Post::orderBy('created_at','desc')->limit(10)->get();
-        //for search post belongs to this tag
-        $category = Tag::where('slug',$slug)->first();
+        //for search post belongs to this subcategory
+        $category = SubMenu::where('slug',$slug)->first();
+        $main_post = Post::where('sub_menu_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->first();
 
-        $search = $category->id;
+        $right_side_posts = Post::where('sub_category_id', $category->id)->where('id', '!=', $main_post->id)->where('status', 'published')->orderBy('created_at', 'desc')->limit(2)->get();
 
-        $posts = Post::whereHas('tags', function($q) use($search){
+        $bottom_side_posts = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 4)->limit(3)->get();
 
-            $q->where('id', '=', $search);
-
-        })->where('status', 'published')->orderBy('created_at', 'desc')->paginate(6);
+        $posts = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->paginate(4);
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 7)->limit(15)->get();
@@ -43,7 +43,7 @@ class TagPageController extends Controller
         //popular news
         $popular_news = Post::orderBy('views', 'desc')->whereDate('created_at', '>', Carbon::now()->subMonth())->limit(15)->get();
 
-        return response(view('frontend.tag-page', compact('slug', 'categories', 'breaking_news','headlines', 'posts', 'category','latest_news','popular_news','top_right_add',
+        return response(view('frontend.category-subcategory-tag-page', compact('slug', 'categories', 'breaking_news','headlines', 'posts', 'main_post', 'category', 'right_side_posts', 'bottom_side_posts','latest_news','popular_news','top_right_add',
             'right_side_one_add',
             'right_side_two_add',
             'right_side_three_add',

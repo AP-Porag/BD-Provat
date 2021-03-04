@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->foreignId('sub_category_id')->nullable();
+            $table->foreignId('sub_menu_id')->nullable();
             $table->foreignId('post_author');
             $table->string('title');
             $table->string('slug');

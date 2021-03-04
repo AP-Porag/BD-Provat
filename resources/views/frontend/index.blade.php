@@ -268,21 +268,6 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="card ml-3 mr-3 pt-3 pb-3">
-                            <a href="{{ route('single-post-page', $last_entertainment_post->slug) }}"
-                               class="d-flex for-position-image">
-                                <div class="col-md-5 col-12">
-                                    <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
-                                    <p class="text-justify">
-                                        {!! Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) !!}
-                                    </p>
-                                </div>
-                                <div class="col-md-7 col-12">
-                                    <img src="{{ $last_entertainment_post->thumbnail }}"
-                                         alt="{{ $last_entertainment_post->slug }}" class="w-100" height="250">
-                                </div>
-                            </a>
-                        </div>
                         <div class="col-md-12">
                             <div class="row slider">
                                 @foreach ($entertainment_posts as $key => $entertainment_post)
@@ -3563,7 +3548,7 @@
                             {{ Illuminate\Support\Str::limit($last_religion_post->title, 40) }}
                         </h5>
                         <p>
-                            {!! $last_religion_post->content !!}
+                            {!! Illuminate\Support\Str::limit($last_religion_post->content, 100) !!}
                         </p>
                     </a>
                     <ul>
@@ -3573,7 +3558,7 @@
                                     <img height="70" width="100" alt="{{ $religion->slug }}"
                                          src="{{ $religion->thumbnail }}">
                                     <p class="ml-3">
-                                        {!! Illuminate\Support\Str::limit($religion->content, 90) !!}
+                                        {{ Illuminate\Support\Str::limit($religion->title, 40) }}
                                     </p>
                                 </a>
                             </li>

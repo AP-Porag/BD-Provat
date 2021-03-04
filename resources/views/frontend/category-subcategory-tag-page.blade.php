@@ -81,6 +81,45 @@
             </div>
             <div class="col-md-4">
                 @include('frontend.popular_last_news')
+                @if (isset($right_side_two_add))
+                    <div class="coustom_advertise mt-5">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="" >
+                                    <img src="{{$right_side_two_add->customadd}}" class="" style="width: 350px; max-height: 275px">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if (isset($right_side_three_add))
+                    <div class="coustom_advertise mt-5">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="" >
+                                    <img src="{{$right_side_three_add->customadd}}" class="" style="width: 350px; max-height: 275px">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if (isset($right_side_four_add))
+                    <div class="coustom_advertise mt-5">
+                        <div class="row mb-5">
+                            <div class="col-md-12">
+
+                                <div class="" >
+                                    <img src="{{$right_side_four_add->customadd}}" class="" style="width: 350px; max-height: 275px">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
