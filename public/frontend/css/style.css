@@ -48,8 +48,8 @@ a:hover {
 p {
     margin: 0;
     padding: 0;
-    font-size: 20px;
     font-weight: 400;
+    font-size: 20px;
     color: #000;
     line-height: 1.75;
 }
@@ -109,6 +109,9 @@ section {
 }
 
 /* common css end */
+.single_content{
+    font-size: 20px;
+}
 .date {
     color: red;
     font-size: 24px;
@@ -354,9 +357,9 @@ marquee ul li a:hover {
 }
 
 #national_news .card-text h4 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
-    color: #676565;
+    color: #000000;
     text-decoration: none;
     transition: 0.4s;
 }
@@ -366,9 +369,9 @@ marquee ul li a:hover {
 }
 
 #national_news .card-text p {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
-    color: #000000;
+    color: #777;
     text-decoration: none;
 }
 
@@ -395,7 +398,7 @@ marquee ul li a:hover {
 }
 
 .tab_for_content p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 nav>.nav.nav-tabs {
@@ -477,6 +480,13 @@ nav>div a.nav-item.nav-link:focus {
 
 #politics_technology_law p a {
     color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+}
+#politics_technology_law ul li a p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 #politics_technology_law ul li {
@@ -561,6 +571,8 @@ nav>div a.nav-item.nav-link:focus {
 
 #entertainment_and_feature p {
     color: #999999;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 #entertainment_and_feature ul li {
@@ -591,7 +603,16 @@ nav>div a.nav-item.nav-link:focus {
     padding-bottom: 7px;
     border-bottom: 2px dashed #999;
 }
-
+#international_lifestyle ul li a p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+}
+#international_lifestyle p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+}
 #international_lifestyle ul li:last-child {
     border-bottom: 0;
 }
@@ -738,6 +759,7 @@ nav>div a.nav-item.nav-link:focus {
 #sports p a {
     color: #999999;
     font-weight: 400;
+    font-size: 16px;
 }
 
 #sports .card-img {
@@ -768,6 +790,12 @@ nav>div a.nav-item.nav-link:focus {
     padding-bottom: 10px;
     border-top: 1px dashed #999;
     border-bottom: 1px dashed #999;
+}
+
+#photo_gallery_finance_foreign ul li a p{
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 #photo_gallery_finance_foreign ul li:last-child {
@@ -804,6 +832,12 @@ nav>div a.nav-item.nav-link:focus {
     color: #000000;
     font-weight: 200;
     font-size: 18px;
+}
+
+#travel_health_religion p {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 #travel_health_religion h5:hover {

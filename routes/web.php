@@ -15,7 +15,9 @@ Auth::routes();
 //Route::get('/admin/createType','Admin\DataController@createType')->name('createType');
 //Route::get('/admin/fetchThumbnail','Admin\DataController@fetchThumbnail')->name('fetchThumbnail');
 
-
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
 //frontend route start
 Route::get('/', 'Frontend\HomeDataShowController@HomeDataShow')->name('website');
