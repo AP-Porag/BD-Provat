@@ -38,50 +38,54 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="top-box">
-                    <div class="social-icon-content d-flex justify-content-between">
-                        <h2 class="date ml-3 mt-4">
-                            @php
-                                echo date('D - d , M-Y');
-                            @endphp
-                        </h2>
-                        <ul class="d-flex social-icon mr-3 mt-4">
-                            <li><a href="https://www.facebook.com/Bdprovat" target="_blank"><i
-                                        class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://www.instagram.com/bdprovat" target="_blank"><i
-                                        class="fa fa-instagram"></i></a></li>
-                            <li>
-                                <a href="https://www.youtube.com/channel/UCH-diWvfcvZtHVKwCBbcVHw/featured?fbclid=IwAR1koVXNchXY4_h38vJxL_jVDjjzTCmLR5mRKyOvkt04_IJwsYoHNp-xy4g"
-                                   target="_blank"><i class="fa fa-youtube"></i></a></li>
+                    <div class="row social-icon-content">
+                        <div class="col-md-4 d-none d-md-block"><h2 class="date ml-3 mt-4">
+                                @php
+                                    echo date('D - d , M-Y');
+                                @endphp
+                            </h2></div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 col-6"><ul class="d-flex social-icon mr-3 mt-4">
+                                        <li><a href="https://www.facebook.com/Bdprovat" target="_blank"><i
+                                                    class="fa fa-facebook"></i></a></li>
+                                        <li><a href="https://www.instagram.com/bdprovat" target="_blank"><i
+                                                    class="fa fa-instagram"></i></a></li>
+                                        <li>
+                                            <a href="https://www.youtube.com/channel/UCH-diWvfcvZtHVKwCBbcVHw/featured?fbclid=IwAR1koVXNchXY4_h38vJxL_jVDjjzTCmLR5mRKyOvkt04_IJwsYoHNp-xy4g"
+                                               target="_blank"><i class="fa fa-youtube"></i></a></li>
 
-                        </ul>
-                        <ul class="d-flex mr-3 mt-4">
-                            @guest
-                                <li class="ml-3 first-login"><a href="{{ route('login') }}"
-                                                                class="text-white login btn btn-sm">Login</a>
-                                </li>
-                                <li class="ml-3"><a href="{{ route('register') }}"
-                                                    class="text-white login btn btn-sm">Subscribe
-                                        Us</a></li>
-                            @endguest
-                            @auth
-                                @unlessrole('subscriber')
-                                <li class="mr-3"><a href="{{ route('home') }}" class="text-white login btn btn-sm">My
-                                        Account</a></li>
-                                @endunlessrole
+                                    </ul></div>
+                                <div class="col-md-6 col-6"><ul class="d-flex mr-3 mt-4">
+                                        @guest
+                                            <li class="ml-3 first-login"><a href="{{ route('login') }}"
+                                                                            class="text-white login btn btn-sm">Login</a>
+                                            </li>
+                                            <li class="ml-3"><a href="{{ route('register') }}"
+                                                                class="text-white login btn btn-sm">Subscribe
+                                                    Us</a></li>
+                                        @endguest
+                                        @auth
+                                            @unlessrole('subscriber')
+                                            <li class="mr-3"><a href="{{ route('home') }}" class="text-white login btn btn-sm">My
+                                                    Account</a></li>
+                                            @endunlessrole
 
-                                <div class="">
-                                    <a class="text-white login btn btn-sm" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                            <div class="">
+                                                <a class="text-white login btn btn-sm" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
                                                                                      document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>Logout
-                                    </a>
+                                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>Logout
+                                                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            @endauth
-                        </ul>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        @endauth
+                                    </ul></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,10 +94,10 @@
     {{-- Date Social Icon End --}}
     <div class="container my-4">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="img-fluid">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9 d-none d-md-block">
                 @if (isset($top_right_add))
                     <div class="coustom_advertise">
                             <img src="{{$top_right_add->customadd}}" width="728" height="90" class="img-fluid mt-4">
@@ -224,25 +228,28 @@
         </div>
     </nav>
     {{-- Navbar End --}}
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-2">
-                <p class="breaking-news-title">ব্রেকিং নিউজ</p>
-            </div>
-            <div class="col-md-10">
-                <marquee scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();">
-                    <ul class="d-flex">
-                        @foreach ($breaking_news as $news)
-                            <li>
-                                <span>বিডি</span>
-                                <a href="{{ route('single-post-page', $news->slug) }}">{{ $news->title }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </marquee>
+    @if(isset($breaking_news))
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-2">
+                    <p class="breaking-news-title">ব্রেকিং নিউজ</p>
+                </div>
+                <div class="col-md-10">
+                    <marquee scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();">
+                        <ul class="d-flex">
+                            @foreach ($breaking_news as $news)
+                                <li>
+                                    <span>বিডি</span>
+                                    <a href="{{ route('single-post-page', $news->slug) }}">{{ $news->title }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </marquee>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
+
     {{-- Braking News End --}}
 </header>
 {{-- main content --}}

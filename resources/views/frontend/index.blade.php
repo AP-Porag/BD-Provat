@@ -85,8 +85,8 @@
                                         </a>
                                     </div>
                                     <div class="card-text pl-2 pr-2 pb-2">
-                                        <p>{!! \Illuminate\Support\str::limit(strip_tags($national_post->content), 50) !!}
-                                            @if (strlen(strip_tags($national_post->content)) > 50)
+                                        <p>{!! \Illuminate\Support\str::limit(strip_tags($national_post->content), 90) !!}
+                                            @if (strlen(strip_tags($national_post->content)) > 90)
                                                 <a href="{{ route('single-post-page', $national_post->slug) }}"
                                                    class="text-danger">বিস্তারিত...</a>
                                             @endif
@@ -259,7 +259,7 @@
                                 <div class="col-md-5 col-12">
                                     <h5 class="text-danger">{{ $last_entertainment_post->title }}</h5>
                                     <p class="text-justify">
-                                        {!! Illuminate\Support\Str::of($last_entertainment_post->content)->words(50) !!}
+                                        {!! Illuminate\Support\Str::of($last_entertainment_post->content)->words(25) !!}
                                     </p>
                                 </div>
                                 <div class="col-md-7 col-12">
@@ -385,10 +385,10 @@
                                 <img class="img-fluid" src="{{ $last_lifestyle_post->thumbnail }}"
                                      alt="{{ $last_lifestyle_post->slug }}">
                                 <h5 class="pt-2">
-                                    {{ Illuminate\Support\Str::limit($last_lifestyle_post->title, 29) }}
+                                    {{ Illuminate\Support\Str::limit($last_lifestyle_post->title, 38) }}
                                 </h5>
                                 <p class="text-justify">
-                                    {{ Illuminate\Support\Str::of($last_lifestyle_post->content)->words(25) }}
+                                    {!! Illuminate\Support\Str::of($last_lifestyle_post->content)->words(10) !!}
                                 </p>
                             </a>
                         </div>

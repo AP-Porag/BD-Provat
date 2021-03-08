@@ -21,8 +21,8 @@
                             <img alt="{{$main_post->slug}}" src="{{ $main_post->thumbnail }}" class="w-100 p-1"
                                  style="border: 1px solid #999">
                             <h4 class="mt-3">{{ $main_post->title }}</h4>
-                            <p style="text-align:justify">
-                                {!! Illuminate\Support\Str::of($main_post->content)->words(30) !!}
+                            <p style="text-align:justify;">
+                                {!! Illuminate\Support\Str::of($main_post->content)->words(20) !!}
                             </p>
                         </a>
                     </div>
@@ -68,7 +68,7 @@
                                 <div class="title_details p-4">
                                     <h4 class="mt-1">{{ $post->title }}</h4>
                                     <p style="text-align:justify">
-                                        {!! Illuminate\Support\Str::of($post->content)->words(30) !!}
+                                        {!! Illuminate\Support\Str::of($post->content)->words(20) !!}
                                     </p>
                                 </div>
                             </div>

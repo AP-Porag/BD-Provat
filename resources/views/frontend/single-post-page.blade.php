@@ -29,7 +29,7 @@
                                     :@php echo(' ') @endphp {{ $post->created_at->diffForhumans() }}
                                 </h6>
                                 <img src="{{ $post->thumbnail }}" class="img-fluid p-1" style="border: 1px solid #999">
-                                <p style="text-align:justify" class="pb-3">
+                                <p style="text-align:justify;" class="single_content pb-3">
                                     {!! $post->content !!}
                                 </p>
                                 <h4 class="pt-3">নিউজটি শেয়ার করুন</h4>
