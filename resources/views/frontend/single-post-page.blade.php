@@ -8,6 +8,9 @@
 @section('meta_description')
     {{$post->postMeta->meta_description ? $post->postMeta->meta_description : 'BD-Provat'}}
 @endsection
+@section('image')
+    {{$post->thumbnail ? $post->thumbnail : asset('frontend/img/272px-90px-Logo.png')}}
+@endsection
 @section('style')
     <style>
 
@@ -37,12 +40,12 @@
                                     <ul class="d-flex">
                                         <li>
                                             <a
-                                                href="https://www.facebook.com/sharer/sharer.php?u={{ route('single-post-page',$post->slug) }}&display=popup">
+                                                href="https://www.facebook.com/sharer/sharer.php?u={{ route('single-post-page',$post->slug) }}&display=popup" target="_blank">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://twitter.com/intent/tweet?text={{ route('single-post-page',$post->slug) }}"><i
+                                            <a href="https://twitter.com/intent/tweet?text={{ route('single-post-page',$post->slug) }}" target="_blank"><i
                                                     class="fa fa-twitter"></i></a></li>
                                     </ul>
                                 </div>

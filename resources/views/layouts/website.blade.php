@@ -13,6 +13,15 @@
     <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
     <meta name="description" content="@yield('meta_description','BD-Provat')">
     <link rel="canonical" href="{{ url()->current() }}"/>
+
+{{--    social sharing--}}
+    <meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="@yield('title','BD-Provat')" />
+    <meta property="og:description"        content="@yield('meta_description','BD-Provat')" />
+    <meta property="og:image"              content="@yield('image','BD-Provat')" />
+{{--    social sharing--}}
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{{ asset('frontend/img/272px-90px-Logo.png') }}" type="image/x-icon"/>
     <!-- Bootstrap CSS -->
