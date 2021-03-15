@@ -2,42 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb346789-9fff-42c9-9a4c-bc6c9742c009" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/frontend/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/css/slick-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/css/slick.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/css/solaiman-lipi-font.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/fonts/SolaimanLipi.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/img/logo-square.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/img/placeholder.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/f.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/jquery-3.2.1.slim.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/jquery.lazy.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/popper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/js/slick.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/HomeDataShowController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/HomeDataShowController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SinglePostPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SinglePostPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/TagPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/TagPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_05_200229_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_05_200229_create_posts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/posts-create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/posts-create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/posts-edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/posts-edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/posts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/posts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/category-subcategory-tag-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/category-subcategory-tag-page.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/popular_last_news.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/popular_last_news.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/search-result-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/search-result-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/single-post-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/single-post-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/tag-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/tag-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/website.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/website.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +15,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="OptimizationOne" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">

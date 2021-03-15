@@ -430,7 +430,6 @@
             </div>
         </div>
     </section>
-    {{-- Lifestyle and Education Section End --}}
     {{-- Full Contry Section Start --}}
     <section id="full_country">
         <div class="container">
