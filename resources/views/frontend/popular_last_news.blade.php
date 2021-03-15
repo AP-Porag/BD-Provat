@@ -4,7 +4,7 @@
         <div class="col-md-12">
 
             <div class="" >
-                <img src="{{$right_side_one_add->customadd}}" class="" style="width: 350px; max-height: 275px">
+                <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$right_side_one_add->customadd}}" class="lazy" style="width: 350px; max-height: 275px">
             </div>
 
         </div>
@@ -28,8 +28,8 @@
                     @foreach ($latest_news as $l_news)
                         <li class="ml-2 ">
                             <a class="d-flex" href="{{ route('single-post-page', $l_news->slug) }}">
-                                <img alt="{{ $l_news->slug }}" src="{{ $l_news->thumbnail }}">
-                                <p class="ml-2 mr-2">
+                                <img src="{{asset('frontend/img/placeholder.jpg')}}" alt="{{ $l_news->slug }}" data-src="{{ $l_news->thumbnail }}" class="lazy">
+                                <p class="lazy ml-2 mr-2">
                                     {{ \Illuminate\Support\str::limit(strip_tags($l_news->title), 30) }}
                                 </p>
                             </a>
@@ -42,8 +42,8 @@
                     @foreach ($popular_news as $p_news)
                         <li class="ml-2">
                             <a class="d-flex" href="{{ route('single-post-page', $p_news->slug) }}">
-                                <img alt="{{ $p_news->slug }}" src="{{ $p_news->thumbnail }}">
-                                <p class="ml-2 mr-2">
+                                <img src="{{asset('frontend/img/placeholder.jpg')}}" alt="{{ $p_news->slug }}" data-src="{{ $p_news->thumbnail }}" class="lazy">
+                                <p class="lazy ml-2 mr-2">
                                     {{ \Illuminate\Support\str::limit(strip_tags($p_news->title), 30) }}
                                 </p>
                             </a>

@@ -8,18 +8,36 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+{{--google analytics script--}}
+{{--<!-- Global site tag (gtag.js) - Google Analytics -->--}}
+{{--    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174944185-1"></script>--}}
+{{--    <script>--}}
+{{--        window.dataLayer = window.dataLayer || [];--}}
+{{--        function gtag(){dataLayer.push(arguments);}--}}
+{{--        gtag('js', new Date());--}}
+
+{{--        gtag('config', 'UA-174944185-1');--}}
+{{--    </script>--}}
+
+{{--google analytics script--}}
+
+{{--    google add script --}}
+{{--    <script data-ad-client="ca-pub-2285535747529435" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+    {{--    google add script --}}
     <!-- Site Metas -->
     <title>@yield('title','BD-Provat')</title>
     <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
     <meta name="description" content="@yield('meta_description','BD-Provat')">
     <link rel="canonical" href="{{ url()->current() }}"/>
 
-{{--    social sharing--}}
+    {{--    social sharing--}}
     <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="article" />
     <meta property="og:title"              content="@yield('title','BD-Provat')" />
     <meta property="og:description"        content="@yield('meta_description','BD-Provat')" />
-    <meta property="og:image"              content="@yield('image','BD-Provat')" />
+    <meta property="og:image"              content="@yield('image',asset('frontend/img/logo-square.jpg'))" />
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
 {{--    social sharing--}}
 
     <!-- Site Icons -->
@@ -27,13 +45,12 @@
     <!-- Bootstrap CSS -->
     <!-- Fonts -->
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
     <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="{{asset('frontend/css/slick-theme.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/slick.min.css')}}">
     <!-- Site CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <!-- Responsive CSS -->
@@ -48,14 +65,14 @@
             <div class="col-md-12">
                 <div class="top-box">
                     <div class="row social-icon-content">
-                        <div class="col-md-4 d-none d-md-block"><h2 class="date ml-3 mt-4">
+                        <div class="col-md-4 d-none d-md-block"><h2 class="date ml-3 mt-3">
                                 @php
                                     echo date('D - d , M-Y');
                                 @endphp
                             </h2></div>
                         <div class="col-md-8">
                             <div class="row">
-                                <div class="col-md-6 col-6"><ul class="d-flex social-icon mr-3 mt-4">
+                                <div class="col-md-6 col-6"><ul class="d-flex social-icon mr-3 mt-2 mb-2">
                                         <li><a href="https://www.facebook.com/Bdprovat" target="_blank"><i
                                                     class="fa fa-facebook"></i></a></li>
                                         <li><a href="https://www.instagram.com/bdprovat" target="_blank"><i
@@ -65,9 +82,9 @@
                                                target="_blank"><i class="fa fa-youtube"></i></a></li>
 
                                     </ul></div>
-                                <div class="col-md-6 col-6"><ul class="d-flex mr-3 mt-4">
+                                <div class="col-md-6 col-6"><ul class="d-flex mr-3 mt-3">
                                         @guest
-                                            <li class="ml-3 first-login"><a href="{{ route('login') }}"
+                                            <li class="ml-3 first-login d-none d-md-block"><a href="{{ route('login') }}"
                                                                             class="text-white login btn btn-sm">Login</a>
                                             </li>
                                             <li class="ml-3"><a href="{{ route('register') }}"
@@ -76,7 +93,7 @@
                                         @endguest
                                         @auth
                                             @unlessrole('subscriber')
-                                            <li class="mr-3"><a href="{{ route('home') }}" class="text-white login btn btn-sm">My
+                                            <li class="mr-3 d-none d-md-block"><a href="{{ route('home') }}" class="text-white login btn btn-sm">My
                                                     Account</a></li>
                                             @endunlessrole
 
@@ -101,15 +118,18 @@
         </div>
     </div>
     {{-- Date Social Icon End --}}
-    <div class="container my-4">
-        <div class="row">
+    <div class="container">
+        <div class="row mb-2">
             <div class="col-md-3">
-                <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="img-fluid">
+                <a class="nav-link {{ \Illuminate\Support\Facades\Route::current()->getName() == 'website' ? 'active' : '' }}"
+                   href="{{ route('website') }}">
+                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="lazy img-fluid">
+                </a>
             </div>
             <div class="col-md-9 d-none d-md-block">
                 @if (isset($top_right_add))
                     <div class="coustom_advertise">
-                            <img src="{{$top_right_add->customadd}}" width="728" height="90" class="img-fluid mt-4">
+                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$top_right_add->customadd}}" width="728" height="90" class="lazy img-fluid mt-4" alt="">
                     </div>
                 @endif
             </div>
@@ -172,9 +192,12 @@
                                 @endif
                             </li>
                         @endforeach
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ \Illuminate\Support\Facades\Route::current()->getName() == 'about-page' ? 'active' : '' }}"--}}
+{{--                               href="{{ route('about-page') }}">আমাদের কথা</a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
-                            <a class="nav-link {{ \Illuminate\Support\Facades\Route::current()->getName() == 'about-page' ? 'active' : '' }}"
-                               href="{{ route('about-page') }}">আমাদের কথা</a>
+                            <div id="google_translate_element"></div>
                         </li>
                     </ul>
                 </div>
@@ -258,7 +281,6 @@
             </div>
         </div>
     @endif
-
     {{-- Braking News End --}}
 </header>
 {{-- main content --}}
@@ -268,13 +290,13 @@
 {{-- Braking News End --}}
 
 {{-- Footer Section Start --}}
-<footer id="footer" class="footer-area wow fadeIn">
+<footer id="footer" class="footer-area lazy">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <div>
                     <a href="{{ route('website') }}">
-                        <img src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" width="200">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" width="200" class="lazy">
                     </a>
                 </div>
             </div>
@@ -323,29 +345,35 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'bn'}, 'google_translate_element');
+    }
+</script>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 {{-- Footer Section End --}}
 <!-- all js files -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+<script src="{{asset('frontend/js/jquery.min.js')}}">
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+<script type="text/javascript" src="{{asset('frontend/js/jquery.lazy.min.js')}}"></script>
+<script src="{{asset('frontend/js/popper.min.js')}}">
 </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+<script src="{{asset('frontend/js/bootstrap.min.js')}}">
 </script>
 {{-- Plugin Js --}}
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-<script src="https://www.jsdelivr.com/projects/jquery.slick"></script>
+<script type="text/javascript" src="{{asset('frontend/js/f.js')}}"></script>
 <!-- custom / main Js -->
 <script src="{{ asset('frontend/js/custom.js') }}"></script>
+<script src="{{ asset('frontend/js/slick.min.js') }}"></script>
 @yield('script')
 
 </body>
 
 </html>
 <script>
+    $(function() {
+        $('.lazy').Lazy();
+    });
     $(document).ready(function () {
         $navOffset = $('#navbar').offset().top;
         $(window).scroll(function () {
@@ -382,5 +410,4 @@
             behavior: "smooth",
         })
     }
-
 </script>

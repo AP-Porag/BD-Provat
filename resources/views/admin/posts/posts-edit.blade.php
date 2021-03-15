@@ -98,13 +98,19 @@
                                                                class="text-capitalize">Keywords</label>
                                                         <input name="meta_keywords" class="form-control"
                                                                id="meta_keywords"
-                                                               value="{{$post->postMeta->meta_keywords ,old('meta_keywords') }}">
+                                                               value="{{!empty($post->postMeta->meta_keywords )? $post->postMeta->meta_keywords : '',old('meta_keywords') }}">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="meta_description" class="text-capitalize">Description</label>
                                                         <input name="meta_description" class="form-control"
                                                                id="meta_description"
-                                                               value="{{$post->postMeta->meta_description ,old('meta_description') }}">
+                                                               value="{{!empty($post->postMeta->meta_description) ? $post->postMeta->meta_description : '' ,old('meta_description') }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="alter_tag" class="text-capitalize">Alter Tag</label>
+                                                        <input name="alter_tag" class="form-control"
+                                                               id="alter_tag"
+                                                               value="{{!empty($post->alter_tag) ? $post->alter_tag : '' ,old('alter_tag') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -180,7 +186,7 @@
                                                                    class="form-control @error('title') is-invalid @enderror"
                                                                    id="title"
                                                                    placeholder="Enter Post Title"
-                                                                   value="{{$post->title ,old('title') }}">
+                                                                   value="{{$post->title ? $post->title :'' ,old('title') }}">
                                                             @error('title')
                                                             <div class="invalid-feedback mt-1">
                                                                 <strong>Warning! </strong> <span>{{$message}}</span>
@@ -277,7 +283,7 @@
                                             <label for="my-editor">Post Content</label>
                                             <div class="form-group">
                                             <textarea id="my-editor" name="post_content"
-                                                      class="form-control @error('post_content') is-invalid @enderror">{!! $post->content,old('post_content') !!}</textarea>
+                                                      class="form-control @error('post_content') is-invalid @enderror">{!! $post->content ? $post->content :'',old('post_content') !!}</textarea>
                                                 @error('post_content')
                                                 <div class="invalid-feedback">
                                                     <strong>Warning! </strong>
@@ -454,7 +460,7 @@
             submenu.attr('disabled', 'disabled');
         }
 
-        $('#preview').attr('src', '{{$post->thumbnail}}');
+        $('#preview').attr('src', '{{$post->thumbnail != 'thumbnail' ? $post->thumbnail : asset('storage/no-image/upload-image.png') }}');
 
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -472,7 +478,7 @@
             readURL(this);
         });
 
-        //doctor fees load according selected doctor
+        //category changing
         $(document).on('change', '#category', function () {
             var category_id = $(this).val();
 

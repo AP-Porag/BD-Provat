@@ -3,13 +3,13 @@
     {{$post->title}}
 @endsection
 @section('meta_keywords')
-    {{$post->postMeta->meta_keywords ? $post->postMeta->meta_keywords : 'BD-Provat'}}
+    {{!empty($post->postMeta->meta_keywords) ? $post->postMeta->meta_keywords : 'BD-Provat'}}
 @endsection
 @section('meta_description')
-    {{$post->postMeta->meta_description ? $post->postMeta->meta_description : 'BD-Provat'}}
+    {{!empty($post->postMeta->meta_description) ? $post->postMeta->meta_description : 'BD-Provat'}}
 @endsection
 @section('image')
-    {{$post->thumbnail ? $post->thumbnail : asset('frontend/img/272px-90px-Logo.png')}}
+    {{$post->thumbnail != 'thumbnail' ? $post->thumbnail : asset('frontend/img/272px-90px-Logo.png')}}
 @endsection
 @section('style')
     <style>
@@ -27,26 +27,32 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h3><span>বিস্তারিত</span></h3>
-                                <h4 class="mt-3">{{ $post->title }}</h4>
+                                <h4 class="lazy mt-3">{{ $post->title }}</h4>
                                 <h6 style="color:#444"><i class="fa fa-clock-o pr-2" aria-hidden="true"></i> আপডেট টাইম
                                     :@php echo(' ') @endphp {{ $post->created_at->diffForhumans() }}
                                 </h6>
-                                <img src="{{ $post->thumbnail }}" class="img-fluid p-1" style="border: 1px solid #999">
-                                <p style="text-align:justify;" class="single_content pb-3">
+                                <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $post->thumbnail }}" alt="" class="lazy img-fluid p-1" style="border: 1px solid #999">
+                                <p style="text-align:justify;" class="lazy single_content pb-3">
                                     {!! $post->content !!}
                                 </p>
                                 <h4 class="pt-3">নিউজটি শেয়ার করুন</h4>
                                 <div class="single_page_icon">
                                     <ul class="d-flex">
-                                        <li>
+                                        <li class="">
                                             <a
-                                                href="https://www.facebook.com/sharer/sharer.php?u={{ route('single-post-page',$post->slug) }}&display=popup" target="_blank">
+                                                href="https://www.facebook.com/sharer/sharer.php?u={{ route('single-post-page',$post->slug) }}&display=popup" type="button" target="_blank" data-value="{{$post->id}}" class="shares">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="https://twitter.com/intent/tweet?text={{ route('single-post-page',$post->slug) }}" target="_blank"><i
+                                        <li class="">
+                                            <a href="https://twitter.com/intent/tweet?text={{ route('single-post-page',$post->slug) }}" type="button" target="_blank" data-value="{{$post->id}}" class="shares"><i
                                                     class="fa fa-twitter"></i></a></li>
+                                        <li class="shares">
+                                            <div class="share_div">
+                                                <strong><span>মোট শেয়ার <i class="fa fa-share"></i> : </span></strong>
+                                                <span id="share_counter">{{$post->shares}}</span>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -67,10 +73,10 @@
                                         <div class="col-md-4 pl-3">
                                             <a class="" href="{{ route('single-post-page', $r_news->slug) }}">
                                                 <div class="small_image_box related_post_image_box">
-                                                    <img class="img-fluid" alt="{{ $r_news->slug }}"
-                                                         src="{{ $r_news->thumbnail }}">
+                                                    <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy img-fluid" alt="{{ $r_news->slug }}"
+                                                         data-src="{{ $r_news->thumbnail }}">
                                                     <div class="small_image_overlay related_post_overlay">
-                                                        <h5 class="">
+                                                        <h5 class="lazy">
                                                             {{ $r_news->title }}
                                                         </h5>
                                                     </div>
@@ -88,7 +94,7 @@
                                             @foreach ($comments as $comment)
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <div class="card single_comment">
+                                                        <div class="lazy card single_comment">
                                                             <div class="card-body">
                                                                 <div class="card-text d-flex justify-content-between">
                                                                     <p class="comment_message">{{ $comment->message }}</p>
@@ -102,7 +108,7 @@
                                                     @if ($comment->replies->count() > 0)
                                                         @foreach ($comment->replies as $reply)
                                                             <div class="col-md-10 offset-2">
-                                                                <div class="card single_reply">
+                                                                <div class="card lazy single_reply">
                                                                     <div class="card-body">
                                                                         <div class="card-text">
                                                                             <p class="replier align-self-end font-italic">
@@ -166,7 +172,7 @@
                                     <div class="col-md-12">
 
                                         <div class="">
-                                            <img src="{{$right_side_two_add->customadd}}" class=""
+                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$right_side_two_add->customadd}}" alt="" class="lazy"
                                                  style="width: 350px; max-height: 275px">
                                         </div>
 
@@ -180,7 +186,7 @@
                                     <div class="col-md-12">
 
                                         <div class="">
-                                            <img src="{{$right_side_three_add->customadd}}" class=""
+                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$right_side_three_add->customadd}}" alt="" class="lazy"
                                                  style="width: 350px; max-height: 275px">
                                         </div>
 
@@ -194,7 +200,7 @@
                                     <div class="col-md-12">
 
                                         <div class="">
-                                            <img src="{{$right_side_four_add->customadd}}" class=""
+                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$right_side_four_add->customadd}}" alt="" class="lazy"
                                                  style="width: 350px; max-height: 275px">
                                         </div>
 
@@ -216,5 +222,21 @@
             $('#password').val($(this).val());
         });
 
+        //count share
+        $(function(){
+            $('.shares').click(function(){
+                var post_id = $(this).data('value');
+
+                $.ajax({
+                    type: "GET",
+
+                    url: '/single-post/get/shareCounter',
+                    data: {'post_id': post_id},
+                    success: function (data) {
+                        $('#share_counter').text(data.shares)
+                    }
+                });
+            });
+        });
     </script>
 @endsection

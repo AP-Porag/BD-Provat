@@ -53,4 +53,11 @@ class SinglePostPageController extends Controller
             'right_side_three_add',
             'right_side_four_add')));
     }
+    public function shareCounter(Request $request){
+        //'it will increment shares column value of related post;
+        $post = Post::find($request->post_id)->increment('shares');
+        $post = Post::where('id',$request->post_id)->get();
+        return response()->json($post);
+
+    }
 }

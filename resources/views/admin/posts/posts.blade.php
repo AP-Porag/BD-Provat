@@ -95,6 +95,7 @@
                                     <th class="text-capitalize">Change Status</th>
                                     <th class="text-capitalize">Publishing Date</th>
                                     <th class="text-capitalize">views</th>
+                                    <th class="text-capitalize">shares</th>
                                     <th class="text-capitalize">comment</th>
                                     <th class="text-capitalize">Actions</th>
                                 </tr>
@@ -150,6 +151,7 @@
                     },
                     {"data": "publishing_date"},
                     {"data": "views"},
+                    {"data": "shares"},
                     {"data": "comments_count"},
                     {
                         data: function (row) {
