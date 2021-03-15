@@ -54,10 +54,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
+        $post_author = $request->post_author;
         $characters = [" ", ":", "‘", "’", "“", "”", ",", "--", ""];
         $requested_meta_keywords = $request->meta_keywords;
         $meta_keywords = str_replace($characters, ",", $requested_meta_keywords);
         $meta_description = $request->meta_description;
+        $alter_tag = $request->alter_tag;
         $category = $request->category;
         $subcategory = $request->subcategory;
         $submenu = $request->submenu;
@@ -69,12 +71,10 @@ class PostController extends Controller
         $tags = $request->post_tag;
 
         $this->validate($request, [
+            'post_author' => 'required',
             'category' => 'required',
             'title' => 'required',
             'post_content' => 'required',
-            'thumbnail' => 'required',
-            'meta_keywords' => 'required',
-            'meta_description' => 'required',
         ]);
         if ($category == 3 || $category == 11) {
             $this->validate($request, [
@@ -85,15 +85,20 @@ class PostController extends Controller
         $post = Post::create([
 
             'category_id' => $category,
-            'post_author' => Auth::user()->id,
+            'post_author' => $post_author,
             'title' => $title,
             'slug' => $slug,
             'content' => $content,
+            'alter_tag'=>$slug,
             'thumbnail' => 'thumbnail',
             'status' => 'status'
 
         ]);
 
+        if ($alter_tag) {
+            $post->alter_tag = $alter_tag;
+            $post->save();
+        }
         if ($post && $subcategory) {
             $post->sub_category_id = $subcategory;
             $post->save();
@@ -132,9 +137,15 @@ class PostController extends Controller
         if ($meta && $meta_keywords) {
             $meta->meta_keywords = $meta_keywords;
             $meta->save();
+        }else{
+            $meta->meta_keywords = $title;
+            $meta->save();
         }
         if ($meta && $meta_description) {
             $meta->meta_description = $meta_description;
+            $meta->save();
+        }else{
+            $meta->meta_description = $title;
             $meta->save();
         }
         if ($post) {
@@ -188,10 +199,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => "required|unique:posts,title,$post->id",
             'category' => 'required',
-            'thumbnail' => 'sometimes|image',
-            'post_content' => 'required',
-            'meta_keywords' => 'required',
-            'meta_description' => 'required',
+            'post_content' => 'required'
 
         ]);
         $characters = [" ", ":", "‘", "’", "“", "”", ",", "--", ""];
@@ -202,6 +210,7 @@ class PostController extends Controller
         $post->sub_menu_id = $request->submenu;
         $post->title = $request->title;
         $post->slug = str_replace($characters, "-", $request->title);
+        $post->alter_tag = $request->alter_tag;
         $post->content = $request->post_content;
         $post->save();
         if ($request->has('status')){
@@ -237,6 +246,7 @@ class PostController extends Controller
             $meta->meta_description = $request->meta_description;
             $meta->save();
         }
+
 
         $post->tags()->sync($request->post_tag);
 
@@ -283,7 +293,7 @@ class PostController extends Controller
     //get data for data table
     public function getPosts()
     {
-        return $query = Post::select('id', 'created_at', 'post_author', 'title', 'status','breaking','featured', 'publishing_date', 'views')->orderBy('created_at', 'desc')->withCount(['comments'])->with('user')->get();
+        return $query = Post::select('id', 'created_at', 'post_author', 'title', 'status','breaking','featured', 'publishing_date', 'views','shares')->orderBy('created_at', 'desc')->withCount(['comments'])->with('user')->get();
 
         //return$query = Post::all();
         datatables($query)->make(true);

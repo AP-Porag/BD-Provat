@@ -92,11 +92,18 @@
                                                                class="text-capitalize">Post Meta Tag</label>
                                                         <input name="meta_keywords" class="form-control"
                                                                id="meta_keywords">
+                                                        <input name="post_author" class="form-control"
+                                                               id="post_author" value="{{Auth::user()->id}}" hidden>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="meta_description" class="text-capitalize">Post Meta Description</label>
                                                         <input name="meta_description" class="form-control"
                                                                id="meta_description">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="alter_tag" class="text-capitalize">Alter Tag</label>
+                                                        <input name="alter_tag" class="form-control"
+                                                               id="alter_tag">
                                                     </div>
                                                 </div>
                                             </div>

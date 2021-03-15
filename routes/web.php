@@ -25,6 +25,7 @@ Route::get('/category/{slug}', 'Frontend\CategoryPageController@index')->name('c
 Route::get('/subcategory/{slug}', 'Frontend\SubCategoryPageController@index')->name('subcategory-page');
 Route::get('/submenu/{slug}', 'Frontend\SubMenuPageController@index')->name('submenu-page');
 Route::get('/single-post/{slug}', 'Frontend\SinglePostPageController@index')->name('single-post-page');
+Route::get('/single-post/get/shareCounter', 'Frontend\SinglePostPageController@shareCounter')->name('shareCounter');
 Route::get('/tag/{slug}', 'Frontend\TagPageController@index')->name('tag-page');
 Route::post('/search', 'Frontend\SearchPageController@index')->name('search-page');
 Route::get('/আমাদের-কথা', 'Frontend\AboutPageController@index')->name('about-page');

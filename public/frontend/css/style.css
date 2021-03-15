@@ -2,7 +2,41 @@
     margin: 0;
     padding: 0;
 }
+.goog-te-banner-frame{
+    height: 0 !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    width: 0 !important;
+    visibility: hidden !important;
+}
+.goog-logo-link {
+    display:none !important;
+}
 
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+#google_translate_element{
+    margin-top: 10px;
+}
+.goog-te-combo{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    width: 125px;
+    padding: 5px;
+    background: #8c0707;
+    color: #fff;
+    border: #8c0707;
+    margin-left: 15px !important;
+    border-radius: 4px;
+}
+body{
+    top: 0 !important;
+}
 ul,
 ol {
     list-style: none;
@@ -81,7 +115,6 @@ h6>a {
     color: #111111;
     font-weight: 500;
 }
-
 body {
     font-family: "SolaimanLipi", Arial, sans-serif !important;
 }
@@ -117,11 +150,35 @@ section {
     font-size: 24px;
 }
 
-.social-icon li a {
+.social-icon li a .fa-facebook {
+    background-color: #1d4594;
     color: #fff;
     font-size: 25px;
     margin-left: 10px;
-    background-color: red;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 50px;
+    display: block;
+}
+.social-icon li a .fa-instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    color: #fff;
+    font-size: 25px;
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 50px;
+    display: block;
+}
+.social-icon li a .fa-youtube {
+    background-color: #f70000;
+    color: #fff;
+    font-size: 25px;
+    margin-left: 10px;
     height: 50px;
     width: 50px;
     text-align: center;
@@ -945,18 +1002,46 @@ footer .root {
 .single_page_icon li {
     margin-right: 5px;
 }
-
-.single_page_icon li a {
+.share_div{
+    margin-top: 5px;
+    margin-left: 15px;
+    background: #e4effb;
+    padding: 10px;
+    moz-box-shadow: 0 0 8px 1px #999999;
+    -webkit-box-shadow: 0 0 8px 1px #999999;
+    box-shadow: 0 0 8px 1px #999999;
+}
+.share_div .fa-share{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.share_div .share_counter{
+    margin-left: 10px;
+}
+.single_page_icon li a .fa-facebook {
+    background-color: #1d4594;
     color: #fff;
+    font-size: 25px;
+    margin-left: 10px;
+    height: 50px;
     width: 50px;
     text-align: center;
-    line-height: 50px;
     border-radius: 50%;
-    background: red;
+    line-height: 50px;
     display: block;
-    font-size: 25px;
 }
-
+.single_page_icon li a .fa-twitter {
+    background-color: #00acee;
+    color: #fff;
+    font-size: 25px;
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 50px;
+    display: block;
+}
 /* single page social icon end */
 
 
