@@ -48,7 +48,7 @@ class HomeController extends Controller
             $categories = Category::all();
 
             $breaking_news = Post::Where('breaking', 'breaking')->orderBy('created_at', 'desc')->get();
-            $headlines = Post::orderBy('created_at','desc')->limit(10)->get();
+            $headlines = Post::orderBy('created_at', 'desc')->limit(10)->get();
 
             $last_top_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->first();
             $top_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '!=', $last_top_news->id)->paginate(4);
@@ -56,10 +56,19 @@ class HomeController extends Controller
             //latest news
             $latest_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 7)->limit(15)->get();
 
+            //custom add start
+            $custom_add_one = CustomAdd::where('place', 'custom-add-one')->latest()->first();
+            $custom_add_two = CustomAdd::where('place', 'custom-add-two')->latest()->first();
+            $custom_add_three = CustomAdd::where('place', 'custom-add-three')->latest()->first();
+            $custom_add_four = CustomAdd::where('place', 'custom-add-four')->latest()->first();
+            $custom_add_five = CustomAdd::where('place', 'custom-add-five')->latest()->first();
+            $custom_add_six = CustomAdd::where('place', 'custom-add-six')->latest()->first();
+            //custom add end
+
             //popular news
             $popular_news = Post::orderBy('views', 'desc')->whereDate('created_at', '>', Carbon::now()->subMonth())->limit(15)->get();
 
-            $national_posts = Post::where('category_id', 1)->where('status', 'published')->orderBy('id', 'desc')->limit(6)->get();
+            $national_posts = Post::where('category_id', 1)->where('status', 'published')->orderBy('id', 'desc')->limit(9)->get();
 
             $last_political_post = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'desc')->first();
             $political_posts = Post::where('category_id', 2)->where('status', 'published')->orderBy('id', 'desc')->where('id', '!=', $last_political_post->id)->paginate(4);
@@ -81,7 +90,7 @@ class HomeController extends Controller
 
             //lifestyle
             $last_lifestyle_post = Post::where('category_id', 9)->where('status', 'published')->orderBy('id', 'desc')->first();
-            $lifestyle_posts = Post::where('category_id', 9)->where('status', 'published')->orderBy('id', 'desc')->where('id', '!=', $last_entertainment_post->id)->paginate(4);
+            $lifestyle_posts = Post::where('category_id', 9)->where('status', 'published')->orderBy('id', 'desc')->where('id', '!=', $last_lifestyle_post->id)->limit(4)->get();
 
             //full country
             $divisions = SubCategory::where('category_id', 3)->get();
@@ -90,10 +99,10 @@ class HomeController extends Controller
             $last_sports_post = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'desc')->first();
             $sports_left_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '!=', $last_sports_post->id)->limit(2)->get();
             $last_left_post = $sports_left_posts->last();
-            $sports_right_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>', $last_left_post->id)->limit(2)->get();
+            $sports_right_posts = Post::where('category_id', 7)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_left_post->id)->limit(2)->get();
 
             //photo gallery
-            $photo_gallery = Post::where('category_id', 6)->where('status', 'published')->orderBy('created_at', 'desc')->limit(6)->get();
+            $photo_gallery = Post::where('status', 'published')->inRandomOrder()->limit(6)->get();
 
             //finance news
             $finance_news = Post::where('sub_category_id', 9)->where('status', 'published')->orderBy('created_at', 'desc')->limit(4)->get();
@@ -112,14 +121,8 @@ class HomeController extends Controller
             //religion
             $last_religion_post = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'desc')->first();
             $religion_posts = Post::where('category_id', 10)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '!=', $last_religion_post->id)->limit(4)->get();
-            //custom add start
-            $top_right_add = CustomAdd::where('place', 'top-right')->latest()->first();
-            $right_side_one_add = CustomAdd::where('place', 'right-side-one')->latest()->first();
-            $right_side_two_add = CustomAdd::where('place', 'right-side-two')->latest()->first();
-            $right_side_three_add = CustomAdd::where('place', 'right-side-three')->latest()->first();
-            $right_side_four_add = CustomAdd::where('place', 'right-side-four')->latest()->first();
-            //custom add end
 
+            //author show
             return view('frontend.index', compact([
                 'categories',
                 'breaking_news',
@@ -155,11 +158,12 @@ class HomeController extends Controller
                 'health_posts',
                 'last_religion_post',
                 'religion_posts',
-                'top_right_add',
-                'right_side_one_add',
-                'right_side_two_add',
-                'right_side_three_add',
-                'right_side_four_add'
+                'custom_add_one',
+                'custom_add_two',
+                'custom_add_three',
+                'custom_add_four',
+                'custom_add_five',
+                'custom_add_six',
             ]));
         } else {
             //Dashboard Data Controlling start

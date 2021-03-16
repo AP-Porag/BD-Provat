@@ -23,11 +23,12 @@ class SearchPageController extends Controller
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 7)->limit(15)->get();
         //custom add start
-        $top_right_add = CustomAdd::where('place', 'top-right')->latest()->first();
-        $right_side_one_add = CustomAdd::where('place', 'right-side-one')->latest()->first();
-        $right_side_two_add = CustomAdd::where('place', 'right-side-two')->latest()->first();
-        $right_side_three_add = CustomAdd::where('place', 'right-side-three')->latest()->first();
-        $right_side_four_add = CustomAdd::where('place', 'right-side-four')->latest()->first();
+        $custom_add_one = CustomAdd::where('place', 'custom-add-one')->latest()->first();
+        $custom_add_two = CustomAdd::where('place', 'custom-add-two')->latest()->first();
+        $custom_add_three = CustomAdd::where('place', 'custom-add-three')->latest()->first();
+        $custom_add_four = CustomAdd::where('place', 'custom-add-four')->latest()->first();
+        $custom_add_five = CustomAdd::where('place', 'custom-add-five')->latest()->first();
+        $custom_add_six = CustomAdd::where('place', 'custom-add-six')->latest()->first();
         //custom add end
 
         //popular news
@@ -39,10 +40,12 @@ class SearchPageController extends Controller
         $search_text = $request->search;
         $posts = Post::where('title','LIKE','%'.$search_text.'%')->orderBy('created_at', 'desc')->paginate(6);
 
-        return response(view('frontend.search-result-page', compact('search_text', 'categories', 'breaking_news','headlines', 'posts','latest_news','popular_news','top_right_add',
-            'right_side_one_add',
-            'right_side_two_add',
-            'right_side_three_add',
-            'right_side_four_add')));
+        return response(view('frontend.search-result-page', compact('search_text', 'categories', 'breaking_news','headlines', 'posts','latest_news','popular_news',
+            'custom_add_one',
+            'custom_add_two',
+            'custom_add_three',
+            'custom_add_four',
+            'custom_add_five',
+            'custom_add_six')));
     }
 }

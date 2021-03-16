@@ -19,7 +19,7 @@
 
 @section('content')
     {{-- Main news section start --}}
-    <div class="container">
+    <div class="container" id="single_post_page">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -31,7 +31,7 @@
                                 <h6 style="color:#444"><i class="fa fa-clock-o pr-2" aria-hidden="true"></i> আপডেট টাইম
                                     :@php echo(' ') @endphp {{ $post->created_at->diffForhumans() }}
                                 </h6>
-                                <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $post->thumbnail }}" alt="" class="lazy img-fluid p-1" style="border: 1px solid #999">
+                                <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $post->thumbnail }}" alt="{{$post->alter_tag}}" class="lazy img-fluid p-1 image_size_one" style="border: 1px solid #999">
                                 <p style="text-align:justify;" class="lazy single_content pb-3">
                                     {!! $post->content !!}
                                 </p>
@@ -56,6 +56,19 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="col-md-12 google_horizontal_add_one">
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner add -->
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-2285535747529435"
+                                     data-ad-slot="4776463541"
+                                     data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
                             @if ($post->tags_count > 0)
                                 <div class="col-md-12" id="tag_box">
                                     <h3><span>খবর সম্পর্কিত ট্যাগ..</span></h3>
@@ -66,6 +79,19 @@
                                     @endforeach
                                 </div>
                             @endif
+                            <div class="col-md-12 google_horizontal_add_one mb-2">
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner add -->
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-2285535747529435"
+                                     data-ad-slot="4776463541"
+                                     data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
                             <div class="col-md-12">
                                 <h3><span>এ জাতীয় আরো খবর..</span></h3>
                                 <div class="row">
@@ -73,7 +99,7 @@
                                         <div class="col-md-4 pl-3">
                                             <a class="" href="{{ route('single-post-page', $r_news->slug) }}">
                                                 <div class="small_image_box related_post_image_box">
-                                                    <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy img-fluid" alt="{{ $r_news->slug }}"
+                                                    <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy img-fluid image_size_one" alt="{{ $r_news->alter_tag }}"
                                                          data-src="{{ $r_news->thumbnail }}">
                                                     <div class="small_image_overlay related_post_overlay">
                                                         <h5 class="lazy">
@@ -126,6 +152,19 @@
                                     </div>
                                 </div>
                             @endif
+                            <div class="col-md-12 google_horizontal_add_one">
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner add -->
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-2285535747529435"
+                                     data-ad-slot="4776463541"
+                                     data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
                             <div class="col-md-12" id="commenting_box">
                                 <div class="card">
                                     <div class="card-header">
@@ -166,48 +205,32 @@
                     </div>
                     <div class="col-md-4">
                         @include('frontend.popular_last_news')
-                        @if (isset($right_side_two_add))
-                            <div class="coustom_advertise mt-5">
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        <div class="">
-                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$right_side_two_add->customadd}}" alt="" class="lazy"
-                                                 style="width: 350px; max-height: 275px">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        @if (isset($right_side_three_add))
-                            <div class="coustom_advertise mt-5">
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        <div class="">
-                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$right_side_three_add->customadd}}" alt="" class="lazy"
-                                                 style="width: 350px; max-height: 275px">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        @if (isset($right_side_four_add))
-                            <div class="coustom_advertise mt-5">
-                                <div class="row mb-5">
-                                    <div class="col-md-12">
-
-                                        <div class="">
-                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$right_side_four_add->customadd}}" alt="" class="lazy"
-                                                 style="width: 350px; max-height: 275px">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
+                        <div class="google_vertical_add">
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- vertical add -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-2285535747529435"
+                                 data-ad-slot="4086839037"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                        <div class="google_vertical_add">
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- vertical add -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-2285535747529435"
+                                 data-ad-slot="4086839037"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>

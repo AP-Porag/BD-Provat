@@ -18,8 +18,8 @@
                     <a href="{{ route('single-post-page', $last_top_news->slug) }}">
                         <div class="image_box">
                             <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                                 data-src="{{ $last_top_news->thumbnail }}" alt="{{ $last_top_news->slug }}"
-                                 class="lazy w-100"
+                                 data-src="{{ $last_top_news->thumbnail }}" alt="{{ $last_top_news->alter_tag }}"
+                                 class="lazy w-100 image_size_one"
                                  height="300">
                             <div class="image_overlay">
                                 <h5 class="lazy">
@@ -35,8 +35,8 @@
                             <div class="col-md-6">
                                 <a class="" href="{{ route('single-post-page', $t_news->slug) }}">
                                     <div class="small_image_box">
-                                        <img src="{{asset('frontend/img/placeholder.jpg')}}" class="img-fluid lazy"
-                                             alt="{{ $t_news->slug }}" data-src="{{ $t_news->thumbnail }}">
+                                        <img src="{{asset('frontend/img/placeholder.jpg')}}" class="img-fluid lazy image_size_one"
+                                             alt="{{ $t_news->alter_tag }}" data-src="{{ $t_news->thumbnail }}">
                                         <div class="small_image_overlay">
                                             <h5 class="lazy">
                                                 {{ $t_news->title }}
@@ -53,6 +53,21 @@
         </div>
     </section>
     {{-- Main news section end --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (isset($custom_add_two))
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$custom_add_two->customadd}}" height="250" class="lazy img-fluid mb-4 custom_add_size" alt="">
+                    </div>
+                @else
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/custom-add-1200-250.webp')}}" height="250" class="lazy img-fluid mb-4 custom_add_size" alt="">
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
     {{-- National Section Start --}}
     <section id="national_news">
         <div class="container">
@@ -77,7 +92,7 @@
                                     <div class="card-img">
                                         <a href="{{ route('single-post-page', $national_post->slug) }}" class="d-flex">
                                             <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                                                 class="lazy img-fluid card_image" alt="{{ $national_post->slug }}"
+                                                 class="lazy img-fluid card_image image_size_one" alt="{{ $national_post->alter_tag }}"
                                                  data-src="{{ $national_post->thumbnail }}">
                                         </a>
                                     </div>
@@ -103,11 +118,39 @@
                 </div>
                 <div class="col-md-4">
                     @include('frontend.popular_last_news')
+                    <div class="google_square_add">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- square add -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2285535747529435"
+                             data-ad-slot="8792370803"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     {{-- National International Section End --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (isset($custom_add_three))
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$custom_add_three->customadd}}" height="250" class="lazy img-fluid mt-4 custom_add_size" alt="">
+                    </div>
+                @else
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/custom-add-1200-250.webp')}}" height="250" class="lazy img-fluid mt-4 custom_add_size" alt="">
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
     {{-- Politics Technology and Law Section Start --}}
     <section id="politics_technology_law">
         <div class="container">
@@ -126,9 +169,9 @@
                         </a>
                     </h3>
                     <a href="{{ route('single-post-page', $last_international_post->slug) }}">
-                        <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-100" height="250"
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-100 image_size_one" height="250"
                              data-src="{{ $last_political_post->thumbnail }}"
-                             alt="{{ $last_political_post->thumbnail }}">
+                             alt="{{ $last_political_post->alter_tag }}">
                         <h5 class="lazy pt-2">
                             {{ Illuminate\Support\Str::limit($last_political_post->title, 38) }}
                         </h5>
@@ -146,7 +189,7 @@
                                 <a class="d-flex" href="{{ route('single-post-page', $political_post->slug) }}"><img
                                         src="{{asset('frontend/img/placeholder.jpg')}}"
                                         alt="{{ $political_post->slug }}" data-src="{{ $political_post->thumbnail }}"
-                                        class="lazy w-25" height="100">
+                                        class="lazy w-25 image_size_two" height="100">
                                     <p class="lazy ml-3">
                                         {{ $political_post->title }}
                                     </p>
@@ -169,9 +212,9 @@
                         </a>
                     </h3>
                     <a href="{{ route('single-post-page', $last_political_post->slug) }}">
-                        <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-100" height="250"
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-100 image_size_one" height="250"
                              data-src="{{ $last_info_tech_post->thumbnail }}"
-                             alt="{{ $last_info_tech_post->thumbnail }}">
+                             alt="{{ $last_info_tech_post->alter_tag }}">
                         <h5 class="lazy pt-2">
                             {{ Illuminate\Support\Str::limit($last_info_tech_post->title, 38) }}
                         </h5>
@@ -189,7 +232,7 @@
                                 <a class="d-flex" href="{{ route('single-post-page', $info_tech_post->slug) }}"><img
                                         src="{{asset('frontend/img/placeholder.jpg')}}"
                                         alt="{{ $info_tech_post->slug }}" data-src="{{ $info_tech_post->thumbnail }}"
-                                        class="lazy w-25" height="100">
+                                        class="lazy w-25 image_size_two" height="100">
                                     <p class="lazy ml-3">
                                         {{ $info_tech_post->title }}
                                     </p>
@@ -213,7 +256,7 @@
                     </h3>
                     <a href="{{ route('single-post-page', $last_law_post->slug) }}">
                         <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $last_law_post->thumbnail }}"
-                             alt="{{ $last_law_post->thumbnail }}" class="lazy w-100"
+                             alt="{{ $last_law_post->alter_tag }}" class="lazy w-100 image_size_one"
                              height="250">
                         <h5 class="lazy pt-2">
                             {{ Illuminate\Support\Str::limit($last_law_post->title, 38) }}
@@ -231,7 +274,7 @@
                             <li>
                                 <a class="d-flex" href="{{ route('single-post-page', $law_post->slug) }}"><img
                                         src="{{asset('frontend/img/placeholder.jpg')}}"
-                                        class="lazy w-25" height="100" alt="{{ $law_post->slug }}"
+                                        class="lazy w-25 image_size_two" height="100" alt="{{ $law_post->slug }}"
                                         data-src="{{ $law_post->thumbnail }}">
                                     <p class="lazy ml-3">{{ $law_post->title }}</p>
                                 </a>
@@ -243,6 +286,21 @@
         </div>
     </section>
     {{-- Politics Technology and Law Section End --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (isset($custom_add_four))
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$custom_add_four->customadd}}" height="250" class="lazy img-fluid mb-4 custom_add_size" alt="">
+                    </div>
+                @else
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/custom-add-1200-250.webp')}}" height="250" class="lazy img-fluid mb-4 custom_add_size" alt="">
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
     {{-- Entertainment Section Start --}}
     <section id="entertainment_and_feature">
         <div class="container">
@@ -263,7 +321,7 @@
                                 </a>
                             </h3>
                         </div>
-                        <div class="card ml-3 mr-3 pt-3 pb-3">
+                        <div class="card ml-3 mr-3 pt-3 pb-3" id="entertainment_feature">
                             <a href="{{ route('single-post-page', $last_entertainment_post->slug) }}"
                                class="d-flex for-position-image">
                                 <div class="col-md-5 col-12">
@@ -275,7 +333,7 @@
                                 <div class="col-md-7 col-12">
                                     <img src="{{asset('frontend/img/placeholder.jpg')}}"
                                          data-src="{{ $last_entertainment_post->thumbnail }}"
-                                         alt="{{ $last_entertainment_post->slug }}" class="lazy img-fluid">
+                                         alt="{{ $last_entertainment_post->alter_tag }}" class="lazy img-fluid image_size_one">
                                 </div>
                             </a>
                         </div>
@@ -288,8 +346,8 @@
                                             <div>
                                                 <img src="{{asset('frontend/img/placeholder.jpg')}}"
                                                      data-src="{{ $entertainment_post->thumbnail }}"
-                                                     height="100" alt="{{ $entertainment_post->slug }}"
-                                                     class="lazy w-100 img-fluid">
+                                                     height="100" alt="{{ $entertainment_post->alter_tag }}"
+                                                     class="lazy w-100 img-fluid image_size_one">
                                                 <p class="lazy pt-2">
                                                     {{ \Illuminate\Support\str::limit($entertainment_post->title, 30) }}
                                                 </p>
@@ -301,7 +359,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 feature">
                     <h3 class="d-flex justify-content-between">
                         <a class="section_header" href="{{ route('tag-page', 'ফিচার') }}">
                             <span>
@@ -319,8 +377,8 @@
                             <li>
                                 <a class="d-flex" href="{{ route('single-post-page', $f_news->slug) }}">
                                     <img src="{{asset('frontend/img/placeholder.jpg')}}" height="70" width="100"
-                                         alt="{{ $f_news->slug }}"
-                                         data-src="{{ $f_news->thumbnail }}" class="lazy">
+                                         alt="{{ $f_news->alter_tag }}"
+                                         data-src="{{ $f_news->thumbnail }}" class="lazy image_size_two">
                                     <p class="lazy ml-3">{{ $f_news->title }}</p>
                                 </a>
                             </li>
@@ -331,6 +389,21 @@
         </div>
     </section>
     {{-- Entertainment Section End --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (isset($custom_add_five))
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$custom_add_five->customadd}}" height="250" class="lazy img-fluid mt-4 mb-2 custom_add_size" alt="">
+                    </div>
+                @else
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/custom-add-1200-250.webp')}}" height="250" class="lazy img-fluid mt-4 mb-2 custom_add_size" alt="">
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
     {{-- Lifestyle and international Section Start --}}
     <section id="international_lifestyle">
         <div class="container">
@@ -351,9 +424,9 @@
                     <div class="row">
                         <div class="col-md-6 mt-2">
                             <a href="{{ route('single-post-page', $last_international_post->slug) }}">
-                                <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-100" height="200"
+                                <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-100 image_size_one" height="200"
                                      data-src="{{ $last_international_post->thumbnail }}"
-                                     alt="{{ $last_international_post->slug }}">
+                                     alt="{{ $last_international_post->alter_tag }}">
                                 <h5 class="lazy pt-2">
                                     {{ Illuminate\Support\Str::limit($last_international_post->title, 38) }}
                                 </h5>
@@ -368,8 +441,8 @@
                                     <li class="ml-2">
                                         <a class="d-flex"
                                            href="{{ route('single-post-page', $international_post->slug) }}">
-                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-50"
-                                                 height="100" alt="{{ $international_post->slug }}"
+                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-50 image_size_two"
+                                                 height="100" alt="{{ $international_post->alter_tag }}"
                                                  data-src="{{ $international_post->thumbnail }}">
                                             <p class="lazy ml-2">
                                                 {{ Illuminate\Support\Str::limit($international_post->title, 29) }}
@@ -397,9 +470,9 @@
                     <div class="row">
                         <div class="col-md-6 mt-2">
                             <a href="{{ route('single-post-page', $last_lifestyle_post->slug) }}">
-                                <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy img-fluid"
+                                <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy img-fluid image_size_one"
                                      data-src="{{ $last_lifestyle_post->thumbnail }}"
-                                     alt="{{ $last_lifestyle_post->slug }}">
+                                     alt="{{ $last_lifestyle_post->alter_tag }}">
                                 <h5 class="lazy pt-2">
                                     {{ Illuminate\Support\Str::limit($last_lifestyle_post->title, 38) }}
                                 </h5>
@@ -413,8 +486,8 @@
                                 @foreach ($lifestyle_posts as $key => $lifestyle_post)
                                     <li class="ml-2">
                                         <a class="d-flex" href="{{ route('single-post-page', $lifestyle_post->slug) }}">
-                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy img-fluid"
-                                                 alt="{{ $lifestyle_post->slug }}"
+                                            <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy img-fluid image_size_two"
+                                                 alt="{{ $lifestyle_post->alter_tag }}"
                                                  data-src="{{ $lifestyle_post->thumbnail }}">
                                             <p class="lazy ml-2">
                                                 {{ Illuminate\Support\Str::limit($lifestyle_post->title, 29) }}
@@ -434,9 +507,9 @@
     <section id="full_country">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 map">
+                <div class="col-md-8 d-none d-md-block map">
                     <div class="card">
-                        <h5 class="card-header text-center text-capitalize">এক ক্লিকে সারাদেশের জেলার খবর</h5>
+                        <h5 class="card-header text-center text-capitalize">এক ক্লিকে জেলার খবর</h5>
                         <div id="map_container" class="map_container card-body">
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-178 -351 612 792"
@@ -1302,7 +1375,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'চাঁপাইনবাবগঞ্জ') }}"
                                    xlink:href=""
                                    id="chapainawabganj">
                                     <g>
@@ -1380,7 +1453,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'পাবনা') }}"
                                    xlink:href="" id="pabna">
                                     <g>
                                         <path class="st_9" d="M61.5,29.5c0.1,0.4-0.7,0.5-1,0.9c-6.4,1-12.6,1-19,0.3c-4.1,0-8.1-1.4-11.2-3.7c-2.4-1.4-4.7-3.1-6.4-4.7
@@ -1413,7 +1486,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'শেরপুর') }}"
                                    xlink:href="" id="sherpur">
                                     <g>
                                         <path class="st_10" d="M118.7-143.7c-1.6-0.2-6.8-1.3-7.5-2.3s-1.1-0.5-4.8-0.5c-3.7,0.1-6.3-1.5-7.3-2.6c-0.9-1.2-3.2-2.4-6.7-2.7
@@ -1458,7 +1531,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'জামালপুর') }}"
                                    xlink:href="" id="jamalpur">
                                     <g>
                                         <path class="st_0" d="M70.5-159.8c0,0-3.1,0-3.4,0.7c-0.3,0.7-2.4,1.4-3.8,1.7c-1.5,0.3-1.8,1.8-2.8,2.7s-1.5,0.3-3.3,0.4
@@ -1519,7 +1592,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'গাজীপুর') }}"
                                    xlink:href="" id="gazipur">
                                     <g>
                                         <g>
@@ -1581,7 +1654,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'নরসিংদী') }}"
                                    xlink:href="" id="norsinghdi">
                                     <g>
                                         <path class="st_0" d="M207.7,1.3c-1.1,1.5-5.4,5.9-5.7,7.6c-0.3,1.7-1.1,4.6-3.3,5c-2.2,0.3-4.9,5.1-5.9,6.2s-3.6,3.6-6.2,2.5
@@ -1625,7 +1698,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'কিশোরগঞ্জ') }}"
                                    xlink:href=""
                                    id="kishoregonj">
                                     <g>
@@ -1689,7 +1762,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'সুনামগঞ্জ') }}"
                                    xlink:href="" id="sunamganj">
                                     <g>
                                         <g>
@@ -1748,7 +1821,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'সিলেট') }}"
                                    xlink:href="" id="sylhet">
                                     <g>
                                         <g>
@@ -1790,7 +1863,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'মৌলভীবাজার') }}"
                                    xlink:href=""
                                    id="maulvibazar">
                                     <g>
@@ -1858,7 +1931,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'হবিগঞ্জ') }}"
                                    xlink:href="" id="habiganj">
                                     <g>
                                         <path class="st_10" d="M241.3,8.3c0.8-0.9,5.9-0.1,8.7-0.8c4.1-1,2-5.2,3-6c2-1.8,0.2-3.7-0.7-5.3c-1.9-3.4,0.6-3.3,2.1-2.9
@@ -1908,7 +1981,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'চুয়াডাঙ্গা') }}"
                                    xlink:href="" id="chuadanga">
                                     <g>
                                         <path class="st_0" d="M-68.1,58.8c1,0.2,1.9,0.8,2.1,2.5c0.3,2.4,1.3,3.1,2.6,3.7c1.3,0.7,4.1,3,5.1,4.5s3.1,3.1,4.1,3.6
@@ -1962,7 +2035,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ঝিনাইদহ') }}"
                                    xlink:href="" id="jhenaidah">
                                     <g>
                                         <path class="st_7" d="M-23.5,45.1c-0.5,1.3-3.1,2.1-3.3,4.5s1,6.7,0.1,8.8c-0.9,2.1,0.4,4.2-1.8,5.4c-2.2,1.2-5.4,0.4-6,1.7
@@ -2011,7 +2084,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'মাগুরা') }}"
                                    xlink:href="" id="magura">
                                     <g>
                                         <path class="st_10" d="M0.7,85.3c-0.8-2.3,0-5.2,0.5-6.4c0.5-1.1,3.3-1.7,4.6-2.7s1.5-2.2,1.1-3.9c-0.4-1.7-0.1-4.9,0-6.1
@@ -2050,7 +2123,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'যশোর') }}"
                                    xlink:href="" id="jessore">
                                     <g>
                                         <path class="st_4" d="M2.2,154.3c-2.8-1.9-5.9,1.4-6.9,2.6s-3.6,0.7-4-1.2c-0.3-1.9-2.8-2.6-3.6-4.8c-0.9-2.2,0.3-2.4,1-4.8
@@ -2094,7 +2167,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'নড়াইল') }}"
                                    xlink:href="" id="narail">
                                     <g>
                                         <path class="st_1" d="M36,137.1c0,0,0.1-0.1-1.2-1.2s-1-1.5-1-3.1s-0.4-2.6-1.2-3.9c-0.9-1.3-2-2.3-2.4-3.5
@@ -2138,7 +2211,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'গোপালগঞ্জ') }}"
                                    xlink:href="" id="gopalgonj">
                                     <g>
                                         <path class="st_7" d="M103.8,130.7c1.2-0.9,5-2.9,3.3-5.5c-0.7-1-1.5-1.6-1.3-2.6c0.1-1,0.1-2.2-1-3.3c-1.1-1.1-2,0-2.4-1.2
@@ -2202,7 +2275,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'চাঁদপুর') }}"
                                    xlink:href="" id="chandpur">
                                     <g>
                                         <g>
@@ -2252,7 +2325,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'বরিশাল') }}"
                                    xlink:href="" id="barisal">
                                     <g>
                                         <path class="st_0" d="M171.9,142c-1.2-1.5-2.4-1.7-3.4-3.4c-1.1-1.7-3.1-3.7-3.1-3.7l-0.4-0.2c-0.2-0.3-0.5-0.9-0.9-1.7
@@ -2301,7 +2374,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'খুলনা') }}"
                                    xlink:href="" id="khulna">
                                     <g>
                                         <path class="st_8" d="M39.9,251.6c-2.4-2-3.9-4.7-4.4-7.7c-0.5-2.9-0.2-6.4-0.2-8.4s-1.8-4.7-3-7.4s-2-5.6-2-5.6s-0.5-1-1.2,1.7
@@ -2348,7 +2421,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'সাতক্ষীরা') }}"
                                    xlink:href="" id="satkhira">
                                     <g>
                                         <path class="st_10" d="M-15.4,258.5c0.2-2.9-1-3-2.2-5.1c-1.2-2-1.8-4.9-1.7-7s1.6-4.3,3.1-4.9c1.5-0.5,2.1-1.5,1.7-2.7
@@ -2405,7 +2478,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'বাগেরহাট') }}"
                                    xlink:href="" id="bagerhat">
                                     <g>
                                         <path class="st_13" d="M83.4,149c0.6,2,1.4,3.3,1.4,3.3c-1.1,0.5-1.7,0.1-1.8,1.3c-0.1,1.2,0.4,1-1.1,2.1s-0.8,2.5-0.2,3.3
@@ -2464,7 +2537,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'নোয়াখালী') }}"
                                    xlink:href="" id="noakhali">
                                     <g>
                                         <path class="st_8" d="M208.7,190.5c0,0,0.7-0.2,1.3-2c0.7-1.8,2.4-3.7,3.7-6.4c1.3-2.7,0.4-3.6,0.9-6.1c0.4-2.5-0.5-4-1.8-5.4
@@ -2523,7 +2596,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ঝালকাঠি') }}"
                                    xlink:href=""
                                    id="jhalokathi">
                                     <g>
@@ -2570,7 +2643,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ভোলা') }}"
                                    xlink:href="" id="bhola">
                                     <g>
                                         <path class="st_10" d="M170,173.4c-2.1,0.5-6.8,2-7.1,3.7c-0.2,1.7-0.4,7.3-1.1,9.4c-0.7,2.1-2,2.7-0.5,5.9s3.3,3.1,5,5.6
@@ -2635,7 +2708,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'খাগড়াছড়ি') }}"
                                    xlink:href=""
                                    id="khagrachari">
                                     <g>
@@ -2694,7 +2767,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'রাঙ্গামাটি') }}"
                                    xlink:href=""
                                    id="rangamati">
                                     <g>
@@ -2762,7 +2835,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'বান্দরবান') }}"
                                    xlink:href=""
                                    id="bandarban">
                                     <g>
@@ -2808,7 +2881,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'কক্সবাজার') }}"
                                    xlink:href=""
                                    id="cox-s-bazar">
                                     <g>
@@ -2874,7 +2947,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'বরগুনা') }}"
                                    xlink:href="" id="borguna">
                                     <g>
                                         <path class="st_7" d="M98.7,215.3c-0.1,0.8-1.2,1.8-2.5,3.4c-2.1,2.5-3.7,4.2-4.1,8.1c-0.5,5.3-1.8,6.4-2.8,7.3
@@ -2919,7 +2992,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'পিরোজপুর') }}"
                                    xlink:href="" id="pirojpur">
                                     <g>
                                         <g>
@@ -2981,7 +3054,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ঢাকা') }}"
                                    xlink:href="" id="dhaka">
                                     <g>
                                         <path class="st_14" d="M144.2,19.7c-1.1,0.2-1.6-0.2-1.6-0.2s-0.1-2.6-2.2-1.5s-3.7,1.5-3.9-0.3c-0.2-1.8-0.7-3.2-1.6-3.3
@@ -3014,7 +3087,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'কুমিল্লা') }}"
                                    xlink:href="" id="comilla">
                                     <g>
                                         <g>
@@ -3061,7 +3134,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ফেনী') }}"
                                    xlink:href="" id="feni">
                                     <g>
                                         <path class="st_7" d="M259.7,166.6c-1-3.3-1.5-11.2-0.6-12.9c0.9-1.7,1.7-5.9,2.7-7.1s1.1-1.8,3.2-3.3s3.2-5.5,4.3-6.1
@@ -3094,7 +3167,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'লক্ষ্মীপুর') }}"
                                    xlink:href=""
                                    id="lakshmipur">
                                     <g>
@@ -3151,7 +3224,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'মুন্সিগঞ্জ') }}"
                                    xlink:href="" id="munsigonj">
                                     <g>
                                         <g>
@@ -3205,7 +3278,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ব্রাহ্মণবাড়িয়া') }}"
                                    xlink:href=""
                                    id="brahmonbaria">
                                     <g>
@@ -3272,7 +3345,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ফরিদপুর') }}"
                                    xlink:href="" id="faridpur">
                                     <g>
                                         <path class="st_0" d="M64.6,44.2l-1.2,1.6c0,0-0.6,0.8-1.6,1.1c-0.1,0-1.1,0.4-1.4,1.2c0,0-0.2,0.5-1.1,0.3c-0.1,0-1.5-0.4-1.5-0.4
@@ -3326,7 +3399,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'সিরাজগঞ্জ') }}"
                                    xlink:href="" id="sirajganj">
                                     <g>
                                         <path class="st_1" d="M12.8-59.9l-1.2,1.4L11-57.3l-1,1.5l-0.7,0.9l-0.4,0.5l-0.8,0.8l-0.9,0.7l-0.3,0.7l-0.2,1.3l-0.2,1.4l-0.1,0.9
@@ -3393,7 +3466,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'টাঙ্গাইল') }}"
                                    xlink:href="" id="tangail">
                                     <g>
                                         <g>
@@ -3443,7 +3516,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'কুড়িগ্রাম') }}"
                                    xlink:href="" id="kurigram">
                                     <g>
                                         <path class="st_1" d="M24.6-215.6c0,0,0.3,1.9,1.4,2.4c1.1,0.6,2.4,2.8,3.5,4.7c1.1,2,0.8,3.5,2.3,4.8s3.5,1.1,3.6,2.8
@@ -3502,7 +3575,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'নাটোর') }}"
                                    xlink:href="" id="natore">
                                     <g>
                                         <path class="st_16" d="M-10.8-71.3c0,0-3.8-1-4.3,1.1s-0.2,3.9,0.1,5.9c0.4,2,0,4.4-1,5.7c-1,1.3-2.9,2.1-5,1.2s-1.8-3.3-3.9-3.8
@@ -3541,7 +3614,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'ঠাকুরগাঁও') }}"
                                    xlink:href=""
                                    id="thakurgaong">
                                     <g>
@@ -3603,7 +3676,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'পঞ্চগড়') }}"
                                    xlink:href=""
                                    id="panchagarh">
                                     <g>
@@ -3652,7 +3725,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'নীলফামারী') }}"
                                    xlink:href=""
                                    id="nilphamari">
                                     <g>
@@ -3713,7 +3786,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'লালমনিরহাট') }}"
                                    xlink:href=""
                                    id="lalmonirhat">
                                     <g>
@@ -3782,7 +3855,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'দিনাজপুর') }}"
                                    xlink:href="" id="dinajpur">
                                     <g>
                                         <path class="st_9" d="M-4.1-145.4c0,0-3.3-1.4-4.9-2.6c-1.6-1.2-4.7-0.5-6-0.2c-1.4,0.2-4.8-0.7-6.9-2.3c-1.4-1.1-3.7-1.3-5-1.4
@@ -3841,7 +3914,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'কুষ্টিয়া') }}"
                                    xlink:href="" id="kushtia">
                                     <g>
                                         <path class="st_10" d="M-38.7-10.9l0.5,1.6c0,0,0,2-2,2.7c-0.7,0.2-1.6,0.2-1.9,0.7c-0.4,0.5-0.8,0.6-1.5,0.6
@@ -3892,7 +3965,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'পটুয়াখালী') }}"
                                    xlink:href=""
                                    id="patuakhali">
                                     <g>
@@ -3963,7 +4036,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'মানিকগঞ্জ') }}"
                                    xlink:href="" id="manikgonj">
                                     <g>
                                         <path class="st_4" d="M71.4,40.5c0,0-1-1.1-1.1-2.3c-0.1-1.2-3.8-2.9-5.6-4.5s-2.6-2.6-3.2-4.2c-0.6-1.6-0.4-2.1-0.1-4
@@ -4071,7 +4144,7 @@
 			c0.2,3.7,0,5.4-1.7,5.9s-3.9,0-6.4,1.2c-2.4,1.2-3.9-1.5-5.9,1.7s-2.2,5.9-3.9,6.4c-1.7,0.5-2-0.7-5.1,1.5c0,0,0.6,4.8,2.9,5.3
 			s8.9-4.2,8.9-4.2s3.2-1.4,5.8-3.3c2.6-1.9,5.4-2.8,5.4-2.8L171.3,144.8z"></path>
                                 </g>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'শরীয়তপুর') }}"
                                    xlink:href="" id="shariatpur">
                                     <g>
                                         <path class="st_0" d="M133.2,125.1c0.1-0.1,0.2-0.2,0.2-0.3c0.7-1-0.2-3.3-1.1-4.3c-1-1.1-1.7-1.5-1.3-3.8c0.4-2.3-2.7-2-3.2-2.7
@@ -4249,7 +4322,7 @@
 				C81.6-211.8,81.1-213.5,78.7-211.5z"></path>
                                     </g>
                                 </g>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'মাদারীপুর') }}"
                                    xlink:href="" id="madaripur">
                                     <g>
                                         <g>
@@ -4306,7 +4379,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'নারায়ণগঞ্জ') }}"
                                    xlink:href=""
                                    id="narayangonj">
                                     <g>
@@ -4367,7 +4440,7 @@
                                         </g>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'রাজবাড়ী') }}"
                                    xlink:href="" id="rajbari">
                                     <g>
                                         <path class="st_1" d="M35.3,62.4c0,0-2.9-0.5-3.6-3.3c-0.7-2.7-1.4-5.4-3.4-6.1s0-0.7-3.4-3.4c-3.4-2.7-2-2.7-4.7-2s-6.8,0-6.8,0
@@ -4412,7 +4485,7 @@
 		L56.5,43.8L56.5,43.8z"></path>
                                     </g>
                                 </a>
-                                <a href="{{ route('submenu-page', 'রংপুর') }}"
+                                <a href="{{ route('submenu-page', 'মেহেরপুর') }}"
                                    xlink:href="" id="meherpur">
                                     <g>
                                         <path class="st_1" d="M-42.3,28l-0.3-0.8l-1.1-3.3c0,0,2-3.4,1.4-5.4c-0.7-2-1.4,0-3.4-1.4s-5.5-5.5-5.5-5.5l0.3-0.3l-0.9,0.7
@@ -4470,8 +4543,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 map">
-                    <div class="card">
-                        <h5 class="card-header text-center text-capitalize">Map</h5>
+                    <div class="card d-md-none">
+                        <h5 class="card-header text-center text-capitalize">এক ক্লিকে বিভাগের খবর</h5>
                         <div id="map_container" class="map_container card-body">
                             <svg version="1.1" id="map" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -7299,6 +7372,19 @@
                             </svg>
                         </div>
                     </div>
+                    <div class="google_vertical_add">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- vertical add -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-2285535747529435"
+                             data-ad-slot="4086839037"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
@@ -7329,8 +7415,8 @@
                                 <a href="{{ route('single-post-page', $left_post->slug) }}">
                                     <div class="card-img">
                                         <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                                             alt="{{ $left_post->slug }}" data-src="{{ $left_post->thumbnail }}"
-                                             class="lazy w-100">
+                                             alt="{{ $left_post->alter_tag }}" data-src="{{ $left_post->thumbnail }}"
+                                             class="lazy w-100 image_size_one">
                                     </div>
                                     <h5 class="lazy py-2">
                                         {{ Illuminate\Support\Str::limit($left_post->title, 30) }}
@@ -7343,9 +7429,9 @@
                 <div class="col-md-6">
                     <a href="{{ route('single-post-page', $last_sports_post->slug) }}">
                         <div class="card-img">
-                            <img src="{{asset('frontend/img/placeholder.jpg')}}" alt="{{ $last_sports_post->slug }}"
+                            <img src="{{asset('frontend/img/placeholder.jpg')}}" alt="{{ $last_sports_post->alter_tag }}"
                                  data-src="{{ $last_sports_post->thumbnail }}"
-                                 class="lazy w-100">
+                                 class="lazy w-100 image_size_one">
                         </div>
                         <h5 class="lazy pt-2">
                             {{ $last_sports_post->title }}
@@ -7366,7 +7452,7 @@
                                 <a href="{{ route('single-post-page', $right_post->slug) }}">
                                     <div class="card-img">
                                         <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                                             data-src="{{ $right_post->thumbnail }}" class="lazy w-100" alt="">
+                                             data-src="{{ $right_post->thumbnail }}" class="lazy w-100 image_size_one" alt="{{$right_post->alter_tag}}">
                                     </div>
                                     <h5 class="lazy py-2">
                                         {{ $right_post->title }}
@@ -7380,6 +7466,21 @@
         </div>
     </section>
     {{-- Sports Section End --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (isset($custom_add_six))
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$custom_add_six->customadd}}" height="250" class="lazy img-fluid mt-4 mb-2 custom_add_size" alt="">
+                    </div>
+                @else
+                    <div class="coustom_advertise">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/custom-add-1200-250.webp')}}" height="250" class="lazy img-fluid mt-4 mb-2 custom_add_size" alt="">
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
     {{-- Photo finance and foreign Start --}}
     <section id="photo_gallery_finance_foreign">
         <div class="container">
@@ -7396,8 +7497,8 @@
                                 <div class="card-img">
                                     <div class="image_box">
                                         <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                                             data-src="{{ $photo->thumbnail }}" class="lazy w-100"
-                                             alt="{{ $photo->slug }}"
+                                             data-src="{{ $photo->thumbnail }}" class="lazy w-100 image_size_one"
+                                             alt="{{ $photo->alter_tag }}"
                                              width="544" height="367">
                                     </div>
                                     <div class="image_overlay">
@@ -7428,8 +7529,8 @@
                             <li>
                                 <a class="d-flex" href="{{ route('single-post-page', $f_news->slug) }}">
                                     <img src="{{asset('frontend/img/placeholder.jpg')}}" height="70" width="100"
-                                         alt="{{ $f_news->slug }}"
-                                         data-src="{{ $f_news->thumbnail }}" class="lazy">
+                                         alt="{{ $f_news->alter_tag }}"
+                                         data-src="{{ $f_news->thumbnail }}" class="lazy image_size_two">
                                     <p class="lazy ml-3">
                                         {{ Illuminate\Support\Str::limit($f_news->title, 40) }}
                                     </p>
@@ -7456,8 +7557,8 @@
                             <li>
                                 <a class="d-flex" href="{{ route('single-post-page', $nrb->slug) }}">
                                     <img src="{{asset('frontend/img/placeholder.jpg')}}" height="70" width="100"
-                                         alt="{{ $nrb->slug }}"
-                                         data-src="{{ $nrb->thumbnail }}" class="lazy">
+                                         alt="{{ $nrb->alter_tag }}"
+                                         data-src="{{ $nrb->thumbnail }}" class="lazy image_size_two">
                                     <p class="lazy ml-3">
                                         {{ Illuminate\Support\Str::limit($nrb->title, 40) }}
                                     </p>
@@ -7489,8 +7590,8 @@
                     </h3>
                     <a href="{{ route('single-post-page', $last_tourism_post->slug) }}">
                         <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                             data-src="{{ $last_tourism_post->thumbnail }}" alt="{{ $last_tourism_post->slug }}"
-                             width="100%" class="lazy">
+                             data-src="{{ $last_tourism_post->thumbnail }}" alt="{{ $last_tourism_post->alter_tag }}"
+                             width="100%" class="lazy image_size_one">
                         <h5 class="lazy pt-2">
                             {{ Illuminate\Support\Str::limit($last_tourism_post->title, 40) }}
                         </h5>
@@ -7503,8 +7604,8 @@
                             <li>
                                 <a class="d-flex" href="{{ route('single-post-page', $tour->slug) }}">
                                     <img src="{{asset('frontend/img/placeholder.jpg')}}" height="70" width="100"
-                                         alt="{{ $tour->slug }}"
-                                         data-src="{{ $tour->thumbnail }}" class="lazy">
+                                         alt="{{ $tour->alter_tag }}"
+                                         data-src="{{ $tour->thumbnail }}" class="lazy image_size_two">
                                     <p class="lazy ml-3">
                                         {{ Illuminate\Support\Str::limit($tour->title, 40) }}
                                     </p>
@@ -7528,8 +7629,8 @@
                     </h3>
                     <a href="{{ route('single-post-page', $last_health_post->slug) }}">
                         <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                             data-src="{{ $last_health_post->thumbnail }}" alt="{{ $last_health_post->slug }}"
-                             width="100%" class="lazy">
+                             data-src="{{ $last_health_post->thumbnail }}" alt="{{ $last_health_post->alter_tag }}"
+                             width="100%" class="lazy image_size_one">
                         <h5 class="lazy pt-2">
                             {{ Illuminate\Support\Str::limit($last_health_post->title, 40) }}
                         </h5>
@@ -7542,8 +7643,8 @@
                             <li>
                                 <a class="d-flex" href="{{ route('single-post-page', $health->slug) }}">
                                     <img src="{{asset('frontend/img/placeholder.jpg')}}" height="70" width="100"
-                                         alt="{{ $health->slug }}"
-                                         data-src="{{ $health->thumbnail }}" class="lazy">
+                                         alt="{{ $health->alter_tag }}"
+                                         data-src="{{ $health->thumbnail }}" class="lazy image_size_two">
                                     <p class="lazy ml-3">
                                         {{ Illuminate\Support\Str::limit($health->title, 40) }}
                                     </p>
@@ -7567,8 +7668,8 @@
                     </h3>
                     <a href="{{ route('single-post-page', $last_religion_post->slug) }}">
                         <img src="{{asset('frontend/img/placeholder.jpg')}}"
-                             data-src="{{ $last_religion_post->thumbnail }}" alt="{{ $last_religion_post->slug }}"
-                             width="100%" class="lazy">
+                             data-src="{{ $last_religion_post->thumbnail }}" alt="{{ $last_religion_post->alter_tag }}"
+                             width="100%" class="lazy image_size_one">
                         <h5 class="lazy pt-2">
                             {{ Illuminate\Support\Str::limit($last_religion_post->title, 40) }}
                         </h5>
@@ -7581,8 +7682,8 @@
                             <li>
                                 <a class="d-flex" href="{{ route('single-post-page', $religion->slug) }}">
                                     <img src="{{asset('frontend/img/placeholder.jpg')}}" height="70" width="100"
-                                         alt="{{ $religion->slug }}"
-                                         data-src="{{ $religion->thumbnail }}" class="lazy">
+                                         alt="{{ $religion->alter_tag }}"
+                                         data-src="{{ $religion->thumbnail }}" class="lazy image_size_two">
                                     <p class="lazy ml-3">
                                         {{ Illuminate\Support\Str::limit($religion->title, 40) }}
                                     </p>
