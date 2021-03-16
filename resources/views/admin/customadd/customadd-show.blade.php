@@ -57,11 +57,12 @@
                                                         id="place"
                                                         name="place">
                                                         <option selected disabled>--Select Placement--</option>
-                                                        <option value="top-right">Top Right</option>
-                                                        <option value="right-side-one">Right Side One</option>
-                                                        <option value="right-side-two">Right Side Two</option>
-                                                        <option value="right-side-three">Right Side Three</option>
-                                                        <option value="right-side-four">Right Side Four</option>
+                                                        <option value="custom-add-one">Custom Add One</option>
+                                                        <option value="custom-add-two">Custom Add two</option>
+                                                        <option value="custom-add-three">Custom Add three</option>
+                                                        <option value="custom-add-four">Custom Add four</option>
+                                                        <option value="custom-add-five">Custom Add five</option>
+                                                        <option value="custom-add-six">Custom Add six</option>
                                                     </select>
                                                     @error('place')
                                                     <span class="invalid-feedback" role="alert">

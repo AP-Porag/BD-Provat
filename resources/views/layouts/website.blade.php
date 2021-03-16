@@ -87,8 +87,8 @@
                                             <li class="ml-3 first-login d-none d-md-block"><a href="{{ route('login') }}"
                                                                             class="text-white login btn btn-sm">Login</a>
                                             </li>
-                                            <li class="ml-3"><a href="{{ route('register') }}"
-                                                                class="text-white login btn btn-sm">Subscribe
+                                            <li class="ml-3 "><a href="{{ route('register') }}"
+                                                                class="text-white login btn btn-sm subscribe_us_btn">Subscribe
                                                     Us</a></li>
                                         @endguest
                                         @auth
@@ -123,15 +123,19 @@
             <div class="col-md-3">
                 <a class="nav-link {{ \Illuminate\Support\Facades\Route::current()->getName() == 'website' ? 'active' : '' }}"
                    href="{{ route('website') }}">
-                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="lazy img-fluid">
+                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="lazy img-fluid logo_size">
                 </a>
             </div>
             <div class="col-md-9 d-none d-md-block">
-                @if (isset($top_right_add))
-                    <div class="coustom_advertise">
-                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$top_right_add->customadd}}" width="728" height="90" class="lazy img-fluid mt-4" alt="">
-                    </div>
-                @endif
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- header-banner add -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-2285535747529435"
+                     data-ad-slot="1601002843"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </div>
@@ -283,12 +287,43 @@
     @endif
     {{-- Braking News End --}}
 </header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if (isset($custom_add_one))
+                <div class="coustom_advertise">
+                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{$custom_add_one->customadd}}" height="250" class="lazy img-fluid custom_add_size" alt="">
+                </div>
+            @else
+                <div class="coustom_advertise">
+                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/custom-add-1200-250.webp')}}" height="250" class="lazy img-fluid custom_add_size" alt="">
+                </div>
+            @endif
+        </div>
+    </div>
+</div>
 {{-- main content --}}
 <div class="content">
     @yield('content')
 </div>
 {{-- Braking News End --}}
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 google_horizontal_add_one mt-3">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- banner add -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2285535747529435"
+                 data-ad-slot="4776463541"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</div>
 {{-- Footer Section Start --}}
 <footer id="footer" class="footer-area lazy">
     <div class="container">
@@ -310,7 +345,7 @@
             </div>
             <div class="col-md-4 text-center">
                 <div class="editor">
-                    <p class="pb-3">
+                    <p class="pb-5">
                         {{ $author->enterprisename }}<br>
                         {{ $author->enterpriseheadquarter }}।<br>
                         আমাদের মেইল: <a href="{{ $author->email }}">bdprovat.news@gmail.com</a>

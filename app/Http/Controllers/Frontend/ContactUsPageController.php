@@ -20,16 +20,19 @@ class ContactUsPageController extends Controller
         //for dynamic title
         $slug = 'contact-us';
         //custom add start
-        $top_right_add = CustomAdd::where('place', 'top-right')->latest()->first();
-        $right_side_one_add = CustomAdd::where('place', 'right-side-one')->latest()->first();
-        $right_side_two_add = CustomAdd::where('place', 'right-side-two')->latest()->first();
-        $right_side_three_add = CustomAdd::where('place', 'right-side-three')->latest()->first();
-        $right_side_four_add = CustomAdd::where('place', 'right-side-four')->latest()->first();
+        $custom_add_one = CustomAdd::where('place', 'custom-add-one')->latest()->first();
+        $custom_add_two = CustomAdd::where('place', 'custom-add-two')->latest()->first();
+        $custom_add_three = CustomAdd::where('place', 'custom-add-three')->latest()->first();
+        $custom_add_four = CustomAdd::where('place', 'custom-add-four')->latest()->first();
+        $custom_add_five = CustomAdd::where('place', 'custom-add-five')->latest()->first();
+        $custom_add_six = CustomAdd::where('place', 'custom-add-six')->latest()->first();
         //custom add end
-        return response(view('frontend.contact-us-page',compact('slug','categories','breaking_news','headlines','top_right_add',
-            'right_side_one_add',
-            'right_side_two_add',
-            'right_side_three_add',
-            'right_side_four_add')));
+        return response(view('frontend.contact-us-page',compact('slug','categories','breaking_news','headlines',
+            'custom_add_one',
+            'custom_add_two',
+            'custom_add_three',
+            'custom_add_four',
+            'custom_add_five',
+            'custom_add_six')));
     }
 }

@@ -31,11 +31,12 @@ class SinglePostPageController extends Controller
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 7)->limit(15)->get();
         //custom add start
-        $top_right_add = CustomAdd::where('place', 'top-right')->latest()->first();
-        $right_side_one_add = CustomAdd::where('place', 'right-side-one')->latest()->first();
-        $right_side_two_add = CustomAdd::where('place', 'right-side-two')->latest()->first();
-        $right_side_three_add = CustomAdd::where('place', 'right-side-three')->latest()->first();
-        $right_side_four_add = CustomAdd::where('place', 'right-side-four')->latest()->first();
+        $custom_add_one = CustomAdd::where('place', 'custom-add-one')->latest()->first();
+        $custom_add_two = CustomAdd::where('place', 'custom-add-two')->latest()->first();
+        $custom_add_three = CustomAdd::where('place', 'custom-add-three')->latest()->first();
+        $custom_add_four = CustomAdd::where('place', 'custom-add-four')->latest()->first();
+        $custom_add_five = CustomAdd::where('place', 'custom-add-five')->latest()->first();
+        $custom_add_six = CustomAdd::where('place', 'custom-add-six')->latest()->first();
         //custom add end
 
         //popular news
@@ -47,11 +48,13 @@ class SinglePostPageController extends Controller
         //comments for this post
         $comments = Comment::where('post_id', $post_id)->where('status', 'approved')->orderBy('created_at', 'desc')->get();
 
-        return response(view('frontend.single-post-page', compact('slug', 'categories', 'breaking_news', 'headlines', 'post', 'latest_news', 'popular_news', 'related_news', 'comments', 'top_right_add',
-            'right_side_one_add',
-            'right_side_two_add',
-            'right_side_three_add',
-            'right_side_four_add')));
+        return response(view('frontend.single-post-page', compact('slug', 'categories', 'breaking_news', 'headlines', 'post', 'latest_news', 'popular_news', 'related_news', 'comments',
+            'custom_add_one',
+            'custom_add_two',
+            'custom_add_three',
+            'custom_add_four',
+            'custom_add_five',
+            'custom_add_six')));
     }
     public function shareCounter(Request $request){
         //'it will increment shares column value of related post;

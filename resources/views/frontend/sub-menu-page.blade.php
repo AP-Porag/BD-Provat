@@ -14,7 +14,7 @@
     <div class="container mt-3" id="category_sub_category_tag_list">
         <div class="row">
             <div class="col-md-8">
-                @if($category->count() < 1)
+                @if($categories_post_count < 1)
                     <div class="error-box">
                         <div class="error-text mt-5">
                             <h4 class="text-danger text-center">দুঃখিত  " {{ $category->name }} "  সম্পর্কে কিছুই খুঁজে পাওয়া যায় নাই !!!!</h4>

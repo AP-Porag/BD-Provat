@@ -986,13 +986,18 @@ footer .root {
 /*Category Subcategory Page start*/
 #category_sub_category_tag_list h4 {
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
 }
 
 #category_sub_category_tag_list h6 {
     color: black;
     font-size: 18px;
+    font-weight: 400;
+}
+#category_sub_category_tag_list p {
+    color: black;
+    font-size: 16px;
     font-weight: 400;
 }
 
