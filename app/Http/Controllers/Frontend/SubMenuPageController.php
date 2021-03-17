@@ -22,14 +22,14 @@ class SubMenuPageController extends Controller
         $headlines = Post::orderBy('created_at','desc')->limit(10)->get();
         //for search post belongs to this subcategory
         $category = SubMenu::where('slug',$slug)->first();
-        $categories_post_count = Post::where('category_id', $category->id)->count();
+        $categories_post_count = Post::where('sub_menu_id', $category->id)->count();
         //$main_post = Post::where('sub_menu_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->first();
 
         //$right_side_posts = Post::where('sub_category_id', $category->id)->where('id', '!=', $main_post->id)->where('status', 'published')->orderBy('created_at', 'desc')->limit(2)->get();
 
         //$bottom_side_posts = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 4)->limit(3)->get();
 
-        $posts = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->paginate(6);
+        $posts = Post::where('sub_menu_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->paginate(6);
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 7)->limit(15)->get();

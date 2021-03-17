@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb346789-9fff-42c9-9a4c-bc6c9742c009" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/frontend/img/custom-add-1200-250.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/sub-menu-page.blade.php" afterDir="false" />
+    <list default="true" id="cab1e0a3-6e72-4abb-9cfe-e998b143d66a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/frontend/img/squar-logo-two.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BD-Provat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BD-Provat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CategoryPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CategoryPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/ContactUsPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/ContactUsPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CustomAddController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CustomAddController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/HomeDataShowController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/HomeDataShowController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SearchPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SearchPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SinglePostPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SinglePostPageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SubCategoryPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SubCategoryPageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SubMenuPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/SubMenuPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/TagPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/TagPageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ER-Diagram/bd-provat.drawio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ER-Diagram/bd-provat.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/ER-Diagram/bd-provat.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/dummy-data/bdprovat.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/frontend/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/responsive.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/frontend/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customadd/customadd-show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customadd/customadd-show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/category-subcategory-tag-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/category-subcategory-tag-page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/settings-images/watermark.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/settings-images/watermark.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/posts-create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/posts-create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/popular_last_news.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/popular_last_news.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/single-post-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/single-post-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/tag-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/tag-page.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/website.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/website.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,11 +32,6 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="OptimizationOne" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -168,33 +160,23 @@
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1pTNFfuNr9HUSAgnSQwr0loFh9O" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1psCDnnvFjlSe8g7adLi87hAfYI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/frontend/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Client Project\Web Development With Laravel\BD-Provat\resources\views\frontend" />
-      <recent name="E:\Client Project\Web Development With Laravel\BD-Provat\public\frontend\css" />
-      <recent name="E:\Client Project\Web Development With Laravel\BD-Provat\public\frontend\fonts" />
-      <recent name="E:\Client Project\Web Development With Laravel\BD-Provat\public\frontend\js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Client Project\Web Development With Laravel\BD-Provat\public\frontend\js" />
+      <recent name="E:\Client Project\Web Development With Laravel\BD-Provat\public\frontend\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -206,43 +188,20 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fb346789-9fff-42c9-9a4c-bc6c9742c009" name="Default Changelist" comment="" />
-      <created>1615203022013</created>
+      <changelist id="cab1e0a3-6e72-4abb-9cfe-e998b143d66a" name="Default Changelist" comment="" />
+      <created>1615962297239</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1615203022013</updated>
-      <workItem from="1615203025561" duration="1072000" />
-      <workItem from="1615204201770" duration="484000" />
-      <workItem from="1615207161615" duration="132000" />
-      <workItem from="1615209058233" duration="714000" />
-      <workItem from="1615211738789" duration="471000" />
-      <workItem from="1615219695084" duration="54000" />
-      <workItem from="1615305584003" duration="60000" />
-      <workItem from="1615305657898" duration="1958000" />
-      <workItem from="1615380969567" duration="7939000" />
-      <workItem from="1615528472214" duration="3474000" />
-      <workItem from="1615554966385" duration="13170000" />
-      <workItem from="1615615247085" duration="757000" />
-      <workItem from="1615618386712" duration="8663000" />
-      <workItem from="1615630142913" duration="1832000" />
-      <workItem from="1615707589662" duration="11024000" />
-      <workItem from="1615728421063" duration="4413000" />
-      <workItem from="1615788921425" duration="1001000" />
-      <workItem from="1615823206504" duration="60000" />
-      <workItem from="1615823282120" duration="73000" />
-      <workItem from="1615823370121" duration="13976000" />
-      <workItem from="1615873506872" duration="3987000" />
-      <workItem from="1615879393793" duration="6119000" />
-      <workItem from="1615891028403" duration="899000" />
-      <workItem from="1615893951229" duration="3611000" />
-      <workItem from="1615907788558" duration="2600000" />
+      <updated>1615962297239</updated>
+      <workItem from="1615962300340" duration="674000" />
+      <workItem from="1615963582367" duration="39000" />
+      <workItem from="1615963697442" duration="4472000" />
+      <workItem from="1615973240314" duration="187000" />
+      <workItem from="1615982779994" duration="7423000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

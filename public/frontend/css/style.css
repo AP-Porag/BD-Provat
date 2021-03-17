@@ -1208,5 +1208,8 @@ nav>div a.nav-item.nav-link.active:after {
     padding: 0;
     margin: 0;
 }
-
+.custom_add_size{
+    height: 250px;
+    width: 100%;
+}
 /* Headline end */

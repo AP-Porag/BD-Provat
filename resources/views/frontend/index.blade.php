@@ -168,7 +168,7 @@
                             </span>
                         </a>
                     </h3>
-                    <a href="{{ route('single-post-page', $last_international_post->slug) }}">
+                    <a href="{{ route('single-post-page', $last_political_post->slug) }}">
                         <img src="{{asset('frontend/img/placeholder.jpg')}}" class="lazy w-100 image_size_one" height="250"
                              data-src="{{ $last_political_post->thumbnail }}"
                              alt="{{ $last_political_post->alter_tag }}">
@@ -176,9 +176,9 @@
                             {{ Illuminate\Support\Str::limit($last_political_post->title, 38) }}
                         </h5>
                         <p class="lazy">
-                            {!! \Illuminate\Support\str::limit(strip_tags($last_international_post->content)) !!}
-                            @if (strlen(strip_tags($last_international_post->content)) > 50)
-                                <a href="{{ route('single-post-page', $last_international_post->slug) }}"
+                            {!! \Illuminate\Support\str::limit(strip_tags($last_political_post->content)) !!}
+                            @if (strlen(strip_tags($last_political_post->content)) > 50)
+                                <a href="{{ route('single-post-page', $last_political_post->slug) }}"
                                    class="text-danger">বিস্তারিত...</a>
                             @endif
                         </p>

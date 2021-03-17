@@ -105,6 +105,17 @@
         width: 100% !important;
         height: 90px !important;
     }
+    .author_logo{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .editor{
+        margin-top: 15px;
+    }
+    footer .copyright {
+        padding-top: 0;
+        padding-bottom: 120px;
+    }
 }
 
 @media (min-width:576px) and (max-width:767px) {

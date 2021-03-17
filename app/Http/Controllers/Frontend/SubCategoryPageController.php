@@ -21,16 +21,16 @@ class SubCategoryPageController extends Controller
         $headlines = Post::orderBy('created_at','desc')->limit(10)->get();
         //for search post belongs to this subcategory
         $category = SubCategory::where('slug',$slug)->first();
-        $categories_post_count = Post::where('category_id', $category->id)->count();
-        $main_post = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->first();
+        $categories_post_count = Post::where('sub_category_id', $category->id)->count();
+        $main_post = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->first();
 
-        $right_side_posts = Post::where('category_id', $category->id)->where('id', '!=', $main_post->id)->where('status', 'published')->orderBy('created_at', 'desc')->limit(2)->get();
+        $right_side_posts = Post::where('sub_category_id', $category->id)->where('id', '!=', $main_post->id)->where('status', 'published')->orderBy('created_at', 'desc')->limit(2)->get();
 
         $last_right_post = $right_side_posts->last();
-        $bottom_side_posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_right_post->id)->limit(3)->get();
+        $bottom_side_posts = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_right_post->id)->limit(3)->get();
 
         $last_bottom_post = $bottom_side_posts->last();
-        $posts = Post::where('category_id', 1)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_bottom_post->id)->paginate(4);
+        $posts = Post::where('sub_category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_bottom_post->id)->paginate(4);
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 7)->limit(15)->get();

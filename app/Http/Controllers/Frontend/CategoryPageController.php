@@ -29,7 +29,7 @@ class CategoryPageController extends Controller
         $bottom_side_posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_right_post->id)->limit(3)->get();
 
         $last_bottom_post = $bottom_side_posts->last();
-        $posts = Post::where('category_id', 1)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_bottom_post->id)->paginate(4);
+        $posts = Post::where('category_id', $category->id)->where('status', 'published')->orderBy('created_at', 'desc')->where('id', '<', $last_bottom_post->id)->paginate(4);
 
         //latest news
         $latest_news = Post::where('status', 'published')->orderBy('created_at', 'desc')->where('id', '>=', 7)->limit(15)->get();

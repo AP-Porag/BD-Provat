@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 {{--google analytics script--}}
-{{--<!-- Global site tag (gtag.js) - Google Analytics -->--}}
-{{--    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174944185-1"></script>--}}
-{{--    <script>--}}
-{{--        window.dataLayer = window.dataLayer || [];--}}
-{{--        function gtag(){dataLayer.push(arguments);}--}}
-{{--        gtag('js', new Date());--}}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174944185-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-{{--        gtag('config', 'UA-174944185-1');--}}
-{{--    </script>--}}
+        gtag('config', 'UA-174944185-1');
+    </script>
 
 {{--google analytics script--}}
 
 {{--    google add script --}}
-{{--    <script data-ad-client="ca-pub-2285535747529435" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+    <script data-ad-client="ca-pub-2285535747529435" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     {{--    google add script --}}
     <!-- Site Metas -->
     <title>@yield('title','BD-Provat')</title>
@@ -35,7 +35,7 @@
     <meta property="og:type"               content="article" />
     <meta property="og:title"              content="@yield('title','BD-Provat')" />
     <meta property="og:description"        content="@yield('meta_description','BD-Provat')" />
-    <meta property="og:image"              content="@yield('image',asset('frontend/img/logo-square.jpg'))" />
+    <meta property="og:image"              content="@yield('image',asset('frontend/img/squar-logo-two.jpg'))" />
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
 {{--    social sharing--}}
@@ -329,28 +329,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div>
+                <div class="author_logo">
                     <a href="{{ route('website') }}">
-                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" width="200" class="lazy">
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" width="200" class="lazy" style="margin: 0 auto;">
                     </a>
                 </div>
             </div>
             <div class="col-md-4 text-center">
-                <span> {{ $author->authorname }}</span>
-                <div class="copyright">
-                    <p>©All rights reserved by BD-Provat - @php echo date('Y') @endphp<a
-                            href="{{ route('website') }}"></a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 text-center">
+                <span class="editor_name"> {{ $author->authorname }}</span>
                 <div class="editor">
-                    <p class="pb-5">
+                    <p class="">
                         {{ $author->enterprisename }}<br>
                         {{ $author->enterpriseheadquarter }}।<br>
                         আমাদের মেইল: <a href="{{ $author->email }}">bdprovat.news@gmail.com</a>
                         <br>মোবাইল:
                         {{ $author->mobilenumber }}
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="copyright">
+                    <p>©All rights reserved by BD-Provat - @php echo date('Y') @endphp<a
+                            href="{{ route('website') }}"></a>
                     </p>
                 </div>
             </div>

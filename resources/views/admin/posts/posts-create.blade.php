@@ -572,6 +572,7 @@
     </script>
     <script>
         CKEDITOR.replace('my-editor', options);
+        CKEDITOR.addCss(".cke_editable{font-size: 18px;}");
         CKEDITOR.on('instanceReady', function (ev) {
             ev.editor.dataProcessor.htmlFilter.addRules( {
                 elements : {

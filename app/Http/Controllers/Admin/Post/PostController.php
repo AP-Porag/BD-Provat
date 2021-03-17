@@ -55,7 +55,7 @@ class PostController extends Controller
     {
 
         $post_author = $request->post_author;
-        $characters = [" ", ":", "‘", "’", "“", "”", ",", "--", ""];
+        $characters = [" ","    ", ":", "‘", "’", "“", "”", ",", "--", "","%","~","!","@","#","$","^","&","*","(",")","+","="];
         $requested_meta_keywords = $request->meta_keywords;
         $meta_keywords = str_replace($characters, ",", $requested_meta_keywords);
         $meta_description = $request->meta_description;
@@ -64,7 +64,9 @@ class PostController extends Controller
         $subcategory = $request->subcategory;
         $submenu = $request->submenu;
         $title = $request->title;
-        $slug = str_replace($characters, "-", $title);
+        $slug = str_replace($characters, " ", $title);
+        $slug = preg_replace('/\s+/u', '-', trim($slug));
+        return $slug;
         $content = $request->post_content;
         $thumbnail = $request->thumbnail;
         $status = $request->status;
@@ -118,7 +120,7 @@ class PostController extends Controller
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-                ->resize(1024, 693)
+                ->resize(1200, 630)
                 ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
                 ->save(base_path('/public/storage/post/'.$post->slug.'-'. $image_new_name));
             $post->thumbnail = '/storage/post/'.$post->slug.'-'. $image_new_name;
@@ -229,7 +231,7 @@ class PostController extends Controller
 
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
-                ->resize(1024, 693)
+                ->resize(1200, 630)
                 ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
                 ->save(base_path('/public/storage/post/'.$post->slug.'-'. $image_new_name));
             $post->thumbnail = '/storage/post/'.$post->slug.'-'. $image_new_name;
