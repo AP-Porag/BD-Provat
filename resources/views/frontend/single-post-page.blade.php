@@ -36,24 +36,37 @@
                                     {!! $post->content !!}
                                 </p>
                                 <h4 class="pt-3">নিউজটি শেয়ার করুন</h4>
-                                <div class="single_page_icon">
-                                    <ul class="d-flex">
-                                        <li class="">
-                                            <a
-                                                href="https://www.facebook.com/sharer/sharer.php?u={{ route('single-post-page',$post->slug) }}&display=popup" type="button" target="_blank" data-value="{{$post->id}}" class="shares">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="https://twitter.com/intent/tweet?text={{ route('single-post-page',$post->slug) }}" type="button" target="_blank" data-value="{{$post->id}}" class="shares"><i
-                                                    class="fa fa-twitter"></i></a></li>
-                                        <li class="shares">
-                                            <div class="share_div">
-                                                <strong><span>মোট শেয়ার <i class="fa fa-share"></i> : </span></strong>
-                                                <span id="share_counter">{{$post->shares}}</span>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <div class="row single_page_icon">
+                                    <div class="col-md-6">
+                                        <ul class="d-flex">
+                                            <li class="">
+                                                <a
+                                                    href="https://www.facebook.com/sharer/sharer.php?u={{ route('single-post-page',$post->slug) }}&display=popup" type="button" target="_blank" data-value="{{$post->id}}" class="shares">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="https://twitter.com/intent/tweet?text={{ route('single-post-page',$post->slug) }}" type="button" target="_blank" data-value="{{$post->id}}" class="shares">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="whatsapp://send?text={{ route('single-post-page',$post->slug) }}" type="button" target="_blank" data-value="{{$post->id}}" class="shares">
+                                                    <i class="fa fa-whatsapp"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="d-flex">
+                                            <li class="shares">
+                                                <div class="share_div">
+                                                    <strong><span>মোট শেয়ার <i class="fa fa-share"></i> : </span></strong>
+                                                    <span id="share_counter">{{$post->shares}}</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12 google_horizontal_add_one">
