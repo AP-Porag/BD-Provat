@@ -65,17 +65,18 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 google_horizontal_add_one">
-                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                            <!-- banner add -->
-                            <ins class="adsbygoogle"
-                                 style="display:block"
-                                 data-ad-client="ca-pub-2285535747529435"
-                                 data-ad-slot="4776463541"
-                                 data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
+{{--                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--                            <!-- banner add -->--}}
+{{--                            <ins class="adsbygoogle"--}}
+{{--                                 style="display:block"--}}
+{{--                                 data-ad-client="ca-pub-2285535747529435"--}}
+{{--                                 data-ad-slot="4776463541"--}}
+{{--                                 data-ad-format="auto"--}}
+{{--                                 data-full-width-responsive="true"></ins>--}}
+{{--                            <script>--}}
+{{--                                (adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--                            </script>--}}
+                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/add-1.png')}}" height="90px" class="lazy img-fluid" alt="">
                         </div>
                     </div>
                     <div class="row my-3">
@@ -97,17 +98,18 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 google_horizontal_add_one">
-                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                            <!-- banner add -->
-                            <ins class="adsbygoogle"
-                                 style="display:block"
-                                 data-ad-client="ca-pub-2285535747529435"
-                                 data-ad-slot="4776463541"
-                                 data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
+{{--                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--                            <!-- banner add -->--}}
+{{--                            <ins class="adsbygoogle"--}}
+{{--                                 style="display:block"--}}
+{{--                                 data-ad-client="ca-pub-2285535747529435"--}}
+{{--                                 data-ad-slot="4776463541"--}}
+{{--                                 data-ad-format="auto"--}}
+{{--                                 data-full-width-responsive="true"></ins>--}}
+{{--                            <script>--}}
+{{--                                (adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--                            </script>--}}
+                            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/add-1.png')}}" height="90px" class="lazy img-fluid" alt="">
                         </div>
                     </div>
                     <div class="row" id="dataContainer">
@@ -139,17 +141,18 @@
             <div class="col-md-4">
                 @include('frontend.popular_last_news')
                 <div class="google_vertical_add">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- vertical add -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-2285535747529435"
-                         data-ad-slot="4086839037"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+{{--                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--                    <!-- vertical add -->--}}
+{{--                    <ins class="adsbygoogle"--}}
+{{--                         style="display:block"--}}
+{{--                         data-ad-client="ca-pub-2285535747529435"--}}
+{{--                         data-ad-slot="4086839037"--}}
+{{--                         data-ad-format="auto"--}}
+{{--                         data-full-width-responsive="true"></ins>--}}
+{{--                    <script>--}}
+{{--                        (adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--                    </script>--}}
+                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/add-2.png')}}" height="90px" class="lazy img-fluid" alt="">
                 </div>
             </div>
         </div>

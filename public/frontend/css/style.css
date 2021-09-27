@@ -28,9 +28,9 @@
     margin-bottom: 0 !important;
     width: 125px;
     padding: 5px;
-    background: #8c0707;
+    background: #111827;
     color: #fff;
-    border: #8c0707;
+    border: #111827;
     margin-left: 15px !important;
     border-radius: 4px;
 }
@@ -44,7 +44,7 @@ ol {
 }
 
 .navbar {
-    background-color: red;
+    background-color: #f7f7f7;
     position: relative;
     margin-bottom: 30px;
     padding: 0;
@@ -94,14 +94,14 @@ h4 {
 }
 
 h3 {
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #f7f7f7;
 }
 
 h3 span {
     font-size: 18px;
-    background: red;
+    background: #f7f7f7;
     padding: 8px 20px;
-    color: #fff;
+    color: #111827;
     position: relative;
     display: inline-block;
 }
@@ -120,8 +120,8 @@ body {
 }
 
 .login:hover {
-    background: red;
-    color: #fff !important;
+    background: #f7f7f7;
+    color: #111827 !important;
 }
 
 section {
@@ -131,13 +131,13 @@ section {
 
 .section_link span {
     background: none;
-    color: darkgreen;
+    color: #111827;
     padding: 0;
     transition: 0.4s;
 }
 
 .section_link span:hover {
-    color: #8c0707;
+    color: #111827;
     transform: scale(1.2);
 }
 
@@ -146,7 +146,7 @@ section {
     font-size: 20px;
 }
 .date {
-    color: red;
+    color: #f7f7f7;
     font-size: 24px;
 }
 
@@ -193,22 +193,26 @@ section {
 }
 
 .navigation-bar {
-    background: red;
+    background: #f7f7f7;
 }
 
 .navigation-bar .left-side {
-    background: #8c0707;
+    background: #ffffff;
     padding-left: 5px;
     padding-right: 5px;
 }
 
 .navigation-bar .left-side:hover {
-    background: #8c0707;
+    background: #111827;
     transition: 0.4s;
 }
 
 .navbar-nav .nav-item a {
-    color: #fff !important;
+    color: #111827 !important;
+    font-size: 16px;
+}
+.navbar-nav .nav-item a:hover {
+    color: #ffffff !important;
     font-size: 16px;
 }
 
@@ -218,11 +222,11 @@ section {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link.active {
-    background: #8c0707;
+    background: #ffffff;
 }
 
 .social-icon-content a:hover i {
-    color: #8c0707;
+    color: #111827;
     transition: 0.4s;
 }
 
@@ -235,7 +239,7 @@ section {
     margin-top: 2px;
     transition: 0.4s;
     color: #fff;
-    background-color: #ff0000;
+    background-color: #111827;
 }
 
 .first-login {
@@ -243,7 +247,7 @@ section {
 }
 
 .navbar-nav .nav-item:hover .nav-link {
-    background: #8c0707;
+    background: #111827;
     transition: 0.4s;
 }
 
@@ -256,22 +260,22 @@ section {
 }
 .dropdown-menu {
     margin-top: 0;
-    background: #8c0707;
+    background: #ffffff;
     border-radius: 0;
     padding: 0;
 }
 .dropdown-item {
     padding: 0.50rem 0.5rem;
-    border-bottom: 1px solid #6d0808;
+    border-bottom: 1px solid #111827;
 }
 
 .dropdown-item:hover {
-    background-color: darkgreen;
+    background-color: #111827;
     transition: 0.4s;
 }
 
 .dropdown-item.active {
-    background: darkgreen;
+    background: #111827;
 }
 .dropdown-submenu {
     position: relative;
@@ -289,12 +293,12 @@ section {
     left: 100%;
     margin-left: .1rem;
     margin-right: .1rem;
-    background: #fdc101;
+    background: #ffffff;
     cursor: pointer;
     display: none;
 }
 .search-btn {
-    background: #8c0707;
+    background: #111827;
     padding-left: 15px;
     padding-right: 15px;
     cursor: pointer;
@@ -305,7 +309,7 @@ section {
 
 /* Breaking News Start */
 .breaking-news-title {
-    background: darkgreen;
+    background: #111827;
     color: #fff;
     padding: 5px;
     text-align: center;
@@ -318,7 +322,7 @@ marquee ul li {
 marquee ul li span {
     font-size: 12px;
     color: #fff;
-    background: #8c0707;
+    background: #111827;
     padding: 5px;
     border-radius: 2px;
 }
@@ -332,7 +336,7 @@ marquee ul li a {
 }
 
 marquee ul li a:hover {
-    color: #8c0707;
+    color: #111827;
 }
 
 /* Breaking News End */
@@ -365,7 +369,7 @@ marquee ul li a:hover {
 }
 
 .image_overlay:hover.image_overlay h5 {
-    color: #8c0707;
+    color: #111827;
 }
 
 .small_image_box {
@@ -395,7 +399,7 @@ marquee ul li a:hover {
 }
 
 .small_image_overlay:hover.small_image_overlay h5 {
-    color: #8c0707;
+    color: #111827;
 }
 
 /* Main news Sectin Ends */
@@ -422,7 +426,7 @@ marquee ul li a:hover {
 }
 
 #national_news .card:hover.card .card-text h4 {
-    color: #8c0707;
+    color: #111827;
 }
 
 #national_news .card-text p {
@@ -461,7 +465,7 @@ marquee ul li a:hover {
 nav>.nav.nav-tabs {
     border: none;
     color: #fff;
-    background: #8c0707;
+    background: #111827;
     border-radius: 0;
 }
 
@@ -469,8 +473,8 @@ nav>div a.nav-item.nav-link,
 nav>div a.nav-item.nav-link.active {
     border: none;
     padding: 8px 0;
-    color: #fff;
-    background: red;
+    color: #111827;
+    background: #f7f7f7;
     border-radius: 0;
 }
 
@@ -480,15 +484,15 @@ nav>div a.nav-item.nav-link.active:after {
     bottom: -57px;
     left: -10%;
     border: 15px solid transparent;
-    border-top-color: #8c0707;
+    border-top-color: #111827;
 }
 
 .tab-content {
     background: #fdfdfd;
     line-height: 25px;
     border: 1px solid #ddd;
-    border-top: 5px solid #8c0707;
-    border-bottom: 5px solid #8c0707;
+    border-top: 5px solid #111827;
+    border-bottom: 5px solid #111827;
     padding: 30px 25px;
 }
 
@@ -514,7 +518,7 @@ nav>div a.nav-item.nav-link.active:after {
 nav>div a.nav-item.nav-link:hover,
 nav>div a.nav-item.nav-link:focus {
     border: none;
-    background: #8c0707;
+    background: #111827;
     color: #fff;
     border-radius: 0;
     transition: 0.4s;
@@ -525,14 +529,14 @@ nav>div a.nav-item.nav-link:focus {
 
 /* Politics Technology and Law Start */
 #politics_technology_law h5 {
-    color: #8c0707;
+    color: #111827;
     font-weight: 400;
     font-size: 18px;
     transition: 0.4s;
 }
 
 #politics_technology_law h5:hover {
-    color: darkgreen;
+    color: #111827;
 }
 
 #politics_technology_law p a {
@@ -590,7 +594,7 @@ nav>div a.nav-item.nav-link:focus {
     height: 20px;
     content: "•";
     opacity: 1;
-    color: red;
+    color: #f7f7f7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -615,7 +619,7 @@ nav>div a.nav-item.nav-link:focus {
 /* Slick Slider End */
 /* entertainment Feature Start */
 #entertainment_and_feature {
-    background: #8c0707;
+    background: #111827;
 }
 
 #entertainment_and_feature .section_link span {
@@ -645,12 +649,12 @@ nav>div a.nav-item.nav-link:focus {
 /* entertainment Feature end */
 /* international lifestyle Feature start */
 #international_lifestyle {
-    background: #f8f8f8;
+    background: #111827;
     margin-top: 30px;
 }
 
 #international_lifestyle h5 {
-    color: #8c0707;
+    color: #111827;
     font-size: 18px;
     font-weight: 400;
 }
@@ -661,12 +665,12 @@ nav>div a.nav-item.nav-link:focus {
     border-bottom: 2px dashed #999;
 }
 #international_lifestyle ul li a p {
-    color: #000000;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 400;
 }
 #international_lifestyle p {
-    color: #000000;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 400;
 }
@@ -716,12 +720,12 @@ nav>div a.nav-item.nav-link:focus {
 }
 
 #full_country ul li.active {
-    background: red;
+    background: #f7f7f7;
     color: #fff;
 }
 
 #full_country ul li a {
-    color: darkgreen;
+    color: #111827;
     font-size: 18px;
 }
 
@@ -737,17 +741,17 @@ nav>div a.nav-item.nav-link:focus {
 
 #full_country .isotope-pager .pager {
     background: rgba(0, 100, 0, 0);
-    color: darkgreen;
+    color: #111827;
     font-size: 18px;
     font-weight: 400;
     padding: 5px 13px;
-    border: 1px solid darkgreen;
+    border: 1px solid #111827;
     border-right: 0;
     transition: 0.4s;
 }
 
 #full_country .isotope-pager .pager:last-child {
-    border-right: 1px solid darkgreen;
+    border-right: 1px solid #111827;
 }
 
 #full_country .isotope-pager .pager:hover {
@@ -775,7 +779,7 @@ nav>div a.nav-item.nav-link:focus {
 }
 
 #full_country h5:hover {
-    color: darkgreen;
+    color: #111827;
 }
 
 #full_country .card-header {
@@ -788,14 +792,14 @@ nav>div a.nav-item.nav-link:focus {
 
 #full_country .card-header:hover {
     background: rgba(255, 255, 255, 1);
-    color: darkgreen;
-    border: 1px solid darkgreen;
+    color: #111827;
+    border: 1px solid #111827;
 }
 
 /* Full Country Section End */
 /* Sport Section Start */
 #sports {
-    background: darkgreen;
+    background: #111827;
 }
 
 #sports .section_link span {
@@ -898,7 +902,7 @@ nav>div a.nav-item.nav-link:focus {
 }
 
 #travel_health_religion h5:hover {
-    color: darkgreen;
+    color: #111827;
     font-weight: 200;
     font-size: 18px;
 }
@@ -906,7 +910,7 @@ nav>div a.nav-item.nav-link:focus {
 /* Travel Health Foreign End */
 /* Footer Start */
 footer {
-    background: #000;
+    background: #f7f7f7;
     padding-top: 30px;
     padding-bottom: 20px;
     margin-bottom: 52px;
@@ -918,23 +922,23 @@ footer .copyright {
 
 
 footer p {
-    color: #fff;
+    color: #000000;
 }
 
 footer .root p {
     padding-top: 15px;
     padding-bottom: 15px;
-    color: #fff;
+    color: #000000;
 }
 
 footer p a {
-    color: #FFFFFF;
+    color: #000000;
     font-size: 18px;
     font-weight: 400;
 }
 
 footer span {
-    color: #fff;
+    color: #000000;
     font-size: 20px;
     position: relative;
 }
@@ -943,20 +947,20 @@ footer span:before {
     position: absolute;
     content: "";
     height: 2px;
-    background: #fff;
+    background: #000000;
     width: 100%;
     left: 0;
     top: 30px;
 }
 
 footer p a:hover {
-    color: red;
+    color: #f7f7f7;
 }
 
 footer ul li a {
-    color: #fff;
+    color: #000000;
     font-size: 20px;
-    background: red;
+    background: #f7f7f7;
     padding: 15px 20px;
     margin-top: 10px;
     display: block;
@@ -965,21 +969,21 @@ footer ul li a {
 }
 
 footer ul li a:hover {
-    background: darkgreen;
+    background: #111827;
     color: #FFFFFF;
     border-radius: 4px;
     transition: 0.4s;
 }
 
 footer .root {
-    background: red;
+    background: #f7f7f7;
     color: #FFFFFF;
 }
 
 /* footer ends */
 /* author start */
 .editor a:hover {
-    color: red;
+    color: #f7f7f7;
 }
 
 /* author ends */
@@ -1091,7 +1095,7 @@ footer .root {
 #comment_showing_box .single_comment .commenter {
     font-size: 15px;
     font-weight: 200;
-    color: darkgreen;
+    color: #111827;
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -1109,7 +1113,7 @@ footer .root {
 #comment_showing_box .single_reply .replier {
     font-size: 15px;
     font-weight: 200;
-    color: #8c0707;
+    color: #111827;
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -1176,7 +1180,7 @@ nav>div a.nav-item.nav-link.active:after {
     font-size: 14px;
     border: none;
     outline: none;
-    background-color: red;
+    background-color: #111827;
     color: white;
     cursor: pointer;
     padding: 15px;
@@ -1197,7 +1201,7 @@ nav>div a.nav-item.nav-link.active:after {
 }
 
 .about-row .card-footer {
-    background: #8c0707;
+    background: #111827;
 }
 
 .about-row .card-footer .name {

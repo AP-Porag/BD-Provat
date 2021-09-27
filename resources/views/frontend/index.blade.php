@@ -119,17 +119,18 @@
                 <div class="col-md-4">
                     @include('frontend.popular_last_news')
                     <div class="google_square_add">
-                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- square add -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-2285535747529435"
-                             data-ad-slot="8792370803"
-                             data-ad-format="auto"
-                             data-full-width-responsive="true"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+{{--                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--                        <!-- square add -->--}}
+{{--                        <ins class="adsbygoogle"--}}
+{{--                             style="display:block"--}}
+{{--                             data-ad-client="ca-pub-2285535747529435"--}}
+{{--                             data-ad-slot="8792370803"--}}
+{{--                             data-ad-format="auto"--}}
+{{--                             data-full-width-responsive="true"></ins>--}}
+{{--                        <script>--}}
+{{--                            (adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--                        </script>--}}
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/add-2.png')}}" class="lazy img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -325,7 +326,7 @@
                             <a href="{{ route('single-post-page', $last_entertainment_post->slug) }}"
                                class="d-flex for-position-image">
                                 <div class="col-md-5 col-12">
-                                    <h5 class="lazy text-danger">{{ $last_entertainment_post->title }}</h5>
+                                    <h5 class="lazy text-white">{{ $last_entertainment_post->title }}</h5>
                                     <p class="lazy text-justify">
                                         {!! Illuminate\Support\Str::of($last_entertainment_post->content)->words(25) !!}
                                     </p>
@@ -7373,17 +7374,18 @@
                         </div>
                     </div>
                     <div class="google_vertical_add">
-                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- vertical add -->
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-2285535747529435"
-                             data-ad-slot="4086839037"
-                             data-ad-format="auto"
-                             data-full-width-responsive="true"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+{{--                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--                        <!-- vertical add -->--}}
+{{--                        <ins class="adsbygoogle"--}}
+{{--                             style="display:block"--}}
+{{--                             data-ad-client="ca-pub-2285535747529435"--}}
+{{--                             data-ad-slot="4086839037"--}}
+{{--                             data-ad-format="auto"--}}
+{{--                             data-full-width-responsive="true"></ins>--}}
+{{--                        <script>--}}
+{{--                            (adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--                        </script>--}}
+                        <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/add-3.png')}}" height="90px" class="lazy img-fluid" alt="">
                     </div>
                 </div>
             </div>

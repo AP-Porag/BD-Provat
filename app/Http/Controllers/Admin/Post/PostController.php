@@ -66,7 +66,6 @@ class PostController extends Controller
         $title = $request->title;
         $slug = str_replace($characters, " ", $title);
         $slug = preg_replace('/\s+/u', '-', trim($slug));
-        return $slug;
         $content = $request->post_content;
         $thumbnail = $request->thumbnail;
         $status = $request->status;
@@ -121,7 +120,7 @@ class PostController extends Controller
             $image_new_name = time() . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)
                 ->resize(1200, 630)
-                ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
+//                ->insert(base_path('/public/settings-images/watermark.png'), 'bottom')
                 ->save(base_path('/public/storage/post/'.$post->slug.'-'. $image_new_name));
             $post->thumbnail = '/storage/post/'.$post->slug.'-'. $image_new_name;
             $post->save();

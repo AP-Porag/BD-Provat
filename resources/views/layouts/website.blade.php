@@ -25,16 +25,16 @@
     <script data-ad-client="ca-pub-2285535747529435" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     {{--    google add script --}}
     <!-- Site Metas -->
-    <title>@yield('title','BD-Provat')</title>
-    <meta name="keywords" content="@yield('meta_keywords','BD-Provat')">
-    <meta name="description" content="@yield('meta_description','BD-Provat')">
+    <title>{{env('APP_NAME')}}</title>
+    <meta name="keywords" content="@yield('meta_keywords','News-BD')">
+    <meta name="description" content="@yield('meta_description','News-BD')">
     <link rel="canonical" href="{{ url()->current() }}"/>
 
     {{--    social sharing--}}
     <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="@yield('title','BD-Provat')" />
-    <meta property="og:description"        content="@yield('meta_description','BD-Provat')" />
+    <meta property="og:title"              content="@yield('title','News-BD')" />
+    <meta property="og:description"        content="@yield('meta_description','News-BD')" />
     <meta property="og:image"              content="@yield('image',asset('frontend/img/squar-logo-two.jpg'))" />
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
@@ -123,19 +123,20 @@
             <div class="col-md-3">
                 <a class="nav-link {{ \Illuminate\Support\Facades\Route::current()->getName() == 'website' ? 'active' : '' }}"
                    href="{{ route('website') }}">
-                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" class="lazy img-fluid logo_size">
+                    <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{ $author->thumbnail }}" alt="{{ $author->thumbnail }}" style="height: 90px;" class="lazy img-fluid logo_size">
                 </a>
             </div>
             <div class="col-md-9 d-none d-md-block">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- header-banner add -->
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:728px;height:90px"
-                     data-ad-client="ca-pub-2285535747529435"
-                     data-ad-slot="1601002843"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+{{--                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--                <!-- header-banner add -->--}}
+{{--                <ins class="adsbygoogle"--}}
+{{--                     style="display:inline-block;width:728px;height:90px"--}}
+{{--                     data-ad-client="ca-pub-2285535747529435"--}}
+{{--                     data-ad-slot="1601002843"></ins>--}}
+{{--                <script>--}}
+{{--                    (adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--                </script>--}}
+                <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/top-add.png')}}" height="90px" class="lazy" alt="">
             </div>
         </div>
     </div>
@@ -310,17 +311,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 google_horizontal_add_one mt-3">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- banner add -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2285535747529435"
-                 data-ad-slot="4776463541"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+{{--            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>--}}
+{{--            <!-- banner add -->--}}
+{{--            <ins class="adsbygoogle"--}}
+{{--                 style="display:block"--}}
+{{--                 data-ad-client="ca-pub-2285535747529435"--}}
+{{--                 data-ad-slot="4776463541"--}}
+{{--                 data-ad-format="auto"--}}
+{{--                 data-full-width-responsive="true"></ins>--}}
+{{--            <script>--}}
+{{--                (adsbygoogle = window.adsbygoogle || []).push({});--}}
+{{--            </script>--}}
+            <img src="{{asset('frontend/img/placeholder.jpg')}}" data-src="{{asset('frontend/img/add-1.png')}}" height="90px" class="lazy img-fluid" alt="">
         </div>
     </div>
 </div>
@@ -350,7 +352,7 @@
             </div>
             <div class="col-md-4 text-center">
                 <div class="copyright">
-                    <p>©All rights reserved by BD-Provat - @php echo date('Y') @endphp<a
+                    <p>©All rights reserved by News-BD - @php echo date('Y') @endphp<a
                             href="{{ route('website') }}"></a>
                     </p>
                 </div>
