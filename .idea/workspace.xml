@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cab1e0a3-6e72-4abb-9cfe-e998b143d66a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryApiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PostApiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/img/add-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/img/add-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/img/add-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/img/top-add.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Post/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/frontend/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/272px-90px-Logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/img/272px-90px-Logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/img/placeholder.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/img/placeholder.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/category-subcategory-tag-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/category-subcategory-tag-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/single-post-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/single-post-page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/website.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/website.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +205,7 @@
       <workItem from="1631285708692" duration="1464000" />
       <workItem from="1631292719475" duration="773000" />
       <workItem from="1632749060879" duration="4215000" />
-      <workItem from="1632756213561" duration="7881000" />
+      <workItem from="1632756213561" duration="8389000" />
     </task>
     <servers />
   </component>

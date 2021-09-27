@@ -36,7 +36,7 @@
             <!-- Sidebar - Brand -->
             <li class="sidebar-brand d-flex justify-content-between mb-4">
                 <a href="{{route('home')}}" class="sidebar-brand-icon">
-                    <img src="{{asset('frontend/img/272px-90px-Logo.png')}}" alt="{{asset('frontend/img/272px-90px-Logo.png')}}" class="img-fluid">
+                    <img src="{{asset('frontend/img/272px-90px-Logo.png')}}" alt="{{asset('frontend/img/272px-90px-Logo.png')}}" class="img-fluid" style="height: 40px;">
                 </a>
                 {{--  <div class="sidebar-brand-text mt-3"><a href="{{route('home')}}" class=""></a>BD-Provat</div>  --}}
             </li>

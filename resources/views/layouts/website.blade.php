@@ -343,7 +343,7 @@
                     <p class="">
                         {{ $author->enterprisename }}<br>
                         {{ $author->enterpriseheadquarter }}।<br>
-                        আমাদের মেইল: <a href="{{ $author->email }}">bdprovat.news@gmail.com</a>
+                        আমাদের মেইল: <a href="{{ $author->email }}">news@gmail.com</a>
                         <br>মোবাইল:
                         {{ $author->mobilenumber }}
                     </p>
